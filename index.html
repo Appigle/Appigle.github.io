@@ -102,7 +102,7 @@
     motion: true,
     duoshuo: {
       userId: 0,
-      author: 'Author'
+      author: 'Penulis'
     }
   };
 </script>
@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Beranda
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Categories
+            Kategori
           </a>
         </li>
       
@@ -192,7 +192,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            Tentang
           </a>
         </li>
       
@@ -202,7 +202,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Arsip
           </a>
         </li>
       
@@ -278,7 +278,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Diposting di</span>
             <time itemprop="dateCreated" datetime="2016-09-21T09:06:38+08:00" content="2016-09-21">
               2016-09-21
             </time>
@@ -386,7 +386,7 @@
 <ul>
 <li>调用~Subscriber.onStart()~.</li>
 <li>调用~Observable~中的OnSubscribe.call（Subscriber）~。</li>
-<li>将传入的~Subscriber~作为~Subscription~返回。这是为了方便~unsubscribe（）~；<br><img src="https://www.dropbox.com/s/6p78od7vvbfz9se/subscribe.gif" alt=""><br>除了~subscribe（Observer）~和~subscribe（subscriber）~，subscribe（）还支持不完整定义的回调，RxJava会自动证据定义创建出Subscriber。形式如下：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&gt; Action1&lt;String&gt; onNextAction = <span class="keyword">new</span> Action1&lt;String&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">                Log.d(TAG, <span class="string">"call() called with: "</span> + <span class="string">"s = ["</span> + s + <span class="string">"]"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        Action1&lt;Throwable&gt; onErrorAction = <span class="keyword">new</span> Action1&lt;Throwable&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(Throwable throwable)</span> </span>&#123;</div><div class="line">                Log.d(TAG, <span class="string">"call() called with: "</span> + <span class="string">"throwable = ["</span> + throwable + <span class="string">"]"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        Action0 onCompletedAction = <span class="keyword">new</span> Action0() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">()</span> </span>&#123;</div><div class="line">                Log.d(TAG, <span class="string">"call() called with: "</span> + <span class="string">"completed"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line"> 		<span class="comment">//自动创建Subscriber,并使用onNextAciton来定义onNext（）；</span></div><div class="line">        observable.subscribe(onNextAction);</div><div class="line">        <span class="comment">//自动创建Subscriber,并使用onNextAciton和onErrorAciton，来定义onNext（）和onError（）；</span></div><div class="line">        observable.subscribe(onNextAction, onErrorAction);</div><div class="line">        <span class="comment">//自动创建Subscriber,并使用onNextAction来定义onNext（），使用onErrorAciton来定义onError（），使用onCompletedAction来定义onCompleted（）</span></div><div class="line">        observable.subscribe(onNextAction,onErrorAction,onCompletedAction);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<li>将传入的~Subscriber~作为~Subscription~返回。这是为了方便~unsubscribe（）~；<br><img src="/uploads/subscribe.gif" alt=""><br>除了~subscribe（Observer）~和~subscribe（subscriber）~，subscribe（）还支持不完整定义的回调，RxJava会自动证据定义创建出Subscriber。形式如下：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&gt; Action1&lt;String&gt; onNextAction = <span class="keyword">new</span> Action1&lt;String&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">                Log.d(TAG, <span class="string">"call() called with: "</span> + <span class="string">"s = ["</span> + s + <span class="string">"]"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        Action1&lt;Throwable&gt; onErrorAction = <span class="keyword">new</span> Action1&lt;Throwable&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(Throwable throwable)</span> </span>&#123;</div><div class="line">                Log.d(TAG, <span class="string">"call() called with: "</span> + <span class="string">"throwable = ["</span> + throwable + <span class="string">"]"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        Action0 onCompletedAction = <span class="keyword">new</span> Action0() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">()</span> </span>&#123;</div><div class="line">                Log.d(TAG, <span class="string">"call() called with: "</span> + <span class="string">"completed"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line"> 		<span class="comment">//自动创建Subscriber,并使用onNextAciton来定义onNext（）；</span></div><div class="line">        observable.subscribe(onNextAction);</div><div class="line">        <span class="comment">//自动创建Subscriber,并使用onNextAciton和onErrorAciton，来定义onNext（）和onError（）；</span></div><div class="line">        observable.subscribe(onNextAction, onErrorAction);</div><div class="line">        <span class="comment">//自动创建Subscriber,并使用onNextAction来定义onNext（），使用onErrorAciton来定义onError（），使用onCompletedAction来定义onCompleted（）</span></div><div class="line">        observable.subscribe(onNextAction,onErrorAction,onCompletedAction);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>Action0 是 RxJava 的一个接口，它只有一个方法 call()，这个方法是无参无返回值的；由于 onCompleted() 方法也是无参无返回值的，因此 Action0 可以被当成一个包装对象，将 onCompleted() 的内容打包起来将自己作为一个参数传入 subscribe() 以实现不完整定义的回调。这样其实也可以看做将 onCompleted() 方法作为参数传进了 subscribe()，相当于其他某些语言中的『闭包』。 Action1 也是一个接口，它同样只有一个方法 call(T param)，这个方法也无返回值，但有一个参数；与 Action0 同理，由于 onNext(T obj) 和 onError(Throwable error) 也是单参数无返回值的，因此 Action1 可以将 onNext(obj) 和 onError(error) 打包起来传入 subscribe() 以实现不完整定义的回调。事实上，虽然 Action0 和 Action1 在 API 中使用最广泛，但 RxJava 是提供了多个 ActionX 形式的接口 (例如 Action2, Action3) 的，它们可以被用以包装不同的无返回值的方法。</p>
@@ -470,7 +470,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Diposting di</span>
             <time itemprop="dateCreated" datetime="2016-09-20T22:14:08+08:00" content="2016-09-20">
               2016-09-20
             </time>
@@ -564,7 +564,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Diposting di</span>
             <time itemprop="dateCreated" datetime="2016-09-20T18:21:25+08:00" content="2016-09-20">
               2016-09-20
             </time>
@@ -674,7 +674,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">3</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">posting</span>
             </a>
           </div>
 
@@ -725,7 +725,7 @@
 </div>
 
 <div class="theme-info">
-  Theme -
+  Tema -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Pisces
   </a>
