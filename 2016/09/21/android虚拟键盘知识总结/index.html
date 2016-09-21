@@ -94,20 +94,20 @@ eg.
 <meta property="og:description" content="android：windowSoftInputMode属性使用详解：
 eg.
 12345678910111213&amp;gt; &amp;lt;activity&amp;gt; 	android:windowSoftInputMode=[&amp;quot;stateUnspecified&amp;quot;&amp;gt; 	|&amp;quot;stateUnchanged&amp;quot;&amp;gt; 	|&amp;quot;stateHidden&amp;quot">
-<meta property="og:image" content="http://yoursite.com/uploads/android软键盘问题处理问题描述图1.png">
+<meta property="og:image" content="http://yoursite.com/uploads/android软键盘问题处理问题描述图2.png">
 <meta property="og:image" content="http://yoursite.com/uploads/android软键盘问题显示正常3.png">
 <meta property="og:image" content="http://yoursite.com/uploads/android软键盘问题显示2.png">
 <meta property="og:image" content="http://yoursite.com/uploads/android软键盘问题显示4.png">
 <meta property="og:image" content="http://yoursite.com/uploads/android软键盘问题显示5.png">
 <meta property="og:image" content="http://yoursite.com/uploads/android软键盘问题显示5.png">
 <meta property="og:image" content="http://yoursite.com/uploads/android软键盘问题显示6.png">
-<meta property="og:updated_time" content="2016-09-21T06:32:05.135Z">
+<meta property="og:updated_time" content="2016-09-21T07:34:59.868Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android虚拟键盘知识总结">
 <meta name="twitter:description" content="android：windowSoftInputMode属性使用详解：
 eg.
 12345678910111213&amp;gt; &amp;lt;activity&amp;gt; 	android:windowSoftInputMode=[&amp;quot;stateUnspecified&amp;quot;&amp;gt; 	|&amp;quot;stateUnchanged&amp;quot;&amp;gt; 	|&amp;quot;stateHidden&amp;quot">
-<meta name="twitter:image" content="http://yoursite.com/uploads/android软键盘问题处理问题描述图1.png">
+<meta name="twitter:image" content="http://yoursite.com/uploads/android软键盘问题处理问题描述图2.png">
 
 
 
@@ -327,7 +327,7 @@ eg.
 </blockquote>
 <ol>
 <li><strong>项目难点处理记录</strong>：<blockquote>
-<p>2.1 问题描述：<br><img src="/uploads/android软键盘问题处理问题描述图1.png" alt=""><br>如上图所示：红色区域需要保持固定不动，紫色框区域内的EditText获得焦点时候，可以改变位置以便软键盘的弹出。</p>
+<p>2.1 问题描述：<br><img src="/uploads/android软键盘问题处理问题描述图2.png" alt=""><br>如上图所示：红色区域需要保持固定不动，紫色框区域内的EditText获得焦点时候，可以改变位置以便软键盘的弹出。</p>
 <p>2.2 界面UI布局XML文件：<br>说明：最外层使用RelativeLayout，内部分3部分，上部为include布局头部Bar，中间为一个Scrollview包含的图片和</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&gt;&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:id=&quot;@+id/code_rl&quot;</div><div class="line">    style=&quot;@style/MatchActivityStyle&quot;</div><div class="line">   &gt;</div><div class="line">    &lt;include</div><div class="line">        android:id=&quot;@+id/in_title&quot;</div><div class="line">        layout=&quot;@layout/include_second_titlebar&quot; /&gt;</div><div class="line">    &lt;ScrollView</div><div class="line">        style=&quot;@style/MatchActivityStyle&quot;</div><div class="line">        android:layout_below=&quot;@id/in_title&quot;&gt;</div><div class="line">        &lt;LinearLayout</div><div class="line">            style=&quot;@style/MatchActivityStyle&quot;</div><div class="line">            android:orientation=&quot;vertical&quot;&gt;</div><div class="line">            &lt;ImageView</div><div class="line">               .../&gt;</div><div class="line">            &lt;EditText</div><div class="line">                ... /&gt;</div><div class="line">            &lt;Button</div><div class="line">                ... /&gt;</div><div class="line">        &lt;/LinearLayout&gt;</div><div class="line">    &lt;/ScrollView&gt;</div><div class="line">    &lt;LinearLayout</div><div class="line">       ...&gt;</div><div class="line">        &lt;TextView</div><div class="line">           .../&gt;</div><div class="line">        &lt;TextView</div><div class="line">           .../&gt;</div><div class="line">    &lt;/LinearLayout&gt;</div><div class="line">&lt;/RelativeLayout&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
 </blockquote>
