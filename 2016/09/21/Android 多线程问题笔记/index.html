@@ -84,16 +84,58 @@
 
 
 
-<meta name="description" content="Appigle&apos;s Blog！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="android">
-<meta property="og:url" content="http://yoursite.com/android/index.html">
+<meta name="description" content="###Android 多线程问题笔记
+
+
+我们为什么需要多线程机制？什么时候需要使用到多线程？
+
+
+因为Android官方明确什么在多线程编程时有俩大原则：第一、不能阻塞UI线程（主线程），第二、不能在UI线程之外访问UI组件；
+使用情况：第一、将任务从主线程抛到工作线程，第二、将任务从工作线程抛到主线程。
+
+
+
+将任务从工作线程抛到主线程方式：
+
+
+Handler.sendXXXMessage(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chenley">
+<meta property="og:url" content="http://yoursite.com/2016/09/21/Android 多线程问题笔记/index.html">
 <meta property="og:site_name" content="Chenley">
-<meta property="og:description" content="Appigle&apos;s Blog！">
-<meta property="og:updated_time" content="2016-09-20T13:40:52.493Z">
+<meta property="og:description" content="###Android 多线程问题笔记
+
+
+我们为什么需要多线程机制？什么时候需要使用到多线程？
+
+
+因为Android官方明确什么在多线程编程时有俩大原则：第一、不能阻塞UI线程（主线程），第二、不能在UI线程之外访问UI组件；
+使用情况：第一、将任务从主线程抛到工作线程，第二、将任务从工作线程抛到主线程。
+
+
+
+将任务从工作线程抛到主线程方式：
+
+
+Handler.sendXXXMessage(">
+<meta property="og:updated_time" content="2016-08-25T10:47:38.215Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android">
-<meta name="twitter:description" content="Appigle&apos;s Blog！">
+<meta name="twitter:title" content="Chenley">
+<meta name="twitter:description" content="###Android 多线程问题笔记
+
+
+我们为什么需要多线程机制？什么时候需要使用到多线程？
+
+
+因为Android官方明确什么在多线程编程时有俩大原则：第一、不能阻塞UI线程（主线程），第二、不能在UI线程之外访问UI组件；
+使用情况：第一、将任务从主线程抛到工作线程，第二、将任务从工作线程抛到主线程。
+
+
+
+将任务从工作线程抛到主线程方式：
+
+
+Handler.sendXXXMessage(">
 
 
 
@@ -114,15 +156,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/android/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/21/Android 多线程问题笔记/"/>
 
-  <title>
-  
-
-  
-    android | Chenley
-  
-</title>
+  <title>  | Chenley </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -143,7 +179,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -243,9 +279,149 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-21T14:19:13+08:00" content="2016-09-21">
+              2016-09-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
-    
+      
+
+      
+        <p>###Android 多线程问题笔记</p>
+<hr>
+<ol>
+<li><p>我们为什么需要多线程机制？什么时候需要使用到多线程？</p>
+<blockquote>
+<ul>
+<li>因为Android官方明确什么在多线程编程时有俩大原则：第一、不能阻塞UI线程（主线程），第二、不能在UI线程之外访问UI组件；</li>
+<li>使用情况：第一、将任务从主线程抛到工作线程，第二、将任务从工作线程抛到主线程。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>将任务从工作线程抛到主线程方式：</p>
+<blockquote>
+<ul>
+<li>Handler.sendXXXMessage()等方法：Handler是在主线程中定义的，所以handlerMessage（）方法是在主线程中执行的。</li>
+<li>Handler.post(Runnable r):这里事实上并没有开启一个新的线程，只是使run()方法体的代码抛到了与mHandler相关联的线程中执行了。？</li>
+<li>Activity.runOnUIThread(Runnable r):类似方面的post方法，优点是不需要new一个Handler实例；</li>
+<li>View.post(Runnable r):View本身的处理方法；</li>
+<li>AsyncTask：在实现的doInBackground（Params…）中执行耗时任务；</li>
+</ul>
+</blockquote>
+</li>
+<li><p>将任务从主线程抛到工作线程：</p>
+<blockquote>
+<ul>
+<li>new Thread/Runnable（）: 开启新线程方法；</li>
+<li>HandlerThread :</li>
+<li>mAsyncTask.execute();HandlerThread只开了一条线程，任务都被阻塞在一个队列中，那么就会使阻塞的任务延迟了，而AsyncTask开启线程的方法mAsyncTask.execute()默认也是开启一耳光线程和一个队列的，不过也可以通过使用~mAsyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR，0)~开启一个含有5个新线程的线程池，也就是说有5个队列了，假如你执行第六个耗时任务时，除非前面5个都还没有执行完成，否者任务不会被阻塞，这样就大大减少耗时任务延迟的可能性。这就是它的有点所在；</li>
+<li>IntentService: 该类继承Service类，用法跟Service类似。耗时任务放在~onHandleIntent（Intent intent）~的方法体中执行，它同样有着退出启动它的Activity后不会被系统啥事的特点，而且当任务执行完成之后会自动停止，无须手动终止它。eg. 后台下载文件；</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/21/Android 打包流程/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/21/AndroidStudio快捷键汇总/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -277,8 +453,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://raw.githubusercontent.com/Appigle/very_assets/master/avatar/avatar.jpg"
@@ -325,6 +510,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -428,6 +624,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

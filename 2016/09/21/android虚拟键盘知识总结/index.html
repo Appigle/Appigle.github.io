@@ -1,0 +1,643 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Android虚拟键盘知识总结
+
+android：windowSoftInputMode属性使用详解：
+eg.
+12345678910111213&amp;gt; &amp;lt;activity&amp;gt; 	android:windowSoftInputMode=[&amp;quot;stateUnspecified&amp;quot;&amp;gt; 	|&amp;quot;stateUnchanged&amp;quot;&amp;gt; 	|&amp;quot;s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chenley">
+<meta property="og:url" content="http://yoursite.com/2016/09/21/android虚拟键盘知识总结/index.html">
+<meta property="og:site_name" content="Chenley">
+<meta property="og:description" content="Android虚拟键盘知识总结
+
+android：windowSoftInputMode属性使用详解：
+eg.
+12345678910111213&amp;gt; &amp;lt;activity&amp;gt; 	android:windowSoftInputMode=[&amp;quot;stateUnspecified&amp;quot;&amp;gt; 	|&amp;quot;stateUnchanged&amp;quot;&amp;gt; 	|&amp;quot;s">
+<meta property="og:image" content="http://yoursite.com/uploads/android软键盘问题处理问题描述图1.png">
+<meta property="og:image" content="http://yoursite.com/uploads/android软键盘问题显示正常3.png">
+<meta property="og:image" content="http://yoursite.com/uploads/android软键盘问题显示2.png">
+<meta property="og:image" content="http://yoursite.com/uploads/android软键盘问题显示4.png">
+<meta property="og:image" content="http://yoursite.com/uploads/android软键盘问题显示5.png">
+<meta property="og:image" content="http://yoursite.com/uploads/android软键盘问题显示5.png">
+<meta property="og:image" content="http://yoursite.com/uploads/android软键盘问题显示6.png">
+<meta property="og:updated_time" content="2016-09-21T06:24:14.518Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chenley">
+<meta name="twitter:description" content="Android虚拟键盘知识总结
+
+android：windowSoftInputMode属性使用详解：
+eg.
+12345678910111213&amp;gt; &amp;lt;activity&amp;gt; 	android:windowSoftInputMode=[&amp;quot;stateUnspecified&amp;quot;&amp;gt; 	|&amp;quot;stateUnchanged&amp;quot;&amp;gt; 	|&amp;quot;s">
+<meta name="twitter:image" content="http://yoursite.com/uploads/android软键盘问题处理问题描述图1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/21/android虚拟键盘知识总结/"/>
+
+  <title>  | Chenley </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chenley</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/Chenley" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-21T14:19:13+08:00" content="2016-09-21">
+              2016-09-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Android虚拟键盘知识总结"><a href="#Android虚拟键盘知识总结" class="headerlink" title="Android虚拟键盘知识总结"></a>Android虚拟键盘知识总结</h3><hr>
+<ol>
+<li>android：<a href="http://blog.csdn.net/gaomatrix/article/details/7057032" target="_blank" rel="external">windowSoftInputMode属性使用详解</a>：<blockquote>
+<p>eg.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;activity</div><div class="line">&gt; 	android:windowSoftInputMode=[&quot;stateUnspecified&quot;</div><div class="line">&gt; 	|&quot;stateUnchanged&quot;</div><div class="line">&gt; 	|&quot;stateHidden&quot;</div><div class="line">&gt; 	|&quot;stateAlwaysHidden&quot;</div><div class="line">&gt; 	|&quot;stateVsible&quot;</div><div class="line">&gt; 	|&quot;stateAlwaysVisibe&quot;</div><div class="line">&gt; 	|&quot;adjustUnspecified&quot;</div><div class="line">&gt; 	|&quot;adjustResize&quot;</div><div class="line">&gt; 	|&quot;adjustPan&quot;</div><div class="line">&gt; 	]</div><div class="line">&gt; 	.../&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p><strong>attributes:android:windowSoftInputMode</strong>:活动的主窗口如何与包含屏幕上的软键盘窗口交互；<br>这个属性的设置将会影响俩件事：</p>
+<ul>
+<li>软键盘的状态：当前Activity成为焦点的时候，软键盘是隐藏还是显示状态；</li>
+<li>浮动的主窗口调整：是否减少活动主窗口大小以便腾出空间放软键盘或者时候当前活动窗口的部分被软键盘覆盖时，它的内容的当前焦点是可见的。<br>它的设置必须是下面列表中的一个值，或是一个“state…”值加上一个“adjust…”值的组合。中间使用“|”分隔开<br>值|描述<br>—|—<br>“stateUnspecified”|软键盘的状态（显示or隐藏）没有被指定。系统将根据默认规则选择一个合适的状态或者依赖于主题的设置。<br>“stateUnchanged”|软键盘被保持无论它上次是什么状态，是否可见或者隐藏，当主窗口出现在前面时。<br>“stateHidden”|当用户选择该Activity时，软键盘被隐藏。<br>“stateAlwaysHidden”|软键盘总是被隐藏，当该Activity主窗口获得焦点时。<br>“stateVisible“|软键盘是可见的。<br>“stateAlwaysVisible”|当用户选择这个Activity的时候，软键盘总是可见的。<br>“adjustUnspecified”|对窗口的大小设置不做限制，系统自动选择方案执行。<br>“adjustResize”|该Activity主窗口总是被调整屏幕大小以便留出软键盘的空间。<br>“adjustPan”|该Activity主窗口并不调整屏幕的大小以便留出软键盘的空间。相反，当前窗口的内容将自动移动以便当前焦点从不被软键盘覆盖和用户能总是看到输入内容的部分。这个通常是不期望调整内容界面大小的，因为用户可以通过关闭软键盘以便获取到被软键盘覆盖的内容的交互操作。</li>
+</ul>
+</blockquote>
+<ol>
+<li><strong>项目难点处理记录</strong>：<blockquote>
+<p>2.1 问题描述：<br><img src="/uploads/android软键盘问题处理问题描述图1.png" alt=""><br>如上图所示：红色区域需要保持固定不动，紫色框区域内的EditText获得焦点时候，可以改变位置以便软键盘的弹出。</p>
+<p>2.2 界面UI布局XML文件：<br>说明：最外层使用RelativeLayout，内部分3部分，上部为include布局头部Bar，中间为一个Scrollview包含的图片和</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&gt;&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:id=&quot;@+id/code_rl&quot;</div><div class="line">    style=&quot;@style/MatchActivityStyle&quot;</div><div class="line">   &gt;</div><div class="line">    &lt;include</div><div class="line">        android:id=&quot;@+id/in_title&quot;</div><div class="line">        layout=&quot;@layout/include_second_titlebar&quot; /&gt;</div><div class="line">    &lt;ScrollView</div><div class="line">        style=&quot;@style/MatchActivityStyle&quot;</div><div class="line">        android:layout_below=&quot;@id/in_title&quot;&gt;</div><div class="line">        &lt;LinearLayout</div><div class="line">            style=&quot;@style/MatchActivityStyle&quot;</div><div class="line">            android:orientation=&quot;vertical&quot;&gt;</div><div class="line">            &lt;ImageView</div><div class="line">               .../&gt;</div><div class="line">            &lt;EditText</div><div class="line">                ... /&gt;</div><div class="line">            &lt;Button</div><div class="line">                ... /&gt;</div><div class="line">        &lt;/LinearLayout&gt;</div><div class="line">    &lt;/ScrollView&gt;</div><div class="line">    &lt;LinearLayout</div><div class="line">       ...&gt;</div><div class="line">        &lt;TextView</div><div class="line">           .../&gt;</div><div class="line">        &lt;TextView</div><div class="line">           .../&gt;</div><div class="line">    &lt;/LinearLayout&gt;</div><div class="line">&lt;/RelativeLayout&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ol>
+<p>&gt;</p>
+<blockquote>
+<p>2.2 测试方案1：AndroidManifest.xml中设置软键盘的调整和状态方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;activity</div><div class="line">            android:name=&quot;.ui.c_activity.InvitationVerifyCodeActivity&quot;</div><div class="line">            android:launchMode=&quot;singleTop&quot;</div><div class="line">            android:screenOrientation=&quot;portrait&quot;</div><div class="line">            android:windowSoftInputMode=&quot;adjustPan|stateHidden&quot;/&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<p>结果：<br>正常显示：<br><img src="/uploads/android软键盘问题显示正常3.png" alt=""><br>弹出软键盘后界面UI显示：<br><img src="/uploads/android软键盘问题显示2.png" alt=""><br>说明：当软键盘显示的时候：界面被挤压变形。</p>
+<p>2.3 测试方案2：将AndroidManifest.xml中的adjustPan改成adjustResize<br>结果：<br><img src="/uploads/android软键盘问题显示4.png" alt=""><br>说明：头部Bar保留了，但是底部的信息却被挤压到键盘上面了。</p>
+<p>2.4 测试方案3：adjustResize+CodeRelativeLayout(自定义相对布局)</p>
+<ul>
+<li>CodeRelativeLayout.java 类:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">&gt;import android.content.Context;</div><div class="line">import android.util.AttributeSet;</div><div class="line">import android.util.Log;</div><div class="line">import android.widget.RelativeLayout;</div><div class="line">public class CodeRelativeLayout extends RelativeLayout &#123;</div><div class="line">    private static final String TAG = &quot;CodeRelativeLayout==&quot;;</div><div class="line">    public interface OnKeyboardShowListener &#123;</div><div class="line">        void keyboardShow(int w, int h, int oldw, int oldh);</div><div class="line">    &#125;</div><div class="line">    public OnKeyboardShowListener getOnKeyboardShowListener() &#123;</div><div class="line">        return mOnKeyboardShowListener;</div><div class="line">    &#125;</div><div class="line">    public void setOnKeyboardShowListener(OnKeyboardShowListener mOnKeyboardShowListener) &#123;</div><div class="line">        this.mOnKeyboardShowListener = mOnKeyboardShowListener;</div><div class="line">    &#125;</div><div class="line">    private OnKeyboardShowListener mOnKeyboardShowListener;</div><div class="line">    public CodeRelativeLayout(Context context) &#123;</div><div class="line">        super(context);</div><div class="line">    &#125;</div><div class="line">    public CodeRelativeLayout(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">    &#125;</div><div class="line">    public CodeRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr) &#123;</div><div class="line">        super(context, attrs, defStyleAttr);</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    protected void onSizeChanged(int w, int h, int oldw, int oldh) &#123;</div><div class="line">        Log.i(TAG, &quot;onSizeChanged() called with: &quot; + &quot;w = [&quot; + w + &quot;], h = [&quot; + h + &quot;], oldw = [&quot; + oldw + &quot;], oldh = [&quot; + oldh + &quot;]&quot;);</div><div class="line">        if (mOnKeyboardShowListener != null) &#123;</div><div class="line">            mOnKeyboardShowListener.keyboardShow(w, h, oldw, oldh);</div><div class="line">        &#125;</div><div class="line">        super.onSizeChanged(w, h, oldw, oldh);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>说明：</p>
+<ul>
+<li>当我们在AndroidManifest.xml中设置android：windowSoftInput:”adjustResize|stateHidden”之后，运行程序时，当软键盘弹出和隐藏时候，会改变当前界面的大小，即会调用viewGroup的onSizeChanged（）方法，因此我们可以通过这个方法的调用，使用接口回调的方式获得软键盘的隐藏和显示状态。<br>结果：<br><img src="/uploads/android软键盘问题显示5.png" alt=""><br>说明：当软键盘显示的时候，动态设置顶部的文本View不可见状态，即可保持界面上的完整。这里可以看到中间的ScrollView部分被整体上移了，但是基本满足了最初的要求。<br>上核心代码（我这里是使用的Fragment）：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&gt;    @Bind(R.id.code_rl)</div><div class="line">    CodeRelativeLayout mCodeRelativeLayout;</div><div class="line">    @Bind(R.id.tv_qqnumb)</div><div class="line">    TextView tvQqnumb;</div><div class="line">    @Bind(R.id.tv_info)</div><div class="line">    TextView tvInfo;   //这里使用ButterKniff 插件，注解方式获取组件实例</div><div class="line">    //...</div><div class="line">     @Override</div><div class="line">    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) &#123;</div><div class="line">        super.onViewCreated(view, savedInstanceState);</div><div class="line">        mCodeRelativeLayout.setOnKeyboardShowListener(new CodeRelativeLayout.OnKeyboardShowListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void keyboardShow(int w, int h, int oldw, int oldh) &#123;</div><div class="line">                ViewHelper.setViewsInVisible(h &lt; oldh, llInfo);//封装了一下View的显示和隐藏</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>不足之处：软键盘显示之后，将输入框遮挡了一部分，UI显示不友好，需要进一步的研究设置。<br>填一个坑：这里做view的显示隐藏的时候，不能够使用View.GONE，见下图：<br>正常显示：<br><img src="/uploads/android软键盘问题显示5.png" alt=""><br>软键盘隐藏之后：<br><img src="/uploads/android软键盘问题显示6.png" alt=""><br>说明：当软键盘隐藏之后，发现设置显示的文本View位置发生了变化。应该是设置View.GONE之后的View已经不在原位了，导致显示的时候位置发生了变化。</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/21/AndroidStudio快捷键汇总/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/21/FlycoTabLayout 知识点/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://raw.githubusercontent.com/Appigle/very_assets/master/avatar/avatar.jpg"
+               alt="Chenley" />
+          <p class="site-author-name" itemprop="name">Chenley</p>
+          <p class="site-description motion-element" itemprop="description">Appigle's Blog！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Appigle" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github-square"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Android虚拟键盘知识总结"><span class="nav-number">1.</span> <span class="nav-text">Android虚拟键盘知识总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chenley</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
