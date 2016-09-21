@@ -99,7 +99,7 @@ RxJava优点：
 
 简洁：异步操作很关键的一点是程序的简洁性，因为在调度过程比较复杂">
 <meta property="og:image" content="http://yoursite.com/uploads/subscribe.gif">
-<meta property="og:updated_time" content="2016-09-21T02:56:35.497Z">
+<meta property="og:updated_time" content="2016-09-21T03:08:34.501Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxJava笔记">
 <meta name="twitter:description" content="RxJava定义：a library for composing asynchronous and event-based programs using observable sequences for the java VM (一个在Java VM上使用可观测的序列来组成的异步的、机遇时间的程序的库)；
@@ -120,7 +120,7 @@ RxJava优点：
     motion: true,
     duoshuo: {
       userId: 0,
-      author: 'Author'
+      author: '博主'
     }
   };
 </script>
@@ -133,7 +133,7 @@ RxJava优点：
   <title> RxJava笔记 | Chenley </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -165,7 +165,7 @@ RxJava优点：
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">toYuanYuan</p>
+  <p class="site-subtitle">Appigle's Blog！</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -188,17 +188,7 @@ RxJava优点：
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            Kategorien
+            首页
           </a>
         </li>
       
@@ -208,7 +198,17 @@ RxJava优点：
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            Über
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
           </a>
         </li>
       
@@ -218,7 +218,7 @@ RxJava优点：
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            归档
           </a>
         </li>
       
@@ -228,17 +228,7 @@ RxJava优点：
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
-            
-            公益404
+            标签
           </a>
         </li>
       
@@ -291,7 +281,7 @@ RxJava优点：
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2016-09-21T09:06:38+08:00" content="2016-09-21">
               2016-09-21
             </time>
@@ -335,7 +325,7 @@ RxJava优点：
 <ul>
 <li>1.概念：扩展的观察者模式<br>RxJava的异步实现，是通过一种扩展的观察者模式来实现的。<blockquote>
 <p>1.1 观察者模式：观察者模式面向的需求是：A对象（观察者）对B对象（被查观察者）的某种变化高度敏感，需要在B变化的一瞬间做出反应。程序的观察者模式，观察者不需要时刻盯着被观察者，而是采用注册（Register）或者称为订阅（Subscribe）的方式，告诉被观察者：我需要你的某某状态，你要在它变化的时候通知我。Android开发中一个比较典型的日子是点击监听器~OnClickListener~。对设置~OnClickListenr来说，~View~是被观察者，~OnClickListenr~是观察者，二者通过~setOnClickListener~方法达成订阅关系。订阅之后用户点击按钮的瞬间，AndroidFrameWork就会将点击事件发送给已经注册的~OnClickListenr~。采取这样被动的观察方式，既省去了防护检索状态的资源消耗，也能够得到最高的反馈速度。</p>
-</blockquote>
+<a id="more"></a></blockquote>
 </li>
 <li>2.RxJava的观察者模式<blockquote>
 <ul>
@@ -499,10 +489,10 @@ RxJava优点：
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            站点概览
           </li>
         </ul>
       
@@ -513,13 +503,13 @@ RxJava优点：
                src="/images/avatar.gif"
                alt="Chenley" />
           <p class="site-author-name" itemprop="name">Chenley</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+          <p class="site-description motion-element" itemprop="description">Appigle's Blog！</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">3</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
@@ -577,11 +567,11 @@ RxJava优点：
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  Theme -
+  主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Pisces
   </a>
