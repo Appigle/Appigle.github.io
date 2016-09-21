@@ -304,18 +304,9 @@
           <hr>
 <ol>
 <li>RxJava定义：a library for composing asynchronous and event-based programs using observable sequences for the java VM (一个在Java VM上使用可观测的序列来组成的异步的、机遇时间的程序的库)；</li>
-<li><p>RxJava优点：</p>
-<blockquote>
+<li>RxJava优点：<blockquote>
 <ul>
-<li>简洁：异步操作很关键的一点是程序的简洁性，因为在调度过程比较复杂的情况下，异步代码经常会既男鞋又难被读懂。Android创造的AsyncTask和Handler，其实都是为了让异步代码更加简洁。RxJava的优势也是简洁，但它的简洁的与众不同之处在于，随着程序逻辑变得越来越复杂，它依然能够保持简洁。</li>
-</ul>
-</blockquote>
-</li>
-<li><p>API介绍和原理分析:</p>
-<blockquote>
-<ul>
-<li>1.概念：扩展的观察者模式<br>RxJava的异步实现，是通过一种扩展的观察者模式来实现的。<blockquote>
-<p>1.1 观察者模式：观察者模式面向的需求是：A对象（观察者）对B对象（被查观察者）的某种变化高度敏感，需要在B变化的一瞬间做出反应。程序的观察者模式，观察者不需要时刻盯着被观察者，而是采用注册（Register）或者称为订阅（Subscribe）的方式，告诉被观察者：我需要你的某某状态，你要在它变化的时候通知我。Android开发中一个比较典型的日子是点击监听器~OnClickListener~。对设置~OnClickListenr来说，~View~是被观察者，~OnClickListenr~是观察者，二者通过~setOnClickListener~方法达成订阅关系。订阅之后用户点击按钮的瞬间，AndroidFrameWork就会将点击事件发送给已经注册的~OnClickListenr~。采取这样被动的观察方式，既省去了防护检索状态的资源消耗，也能够得到最高的反馈速度。</p>
+<li>简洁：异步操作很关键的一点是程序的简洁性，因为在调度过程比较复杂的情况下，异步代码经常会既男鞋又难被读懂。Android创造的AsyncTask和Handler，其实都是为了让异步代码更加简洁。RxJava的优势也是简洁，但它的简洁的与众不同之处在于，随着程序逻辑变得越来越复杂，它依然能够保持简洁。
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/21/RxJava笔记/#more" rel="contents">
               阅读全文 &raquo;
