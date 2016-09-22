@@ -311,15 +311,11 @@
 
       
         
-          
-          
-
-新建一个project，如果project已经存在那么直接创建一个module，这里一定要注意选择Java library，然后点击下一步；
-输入module信息，然后点击下一步；
-在创建的Java类中添加main方法:
-123public static void main（String[] a
-          ...
-
+          <hr>
+<ol>
+<li>新建一个project，如果project已经存在那么直接创建一个module，这里一定要注意选择Java library，然后点击下一步；</li>
+<li>输入module信息，然后点击下一步；</li>
+<li><p>在创建的Java类中添加main方法:</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/21/如何利用AndroidStudio开发可以运行的java工程/#more" rel="contents">
               阅读全文 &raquo;
@@ -415,14 +411,15 @@
 
       
         
-          
-          
-
-android：windowSoftInputMode属性使用详解：
-eg.
-12345678910111213&gt; &lt;activity&gt; 	android:windowSoftInputMode=[&quot;stateUnspecified&quot;&gt; 	|&quot
-          ...
-
+          <hr>
+<ol>
+<li>android：<a href="http://blog.csdn.net/gaomatrix/article/details/7057032">windowSoftInputMode属性使用详解</a>：<blockquote>
+<p>eg.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;activity</div><div class="line">&gt; 	android:windowSoftInputMode=[&quot;stateUnspecified&quot;</div><div class="line">&gt; 	|&quot;stateUnchanged&quot;</div><div class="line">&gt; 	|&quot;stateHidden&quot;</div><div class="line">&gt; 	|&quot;stateAlwaysHidden&quot;</div><div class="line">&gt; 	|&quot;stateVsible&quot;</div><div class="line">&gt; 	|&quot;stateAlwaysVisibe&quot;</div><div class="line">&gt; 	|&quot;adjustUnspecified&quot;</div><div class="line">&gt; 	|&quot;adjustResize&quot;</div><div class="line">&gt; 	|&quot;adjustPan&quot;</div><div class="line">&gt; 	]</div><div class="line">&gt; 	.../&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ol>
+<blockquote>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/21/android虚拟键盘知识总结/#more" rel="contents">
               阅读全文 &raquo;
@@ -518,16 +515,11 @@ eg.
 
       
         
-          
-          
-常用快捷键总结：
-|Ctrl(Command)+F12|显示当前文件的结构|；
-|Ctrl(Command)+H|显示类继承结构图|；
-|Alt(Option)+F1|查找文件所在目录位置|;
-
-IDE|按键|说明||:—|:—||F1|帮助||Alt(Option)+F1|查找文件所在目录位置|
-          ...
-
+          <hr>
+<h5 id="常用快捷键总结："><a href="#常用快捷键总结：" class="headerlink" title="常用快捷键总结："></a>常用快捷键总结：</h5><ol>
+<li><strong>|Ctrl(Command)+F12|显示当前文件的结构|；</strong></li>
+<li><strong>|Ctrl(Command)+H|显示类继承结构图|；</strong></li>
+<li><strong>|Alt(Option)+F1|查找文件所在目录位置|;</strong>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/21/AndroidStudio快捷键汇总/#more" rel="contents">
               阅读全文 &raquo;
@@ -623,20 +615,13 @@ IDE|按键|说明||:—|:—||F1|帮助||Alt(Option)+F1|查找文件所在目录
 
       
         
-          
-          
-
-我们为什么需要多线程机制？什么时候需要使用到多线程？
-
-
-因为Android官方明确什么在多线程编程时有俩大原则：第一、不能阻塞UI线程（主线程），第二、不能在UI线程之外访问UI组件；
-使用情况：第一、将任务从主线程抛到工作线程，第二、将任务从工作线程抛到主线程。
-
-
-
-将任务从工作线程抛到主
-          ...
-
+          <hr>
+<ol>
+<li><p>我们为什么需要多线程机制？什么时候需要使用到多线程？</p>
+<blockquote>
+<ul>
+<li>因为Android官方明确什么在多线程编程时有俩大原则：第一、不能阻塞UI线程（主线程），第二、不能在UI线程之外访问UI组件；</li>
+<li>使用情况：第一、将任务从主线程抛到工作线程，第二、将任务从工作线程抛到主线程。
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/21/Android 多线程问题笔记/#more" rel="contents">
               阅读全文 &raquo;
@@ -732,19 +717,14 @@ IDE|按键|说明||:—|:—||F1|帮助||Alt(Option)+F1|查找文件所在目录
 
       
         
-          
-          原网页请点击我
-流程概述：
-
-打包资源文件，生成R.java文件；
-处理aidl文件，生成相应的java文件；
-编译工程源代码，生成相应class文件；
-转换所有的class文件，生成classes.dex文件；
-打包生成apk；
-对apk文件进行签名；
-对签名后的apk文件进行对齐处理。andro
-          ...
-
+          <h6 id="原网页请点击我"><a href="#原网页请点击我" class="headerlink" title="原网页请点击我"></a><a href="http://www.androidchina.net/2133.html">原网页请点击我</a></h6><hr>
+<p><strong>流程概述：</strong></p>
+<ol>
+<li>打包资源文件，生成R.java文件；</li>
+<li>处理aidl文件，生成相应的java文件；</li>
+<li>编译工程源代码，生成相应class文件；</li>
+<li>转换所有的class文件，生成classes.dex文件；</li>
+<li>打包生成apk；
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/21/Android 打包流程/#more" rel="contents">
               阅读全文 &raquo;
@@ -842,10 +822,7 @@ IDE|按键|说明||:—|:—||F1|帮助||Alt(Option)+F1|查找文件所在目录
         
           <hr>
 <ol>
-<li>RxJava定义：a library for composing asynchronous and event-based programs using observable sequences for the java VM (一个在Java VM上使用可观测的序列来组成的异步的、机遇时间的程序的库)；</li>
-<li>RxJava优点：<blockquote>
-<ul>
-<li>简洁：异步操作很关键的一点是程序的简洁性，因为在调度过程比较复杂的情况下，异步代码经常会既男鞋又难被读懂。Android创造的AsyncTask和Handler，其实都是为了让异步代码更加简洁。RxJava的优势也是简洁，但它的简洁的与众不同之处在于，随着程序逻辑变得越来越复杂，它依然能够保持简洁。
+<li>RxJava定义：a library for composing asynchronous and event-based programs using observable sequences for the java VM (一个在Java VM上使用可观测的序列来组成的异步的、机遇时间的程序的库)；
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/21/RxJava笔记/#more" rel="contents">
               阅读全文 &raquo;
