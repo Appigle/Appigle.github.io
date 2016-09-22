@@ -84,24 +84,20 @@
 
 
 
-<meta name="description" content="新建一个project，如果project已经存在那么直接创建一个module，这里一定要注意选择Java library，然后点击下一步；
-输入module信息，然后点击下一步；
-在创建的Java类中添加main方法:">
+<meta name="description" content="ActionBar知识点：1.1 ~setHomeButtonEnabled~这个小于4.0版本的默认值为true的。但是在4.0及以上的是false，该方法的作用：决定左上角的图标是否可以点击。没有向左的小图标。true：图标可以点击，false不可以点击；1.2 ~actionBar.setDisplayHomeAsUpEnabled(true)~给左上角图标的左边加上一个返回的图标。对应A">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何利用AndroidStudio开发可以运行的java工程">
-<meta property="og:url" content="http://yoursite.com/2016/09/21/如何利用AndroidStudio开发可以运行的java工程/index.html">
+<meta property="og:title" content="ActionBar知识点总结">
+<meta property="og:url" content="http://yoursite.com/2016/09/22/ActionBar知识点总结/index.html">
 <meta property="og:site_name" content="Chenley">
-<meta property="og:description" content="新建一个project，如果project已经存在那么直接创建一个module，这里一定要注意选择Java library，然后点击下一步；
-输入module信息，然后点击下一步；
-在创建的Java类中添加main方法:">
-<meta property="og:image" content="http://yoursite.com/uploads/使用AS创建JavaProject01.jpg">
-<meta property="og:updated_time" content="2016-09-22T12:05:37.062Z">
+<meta property="og:description" content="ActionBar知识点：1.1 ~setHomeButtonEnabled~这个小于4.0版本的默认值为true的。但是在4.0及以上的是false，该方法的作用：决定左上角的图标是否可以点击。没有向左的小图标。true：图标可以点击，false不可以点击；1.2 ~actionBar.setDisplayHomeAsUpEnabled(true)~给左上角图标的左边加上一个返回的图标。对应A">
+<meta property="og:image" content="http://yoursite.com/uploads/Action截图01.png">
+<meta property="og:image" content="http://yoursite.com/uploads/Actionbar截图02_标题.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/Actionbar截图02_自定义view.jpg">
+<meta property="og:updated_time" content="2016-09-22T13:27:40.170Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何利用AndroidStudio开发可以运行的java工程">
-<meta name="twitter:description" content="新建一个project，如果project已经存在那么直接创建一个module，这里一定要注意选择Java library，然后点击下一步；
-输入module信息，然后点击下一步；
-在创建的Java类中添加main方法:">
-<meta name="twitter:image" content="http://yoursite.com/uploads/使用AS创建JavaProject01.jpg">
+<meta name="twitter:title" content="ActionBar知识点总结">
+<meta name="twitter:description" content="ActionBar知识点：1.1 ~setHomeButtonEnabled~这个小于4.0版本的默认值为true的。但是在4.0及以上的是false，该方法的作用：决定左上角的图标是否可以点击。没有向左的小图标。true：图标可以点击，false不可以点击；1.2 ~actionBar.setDisplayHomeAsUpEnabled(true)~给左上角图标的左边加上一个返回的图标。对应A">
+<meta name="twitter:image" content="http://yoursite.com/uploads/Action截图01.png">
 
 
 
@@ -122,9 +118,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/21/如何利用AndroidStudio开发可以运行的java工程/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/22/ActionBar知识点总结/"/>
 
-  <title> 如何利用AndroidStudio开发可以运行的java工程 | Chenley </title>
+  <title> ActionBar知识点总结 | Chenley </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -274,7 +270,7 @@
             
             
               
-                如何利用AndroidStudio开发可以运行的java工程
+                ActionBar知识点总结
               
             
           </h1>
@@ -286,8 +282,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-21T14:19:13+08:00" content="2016-09-21">
-              2016-09-21
+            <time itemprop="dateCreated" datetime="2016-09-22T21:19:53+08:00" content="2016-09-22">
+              2016-09-22
             </time>
           </span>
 
@@ -315,17 +311,13 @@
 
       
         <hr>
+<h4 id="ActionBar知识点："><a href="#ActionBar知识点：" class="headerlink" title="ActionBar知识点："></a>ActionBar知识点：</h4><p>1.1 ~setHomeButtonEnabled~这个小于4.0版本的默认值为true的。但是在4.0及以上的是false，该方法的作用：决定左上角的图标是否可以点击。没有向左的小图标。true：图标可以点击，false不可以点击；<br>1.2 ~actionBar.setDisplayHomeAsUpEnabled(true)~给左上角图标的左边加上一个返回的图标。对应ActionBar.DISPLAY_HOME_AS_UP;<br>1.3 ~mActionBar.setDisplayShowHomeEnabled(true)~ 使左上角图标是否显示，如果设成fasle，则没有程序图标，仅仅就一个标题，否则，显示应用程序图标，对应id为Android.R.id.home,对应：ActionBar.DISPLAY_SHOW_HOME；<br>4.4 ~mActionBar.setDisplayShowCustomEnabled(true) 事自定义的普通View能在title栏显示，即mActionBar.setCustomView能起作用，对应ActionBar.DISPLAY_SHOW_CUSTOM;<br>4.5 ~mActionBar.setDisplayShowTitleEnabled(true) 对应ActionBar.DISPLAY_SHOW_TITLE。<br>4.6 其中setHomeButtonEnabled和setDisplayShowHomeEnabled共同起作用，如果setHomeButtonEnabled设成false，即使setDisplayShowHomeEnabled设成true，图标也不能点击。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">    * 设置是否显示ActionBar左上角返回按钮</div><div class="line">    * <span class="doctag">@return</span></div><div class="line">    */</div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">isHomeUp</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">   &#125;</div><div class="line">   <span class="comment">/**</span></div><div class="line">    * ActionBar设置</div><div class="line">    */</div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">initActionBar</span><span class="params">()</span> </span>&#123;</div><div class="line">       mActionBar = getSupportActionBar();</div><div class="line">       <span class="keyword">if</span> (mActionBar != <span class="keyword">null</span>) &#123;</div><div class="line">           mActionBar.setDisplayShowHomeEnabled(isHomeUp());<span class="comment">//是否显示左上角返回图标</span></div><div class="line">           mActionBar.setDisplayHomeAsUpEnabled(isHomeUp());<span class="comment">//左上角图标是否可以点击</span></div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">   <span class="comment">/**</span></div><div class="line">    * <span class="doctag">@return</span> boolean Return false to allow normal menu processing to</div><div class="line">    *         proceed, true to consume it here.</div><div class="line">    */</div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onOptionsItemSelected</span><span class="params">(MenuItem item)</span> </span>&#123;</div><div class="line">       <span class="keyword">int</span> id = item.getItemId();</div><div class="line">       <span class="keyword">if</span> (id == android.R.id.home) &#123;</div><div class="line">           onBackPressed();</div><div class="line">           <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> <span class="keyword">super</span>.onOptionsItemSelected(item);</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p><img src="/uploads/Action截图01.png" alt=""></p>
+<p>设置Actionbar.setTitle（）标题，则会覆盖原应用名称显示，如图：<br><img src="/uploads/Actionbar截图02_标题.jpg" alt=""></p>
+<p>设置自定义View<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mActionBar.setDisplayShowCustomEnabled(<span class="keyword">true</span>);<span class="comment">//显示自定义View</span></div><div class="line">mActionBar.setCustomView(R.layout.actionbar_custom_view01);<span class="comment">//自定义View</span></div></pre></td></tr></table></figure></p>
+<p><strong> 如果设置了自定义View，那么ActionBar title则会被自定义view占据位置 </strong><br><img src="/uploads/Actionbar截图02_自定义view.jpg" alt=""></p>
 <ol>
-<li>新建一个project，如果project已经存在那么直接创建一个module，这里一定要注意选择Java library，然后点击下一步；</li>
-<li>输入module信息，然后点击下一步；</li>
-<li><p>在创建的Java类中添加main方法:</p>
-<a id="more"></a>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main（String[] args）&#123;</div><div class="line">	System.out.println(<span class="string">"如何利用AndroidStudio开发可以运行的java工程"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>在该类名称上右键选择：<br><img src="/uploads/使用AS创建JavaProject01.jpg" alt=""></p>
-</li>
-<li><p>Run中会打印出最后的运行结果；</p>
-</li>
+<li>如何计算ActionBar高度：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">   * 计算ActionBar高度</div><div class="line">   */</div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">calActionBarHeight</span><span class="params">(Context mContext)</span> </span>&#123;</div><div class="line">      <span class="comment">// Calculate ActionBar height</span></div><div class="line">      TypedValue tv = <span class="keyword">new</span> TypedValue();</div><div class="line">      <span class="keyword">if</span> (mContext.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, <span class="keyword">true</span>)) &#123;</div><div class="line">          <span class="keyword">int</span> actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, mContext.getResources().getDisplayMetrics());</div><div class="line">          Log.i(TAG, <span class="string">"calActionBarHeight: actionBarHeight="</span>+actionBarHeight);</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -352,17 +344,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/21/android虚拟键盘知识总结/" rel="next" title="Android虚拟键盘知识总结">
-                <i class="fa fa-chevron-left"></i> Android虚拟键盘知识总结
+              <a href="/2016/09/22/ANR超时时间定义/" rel="next" title="ANR超时时间定义">
+                <i class="fa fa-chevron-left"></i> ANR超时时间定义
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/22/ANR超时时间定义/" rel="prev" title="ANR超时时间定义">
-                ANR超时时间定义 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -491,7 +479,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ActionBar知识点："><span class="nav-number">1.</span> <span class="nav-text">ActionBar知识点：</span></a></li></ol></div>
             
           </div>
         </section>

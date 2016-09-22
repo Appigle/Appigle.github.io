@@ -84,24 +84,31 @@
 
 
 
-<meta name="description" content="新建一个project，如果project已经存在那么直接创建一个module，这里一定要注意选择Java library，然后点击下一步；
-输入module信息，然后点击下一步；
-在创建的Java类中添加main方法:">
+<meta name="description" content="ANR超时时间定义：定义位置：ActivityManagerService.java中定义：
+
+
+Broadcast ANR时间为10s：// How long we allow a receiver to run before giving up on it.static fianl int BROADCAST_TIMEOUT=10*1000；
+
+按键无响应ANR时间为5s；//how lo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何利用AndroidStudio开发可以运行的java工程">
-<meta property="og:url" content="http://yoursite.com/2016/09/21/如何利用AndroidStudio开发可以运行的java工程/index.html">
+<meta property="og:title" content="ANR超时时间定义">
+<meta property="og:url" content="http://yoursite.com/2016/09/22/ANR超时时间定义/index.html">
 <meta property="og:site_name" content="Chenley">
-<meta property="og:description" content="新建一个project，如果project已经存在那么直接创建一个module，这里一定要注意选择Java library，然后点击下一步；
-输入module信息，然后点击下一步；
-在创建的Java类中添加main方法:">
-<meta property="og:image" content="http://yoursite.com/uploads/使用AS创建JavaProject01.jpg">
-<meta property="og:updated_time" content="2016-09-22T12:05:37.062Z">
+<meta property="og:description" content="ANR超时时间定义：定义位置：ActivityManagerService.java中定义：
+
+
+Broadcast ANR时间为10s：// How long we allow a receiver to run before giving up on it.static fianl int BROADCAST_TIMEOUT=10*1000；
+
+按键无响应ANR时间为5s；//how lo">
+<meta property="og:updated_time" content="2016-09-22T13:22:57.119Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何利用AndroidStudio开发可以运行的java工程">
-<meta name="twitter:description" content="新建一个project，如果project已经存在那么直接创建一个module，这里一定要注意选择Java library，然后点击下一步；
-输入module信息，然后点击下一步；
-在创建的Java类中添加main方法:">
-<meta name="twitter:image" content="http://yoursite.com/uploads/使用AS创建JavaProject01.jpg">
+<meta name="twitter:title" content="ANR超时时间定义">
+<meta name="twitter:description" content="ANR超时时间定义：定义位置：ActivityManagerService.java中定义：
+
+
+Broadcast ANR时间为10s：// How long we allow a receiver to run before giving up on it.static fianl int BROADCAST_TIMEOUT=10*1000；
+
+按键无响应ANR时间为5s；//how lo">
 
 
 
@@ -122,9 +129,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/21/如何利用AndroidStudio开发可以运行的java工程/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/22/ANR超时时间定义/"/>
 
-  <title> 如何利用AndroidStudio开发可以运行的java工程 | Chenley </title>
+  <title> ANR超时时间定义 | Chenley </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -274,7 +281,7 @@
             
             
               
-                如何利用AndroidStudio开发可以运行的java工程
+                ANR超时时间定义
               
             
           </h1>
@@ -286,8 +293,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-21T14:19:13+08:00" content="2016-09-21">
-              2016-09-21
+            <time itemprop="dateCreated" datetime="2016-09-22T21:18:59+08:00" content="2016-09-22">
+              2016-09-22
             </time>
           </span>
 
@@ -316,17 +323,15 @@
       
         <hr>
 <ol>
-<li>新建一个project，如果project已经存在那么直接创建一个module，这里一定要注意选择Java library，然后点击下一步；</li>
-<li>输入module信息，然后点击下一步；</li>
-<li><p>在创建的Java类中添加main方法:</p>
-<a id="more"></a>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main（String[] args）&#123;</div><div class="line">	System.out.println(<span class="string">"如何利用AndroidStudio开发可以运行的java工程"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>在该类名称上右键选择：<br><img src="/uploads/使用AS创建JavaProject01.jpg" alt=""></p>
-</li>
-<li><p>Run中会打印出最后的运行结果；</p>
-</li>
+<li>ANR超时时间定义：定义位置：ActivityManagerService.java中定义：</li>
 </ol>
+<ul>
+<li><p>Broadcast ANR时间为10s：<br>// How long we allow a receiver to run before giving up on it.<br>static fianl int BROADCAST_TIMEOUT=10*1000；</p>
+</li>
+<li><p>按键无响应ANR时间为5s；<br>//how long we wait until we timeout on key dispatching.<br>static final int KEY_DISPATCHING_TIMEOUT=5*1000；</p>
+<a id="more"></a>
+</li>
+</ul>
 
       
     </div>
@@ -352,16 +357,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/21/android虚拟键盘知识总结/" rel="next" title="Android虚拟键盘知识总结">
-                <i class="fa fa-chevron-left"></i> Android虚拟键盘知识总结
+              <a href="/2016/09/21/如何利用AndroidStudio开发可以运行的java工程/" rel="next" title="如何利用AndroidStudio开发可以运行的java工程">
+                <i class="fa fa-chevron-left"></i> 如何利用AndroidStudio开发可以运行的java工程
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/22/ANR超时时间定义/" rel="prev" title="ANR超时时间定义">
-                ANR超时时间定义 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/22/ActionBar知识点总结/" rel="prev" title="ActionBar知识点总结">
+                ActionBar知识点总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
