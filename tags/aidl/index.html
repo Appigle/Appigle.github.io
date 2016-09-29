@@ -84,16 +84,15 @@
 
 
 
-<meta name="description" content="Pre  今天敲代码的时候发现突然想起，一直在XML布局文件中为每个组件赋值ID的时候是使用的~@+id/~来定义ID，但是就突然疑惑了，为什么是~@+id/~，而不是~@id/~？果断的Google大法，找到了StackOverflow上的解答1 、 解答2：">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Android XML布局文件@+id意义">
-<meta property="og:url" content="http://yoursite.com/2016/09/23/Android XML布局文件@+id意义/index.html">
+<meta name="description" content="Appigle&apos;s Blog！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chenley">
+<meta property="og:url" content="http://yoursite.com/tags/aidl/index.html">
 <meta property="og:site_name" content="Chenley">
-<meta property="og:description" content="Pre  今天敲代码的时候发现突然想起，一直在XML布局文件中为每个组件赋值ID的时候是使用的~@+id/~来定义ID，但是就突然疑惑了，为什么是~@+id/~，而不是~@id/~？果断的Google大法，找到了StackOverflow上的解答1 、 解答2：">
-<meta property="og:updated_time" content="2016-09-23T03:46:35.093Z">
+<meta property="og:description" content="Appigle&apos;s Blog！">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android XML布局文件@+id意义">
-<meta name="twitter:description" content="Pre  今天敲代码的时候发现突然想起，一直在XML布局文件中为每个组件赋值ID的时候是使用的~@+id/~来定义ID，但是就突然疑惑了，为什么是~@+id/~，而不是~@id/~？果断的Google大法，找到了StackOverflow上的解答1 、 解答2：">
+<meta name="twitter:title" content="Chenley">
+<meta name="twitter:description" content="Appigle&apos;s Blog！">
 
 
 
@@ -114,9 +113,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/23/Android XML布局文件@+id意义/"/>
+  <link rel="canonical" href="http://yoursite.com/tags/aidl/"/>
 
-  <title> Android XML布局文件@+id意义 | Chenley </title>
+  <title> 标签: aidl | Chenley </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -137,7 +136,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -245,122 +244,46 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <div id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        aidl
+        <small>标签</small>
+      </h2>
+    </div>
 
     
-      <header class="post-header">
+      
 
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
+            <a class="post-title-link" href="/2016/09/29/AIDL简约示例小结/" itemprop="url">
               
-                Android XML布局文件@+id意义
+                <span itemprop="name">AIDL简约示例小结</span>
               
-            
-          </h1>
+            </a>
         
+      </h1>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-23T11:47:09+08:00" content="2016-09-23">
-              2016-09-23
-            </time>
-          </span>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-09-29T17:22:12+08:00"
+              content="2016-09-29" >
+          09-29
+        </time>
+      </div>
 
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <hr>
-<h4 id="Pre"><a href="#Pre" class="headerlink" title="Pre"></a>Pre</h4><p>  今天敲代码的时候发现突然想起，一直在XML布局文件中为每个组件赋值ID的时候是使用的~@+id/~来定义ID，但是就突然疑惑了，为什么是~@+id/~，而不是~@id/~？果断的Google大法，找到了StackOverflow上的<a href="http://stackoverflow.com/questions/11160954/what-is-the-difference-between-id-and-id" target="_blank" rel="external">解答1</a> 、 <a href="http://stackoverflow.com/questions/5025910/difference-between-id-and-id-in-android" target="_blank" rel="external">解答2</a>：<br>  <a id="more"></a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">The at-symbol (@) at the beginning of the string indicates that the XML parser should parse and expand the rest of the ID string and identify it as an ID resource. The plus-symbol (+) <span class="function">means that <span class="keyword">this</span> is a new resource name that must be created and added to our <span class="title">resources</span> <span class="params">(in the R.java file)</span>. There are a number of other ID resources that are offered by the Android framework. When referencing an Android resource ID, you do not need the plus-symbol, but must add the android <span class="keyword">package</span> namespace.</span></div></pre></td></tr></table></figure></p>
-<h4 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h4><p>  假如我强制需要使用~@id/~来定义组件的ID，我应该如何做？<br>  我们只需要在~value/~文件夹中定义一个resources 的xml文件即可，如下：<br>  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding = "utf-8"&gt;</div><div class="line">&lt;resources&gt;</div><div class="line">	&lt;item name = "custom_id" type = "id"/&gt;</div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/09/22/ActionBar 知识点总结/" rel="next" title="ActionBar知识点总结">
-                <i class="fa fa-chevron-left"></i> ActionBar知识点总结
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/24/QuestionRecord/" rel="prev" title="常见Android基础知识记录">
-                常见Android基础知识记录 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
+    
   </div>
+
+  
 
 
           </div>
@@ -368,10 +291,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -391,17 +310,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://raw.githubusercontent.com/Appigle/very_assets/master/avatar/avatar.jpg"
@@ -473,17 +383,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Pre"><span class="nav-number">1.</span> <span class="nav-text">Pre</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Next"><span class="nav-number">2.</span> <span class="nav-text">Next</span></a></li></ol></div>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -587,10 +486,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 
