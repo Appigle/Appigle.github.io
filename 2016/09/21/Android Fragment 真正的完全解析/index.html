@@ -1,0 +1,825 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,fragment," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Fragment的产生和介绍;
+
+Fragment的生命周期
+
+
+
+
+Fragment比Activity多了几个额外的生命周期回调方法：
+
+~onAttach（Activity）~:当Fragment与Activity发生关联时调用。
+
+~onCreate()~:初始创建Fragment对象时调用。
+
+~onCreateView（LayoutInflater,ViewGroup,Bundle）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Fragment 真正的完全解析">
+<meta property="og:url" content="http://yoursite.com/2016/09/21/Android Fragment 真正的完全解析/index.html">
+<meta property="og:site_name" content="Chenley">
+<meta property="og:description" content="Fragment的产生和介绍;
+
+Fragment的生命周期
+
+
+
+
+Fragment比Activity多了几个额外的生命周期回调方法：
+
+~onAttach（Activity）~:当Fragment与Activity发生关联时调用。
+
+~onCreate()~:初始创建Fragment对象时调用。
+
+~onCreateView（LayoutInflater,ViewGroup,Bundle）">
+<meta property="og:image" content="http://yoursite.com/uploads/fragmentlifcircle.png">
+<meta property="og:image" content="http://yoursite.com/uploads/fragmentbaseuse.gif">
+<meta property="og:image" content="http://yoursite.com/uploads/fragmentdynamicuse.gif">
+<meta property="og:image" content="http://yoursite.com/uploads/fragmentbackstackdisplay.gif">
+<meta property="og:updated_time" content="2016-10-12T13:35:56.616Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Fragment 真正的完全解析">
+<meta name="twitter:description" content="Fragment的产生和介绍;
+
+Fragment的生命周期
+
+
+
+
+Fragment比Activity多了几个额外的生命周期回调方法：
+
+~onAttach（Activity）~:当Fragment与Activity发生关联时调用。
+
+~onCreate()~:初始创建Fragment对象时调用。
+
+~onCreateView（LayoutInflater,ViewGroup,Bundle）">
+<meta name="twitter:image" content="http://yoursite.com/uploads/fragmentlifcircle.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6332696712095729000,
+      author: 'Chenley'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/21/Android Fragment 真正的完全解析/"/>
+
+  <title> Android Fragment 真正的完全解析 | Chenley </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chenley</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android Fragment 真正的完全解析
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-21T14:19:13+08:00" content="2016-09-21">
+              2016-09-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<ol>
+<li><p>Fragment的产生和介绍;</p>
+</li>
+<li><p>Fragment的生命周期</p>
+</li>
+</ol>
+<blockquote>
+<p><img src="/uploads/fragmentlifcircle.png" alt=""></p>
+<p>Fragment比Activity多了几个额外的生命周期回调方法：</p>
+<ul>
+<li><p>~onAttach（Activity）~:当Fragment与Activity发生关联时调用。</p>
+</li>
+<li><p>~onCreate()~:初始创建Fragment对象时调用。</p>
+</li>
+<li><p>~onCreateView（LayoutInflater,ViewGroup,Bundle）~:创建Fragment的视图。</p>
+</li>
+<li><p>~onActivityCreated（Bundle）~：当Activity的onCreate方法返回时调用。</p>
+</li>
+<li><p>~onStart（）~。</p>
+</li>
+<li><p>~onResume（）~。</p>
+</li>
+<li><p>~onPause（）~。</p>
+</li>
+<li><p>~onStop()~。</p>
+</li>
+<li><p>~onDestoryView()~:与onCreateView相对应，当该Fragment的视图被移除时调用。</p>
+</li>
+<li><p>~onDestory（）~。</p>
+</li>
+<li><p>~onDetach()~:与onAttach相对应，当该Fragment与Activity关联被取消时候调用。</p>
+</li>
+<li><p>注意：除了onCreateView，其他的所有方法被重写的时候必须调用父类对于该方法的实现。</p>
+<a id="more"></a>
+</li>
+</ul>
+</blockquote>
+<ol>
+<li>静态的使用Fragment</li>
+</ol>
+<blockquote>
+<p>3.1 把Fragment当成普通的控件使用，直接写在Activity的布局文件中。步骤：</p>
+<blockquote>
+<ul>
+<li><p>继承Fragment，重写onCreateView决定Fragment的布局形式；</p>
+</li>
+<li><p>在Activity中声明此Fragment，就当和普通的View一样；</p>
+</li>
+</ul>
+<p>举例：</p>
+<p>Fragment class文件：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&gt; &gt;<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Content2Fragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Content2Fragment</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// Required empty public constructor</span></div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, ViewGroup container,</span></span></div><div class="line">                             Bundle savedInstanceState) &#123;</div><div class="line">        <span class="keyword">return</span> inflater.inflate(R.layout.fragment_content2, container, <span class="keyword">false</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">&gt; &gt;</div></pre></td></tr></table></figure>
+<p>Fragment layout文件：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt; &gt;&lt;FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"</div><div class="line">    xmlns:tools="http://schemas.android.com/tools"</div><div class="line">    android:layout_width="match_parent"</div><div class="line">    android:layout_height="match_parent"</div><div class="line">    android:background="#71a05bc4"</div><div class="line">    tools:context="com.chenley.an.yutownhelper.Fragment.Content2Fragment"&gt;</div><div class="line">    &lt;TextView</div><div class="line">        android:layout_width="match_parent"</div><div class="line">        android:layout_height="match_parent"</div><div class="line">        android:gravity="center"</div><div class="line">        android:text="这是内容2的Fragment" /&gt;</div><div class="line">&lt;/FrameLayout&gt;</div><div class="line">&gt; &gt;</div></pre></td></tr></table></figure></p>
+<p>Activity class文件：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt; &gt;<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FragmentTestActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"FragmentTestActivity=="</span>;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">       <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_fragment_test);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">&gt; &gt;</div></pre></td></tr></table></figure></p>
+<p>Activity layout文件：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt; &gt;&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"</div><div class="line">    xmlns:tools="http://schemas.android.com/tools"</div><div class="line">    android:layout_width="match_parent"</div><div class="line">    android:layout_height="match_parent"&gt;</div><div class="line">    &lt;fragment</div><div class="line">        android:id="@+id/id_fragment_content2"</div><div class="line">        android:name="com.chenley.an.yutownhelper.Fragment.Content2Fragment"</div><div class="line">        android:layout_width="match_parent"</div><div class="line">        android:layout_height="match_parent"</div><div class="line">        tools:layout="@layout/fragment_content2" /&gt;</div><div class="line">&lt;/RelativeLayout&gt;</div><div class="line">这里注意：需要添加tools，才能在AS中渲染</div><div class="line">&gt; &gt;</div></pre></td></tr></table></figure></p>
+<p><img src="/uploads/fragmentbaseuse.gif" alt=""></p>
+</blockquote>
+</blockquote>
+<ol>
+<li>动态使用Fragment</li>
+</ol>
+<blockquote>
+<p>动态的添加、更新、以及删除Fragment:<br>MainActivity class文件：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line">&gt;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FragmentTestActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">TitleFragment</span>.<span class="title">OnFragmentInteractionListener</span>, <span class="title">ContentFragment</span>.<span class="title">OnFragmentInteractionListener</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"FragmentTestActivity=="</span>;</div><div class="line">    <span class="meta">@Bind</span>(R.id.btn1)</div><div class="line">    Button btn1;</div><div class="line">    <span class="meta">@Bind</span>(R.id.btn2)</div><div class="line">    Button btn2;</div><div class="line">    <span class="meta">@Bind</span>(R.id.btn3)</div><div class="line">    Button btn3;</div><div class="line">    <span class="meta">@Bind</span>(R.id.btn4)</div><div class="line">    Button btn4;</div><div class="line">    <span class="meta">@Bind</span>(R.id.id_content)</div><div class="line">    FrameLayout idContent;</div><div class="line">    <span class="keyword">private</span> Fragment mTitleFragment;</div><div class="line">    <span class="keyword">private</span> Fragment mContentFragment;</div><div class="line">    <span class="keyword">private</span> Fragment mContent2Fragment;</div><div class="line">    <span class="keyword">private</span> Fragment mContent3Fragment;</div><div class="line">    <span class="keyword">private</span> Fragment mContent4Fragment;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        requestWindowFeature(Window.FEATURE_NO_TITLE);</div><div class="line">        setContentView(R.layout.activity_fragment_test);</div><div class="line">        ButterKnife.bind(<span class="keyword">this</span>);</div><div class="line">        Log.d(TAG, <span class="string">"onCreate() called with: "</span> + <span class="string">"savedInstanceState = ["</span> + savedInstanceState + <span class="string">"]"</span>);</div><div class="line">        <span class="comment">// 设置默认的Fragment</span></div><div class="line">        setDefaultFragment();</div><div class="line">    &#125;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 设置默认的Fragment</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setDefaultFragment</span><span class="params">()</span> </span>&#123;</div><div class="line">        FragmentManager fm = getSupportFragmentManager();</div><div class="line">        FragmentTransaction ft = fm.beginTransaction();</div><div class="line">        mTitleFragment = <span class="keyword">new</span> TitleFragment();</div><div class="line">        mContentFragment = <span class="keyword">new</span> ContentFragment();</div><div class="line">        mContent2Fragment = <span class="keyword">new</span> Content2Fragment();</div><div class="line">        ft.replace(R.id.id_content, mContent2Fragment);</div><div class="line">        ft.commit();</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFragmentInteraction</span><span class="params">(Uri uri)</span> </span>&#123;</div><div class="line">       Log.d(TAG, <span class="string">"onFragmentInteraction() called with: "</span> + <span class="string">"uri = ["</span> + uri + <span class="string">"]"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@OnClick</span>(&#123;R.id.btn1, R.id.btn2, R.id.btn3, R.id.btn4&#125;)</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">        FragmentManager fm = getSupportFragmentManager();</div><div class="line">        FragmentTransaction ft = fm.beginTransaction();</div><div class="line">        <span class="keyword">switch</span> (view.getId()) &#123;</div><div class="line">            <span class="keyword">case</span> R.id.btn1:</div><div class="line">                <span class="keyword">if</span> (mContentFragment == <span class="keyword">null</span>) &#123;</div><div class="line">                    mContentFragment = ContentFragment.newInstance(<span class="keyword">null</span>, <span class="keyword">null</span>);</div><div class="line">                &#125;</div><div class="line">                ft.replace(R.id.id_content, mContentFragment);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> R.id.btn2:</div><div class="line">                <span class="keyword">if</span> (mContent2Fragment == <span class="keyword">null</span>) &#123;</div><div class="line">                    mContent2Fragment = Content2Fragment.newInstance(<span class="keyword">null</span>, <span class="keyword">null</span>);</div><div class="line">               &#125;</div><div class="line">                ft.replace(R.id.id_content, mContent2Fragment);</div><div class="line">               <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> R.id.btn3:</div><div class="line">                <span class="keyword">if</span> (mContent3Fragment == <span class="keyword">null</span>) &#123;</div><div class="line">                    mContent3Fragment = Content3Fragment.newInstance(<span class="keyword">null</span>, <span class="keyword">null</span>);</div><div class="line">                &#125;</div><div class="line">                ft.replace(R.id.id_content, mContent3Fragment);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> R.id.btn4:</div><div class="line">                <span class="keyword">if</span> (mContent4Fragment == <span class="keyword">null</span>) &#123;</div><div class="line">                    mContent4Fragment = Content4Fragment.newInstance(<span class="keyword">null</span>, <span class="keyword">null</span>);</div><div class="line">                &#125;</div><div class="line">                ft.replace(R.id.id_content, mContent4Fragment);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        ft.commit();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<p>MainActivity layout文件：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&gt;&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"</div><div class="line">    xmlns:tools="http://schemas.android.com/tools"</div><div class="line">    android:layout_width="match_parent"</div><div class="line">    android:layout_height="match_parent"&gt;</div><div class="line">    &lt;fragment</div><div class="line">        android:id="@+id/id_fragment_title"</div><div class="line">        android:name="com.chenley.an.yutownhelper.Fragment.TitleFragment"</div><div class="line">        android:layout_width="fill_parent"</div><div class="line">        android:layout_height="45dp"</div><div class="line">        tools:layout="@layout/fragment_title" /&gt;</div><div class="line">    &lt;FrameLayout</div><div class="line">        android:id="@+id/id_content"</div><div class="line">        android:layout_width="match_parent"</div><div class="line">        android:layout_height="match_parent"</div><div class="line">        android:layout_below="@id/id_fragment_title"</div><div class="line">        android:background="#337e7871" /&gt;</div><div class="line">    &lt;include</div><div class="line">        android:id="@+id/id_ly_bottombar"</div><div class="line">        layout="@layout/bottombar"</div><div class="line">        android:layout_width="match_parent"</div><div class="line">        android:layout_height="55dp"</div><div class="line">        android:layout_alignParentBottom="true" /&gt;</div><div class="line">&lt;/RelativeLayout&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>注意</strong>：注：如果使用Android3.0以下的版本，需要引入v4的包，然后Activity继承FragmentActivity，然后通过getSupportFragmentManager获得FragmentManager。</p>
+<p>如图：<img src="/uploads/fragmentdynamicuse.gif" alt=""></p>
+</blockquote>
+<ol>
+<li>Fragment 常用API：</li>
+</ol>
+<blockquote>
+<ul>
+<li>Fragment常用的三个类：</li>
+</ul>
+</blockquote>
+<p>android.app.Fragment 主要用于定义Fragment</p>
+<p>android.app.FragmentManager 主要用于在Activity中操作Fragment</p>
+<p>android.app.FragmentTransaction 保证一些列Fragment操作的原子性，熟悉事务这个词，一定能明白~</p>
+<p>&gt;</p>
+<blockquote>
+<ul>
+<li><p>获取FragmentManage的方式：getFragmentManager() // v4中，getSupportFragmentManager</p>
+</li>
+<li><p>FragmentTransaction transaction = fm.benginTransatcion();//开启一个事务</p>
+</li>
+<li><p>transaction.add() </p>
+</li>
+</ul>
+</blockquote>
+<p>往Activity中添加一个Fragment</p>
+<p>transaction.remove() </p>
+<p>从Activity中移除一个Fragment，如果被移除的Fragment没有添加到回退栈（回退栈后面会详细说），这个Fragment实例将会被销毁。</p>
+<p>transaction.replace()</p>
+<p>使用另一个Fragment替换当前的，实际上就是remove()然后add()的合体~</p>
+<p>transaction.hide()</p>
+<p>隐藏当前的Fragment，仅仅是设为不可见，并不会销毁</p>
+<p>transaction.show()</p>
+<p>显示之前隐藏的Fragment</p>
+<p>detach()</p>
+<p>会将view从UI中移除,和remove()不同,此时fragment的状态依然由FragmentManager维护。</p>
+<p>attach()</p>
+<p>重建view视图，附加到UI上并显示。</p>
+<p>transatcion.commit()//提交一个事务</p>
+<p>&gt;</p>
+<blockquote>
+<ul>
+<li><p>注意：遇到这样Activity状态不一致：State loss这样的错误。主要是因为：commit方法一定要在~Activity.onSaveInstance()~之前调用。</p>
+</li>
+<li><p>api使用场景举例：</p>
+</li>
+</ul>
+<blockquote>
+<ol>
+<li><p>比如：我在FragmentA中的EditText填了一些数据，当切换到FragmentB时，如果希望回到A中的时候还能继续看到数据，那么就应该使用~hide（）/show（）~，也就是说，希望保留用户的操作界面数据，那么就使用~hide（）、show（）ff方法，这个时候在newInstance的时候需要做非空判断；</p>
+</li>
+<li><p>如果我们不希望保留用户的操作界面数据，那么可以使用~remove()/add()~，或者使用replace（）也可以达到同样的效果；</p>
+</li>
+<li><p>~remove()~和~detach()~的一点区别：在不考虑回退栈的情况下，~remove()~会销毁整个Fragemnt实例，而~detach()~只会销毁其视图结构，即调用~ondestoryVeiw（）~，而不会销毁Fragment的实例；如果你的当前Activity一直存在，那么在不希望保留用户操作的时候，你可以优先使用detach。</p>
+</li>
+</ol>
+</blockquote>
+</blockquote>
+<ol>
+<li>如何管理Fragment的回退栈</li>
+</ol>
+<blockquote>
+<ul>
+<li>类似与Android系统为Activity维护一个任务栈，我们也可以通过Activity维护一个回退栈来保存每次Fragment实物发生的变化。如果你讲Fragment任务添加到回退栈，当用户点击后退按钮时，将看到上一次的保存的Fragment。一旦Fragemnt完全从后退栈中退出，用户再次点击后退键，则退出当前Activity。如下图所示</li>
+</ul>
+<p><img src="/uploads/fragmentbackstackdisplay.gif" alt=""></p>
+<p>点击第一个按钮，切换到第二个界面，点击第二个按钮，切换到第三个界面，然后点击Back键依次回退。这里是Fragment实现的，用户点击Back，实际是Fragment回退栈不断的弹栈。</p>
+<p>######添加一个Fragment事务到回退栈：<strong>FragmentTransaction.AddToBackStack(String)</strong></p>
+<p>注意：使用replace和hide/show的方式 添加回退栈，点击回退键后有不同的效果，前者显示空白状态（视图结构被销毁，实例未被销毁），否者可以正常显示跳转前的内容；</p>
+</blockquote>
+<ol>
+<li>Fragment 和 Activity 的通信：</li>
+</ol>
+<blockquote>
+<ul>
+<li><p>如果你Activity中包含自己管理的Fragment的引用，可以通过引用直接访问所有的Frament的public方法；</p>
+</li>
+<li><p>如果Activity中未保存任何Fragment的引用，那么可以通过~getFragmentManager.findFragmentByTag~或者~findeFragmentById()~获取任何的Fragment实例，然后进行操作。</p>
+</li>
+<li><p>在Fragment中可以通过getActivity得到当前绑定的Activity的实例，然后进行操作。</p>
+</li>
+<li><p>注意：如果在Fragment中需要Context，可以通过getActivity(),如果Context需要在Activity被销毁后还存在，则使用getActivity（）.getApplicationContext().</p>
+</li>
+</ul>
+</blockquote>
+<ol>
+<li>Fragment类的带生命周期模板：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ModelFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"ModelFragment=="</span>;</div><div class="line">    <span class="comment">//传参TAG</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String PARAM1 = <span class="string">"param1"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String PARAM2 = <span class="string">"param2"</span>;</div><div class="line">    <span class="keyword">private</span> String mParam1;</div><div class="line">    <span class="keyword">private</span> String mParam2;</div><div class="line">    <span class="comment">//生命周期展示</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAttach</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onAttach(context);</div><div class="line">        <span class="keyword">if</span> (context <span class="keyword">instanceof</span> OnFragmentInteractionListener) &#123;</div><div class="line">            onFragmentInteractionListenr = (OnFragmentInteractionListener) context;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(context.toString() + <span class="string">"must implements OnFragmentInteractionListener"</span>);</div><div class="line">        &#125;</div><div class="line">        Log.d(TAG, <span class="string">"onAttach() called with: "</span> + <span class="string">"context = ["</span> + context + <span class="string">"]"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//onCreate方法中获取参数</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        <span class="keyword">if</span> (getArguments() != <span class="keyword">null</span>) &#123;</div><div class="line">            mParam1 = getArguments().getString(PARAM1);</div><div class="line">            mParam2 = getArguments().getString(PARAM2);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//重写填充视图View的方法  填充布局文件</span></div><div class="line">    <span class="meta">@Nullable</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        View view = inflater.inflate(R.layout.fragment_content, container, <span class="keyword">false</span>);</div><div class="line">        <span class="keyword">return</span> view;</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityCreated</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onActivityCreated(savedInstanceState);</div><div class="line">        Log.d(TAG, <span class="string">"onActivityCreated() called with: "</span> + <span class="string">"savedInstanceState = ["</span> + savedInstanceState + <span class="string">"]"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="keyword">super</span>.onStart();</div><div class="line">        Log.d(TAG, <span class="string">"onStart() called with: "</span> + <span class="string">""</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onResume();</div><div class="line">        Log.d(TAG, <span class="string">"onResume() called with: "</span> + <span class="string">""</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onPause();</div><div class="line">        Log.d(TAG, <span class="string">"onPause() called with: "</span> + <span class="string">""</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroyView</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroyView();</div><div class="line">        Log.d(TAG, <span class="string">"onDestroyView() called with: "</span> + <span class="string">""</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">        Log.d(TAG, <span class="string">"onDestroy() called with: "</span> + <span class="string">""</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDetach</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDetach();</div><div class="line">        <span class="comment">//释放监听</span></div><div class="line">        onFragmentInteractionListenr = <span class="keyword">null</span>;</div><div class="line">        Log.d(TAG, <span class="string">"onDetach() called with: "</span> + <span class="string">""</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//构造函数</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ModelFragment</span><span class="params">()</span> </span></div><div class="line">    &#125;</div><div class="line">    <span class="comment">//静态实例化方法</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> ModelFragment <span class="title">newInstance</span><span class="params">(String param1, String param2)</span> &#123;</div><div class="line">        ModelFragment modelFragment = <span class="keyword">new</span> ModelFragment();</div><div class="line">        Bundle bundle = <span class="keyword">new</span> Bundle();</div><div class="line">        bundle.putString(PARAM1, param1);</div><div class="line">        bundle.putString(PARAM2, param2);</div><div class="line">        modelFragment.setArguments(bundle);</div><div class="line">        <span class="keyword">return</span> modelFragment;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//回调方法</span></div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OnFragmentInteractionListener</span> </span>&#123;</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onFragmentInteraction</span><span class="params">(Uri uri)</span></span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//声明接口变量</span></div><div class="line">    <span class="keyword">private</span> OnFragmentInteractionListener onFragmentInteractionListenr;</div><div class="line">    <span class="comment">//提供回调的设置方法</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnFragmentInteractionLister</span><span class="params">(OnFragmentInteractionListener onFragmentInteractionListenr)</span> </span>&#123;</div><div class="line">       <span class="keyword">this</span>.onFragmentInteractionListenr = onFragmentInteractionListenr;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//事件触发  用来跟Activity之间通信</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEventAction</span><span class="params">(Uri uri)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (onFragmentInteractionListenr != <span class="keyword">null</span>) &#123;</div><div class="line">            onFragmentInteractionListenr.onFragmentInteraction(uri);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="(http://blog.csdn.net/lmj623565791/article/details/37970961">参考资源</a>)</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/fragment/" rel="tag">#fragment</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/21/RxJava 笔记/" rel="next" title="RxJava笔记">
+                <i class="fa fa-chevron-left"></i> RxJava笔记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/21/Android 打包流程/" rel="prev" title="Android 打包流程分析">
+                Android 打包流程分析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://raw.githubusercontent.com/Appigle/very_assets/master/avatar/avatar.jpg"
+               alt="Chenley" />
+          <p class="site-author-name" itemprop="name">Chenley</p>
+          <p class="site-description motion-element" itemprop="description">Appigle's Blog！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Appigle" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github-square"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.github.com/Appigle" title="Chenley" target="_blank">Chenley</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chenley</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
