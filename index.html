@@ -268,6 +268,107 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/13/常用知识点(二)/" itemprop="url">
+                  常用知识点(二)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-13T10:22:28+08:00" content="2016-10-13">
+              2016-10-13
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><h4 id="1-AsyncTask超简述原理"><a href="#1-AsyncTask超简述原理" class="headerlink" title="1. AsyncTask超简述原理"></a>1. <code>AsyncTask</code>超简述原理</h4><ol>
+<li><code>AsyncTask</code>本质是一个静态的线程池（容量128，执行数5），<code>AsyncTask</code>派生出来的子类可以实现不同的异步任务，这些任务都是提交到静态线程池中执行的；</li>
+<li>线程池中的工作线程<code>mWorker</code>执行<code>doInBackground(mParams)</code>方法执行异步任务；</li>
+<li>当任务状态（（1、执行成功2、取消执行3、进度更新））后，工作线程会向UI线程发送消息，<code>AsyncTask</code>内部的<code>InternalHandler</code>响应这些消息，并调用相关的回调函数；</li>
+<li>不足处：线程池大小固定，如果添加线程数量超过固定值，则会抛出拒绝新线程的RuntimeException。解决方式为新开一个线程，时刻关注线程池内线程数量，如果线程池线程满了，那么则休眠新线程，否则将线程添加到线程池中。</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/13/常用知识点(二)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/12/Android WebView知识小结/" itemprop="url">
                   Android WebView知识小结
                 </a>
@@ -966,6 +1067,115 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/24/常见Android基础知识记录/" itemprop="url">
+                  常见Android基础知识记录
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-24T16:53:56+08:00" content="2016-09-24">
+              2016-09-24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <hr>
+<h3 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h3><h4 id="1-接口的意义"><a href="#1-接口的意义" class="headerlink" title="1. 接口的意义"></a>1. 接口的意义</h4><blockquote>
+<p>规范，扩展，回调；</p>
+</blockquote>
+<h4 id="2-Java的三大特性"><a href="#2-Java的三大特性" class="headerlink" title="2. Java的三大特性"></a>2. Java的三大特性</h4><blockquote>
+<p>封装，多态，继承；</p>
+</blockquote>
+<h4 id="3-抽象类的意义"><a href="#3-抽象类的意义" class="headerlink" title="3. 抽象类的意义"></a>3. 抽象类的意义</h4><blockquote>
+<ul>
+<li>为其子类提供一个公共的类型；</li>
+<li>封装子类中重复的内容;</li>
+<li>定义抽象方法，让子类去做自定义的方法实现；</li>
+</ul>
+</blockquote>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/24/常见Android基础知识记录/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/23/Android XML布局文件@+id意义/" itemprop="url">
                   Android XML布局文件@+id意义
                 </a>
@@ -1042,214 +1252,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/22/ActionBar 知识点总结/" itemprop="url">
-                  ActionBar知识点总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-22T21:19:53+08:00" content="2016-09-22">
-              2016-09-22
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <hr>
-<h4 id="ActionBar知识点："><a href="#ActionBar知识点：" class="headerlink" title="ActionBar知识点："></a>ActionBar知识点：</h4><ol>
-<li><p>~setHomeButtonEnabled~这个小于4.0版本的默认值为true的。但是在4.0及以上的是false，该方法的作用：决定左上角的图标是否可以点击。没有向左的小图标。true：图标可以点击，false不可以点击；</p>
-</li>
-<li><p>~actionBar.setDisplayHomeAsUpEnabled(true)~给左上角图标的左边加上一个返回的图标。对应ActionBar.DISPLAY_HOME_AS_UP;</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/22/ActionBar 知识点总结/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/22/ANR 超时时间定义/" itemprop="url">
-                  ANR超时时间定义
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-22T21:18:59+08:00" content="2016-09-22">
-              2016-09-22
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <hr>
-<ol>
-<li>ANR超时时间定义：定义位置：ActivityManagerService.java中定义：</li>
-</ol>
-<ul>
-<li><p>Broadcast ANR时间为10s：<br>// How long we allow a receiver to run before giving up on it.<br>static fianl int BROADCAST_TIMEOUT=10*1000；</p>
-</li>
-<li><p>按键无响应ANR时间为5s；<br>//how long we wait until we timeout on key dispatching.<br>static final int KEY_DISPATCHING_TIMEOUT=5*1000；</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/22/ANR 超时时间定义/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1290,7 +1297,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
