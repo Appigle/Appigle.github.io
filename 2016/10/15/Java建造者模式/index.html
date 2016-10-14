@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Java,模式," />
 
 
 
@@ -84,29 +84,18 @@
 
 
 
-<meta name="description" content="ActionBar知识点：
-~setHomeButtonEnabled~这个小于4.0版本的默认值为true的。但是在4.0及以上的是false，该方法的作用：决定左上角的图标是否可以点击。没有向左的小图标。true：图标可以点击，false不可以点击；
-
-~actionBar.setDisplayHomeAsUpEnabled(true)~给左上角图标的左边加上一个返回的图标。对应Action">
+<meta name="description" content="概述建造者模式（Builder Pattern）：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。建造者模式是一种对象创建型模式。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ActionBar知识点总结">
-<meta property="og:url" content="http://yoursite.com/2016/09/22/ActionBar 知识点总结/index.html">
+<meta property="og:title" content="Java建造者模式简述">
+<meta property="og:url" content="http://yoursite.com/2016/10/15/Java建造者模式/index.html">
 <meta property="og:site_name" content="Chenley">
-<meta property="og:description" content="ActionBar知识点：
-~setHomeButtonEnabled~这个小于4.0版本的默认值为true的。但是在4.0及以上的是false，该方法的作用：决定左上角的图标是否可以点击。没有向左的小图标。true：图标可以点击，false不可以点击；
-
-~actionBar.setDisplayHomeAsUpEnabled(true)~给左上角图标的左边加上一个返回的图标。对应Action">
-<meta property="og:image" content="http://yoursite.com/uploads/Action截图01.png">
-<meta property="og:image" content="http://yoursite.com/uploads/Actionbar截图02_标题.jpg">
-<meta property="og:image" content="http://yoursite.com/uploads/Actionbar截图02_自定义view.jpg">
-<meta property="og:updated_time" content="2016-09-22T13:32:40.028Z">
+<meta property="og:description" content="概述建造者模式（Builder Pattern）：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。建造者模式是一种对象创建型模式。">
+<meta property="og:image" content="http://my.csdn.net/uploads/201204/04/1333532291_9501.gif">
+<meta property="og:updated_time" content="2016-10-14T16:54:37.608Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ActionBar知识点总结">
-<meta name="twitter:description" content="ActionBar知识点：
-~setHomeButtonEnabled~这个小于4.0版本的默认值为true的。但是在4.0及以上的是false，该方法的作用：决定左上角的图标是否可以点击。没有向左的小图标。true：图标可以点击，false不可以点击；
-
-~actionBar.setDisplayHomeAsUpEnabled(true)~给左上角图标的左边加上一个返回的图标。对应Action">
-<meta name="twitter:image" content="http://yoursite.com/uploads/Action截图01.png">
+<meta name="twitter:title" content="Java建造者模式简述">
+<meta name="twitter:description" content="概述建造者模式（Builder Pattern）：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。建造者模式是一种对象创建型模式。">
+<meta name="twitter:image" content="http://my.csdn.net/uploads/201204/04/1333532291_9501.gif">
 
 
 
@@ -127,9 +116,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/22/ActionBar 知识点总结/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/15/Java建造者模式/"/>
 
-  <title> ActionBar知识点总结 | Chenley </title>
+  <title> Java建造者模式简述 | Chenley </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -279,7 +268,7 @@
             
             
               
-                ActionBar知识点总结
+                Java建造者模式简述
               
             
           </h1>
@@ -291,8 +280,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-22T21:19:53+08:00" content="2016-09-22">
-              2016-09-22
+            <time itemprop="dateCreated" datetime="2016-10-15T00:44:28+08:00" content="2016-10-15">
+              2016-10-15
             </time>
           </span>
 
@@ -319,30 +308,34 @@
       
 
       
-        <hr>
-<h4 id="ActionBar知识点："><a href="#ActionBar知识点：" class="headerlink" title="ActionBar知识点："></a>ActionBar知识点：</h4><ol>
-<li><p>~setHomeButtonEnabled~这个小于4.0版本的默认值为true的。但是在4.0及以上的是false，该方法的作用：决定左上角的图标是否可以点击。没有向左的小图标。true：图标可以点击，false不可以点击；</p>
-</li>
-<li><p>~actionBar.setDisplayHomeAsUpEnabled(true)~给左上角图标的左边加上一个返回的图标。对应ActionBar.DISPLAY_HOME_AS_UP;</p>
+        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>建造者模式（Builder Pattern）：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。建造者模式是一种对象创建型模式。</p>
 <a id="more"></a>
-</li>
-<li><p>~mActionBar.setDisplayShowHomeEnabled(true)~ 使左上角图标是否显示，如果设成fasle，则没有程序图标，仅仅就一个标题，否则，显示应用程序图标，对应id为Android.R.id.home,对应：ActionBar.DISPLAY_SHOW_HOME；</p>
-</li>
-<li><p>~mActionBar.setDisplayShowCustomEnabled(true) 事自定义的普通View能在title栏显示，即mActionBar.setCustomView能起作用，对应ActionBar.DISPLAY_SHOW_CUSTOM;</p>
-</li>
-<li><p>~mActionBar.setDisplayShowTitleEnabled(true) 对应ActionBar.DISPLAY_SHOW_TITLE。</p>
-</li>
-<li><p>其中setHomeButtonEnabled和setDisplayShowHomeEnabled共同起作用，如果setHomeButtonEnabled设成false，即使setDisplayShowHomeEnabled设成true，图标也不能点击。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">    * 设置是否显示ActionBar左上角返回按钮</div><div class="line">    * <span class="doctag">@return</span></div><div class="line">    */</div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">isHomeUp</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">   &#125;</div><div class="line">   <span class="comment">/**</span></div><div class="line">    * ActionBar设置</div><div class="line">    */</div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">initActionBar</span><span class="params">()</span> </span>&#123;</div><div class="line">       mActionBar = getSupportActionBar();</div><div class="line">       <span class="keyword">if</span> (mActionBar != <span class="keyword">null</span>) &#123;</div><div class="line">           mActionBar.setDisplayShowHomeEnabled(isHomeUp());<span class="comment">//是否显示左上角返回图标</span></div><div class="line">           mActionBar.setDisplayHomeAsUpEnabled(isHomeUp());<span class="comment">//左上角图标是否可以点击</span></div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">   <span class="comment">/**</span></div><div class="line">    * <span class="doctag">@return</span> boolean Return false to allow normal menu processing to</div><div class="line">    *         proceed, true to consume it here.</div><div class="line">    */</div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onOptionsItemSelected</span><span class="params">(MenuItem item)</span> </span>&#123;</div><div class="line">       <span class="keyword">int</span> id = item.getItemId();</div><div class="line">       <span class="keyword">if</span> (id == android.R.id.home) &#123;</div><div class="line">           onBackPressed();</div><div class="line">           <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> <span class="keyword">super</span>.onOptionsItemSelected(item);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><img src="/uploads/Action截图01.png" alt=""></p>
-<p>设置Actionbar.setTitle（）标题，则会覆盖原应用名称显示，如图：<br><img src="/uploads/Actionbar截图02_标题.jpg" alt=""></p>
-<p>设置自定义View<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mActionBar.setDisplayShowCustomEnabled(<span class="keyword">true</span>);<span class="comment">//显示自定义View</span></div><div class="line">mActionBar.setCustomView(R.layout.actionbar_custom_view01);<span class="comment">//自定义View</span></div></pre></td></tr></table></figure></p>
-<p><strong> 如果设置了自定义View，那么ActionBar title则会被自定义view占据位置 </strong><br><img src="/uploads/Actionbar截图02_自定义view.jpg" alt=""></p>
-<ol>
-<li>如何计算ActionBar高度：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">   * 计算ActionBar高度</div><div class="line">   */</div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">calActionBarHeight</span><span class="params">(Context mContext)</span> </span>&#123;</div><div class="line">      <span class="comment">// Calculate ActionBar height</span></div><div class="line">      TypedValue tv = <span class="keyword">new</span> TypedValue();</div><div class="line">      <span class="keyword">if</span> (mContext.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, <span class="keyword">true</span>)) &#123;</div><div class="line">          <span class="keyword">int</span> actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, mContext.getResources().getDisplayMetrics());</div><div class="line">          Log.i(TAG, <span class="string">"calActionBarHeight: actionBarHeight="</span>+actionBarHeight);</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></li>
-</ol>
+<h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><p>建造者模式一步一步创建一个复杂的对象，它允许用户只通过制定复杂对象的类型和内容就可以构建它们，用户不需要知道内部的具体构建细节。<br><img src="http://my.csdn.net/uploads/201204/04/1333532291_9501.gif" alt=""><br>详解角色：</p>
+<ul>
+<li>Builder（抽象建造者）：它为创建一个产品Product对象的各个部件制定抽象接口，在该接口中一般声明俩类方法，一类方法为buildPartX（），它们用于创建负责对象的各个部件；另一类方法是getResult（），它们用于返回复杂对象。Builder既可以是抽象类，也可以是接口。</li>
+<li>ConcreteBuilder（具体建造者）：它实现了Builder接口或者抽象类，实现了各个部件的具体构建和装配方法，定义并明确它所创建的负责对象，也可以提供一个方法返回创建好的负责产品对象。</li>
+<li>Product（产品）：被构建的复杂对象，包含多个组成部件，具体建造者创建该产品的内部表示并定义它的装配过程。</li>
+<li>Director（指挥者）：指挥者又称为导演类，它负责安排负责对象的建造次序，指挥者与抽象建造者之间存在关联关系，可以在其construct（）建造方法中调用建造者对象的部件构造和装配方法，完成复杂对象的建造。</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>建造者模式的核心在于如何一步步构建一个包含多个组成部件的完整对象，使用相同的构建过程构建不同的产品，在软件开发中，如果我们需要插件复杂对象并希望系统具备很好的灵活性和可扩展性可以考虑使用创建者模式。<br>优点：</p>
+<ul>
+<li>在建造者模式中，客户端不必知道产品内部组成细节，将产品本身与产品的创建过程解耦，似的相同的创建过程可以创建不同的产品对象；</li>
+<li>每一个具体创建者都相对独立，而与其他的具体建造者无关，因此可以很方便的替换具体建造者或者增加新的建造者，用户使用不同的具体建造者即可得到不同的产品。由于指挥者类针对抽象建造者编程，增加新的具体建造者无须修改原有类库的代码，系统扩展方便，符合“开闭原则”。</li>
+<li>可以更加精细地控制产品的创建过程。将复杂产品的创建步骤分解在不同的方法中，使得创建过程更加清晰，也更方便使用程序来控制创建过程。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>创建者模式说创建的产品一般具有较多的共同点，其组成部分相似，如果产品之间的差异性很大，则不合适使用建造者模式；</li>
+<li>如果产品的内部变化复杂，可能会导致需要定义很多具体建造者类来实现这种变化，导致系统变得很庞大，增加系统的理解难度和运行成本。</li>
+</ul>
+<p>使用场景：</p>
+<ul>
+<li>需要生成的产品对象有复杂的内部结构，这些产品对象通常包含多个成员属性；</li>
+<li>需要生成的产品对象的属性相互依赖，需要制定其生成顺序；</li>
+<li>对象的创建过程对于创建该对象的类。在建造者模式中通过引入的指挥者类，将创建过程封装在指挥者类内，而不在建造者类和客户类中。</li>
+<li>隔离负责对象的创建和使用，并使得相同的创建过程可以创建不同的产品。</li>
+</ul>
+<p><a href="http://my.csdn.net/uploads/201204/04/1333532291_9501.gif" target="_blank" rel="external">参考资源</a></p>
 
       
     </div>
@@ -363,21 +356,29 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+            <a href="/tags/模式/" rel="tag">#模式</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/22/ANR 超时时间定义/" rel="next" title="ANR超时时间定义">
-                <i class="fa fa-chevron-left"></i> ANR超时时间定义
+              <a href="/2016/10/13/常用知识点(二)/" rel="next" title="常用知识点二">
+                <i class="fa fa-chevron-left"></i> 常用知识点二
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/23/Android XML布局文件@+id意义/" rel="prev" title="Android XML布局文件@+id意义">
-                Android XML布局文件@+id意义 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/10/15/APK的增量更新知识/" rel="prev" title="APK的增量更新（差分升级）知识">
+                APK的增量更新（差分升级）知识 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -514,7 +515,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ActionBar知识点："><span class="nav-number">1.</span> <span class="nav-text">ActionBar知识点：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建"><span class="nav-number">2.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
         </section>

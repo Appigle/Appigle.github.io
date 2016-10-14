@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Android,apk更新," />
 
 
 
@@ -84,15 +84,16 @@
 
 
 
-<meta name="description" content="Appigle&apos;s Blog！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chenley">
-<meta property="og:url" content="http://yoursite.com/tags/aidl/index.html">
+<meta name="description" content="原理将手机上已安装apk文件与服务器端最新apk进行二进制对比，得到差分包，用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装apk合并成新的ap文件k，然后安装合成后的新apk文件。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="APK的增量更新（差分升级）知识">
+<meta property="og:url" content="http://yoursite.com/2016/10/15/APK的增量更新知识/index.html">
 <meta property="og:site_name" content="Chenley">
-<meta property="og:description" content="Appigle&apos;s Blog！">
+<meta property="og:description" content="原理将手机上已安装apk文件与服务器端最新apk进行二进制对比，得到差分包，用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装apk合并成新的ap文件k，然后安装合成后的新apk文件。">
+<meta property="og:updated_time" content="2016-10-14T16:56:29.477Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chenley">
-<meta name="twitter:description" content="Appigle&apos;s Blog！">
+<meta name="twitter:title" content="APK的增量更新（差分升级）知识">
+<meta name="twitter:description" content="原理将手机上已安装apk文件与服务器端最新apk进行二进制对比，得到差分包，用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装apk合并成新的ap文件k，然后安装合成后的新apk文件。">
 
 
 
@@ -113,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/aidl/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/15/APK的增量更新知识/"/>
 
-  <title> 标签: aidl | Chenley </title>
+  <title> APK的增量更新（差分升级）知识 | Chenley </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,7 +137,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,46 +245,133 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        aidl
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                APK的增量更新（差分升级）知识
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-15T00:44:28+08:00" content="2016-10-15">
+              2016-10-15
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>将手机上已安装apk文件与服务器端最新apk进行二进制对比，得到差分包，用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装apk合并成新的ap文件k，然后安装合成后的新apk文件。</p>
+<a id="more"></a>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ol>
+<li>二进制差分计算获取差分包；</li>
+<li>使用JNI调用C方法合并APK；</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>不足之处：如果手机内部不存在已安装应用程序的apk文件，那么就无法做到增量更新。</li>
+</ol>
+<p><a href="https://github.com/cundong/SmartAppUpdates" target="_blank" rel="external">参考资源</a></p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/09/29/AIDL简约示例小结/" itemprop="url">
-              
-                <span itemprop="name">AIDL简约示例小结</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-29T17:22:12+08:00"
-              content="2016-09-29" >
-          09-29
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/apk更新/" rel="tag">#apk更新</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/15/Java建造者模式/" rel="next" title="Java建造者模式简述">
+                <i class="fa fa-chevron-left"></i> Java建造者模式简述
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -291,6 +379,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -310,8 +402,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://raw.githubusercontent.com/Appigle/very_assets/master/avatar/avatar.jpg"
@@ -383,6 +484,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">2.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -486,6 +598,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
