@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android,apk更新," />
+  <meta name="keywords" content="Android,优化," />
 
 
 
@@ -84,16 +84,26 @@
 
 
 
-<meta name="description" content="原理将手机上已安装apk文件与服务器端最新apk进行二进制对比，得到差分包。用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装apk合并成新的apk文件，然后安装合成后的新apk文件。">
+<meta name="description" content="PNG图片无损压缩工具
+4.1 使用方式：官网下载解压后文件结构：将要转换的png图片或者包含png图片的文件夹放在相同个文件夹里面在地址栏输入cmd+enter出现命令行窗口在命令行中输入.\pngquant 256 --force --ext .png .\drawable-xxhdpi\*.png其中--forec：表示强制覆盖原png图片，--ext .png:表示压缩后的文件已png为后">
 <meta property="og:type" content="article">
-<meta property="og:title" content="APK的增量更新（差分升级）笔记">
-<meta property="og:url" content="http://yoursite.com/2016/10/15/APK的增量更新知识/index.html">
+<meta property="og:title" content="Android 减小APK体积笔记">
+<meta property="og:url" content="http://yoursite.com/2016/10/15/Android 减小APK体积笔记/index.html">
 <meta property="og:site_name" content="Chenley">
-<meta property="og:description" content="原理将手机上已安装apk文件与服务器端最新apk进行二进制对比，得到差分包。用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装apk合并成新的apk文件，然后安装合成后的新apk文件。">
-<meta property="og:updated_time" content="2016-10-15T01:48:43.696Z">
+<meta property="og:description" content="PNG图片无损压缩工具
+4.1 使用方式：官网下载解压后文件结构：将要转换的png图片或者包含png图片的文件夹放在相同个文件夹里面在地址栏输入cmd+enter出现命令行窗口在命令行中输入.\pngquant 256 --force --ext .png .\drawable-xxhdpi\*.png其中--forec：表示强制覆盖原png图片，--ext .png:表示压缩后的文件已png为后">
+<meta property="og:image" content="http://yoursite.com/uploads/pngQuant_tool.jpg">
+<meta property="og:image" content="http://yoursite.com/\uploads\pngquant_file_structrue.png">
+<meta property="og:image" content="http://yoursite.com/\uploads\cmdopen.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/cmd命令.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/prepng_.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/endpng.jpg">
+<meta property="og:updated_time" content="2016-10-15T03:49:18.959Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="APK的增量更新（差分升级）笔记">
-<meta name="twitter:description" content="原理将手机上已安装apk文件与服务器端最新apk进行二进制对比，得到差分包。用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装apk合并成新的apk文件，然后安装合成后的新apk文件。">
+<meta name="twitter:title" content="Android 减小APK体积笔记">
+<meta name="twitter:description" content="PNG图片无损压缩工具
+4.1 使用方式：官网下载解压后文件结构：将要转换的png图片或者包含png图片的文件夹放在相同个文件夹里面在地址栏输入cmd+enter出现命令行窗口在命令行中输入.\pngquant 256 --force --ext .png .\drawable-xxhdpi\*.png其中--forec：表示强制覆盖原png图片，--ext .png:表示压缩后的文件已png为后">
+<meta name="twitter:image" content="http://yoursite.com/uploads/pngQuant_tool.jpg">
 
 
 
@@ -114,9 +124,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/15/APK的增量更新知识/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/15/Android 减小APK体积笔记/"/>
 
-  <title> APK的增量更新（差分升级）笔记 | Chenley </title>
+  <title> Android 减小APK体积笔记 | Chenley </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -266,7 +276,7 @@
             
             
               
-                APK的增量更新（差分升级）笔记
+                Android 减小APK体积笔记
               
             
           </h1>
@@ -278,7 +288,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-15T00:44:28+08:00" content="2016-10-15">
+            <time itemprop="dateCreated" datetime="2016-10-15T11:49:17+08:00" content="2016-10-15">
               2016-10-15
             </time>
           </span>
@@ -306,17 +316,15 @@
       
 
       
-        <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>将手机上已安装apk文件与服务器端最新apk进行二进制对比，得到差分包。用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装apk合并成新的apk文件，然后安装合成后的新apk文件。</p>
-<a id="more"></a>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ol>
-<li>二进制差分计算获取差分包；</li>
-<li>MD5/hash校验apk包的合法性；</li>
-<li>使用JNI调用C方法合并APK；</li>
+        <h3 id="PNG图片无损压缩工具"><a href="#PNG图片无损压缩工具" class="headerlink" title="PNG图片无损压缩工具"></a><a href="https://pngquant.org/" target="_blank" rel="external">PNG图片无损压缩工具</a></h3><blockquote>
+<p>4.1 使用方式：官网下载<br><img src="/uploads/pngQuant_tool.jpg" alt=""><br>解压后文件结构：<br><img src="\uploads\pngquant_file_structrue.png" alt=""><br>将要转换的png图片或者包含png图片的文件夹放在相同个文件夹里面<br>在地址栏输入cmd+enter出现命令行窗口<br><img src="\uploads\cmdopen.jpg" alt=""><br>在命令行中输入<code>.\pngquant 256 --force --ext .png .\drawable-xxhdpi\*.png</code><br>其中<code>--forec</code>：表示强制覆盖原png图片，<code>--ext .png</code>:表示压缩后的文件已png为后缀<br><img src="/uploads/cmd命令.jpg" alt=""><br>压缩前后对比<br><strong>压缩前</strong><br><img src="/uploads/prepng_.jpg" alt=""><br><strong> 压缩后</strong><br><img src="/uploads/endpng.jpg" alt=""></p>
+</blockquote>
+<ol>
+<li>减小apk体积<blockquote>
+<p>5.1 使用混淆，减少代码量；<br>5.2 使用android lint检查未使用资源，手动删除；<br>5.3 清理assets文件夹；<br>5.4 使用drawable 的xml定义文件代替图片；<br>5.6 使用pngquant工具压缩png文件；<br>5.7 放弃小部分手机和模拟器支持的so文件；<br>5.8 重定制jar，获取需求功能即可；<br>5.9 动态加载技术（app的插件化）；<br>5.10 代码重构，代码复用，代码精简；</p>
+</blockquote>
+</li>
 </ol>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
-<li>不足之处：如果手机内部不存在已安装应用程序的apk文件，那么就无法做到增量更新。</li>
-</ol>
-<p><a href="https://github.com/cundong/SmartAppUpdates" target="_blank" rel="external">参考资源</a></p>
 
       
     </div>
@@ -341,7 +349,7 @@
           
             <a href="/tags/Android/" rel="tag">#Android</a>
           
-            <a href="/tags/apk更新/" rel="tag">#apk更新</a>
+            <a href="/tags/优化/" rel="tag">#优化</a>
           
         </div>
       
@@ -350,8 +358,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/15/Java建造者模式/" rel="next" title="Java建造者模式笔记">
-                <i class="fa fa-chevron-left"></i> Java建造者模式笔记
+              <a href="/2016/10/15/APK的增量更新（差分升级）笔记/" rel="next" title="APK的增量更新（差分升级）笔记">
+                <i class="fa fa-chevron-left"></i> APK的增量更新（差分升级）笔记
               </a>
             
           </div>
@@ -424,7 +432,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -434,7 +442,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -492,7 +500,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">2.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#PNG图片无损压缩工具"><span class="nav-number">1.</span> <span class="nav-text">PNG图片无损压缩工具</span></a></li></ol></div>
             
           </div>
         </section>

@@ -84,12 +84,12 @@
 
 
 
-<meta name="description" content="AIDL定义AIDL: ANDROID INTERFACE DEFINITION LANGUAGE : Android 接口定义语言。用于不同进程（Process）之间的通讯。">
+<meta name="description" content="AIDL定义AIDL: Android Interface Definition Language : Android 接口定义语言。用于不同进程（Process）之间的通讯。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AIDL简约示例小结">
-<meta property="og:url" content="http://yoursite.com/2016/09/29/AIDL简约示例小结/index.html">
+<meta property="og:title" content="AIDL简约示例笔记">
+<meta property="og:url" content="http://yoursite.com/2016/09/29/AIDL简约示例笔记/index.html">
 <meta property="og:site_name" content="Chenley">
-<meta property="og:description" content="AIDL定义AIDL: ANDROID INTERFACE DEFINITION LANGUAGE : Android 接口定义语言。用于不同进程（Process）之间的通讯。">
+<meta property="og:description" content="AIDL定义AIDL: Android Interface Definition Language : Android 接口定义语言。用于不同进程（Process）之间的通讯。">
 <meta property="og:image" content="http://yoursite.com/uploads/aidl01.jpg">
 <meta property="og:image" content="http://yoursite.com/uploads/aidl02.jpg">
 <meta property="og:image" content="http://yoursite.com/uploads/aidl03.png">
@@ -98,10 +98,10 @@
 <meta property="og:image" content="http://yoursite.com/uploads/aidl07.jpg">
 <meta property="og:image" content="http://yoursite.com/uploads/aidl08.jpg">
 <meta property="og:image" content="http://yoursite.com/uploads/aidl09.png">
-<meta property="og:updated_time" content="2016-10-11T10:47:05.947Z">
+<meta property="og:updated_time" content="2016-10-15T03:28:25.941Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AIDL简约示例小结">
-<meta name="twitter:description" content="AIDL定义AIDL: ANDROID INTERFACE DEFINITION LANGUAGE : Android 接口定义语言。用于不同进程（Process）之间的通讯。">
+<meta name="twitter:title" content="AIDL简约示例笔记">
+<meta name="twitter:description" content="AIDL定义AIDL: Android Interface Definition Language : Android 接口定义语言。用于不同进程（Process）之间的通讯。">
 <meta name="twitter:image" content="http://yoursite.com/uploads/aidl01.jpg">
 
 
@@ -123,9 +123,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/29/AIDL简约示例小结/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/29/AIDL简约示例笔记/"/>
 
-  <title> AIDL简约示例小结 | Chenley </title>
+  <title> AIDL简约示例笔记 | Chenley </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -275,7 +275,7 @@
             
             
               
-                AIDL简约示例小结
+                AIDL简约示例笔记
               
             
           </h1>
@@ -315,7 +315,7 @@
       
 
       
-        <h4 id="AIDL定义"><a href="#AIDL定义" class="headerlink" title="AIDL定义"></a>AIDL定义</h4><p>AIDL: ANDROID INTERFACE DEFINITION LANGUAGE : Android 接口定义语言。用于不同进程（Process）之间的通讯。</p>
+        <h4 id="AIDL定义"><a href="#AIDL定义" class="headerlink" title="AIDL定义"></a>AIDL定义</h4><p>AIDL: Android Interface Definition Language : Android 接口定义语言。用于不同进程（Process）之间的通讯。</p>
 <a id="more"></a>
 <h4 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h4><h5 id="创建Service服务端新工程"><a href="#创建Service服务端新工程" class="headerlink" title="创建Service服务端新工程"></a>创建Service服务端新工程</h5><ol>
 <li><p>创建服务端工程aidlserviceproj<br><img src="/uploads/aidl01.jpg" alt=""></p>
@@ -327,16 +327,16 @@
 </li>
 <li><p>编译代码获得IRemoteService.java 接口；<br><img src="/uploads/aidl03.png" alt=""><br><img src="/uploads/aidl05.jpg" alt=""></p>
 </li>
-<li><p>创建<code>AidlRemoteSerive extends Serivce</code>，然后创建IRemoteService的成员变量，并且返回数据,最后在<code>onbind()</code>方法中将mIRemoteService对象作为Binder对象返回；</p>
+<li><p>创建<code>AidlRemoteSerive extends Serivce</code>，然后创建<code>IRemoteService</code>的成员变量，并且返回数据,最后在<code>onbind()</code>方法中将<code>mIRemoteService</code>对象作为<code>Binder</code>对象返回；</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AidlRemoteService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> IRemoteService.Stub mIRemoteService = <span class="keyword">new</span> IRemoteService.Stub() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">basicTypes</span><span class="params">(<span class="keyword">int</span> anInt</span></span></div><div class="line">                , <span class="keyword">long</span> aLong</div><div class="line">                , <span class="keyword">boolean</span> aBoolean</div><div class="line">                , <span class="keyword">float</span> aFloat</div><div class="line">                , <span class="keyword">double</span> aDouble</div><div class="line">                , String aString) <span class="keyword">throws</span> RemoteException &#123;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getText</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"HELLO ADIL!"</span>;  <span class="comment">//这里既是需要返回的数据</span></div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AidlRemoteService</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mIRemoteService.asBinder();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>在AndroidManifest.xml文件中注册service</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;service</div><div class="line">            android:name=".AidlRemoteService"</div><div class="line">            android:enabled="true"</div><div class="line">            android:exported="true"&gt;</div><div class="line">            &lt;intent-filter&gt;</div><div class="line">                &lt;action android:name="com.chenley.an.aidlserviceproj.AidlRemoteService" /&gt;</div><div class="line">            &lt;/intent-filter&gt;</div><div class="line">        &lt;/service&gt;</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p><strong>这里住要注意的是action，在客户端的时候需要精准匹配，才可以获得数据</strong></p>
+<p><strong>这里需要注意的是<code>action</code>，在客户端的时候需要精准匹配，才可以获得数据</strong></p>
 <ol>
-<li>在MainActivity中为组件设置点击事件绑定Service,重点是<code>IResultReceiver.Stub.asInterface(service)</code>；将service作为接收者，并且返回数据；<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">     * 设置点击事件</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initListener</span><span class="params">()</span> </span>&#123;</div><div class="line">        findViewById(R.id.btn_bind_service).setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">                Intent intent = <span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>, AidlRemoteService.class);</div><div class="line">                bindService(intent, <span class="keyword">new</span> ServiceConnection() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceConnected</span><span class="params">(ComponentName name, IBinder service)</span> </span>&#123;</div><div class="line">                        IResultReceiver.Stub.asInterface(service);</div><div class="line">                        Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"绑定成功"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">                    &#125;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceDisconnected</span><span class="params">(ComponentName name)</span> </span>&#123;</div><div class="line">                    &#125;</div><div class="line">                &#125;, BIND_AUTO_CREATE);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
+<li>在<code>MainActivity</code>中为组件设置点击事件绑定<code>Service</code>,重点是<code>IResultReceiver.Stub.asInterface(service)</code>；将<code>service</code>作为接收者，然后返回数据；<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">     * 设置点击事件</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initListener</span><span class="params">()</span> </span>&#123;</div><div class="line">        findViewById(R.id.btn_bind_service).setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">                Intent intent = <span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>, AidlRemoteService.class);</div><div class="line">                bindService(intent, <span class="keyword">new</span> ServiceConnection() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceConnected</span><span class="params">(ComponentName name, IBinder service)</span> </span>&#123;</div><div class="line">                        IResultReceiver.Stub.asInterface(service);</div><div class="line">                        Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"绑定成功"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">                    &#125;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceDisconnected</span><span class="params">(ComponentName name)</span> </span>&#123;</div><div class="line">                    &#125;</div><div class="line">                &#125;, BIND_AUTO_CREATE);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h5 id="创建客户端工程"><a href="#创建客户端工程" class="headerlink" title="创建客户端工程"></a>创建客户端工程</h5><ol>
@@ -344,7 +344,7 @@
 </li>
 <li><p>将客户端的AIDL文件夹整体拷贝到客户端工程，见上图，然后在点编译可以获得<br><code>public interface com.chenley.an.aidlserviceproj.IRemoteService extends android.os.IInterface</code>接口类和<code>public java.lang.String getText() throws android.os.RemoteException;</code>方法</p>
 </li>
-<li><p>在MainActivity中创建IRemoteService的成员变量，然后通过bindService获取变量实例：</p>
+<li><p>在<code>MainActivity</code>中创建<code>IRemoteService</code>的成员变量，然后通过<code>bindService</code>获取变量实例：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">   * 绑定远程Service，获取连接</div><div class="line">   */</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String ACTION = <span class="string">"com.chenley.an.aidlserviceproj.AidlRemoteService"</span>;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String PACKAGE = <span class="string">"com.chenley.an.aidlserviceproj"</span>;</div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">onBindService</span><span class="params">()</span> </span>&#123;</div><div class="line">      Intent serviceIntent = <span class="keyword">new</span> Intent(ACTION); <span class="comment">//action必须在服务端的AndroidManifest.xml文件中注册</span></div><div class="line">      serviceIntent.setPackage(PACKAGE);<span class="comment">//5.0版本以上需要设置PACKAGE</span></div><div class="line">      bindService(serviceIntent, <span class="keyword">new</span> ServiceConnection() &#123;</div><div class="line">          <span class="meta">@Override</span></div><div class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceConnected</span><span class="params">(ComponentName name, IBinder service)</span> </span>&#123;</div><div class="line">              mIRemoteService = IRemoteService.Stub.asInterface(service); <span class="comment">//获取远程服务的实例对象</span></div><div class="line">          &#125;</div><div class="line">          <span class="meta">@Override</span></div><div class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceDisconnected</span><span class="params">(ComponentName name)</span> </span>&#123;</div><div class="line">          &#125;</div><div class="line">      &#125;, RemoteViewsService.BIND_AUTO_CREATE);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -355,13 +355,13 @@
 <h5 id="使用方法和结果"><a href="#使用方法和结果" class="headerlink" title="使用方法和结果"></a>使用方法和结果</h5><ol>
 <li><p>运行服务端工程<code>aidlserviceproj</code>,并且运行服务程序；<br><img src="/uploads/aidl07.jpg" alt=""></p>
 </li>
-<li><p>运行客户端工程<code>aidlsampeproject</code>,先绑定Service，获取远程Serivce连接，然后点击组件调用service的接口方法获取远程服务数据；<br><img src="/uploads/aidl08.jpg" alt=""> <img src="/uploads/aidl09.png" alt=""></p>
+<li><p>运行客户端工程<code>aidlsampeproject</code>,先绑定<code>Service</code>，获取远程<code>Serivce</code>连接，然后点击组件调用<code>service</code>的接口方法获取远程服务数据；<br><img src="/uploads/aidl08.jpg" alt=""> <img src="/uploads/aidl09.png" alt=""></p>
 </li>
 </ol>
 <h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ol>
-<li>注意服务端AndroidManifest.xml中的service注册信息和客户端的intent绑定Service的信息要一致；</li>
-<li>获取IRemoteService和IRemoteReceive 需要在创建aidl文件后再次编译工程；</li>
-<li>客户端和服务端的aidl文件的包名需要一致；</li>
+<li>注意服务端<code>AndroidManifest.xml</code>中的<code>service</code>注册信息和客户端的<code>intent</code>绑定<code>Service</code>的信息要一致；</li>
+<li>获取<code>IRemoteService</code>和<code>IRemoteReceive</code> 需要在创建<code>aidl</code>文件后再次编译工程；</li>
+<li>客户端和服务端的<code>aidl</code>文件的包名需要一致；</li>
 </ol>
 
       
@@ -396,8 +396,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/28/Android适配小结/" rel="next" title="Android适配知识&减小APK体积方法小结">
-                <i class="fa fa-chevron-left"></i> Android适配知识&减小APK体积方法小结
+              <a href="/2016/09/28/Android适配笔记/" rel="next" title="Android适配笔记">
+                <i class="fa fa-chevron-left"></i> Android适配笔记
               </a>
             
           </div>
@@ -474,7 +474,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -484,7 +484,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
