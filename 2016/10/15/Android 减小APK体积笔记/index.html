@@ -84,25 +84,49 @@
 
 
 
-<meta name="description" content="PNG图片无损压缩工具
-4.1 使用方式：官网下载解压后文件结构：将要转换的png图片或者包含png图片的文件夹放在相同个文件夹里面在地址栏输入cmd+enter出现命令行窗口在命令行中输入.\pngquant 256 --force --ext .png .\drawable-xxhdpi\*.png其中--forec：表示强制覆盖原png图片，--ext .png:表示压缩后的文件已png为后">
+<meta name="description" content="减小apk体积
+使用混淆，减少代码量；
+使用android lint检查未使用资源，手动删除；
+清理assets文件夹；
+使用drawable 的xml定义文件代替图片；
+使用pngquant工具压缩png文件；
+放弃小部分手机和模拟器支持的so文件；
+重定制jar，获取需求功能即可；
+动态加载技术（app的插件化）；
+代码重构，代码复用，代码精简；">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 减小APK体积笔记">
 <meta property="og:url" content="http://yoursite.com/2016/10/15/Android 减小APK体积笔记/index.html">
 <meta property="og:site_name" content="Chenley">
-<meta property="og:description" content="PNG图片无损压缩工具
-4.1 使用方式：官网下载解压后文件结构：将要转换的png图片或者包含png图片的文件夹放在相同个文件夹里面在地址栏输入cmd+enter出现命令行窗口在命令行中输入.\pngquant 256 --force --ext .png .\drawable-xxhdpi\*.png其中--forec：表示强制覆盖原png图片，--ext .png:表示压缩后的文件已png为后">
+<meta property="og:description" content="减小apk体积
+使用混淆，减少代码量；
+使用android lint检查未使用资源，手动删除；
+清理assets文件夹；
+使用drawable 的xml定义文件代替图片；
+使用pngquant工具压缩png文件；
+放弃小部分手机和模拟器支持的so文件；
+重定制jar，获取需求功能即可；
+动态加载技术（app的插件化）；
+代码重构，代码复用，代码精简；">
 <meta property="og:image" content="http://yoursite.com/uploads/pngQuant_tool.jpg">
 <meta property="og:image" content="http://yoursite.com/\uploads\pngquant_file_structrue.png">
 <meta property="og:image" content="http://yoursite.com/\uploads\cmdopen.jpg">
 <meta property="og:image" content="http://yoursite.com/uploads/cmd命令.jpg">
 <meta property="og:image" content="http://yoursite.com/uploads/prepng_.jpg">
 <meta property="og:image" content="http://yoursite.com/uploads/endpng.jpg">
-<meta property="og:updated_time" content="2016-10-15T03:49:18.959Z">
+<meta property="og:updated_time" content="2016-10-15T03:56:38.217Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 减小APK体积笔记">
-<meta name="twitter:description" content="PNG图片无损压缩工具
-4.1 使用方式：官网下载解压后文件结构：将要转换的png图片或者包含png图片的文件夹放在相同个文件夹里面在地址栏输入cmd+enter出现命令行窗口在命令行中输入.\pngquant 256 --force --ext .png .\drawable-xxhdpi\*.png其中--forec：表示强制覆盖原png图片，--ext .png:表示压缩后的文件已png为后">
+<meta name="twitter:description" content="减小apk体积
+使用混淆，减少代码量；
+使用android lint检查未使用资源，手动删除；
+清理assets文件夹；
+使用drawable 的xml定义文件代替图片；
+使用pngquant工具压缩png文件；
+放弃小部分手机和模拟器支持的so文件；
+重定制jar，获取需求功能即可；
+动态加载技术（app的插件化）；
+代码重构，代码复用，代码精简；">
 <meta name="twitter:image" content="http://yoursite.com/uploads/pngQuant_tool.jpg">
 
 
@@ -316,14 +340,20 @@
       
 
       
-        <h3 id="PNG图片无损压缩工具"><a href="#PNG图片无损压缩工具" class="headerlink" title="PNG图片无损压缩工具"></a><a href="https://pngquant.org/" target="_blank" rel="external">PNG图片无损压缩工具</a></h3><blockquote>
-<p>4.1 使用方式：官网下载<br><img src="/uploads/pngQuant_tool.jpg" alt=""><br>解压后文件结构：<br><img src="\uploads\pngquant_file_structrue.png" alt=""><br>将要转换的png图片或者包含png图片的文件夹放在相同个文件夹里面<br>在地址栏输入cmd+enter出现命令行窗口<br><img src="\uploads\cmdopen.jpg" alt=""><br>在命令行中输入<code>.\pngquant 256 --force --ext .png .\drawable-xxhdpi\*.png</code><br>其中<code>--forec</code>：表示强制覆盖原png图片，<code>--ext .png</code>:表示压缩后的文件已png为后缀<br><img src="/uploads/cmd命令.jpg" alt=""><br>压缩前后对比<br><strong>压缩前</strong><br><img src="/uploads/prepng_.jpg" alt=""><br><strong> 压缩后</strong><br><img src="/uploads/endpng.jpg" alt=""></p>
-</blockquote>
-<ol>
-<li>减小apk体积<blockquote>
-<p>5.1 使用混淆，减少代码量；<br>5.2 使用android lint检查未使用资源，手动删除；<br>5.3 清理assets文件夹；<br>5.4 使用drawable 的xml定义文件代替图片；<br>5.6 使用pngquant工具压缩png文件；<br>5.7 放弃小部分手机和模拟器支持的so文件；<br>5.8 重定制jar，获取需求功能即可；<br>5.9 动态加载技术（app的插件化）；<br>5.10 代码重构，代码复用，代码精简；</p>
-</blockquote>
+        <h3 id="减小apk体积"><a href="#减小apk体积" class="headerlink" title="减小apk体积"></a>减小apk体积</h3><ul>
+<li>使用混淆，减少代码量；</li>
+<li>使用android lint检查未使用资源，手动删除；</li>
+<li>清理assets文件夹；</li>
+<li>使用drawable 的xml定义文件代替图片；</li>
+<li>使用pngquant工具压缩png文件；</li>
+<li>放弃小部分手机和模拟器支持的so文件；</li>
+<li>重定制jar，获取需求功能即可；</li>
+<li>动态加载技术（app的插件化）；</li>
+<li>代码重构，代码复用，代码精简；<a id="more"></a>
 </li>
+</ul>
+<h3 id="PNG图片无损压缩工具"><a href="#PNG图片无损压缩工具" class="headerlink" title="PNG图片无损压缩工具"></a><a href="https://pngquant.org/" target="_blank" rel="external">PNG图片无损压缩工具</a></h3><ol>
+<li>使用方式：官网下载<br><img src="/uploads/pngQuant_tool.jpg" alt=""><br>解压后文件结构：<br><img src="\uploads\pngquant_file_structrue.png" alt=""><br>将要转换的png图片或者包含png图片的文件夹放在相同个文件夹里面<br>在地址栏输入cmd+enter出现命令行窗口<br><img src="\uploads\cmdopen.jpg" alt=""><br>在命令行中输入<code>.\pngquant 256 --force --ext .png .\drawable-xxhdpi\*.png</code><br>其中<code>--forec</code>：表示强制覆盖原png图片，<code>--ext .png</code>:表示压缩后的文件已png为后缀<br><img src="/uploads/cmd命令.jpg" alt=""><br>压缩前后对比<br><strong>压缩前</strong><br><img src="/uploads/prepng_.jpg" alt=""><br><strong> 压缩后</strong><br><img src="/uploads/endpng.jpg" alt=""></li>
 </ol>
 
       
@@ -442,7 +472,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -500,7 +530,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#PNG图片无损压缩工具"><span class="nav-number">1.</span> <span class="nav-text">PNG图片无损压缩工具</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#减小apk体积"><span class="nav-number">1.</span> <span class="nav-text">减小apk体积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PNG图片无损压缩工具"><span class="nav-number">2.</span> <span class="nav-text">PNG图片无损压缩工具</span></a></li></ol></div>
             
           </div>
         </section>

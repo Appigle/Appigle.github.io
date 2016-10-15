@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Android,打包," />
 
 
 
@@ -86,14 +86,14 @@
 
 <meta name="description" content="概述Android阵营多渠道软件分发，如：应用宝，小米商城，豌豆荚，91助手，魅族应用商城等，如此多的分发渠道，导致了在APP的统计数据时候需要针对不同的渠道做区别统计，因此多渠道打包技术就变得很有必要性了。这边采用Gradle+Umeng的方式进行多渠道打包。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android 多渠道打包总结">
+<meta property="og:title" content="Android 多渠道打包笔记">
 <meta property="og:url" content="http://yoursite.com/2016/09/26/Android 多渠道打包笔记总结/index.html">
 <meta property="og:site_name" content="Chenley">
 <meta property="og:description" content="概述Android阵营多渠道软件分发，如：应用宝，小米商城，豌豆荚，91助手，魅族应用商城等，如此多的分发渠道，导致了在APP的统计数据时候需要针对不同的渠道做区别统计，因此多渠道打包技术就变得很有必要性了。这边采用Gradle+Umeng的方式进行多渠道打包。">
 <meta property="og:image" content="http://yoursite.com/uploads/多渠道打包总结图片1_创建资源属性文件.png">
-<meta property="og:updated_time" content="2016-09-26T06:20:42.462Z">
+<meta property="og:updated_time" content="2016-10-15T06:21:57.517Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android 多渠道打包总结">
+<meta name="twitter:title" content="Android 多渠道打包笔记">
 <meta name="twitter:description" content="概述Android阵营多渠道软件分发，如：应用宝，小米商城，豌豆荚，91助手，魅族应用商城等，如此多的分发渠道，导致了在APP的统计数据时候需要针对不同的渠道做区别统计，因此多渠道打包技术就变得很有必要性了。这边采用Gradle+Umeng的方式进行多渠道打包。">
 <meta name="twitter:image" content="http://yoursite.com/uploads/多渠道打包总结图片1_创建资源属性文件.png">
 
@@ -118,7 +118,7 @@
 
   <link rel="canonical" href="http://yoursite.com/2016/09/26/Android 多渠道打包笔记总结/"/>
 
-  <title> Android 多渠道打包总结 | Chenley </title>
+  <title> Android 多渠道打包笔记 | Chenley </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -268,7 +268,7 @@
             
             
               
-                Android 多渠道打包总结
+                Android 多渠道打包笔记
               
             
           </h1>
@@ -319,7 +319,7 @@
 <li>打开Android stuido指点的终端Terminal工具，使用命令行生成APK安装包。<br>（<strong> 如果Terminal 无法使用ADB命令，请度娘如何使用Android Studio Terminal执行ADB 命令</strong>）<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./gradlew assemble  //同时生成DEBUG和Release包</div><div class="line">./gradlew assembleRelease  //生成Release包</div><div class="line">./gradlew assembleDebuge  //生成Debug包</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<h5 id="第六步、Apk文件的路径"><a href="#第六步、Apk文件的路径" class="headerlink" title="第六步、Apk文件的路径"></a>第六步、Apk文件的路径</h5><p>完成Gradlew 打包程序后，生成的APK文件路径为:<br>~${projectName}\app\build\outputs\apk\apkName.apk~</p>
+<h5 id="第六步、Apk文件的路径"><a href="#第六步、Apk文件的路径" class="headerlink" title="第六步、Apk文件的路径"></a>第六步、Apk文件的路径</h5><p>完成Gradlew 打包程序后，生成的APK文件路径为:<br><code>${projectName}\app\build\outputs\apk\apkName.apk</code></p>
 
       
     </div>
@@ -340,13 +340,21 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/打包/" rel="tag">#打包</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/24/常见Android基础知识记录/" rel="next" title="常见Android基础知识记录">
-                <i class="fa fa-chevron-left"></i> 常见Android基础知识记录
+              <a href="/2016/09/24/常用知识点〇/" rel="next" title="常用知识点〇">
+                <i class="fa fa-chevron-left"></i> 常用知识点〇
               </a>
             
           </div>
@@ -433,7 +441,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

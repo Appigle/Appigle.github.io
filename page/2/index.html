@@ -269,7 +269,7 @@
               
                 
                 <a class="post-title-link" href="/2016/09/26/Android 多渠道打包笔记总结/" itemprop="url">
-                  Android 多渠道打包总结
+                  Android 多渠道打包笔记
                 </a>
               
             
@@ -365,8 +365,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/24/常见Android基础知识记录/" itemprop="url">
-                  常见Android基础知识记录
+                <a class="post-title-link" href="/2016/09/24/常用知识点〇/" itemprop="url">
+                  常用知识点〇
                 </a>
               
             
@@ -415,15 +415,13 @@
 <h4 id="2-Java的三大特性"><a href="#2-Java的三大特性" class="headerlink" title="2. Java的三大特性"></a>2. Java的三大特性</h4><blockquote>
 <p>封装，多态，继承；</p>
 </blockquote>
-<h4 id="3-抽象类的意义"><a href="#3-抽象类的意义" class="headerlink" title="3. 抽象类的意义"></a>3. 抽象类的意义</h4><blockquote>
-<ul>
+<h4 id="3-抽象类的意义"><a href="#3-抽象类的意义" class="headerlink" title="3. 抽象类的意义"></a>3. 抽象类的意义</h4><ul>
 <li>为其子类提供一个公共的类型；</li>
 <li>封装子类中重复的内容;</li>
 <li>定义抽象方法，让子类去做自定义的方法实现；</li>
 </ul>
-</blockquote>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/24/常见Android基础知识记录/#more" rel="contents">
+            <a class="btn" href="/2016/09/24/常用知识点〇/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -518,7 +516,7 @@
       
         
           <hr>
-<h4 id="Pre"><a href="#Pre" class="headerlink" title="Pre"></a>Pre</h4><p>  今天敲代码的时候发现突然想起，一直在XML布局文件中为每个组件赋值ID的时候是使用的~@+id/~来定义ID，但是就突然疑惑了，为什么是~@+id/~，而不是~@id/~？果断的Google大法，找到了StackOverflow上的<a href="http://stackoverflow.com/questions/11160954/what-is-the-difference-between-id-and-id">解答1</a> 、 <a href="http://stackoverflow.com/questions/5025910/difference-between-id-and-id-in-android">解答2</a>：<br>
+<h4 id="Pre"><a href="#Pre" class="headerlink" title="Pre"></a>Pre</h4><p>  今天敲代码的时候发现突然想起，一直在XML布局文件中为每个组件赋值ID的时候是使用的<code>@+id/</code>来定义ID，但是就突然疑惑了，为什么是<code>@+id/</code>，而不是<code>@id/</code>？果断的Google大法，找到了StackOverflow上的<a href="http://stackoverflow.com/questions/11160954/what-is-the-difference-between-id-and-id">解答1</a> 、 <a href="http://stackoverflow.com/questions/5025910/difference-between-id-and-id-in-android">解答2</a>：<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/23/Android XML布局文件@+id意义/#more" rel="contents">
               阅读全文 &raquo;
@@ -571,8 +569,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/22/ActionBar 知识点总结/" itemprop="url">
-                  ActionBar知识点总结
+                <a class="post-title-link" href="/2016/09/22/ActionBar知识笔记/" itemprop="url">
+                  ActionBar知识笔记
                 </a>
               
             
@@ -616,11 +614,11 @@
         
           <hr>
 <h4 id="ActionBar知识点："><a href="#ActionBar知识点：" class="headerlink" title="ActionBar知识点："></a>ActionBar知识点：</h4><ol>
-<li><p>~setHomeButtonEnabled~这个小于4.0版本的默认值为true的。但是在4.0及以上的是false，该方法的作用：决定左上角的图标是否可以点击。没有向左的小图标。true：图标可以点击，false不可以点击；</p>
+<li><p><code>setHomeButtonEnabled</code>这个小于4.0版本的默认值为true的。但是在4.0及以上的是false，该方法的作用：决定左上角的图标是否可以点击。没有向左的小图标。true：图标可以点击，false不可以点击；</p>
 </li>
-<li><p>~actionBar.setDisplayHomeAsUpEnabled(true)~给左上角图标的左边加上一个返回的图标。对应ActionBar.DISPLAY_HOME_AS_UP;</p>
+<li><p><code>actionBar.setDisplayHomeAsUpEnabled(true)</code>给左上角图标的左边加上一个返回的图标。对应ActionBar.DISPLAY_HOME_AS_UP;</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/22/ActionBar 知识点总结/#more" rel="contents">
+            <a class="btn" href="/2016/09/22/ActionBar知识笔记/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -715,9 +713,7 @@
       
         
           <hr>
-<ol>
-<li>ANR超时时间定义：定义位置：ActivityManagerService.java中定义：</li>
-</ol>
+<h3 id="ANR超时时间定义"><a href="#ANR超时时间定义" class="headerlink" title="ANR超时时间定义"></a>ANR超时时间定义</h3><p>定义位置：ActivityManagerService.java中定义</p>
 <ul>
 <li><p>Broadcast ANR时间为10s：<br>// How long we allow a receiver to run before giving up on it.<br>static fianl int BROADCAST_TIMEOUT=10*1000；</p>
 </li>
@@ -822,6 +818,7 @@
 <li>新建一个project，如果project已经存在那么直接创建一个module，这里一定要注意选择Java library，然后点击下一步；</li>
 <li>输入module信息，然后点击下一步；</li>
 <li><p>在创建的Java类中添加main方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main（String[] args）&#123;</div><div class="line">	System.out.println(<span class="string">"如何利用AndroidStudio开发可以运行的java工程"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/21/如何利用AndroidStudio开发可以运行的java工程/#more" rel="contents">
               阅读全文 &raquo;
@@ -874,8 +871,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/21/Fragment 全解析系列/" itemprop="url">
-                  Fragment全解析系列一
+                <a class="post-title-link" href="/2016/09/21/Android Fragment全解析系列一/" itemprop="url">
+                  Android Fragment全解析系列一
                 </a>
               
             
@@ -921,15 +918,15 @@
           
 目录
 getActivity()空指针；
-Fragment重叠异常—正确使用Hide、show的姿势；
+Fragment重叠异常—正确使用Hide()/show()的姿势；
 
 
 Pre
-android App有一种特殊情况，就是在App运行在后台的时候，系统资源紧张的时候导致把App的资源全部回收（杀死App进程），这个时候把App再从后台返回前台时，app会重启。
+Android App有一种特殊情况，就是在App运行在后台的时候，系统资源紧张的时候导致把App的资源全部回收（杀死App进程），这个时候把App再从后台返回前台时，app
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/21/Fragment 全解析系列/#more" rel="contents">
+            <a class="btn" href="/2016/09/21/Android Fragment全解析系列一/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1024,14 +1021,7 @@ android App有一种特殊情况，就是在App运行在后台的时候，系统
       
         
           <hr>
-<ol>
-<li>android：<a href="http://blog.csdn.net/gaomatrix/article/details/7057032">windowSoftInputMode属性使用详解</a>：<blockquote>
-<p>eg.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;activity</div><div class="line">&gt; 	android:windowSoftInputMode=[&quot;stateUnspecified&quot;</div><div class="line">&gt; 	|&quot;stateUnchanged&quot;</div><div class="line">&gt; 	|&quot;stateHidden&quot;</div><div class="line">&gt; 	|&quot;stateAlwaysHidden&quot;</div><div class="line">&gt; 	|&quot;stateVsible&quot;</div><div class="line">&gt; 	|&quot;stateAlwaysVisibe&quot;</div><div class="line">&gt; 	|&quot;adjustUnspecified&quot;</div><div class="line">&gt; 	|&quot;adjustResize&quot;</div><div class="line">&gt; 	|&quot;adjustPan&quot;</div><div class="line">&gt; 	]</div><div class="line">&gt; 	.../&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-</li>
-</ol>
-<blockquote>
+<h3 id="Android：windowSoftInputMode属性使用详解："><a href="#Android：windowSoftInputMode属性使用详解：" class="headerlink" title="Android：windowSoftInputMode属性使用详解："></a>Android：<a href="http://blog.csdn.net/gaomatrix/article/details/7057032">windowSoftInputMode属性使用详解</a>：</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;activity</div><div class="line">	android:windowSoftInputMode=[&quot;stateUnspecified&quot;</div><div class="line">	|&quot;stateUnchanged&quot;</div><div class="line">	|&quot;stateHidden&quot;</div><div class="line">	|&quot;stateAlwaysHidden&quot;</div><div class="line">	|&quot;stateVsible&quot;</div><div class="line">	|&quot;stateAlwaysVisibe&quot;</div><div class="line">	|&quot;adjustUnspecified&quot;</div><div class="line">	|&quot;adjustResize&quot;</div><div class="line">	|&quot;adjustPan&quot;</div><div class="line">	]</div><div class="line">	.../&gt;</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/21/Android 虚拟键盘知识总结/#more" rel="contents">
               阅读全文 &raquo;
@@ -1128,10 +1118,28 @@ android App有一种特殊情况，就是在App运行在后台的时候，系统
       
         
           <hr>
-<h5 id="常用快捷键总结："><a href="#常用快捷键总结：" class="headerlink" title="常用快捷键总结："></a>常用快捷键总结：</h5><ol>
-<li><strong>|Ctrl(Command)+F12|显示当前文件的结构|；</strong></li>
-<li><strong>|Ctrl(Command)+H|显示类继承结构图|；</strong></li>
-<li><strong>|Alt(Option)+F1|查找文件所在目录位置|;</strong>
+<h2 id="常用快捷键总结"><a href="#常用快捷键总结" class="headerlink" title="常用快捷键总结"></a>常用快捷键总结</h2><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl(Command)+F12</td>
+<td>显示当前文件的结构</td>
+</tr>
+<tr>
+<td>Ctrl(Command)+H</td>
+<td>显示类继承结构图</td>
+</tr>
+<tr>
+<td>Alt(Option)+F1</td>
+<td>查找文件所在目录位置</td>
+</tr>
+</tbody>
+</table>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/21/AndroidStudio 快捷键汇总/#more" rel="contents">
               阅读全文 &raquo;
@@ -1228,12 +1236,20 @@ android App有一种特殊情况，就是在App运行在后台的时候，系统
       
         
           <hr>
-<ol>
-<li><p>我们为什么需要多线程机制？什么时候需要使用到多线程？</p>
+<h3 id="我们为什么需要多线程机制？什么时候需要使用到多线程？"><a href="#我们为什么需要多线程机制？什么时候需要使用到多线程？" class="headerlink" title="我们为什么需要多线程机制？什么时候需要使用到多线程？"></a>我们为什么需要多线程机制？什么时候需要使用到多线程？</h3><ol>
+<li><p>因为Android官方明确在多线程编程时有俩大原则：</p>
 <blockquote>
 <ul>
-<li>因为Android官方明确什么在多线程编程时有俩大原则：第一、不能阻塞UI线程（主线程），第二、不能在UI线程之外访问UI组件；</li>
-<li>使用情况：第一、将任务从主线程抛到工作线程，第二、将任务从工作线程抛到主线程。
+<li>第一、不能阻塞UI线程（主线程）；</li>
+<li>第二、不能在UI线程之外访问UI组件；</li>
+</ul>
+</blockquote>
+</li>
+<li><p>使用情况</p>
+<blockquote>
+<ul>
+<li>第一、将任务从主线程抛到工作线程;</li>
+<li>第二、将任务从工作线程抛到主线程。
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/21/Android 多线程问题笔记/#more" rel="contents">
               阅读全文 &raquo;
@@ -1320,7 +1336,7 @@ android App有一种特殊情况，就是在App运行在后台的时候，系统
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

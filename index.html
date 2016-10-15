@@ -311,11 +311,16 @@
 
       
         
-          
-          PNG图片无损压缩工具
-4.1 使用方式：官网下载解压后文件结构：将要转换的png图片或者包含png图片的文件夹放在相同个文件夹里面在地址栏输入cmd+enter出现命令行窗口在命令行中输入.\pngquant 256 --force --ext .png .\drawable-xxhdpi\*.p
-          ...
-
+          <h3 id="减小apk体积"><a href="#减小apk体积" class="headerlink" title="减小apk体积"></a>减小apk体积</h3><ul>
+<li>使用混淆，减少代码量；</li>
+<li>使用android lint检查未使用资源，手动删除；</li>
+<li>清理assets文件夹；</li>
+<li>使用drawable 的xml定义文件代替图片；</li>
+<li>使用pngquant工具压缩png文件；</li>
+<li>放弃小部分手机和模拟器支持的so文件；</li>
+<li>重定制jar，获取需求功能即可；</li>
+<li>动态加载技术（app的插件化）；</li>
+<li>代码重构，代码复用，代码精简；
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/10/15/Android 减小APK体积笔记/#more" rel="contents">
               阅读全文 &raquo;
@@ -1296,7 +1301,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
