@@ -86,29 +86,23 @@
 
 <meta name="description" content="Android1. AsyncTask超简述原理
 AsyncTask本质是一个静态的线程池（容量128，执行数5），AsyncTask派生出来的子类可以实现不同的异步任务，这些任务都是提交到静态线程池中执行的；
-
 线程池中的工作线程mWorker执行doInBackground(mParams)方法执行异步任务；
-
-当任务状态（（1、执行成功2、取消执行3、进度更新））后，工作线程会向UI线程发送">
+当任务状态（执行成功、取消执行、进度更新）后，工作线程会向UI线程发送消息，Async">
 <meta property="og:type" content="article">
-<meta property="og:title" content="常用知识点二">
-<meta property="og:url" content="http://yoursite.com/2016/10/13/常用知识点(二)/index.html">
+<meta property="og:title" content="常用知识点笔记二">
+<meta property="og:url" content="http://yoursite.com/2016/10/13/常用知识点笔记二/index.html">
 <meta property="og:site_name" content="Chenley">
 <meta property="og:description" content="Android1. AsyncTask超简述原理
 AsyncTask本质是一个静态的线程池（容量128，执行数5），AsyncTask派生出来的子类可以实现不同的异步任务，这些任务都是提交到静态线程池中执行的；
-
 线程池中的工作线程mWorker执行doInBackground(mParams)方法执行异步任务；
-
-当任务状态（（1、执行成功2、取消执行3、进度更新））后，工作线程会向UI线程发送">
-<meta property="og:updated_time" content="2016-10-14T16:47:15.513Z">
+当任务状态（执行成功、取消执行、进度更新）后，工作线程会向UI线程发送消息，Async">
+<meta property="og:updated_time" content="2016-10-15T03:19:56.075Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="常用知识点二">
+<meta name="twitter:title" content="常用知识点笔记二">
 <meta name="twitter:description" content="Android1. AsyncTask超简述原理
 AsyncTask本质是一个静态的线程池（容量128，执行数5），AsyncTask派生出来的子类可以实现不同的异步任务，这些任务都是提交到静态线程池中执行的；
-
 线程池中的工作线程mWorker执行doInBackground(mParams)方法执行异步任务；
-
-当任务状态（（1、执行成功2、取消执行3、进度更新））后，工作线程会向UI线程发送">
+当任务状态（执行成功、取消执行、进度更新）后，工作线程会向UI线程发送消息，Async">
 
 
 
@@ -129,9 +123,9 @@ AsyncTask本质是一个静态的线程池（容量128，执行数5），AsyncTa
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/13/常用知识点(二)/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/13/常用知识点笔记二/"/>
 
-  <title> 常用知识点二 | Chenley </title>
+  <title> 常用知识点笔记二 | Chenley </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -281,7 +275,7 @@ AsyncTask本质是一个静态的线程池（容量128，执行数5），AsyncTa
             
             
               
-                常用知识点二
+                常用知识点笔记二
               
             
           </h1>
@@ -322,16 +316,11 @@ AsyncTask本质是一个静态的线程池（容量128，执行数5），AsyncTa
 
       
         <h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><h4 id="1-AsyncTask超简述原理"><a href="#1-AsyncTask超简述原理" class="headerlink" title="1. AsyncTask超简述原理"></a>1. <code>AsyncTask</code>超简述原理</h4><ol>
-<li><p><code>AsyncTask</code>本质是一个静态的线程池（容量128，执行数5），<code>AsyncTask</code>派生出来的子类可以实现不同的异步任务，这些任务都是提交到静态线程池中执行的；</p>
-</li>
-<li><p>线程池中的工作线程<code>mWorker</code>执行<code>doInBackground(mParams)</code>方法执行异步任务；</p>
-</li>
-<li><p>当任务状态（（1、执行成功2、取消执行3、进度更新））后，工作线程会向UI线程发送消息，<code>AsyncTask</code>内部的<code>InternalHandler</code>响应这些消息，并调用相关的回调函数；</p>
-</li>
-<li><p>不足处：线程池大小固定，如果添加线程数量超过固定值，则会抛出拒绝新线程的RuntimeException。解决方式为新开一个线程，时刻关注线程池内线程数量，如果线程池线程满了，那么则休眠新线程，否则将线程添加到线程池中。</p>
-</li>
-<li><p>3.0之前线程池是并行执行，3.0之后通过SerialExcutor执行串行操作。真正的操作是在THREAD_POOL_EXCUTOR线程。如果想要强行并行执行，可以使用<code>excuteOnExcutor</code>方法；</p>
-</li>
+<li><code>AsyncTask</code>本质是一个静态的线程池（容量128，执行数5），<code>AsyncTask</code>派生出来的子类可以实现不同的异步任务，这些任务都是提交到静态线程池中执行的；</li>
+<li>线程池中的工作线程<code>mWorker</code>执行<code>doInBackground(mParams)</code>方法执行异步任务；</li>
+<li>当任务状态（执行成功、取消执行、进度更新）后，工作线程会向UI线程发送消息，<code>AsyncTask</code>内部的<code>InternalHandler</code>响应这些消息，并调用相关的回调函数；</li>
+<li>不足处：线程池大小固定，如果添加线程数量超过固定值，则会抛出拒绝新线程的<code>RejectedExcutionException</code>。解决方式为新开一个线程，时刻关注线程池内线程数量，如果线程池线程满了，那么则休眠新线程，否则将线程添加到线程池中。</li>
+<li>3.0之前线程池是并行执行，3.0之后通过<code>SerialExcutor</code>执行串行操作。真正的操作是在<code>THREAD_POOL_EXCUTOR</code>线程。如果想要强行并行执行，可以直接使用<code>excuteOnExcutor</code>方法即可；</li>
 </ol>
 <a id="more"></a>
 <h4 id="2-突破65536方法数限制超简述方式：分包（dex）方式"><a href="#2-突破65536方法数限制超简述方式：分包（dex）方式" class="headerlink" title="2. 突破65536方法数限制超简述方式：分包（dex）方式"></a>2. 突破65536方法数限制超简述方式：分包（dex）方式</h4><ol>
@@ -349,9 +338,9 @@ AsyncTask本质是一个静态的线程池（容量128，执行数5），AsyncTa
 </ol>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">application</span></span></div><div class="line"></div><div class="line">       <span class="attr">android:name</span>=<span class="string">".AppApplication"</span></div><div class="line"></div><div class="line">       <span class="attr">...</span></div><div class="line"></div><div class="line">       /&gt;</div></pre></td></tr></table></figure>
 <h4 id="Parcelable和Serializable使用场景选择"><a href="#Parcelable和Serializable使用场景选择" class="headerlink" title="Parcelable和Serializable使用场景选择"></a>Parcelable和Serializable使用场景选择</h4><ol>
-<li><p>Serializable : 作用是为了保存对象的属性到本地文件、数据库、网络流、rmi以方便数据传输，当然这种传输可以是程序内的可以是俩个程序间的。通常在需要进行IO操作时使用，如需要保存文件或者网络传输数据。</p>
+<li><p>Serializable : 作用是为了保存对象的属性到本地文件、数据库、网络流、rmi(Java remote method invocation:Java 远程方法调用)以方便数据传输，当然这种传输可以是程序内的也可以是俩个程序之间的。通常在需要进行IO操作时使用，如需要保存文件或者网络传输数据。</p>
 </li>
-<li><p>Parcelable ： 设计初衷是为了解决Serializable在序列化效率过慢的缺点，同时为了在程序内不同组件间以及不同Android程序间（AIDL）搞笑传输数据而设计，这些数据仅在内存中存在，Parcelable是IBinder通信的消息载体。通常使用在内存数据之间数据传递使用。</p>
+<li><p>Parcelable ： 设计初衷是为了解决Serializable在序列化效率过慢的缺点，同时为了在程序内不同组件间以及不同Android程序间（AIDL）高效传输数据而设计，这些数据仅在内存中存在，Parcelable是IBinder通信的消息载体。通常使用在内存之间数据传递使用。</p>
 </li>
 </ol>
 
@@ -387,16 +376,16 @@ AsyncTask本质是一个静态的线程池（容量128，执行数5），AsyncTa
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/12/Android WebView知识小结/" rel="next" title="Android WebView知识小结">
-                <i class="fa fa-chevron-left"></i> Android WebView知识小结
+              <a href="/2016/10/12/Android WebView知识小结/" rel="next" title="Android WebView知识笔记">
+                <i class="fa fa-chevron-left"></i> Android WebView知识笔记
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/10/15/Java建造者模式/" rel="prev" title="Java建造者模式简述">
-                Java建造者模式简述 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/10/15/Java建造者模式/" rel="prev" title="Java建造者模式笔记">
+                Java建造者模式笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

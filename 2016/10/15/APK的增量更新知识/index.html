@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="原理将手机上已安装apk文件与服务器端最新apk进行二进制对比，得到差分包，用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装apk合并成新的ap文件k，然后安装合成后的新apk文件。">
+<meta name="description" content="原理将手机上已安装apk文件与服务器端最新apk进行二进制对比，得到差分包。用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装apk合并成新的apk文件，然后安装合成后的新apk文件。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="APK的增量更新（差分升级）知识">
+<meta property="og:title" content="APK的增量更新（差分升级）笔记">
 <meta property="og:url" content="http://yoursite.com/2016/10/15/APK的增量更新知识/index.html">
 <meta property="og:site_name" content="Chenley">
-<meta property="og:description" content="原理将手机上已安装apk文件与服务器端最新apk进行二进制对比，得到差分包，用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装apk合并成新的ap文件k，然后安装合成后的新apk文件。">
-<meta property="og:updated_time" content="2016-10-14T16:56:29.477Z">
+<meta property="og:description" content="原理将手机上已安装apk文件与服务器端最新apk进行二进制对比，得到差分包。用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装apk合并成新的apk文件，然后安装合成后的新apk文件。">
+<meta property="og:updated_time" content="2016-10-15T01:48:43.696Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="APK的增量更新（差分升级）知识">
-<meta name="twitter:description" content="原理将手机上已安装apk文件与服务器端最新apk进行二进制对比，得到差分包，用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装apk合并成新的ap文件k，然后安装合成后的新apk文件。">
+<meta name="twitter:title" content="APK的增量更新（差分升级）笔记">
+<meta name="twitter:description" content="原理将手机上已安装apk文件与服务器端最新apk进行二进制对比，得到差分包。用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装apk合并成新的apk文件，然后安装合成后的新apk文件。">
 
 
 
@@ -116,7 +116,7 @@
 
   <link rel="canonical" href="http://yoursite.com/2016/10/15/APK的增量更新知识/"/>
 
-  <title> APK的增量更新（差分升级）知识 | Chenley </title>
+  <title> APK的增量更新（差分升级）笔记 | Chenley </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -266,7 +266,7 @@
             
             
               
-                APK的增量更新（差分升级）知识
+                APK的增量更新（差分升级）笔记
               
             
           </h1>
@@ -306,10 +306,11 @@
       
 
       
-        <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>将手机上已安装apk文件与服务器端最新apk进行二进制对比，得到差分包，用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装apk合并成新的ap文件k，然后安装合成后的新apk文件。</p>
+        <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>将手机上已安装apk文件与服务器端最新apk进行二进制对比，得到差分包。用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装apk合并成新的apk文件，然后安装合成后的新apk文件。</p>
 <a id="more"></a>
 <h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ol>
 <li>二进制差分计算获取差分包；</li>
+<li>MD5/hash校验apk包的合法性；</li>
 <li>使用JNI调用C方法合并APK；</li>
 </ol>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
@@ -349,8 +350,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/15/Java建造者模式/" rel="next" title="Java建造者模式简述">
-                <i class="fa fa-chevron-left"></i> Java建造者模式简述
+              <a href="/2016/10/15/Java建造者模式/" rel="next" title="Java建造者模式笔记">
+                <i class="fa fa-chevron-left"></i> Java建造者模式笔记
               </a>
             
           </div>

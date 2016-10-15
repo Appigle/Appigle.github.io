@@ -269,7 +269,7 @@
               
                 
                 <a class="post-title-link" href="/2016/10/15/APK的增量更新知识/" itemprop="url">
-                  APK的增量更新（差分升级）知识
+                  APK的增量更新（差分升级）笔记
                 </a>
               
             
@@ -311,7 +311,7 @@
 
       
         
-          <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>将手机上已安装apk文件与服务器端最新apk进行二进制对比，得到差分包，用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装apk合并成新的ap文件k，然后安装合成后的新apk文件。</p>
+          <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>将手机上已安装apk文件与服务器端最新apk进行二进制对比，得到差分包。用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装apk合并成新的apk文件，然后安装合成后的新apk文件。</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/10/15/APK的增量更新知识/#more" rel="contents">
               阅读全文 &raquo;
@@ -365,7 +365,7 @@
               
                 
                 <a class="post-title-link" href="/2016/10/15/Java建造者模式/" itemprop="url">
-                  Java建造者模式简述
+                  Java建造者模式笔记
                 </a>
               
             
@@ -460,8 +460,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/13/常用知识点(二)/" itemprop="url">
-                  常用知识点二
+                <a class="post-title-link" href="/2016/10/13/常用知识点笔记二/" itemprop="url">
+                  常用知识点笔记二
                 </a>
               
             
@@ -504,19 +504,14 @@
       
         
           <h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><h4 id="1-AsyncTask超简述原理"><a href="#1-AsyncTask超简述原理" class="headerlink" title="1. AsyncTask超简述原理"></a>1. <code>AsyncTask</code>超简述原理</h4><ol>
-<li><p><code>AsyncTask</code>本质是一个静态的线程池（容量128，执行数5），<code>AsyncTask</code>派生出来的子类可以实现不同的异步任务，这些任务都是提交到静态线程池中执行的；</p>
-</li>
-<li><p>线程池中的工作线程<code>mWorker</code>执行<code>doInBackground(mParams)</code>方法执行异步任务；</p>
-</li>
-<li><p>当任务状态（（1、执行成功2、取消执行3、进度更新））后，工作线程会向UI线程发送消息，<code>AsyncTask</code>内部的<code>InternalHandler</code>响应这些消息，并调用相关的回调函数；</p>
-</li>
-<li><p>不足处：线程池大小固定，如果添加线程数量超过固定值，则会抛出拒绝新线程的RuntimeException。解决方式为新开一个线程，时刻关注线程池内线程数量，如果线程池线程满了，那么则休眠新线程，否则将线程添加到线程池中。</p>
-</li>
-<li><p>3.0之前线程池是并行执行，3.0之后通过SerialExcutor执行串行操作。真正的操作是在THREAD_POOL_EXCUTOR线程。如果想要强行并行执行，可以使用<code>excuteOnExcutor</code>方法；</p>
-</li>
+<li><code>AsyncTask</code>本质是一个静态的线程池（容量128，执行数5），<code>AsyncTask</code>派生出来的子类可以实现不同的异步任务，这些任务都是提交到静态线程池中执行的；</li>
+<li>线程池中的工作线程<code>mWorker</code>执行<code>doInBackground(mParams)</code>方法执行异步任务；</li>
+<li>当任务状态（执行成功、取消执行、进度更新）后，工作线程会向UI线程发送消息，<code>AsyncTask</code>内部的<code>InternalHandler</code>响应这些消息，并调用相关的回调函数；</li>
+<li>不足处：线程池大小固定，如果添加线程数量超过固定值，则会抛出拒绝新线程的<code>RejectedExcutionException</code>。解决方式为新开一个线程，时刻关注线程池内线程数量，如果线程池线程满了，那么则休眠新线程，否则将线程添加到线程池中。</li>
+<li>3.0之前线程池是并行执行，3.0之后通过<code>SerialExcutor</code>执行串行操作。真正的操作是在<code>THREAD_POOL_EXCUTOR</code>线程。如果想要强行并行执行，可以直接使用<code>excuteOnExcutor</code>方法即可；</li>
 </ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/13/常用知识点(二)/#more" rel="contents">
+            <a class="btn" href="/2016/10/13/常用知识点笔记二/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -568,7 +563,7 @@
               
                 
                 <a class="post-title-link" href="/2016/10/12/Android WebView知识小结/" itemprop="url">
-                  Android WebView知识小结
+                  Android WebView知识笔记
                 </a>
               
             
@@ -664,8 +659,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/08/一些知识笔记/" itemprop="url">
-                  一些知识笔记
+                <a class="post-title-link" href="/2016/10/08/常用知识点笔记一/" itemprop="url">
+                  常用知识点笔记一
                 </a>
               
             
@@ -715,7 +710,7 @@
 <li>所有通信都是单向进行。<br><img src="http://image.beekka.com/blog/2015/bg2015020105.png" alt=""></li>
 </ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/08/一些知识笔记/#more" rel="contents">
+            <a class="btn" href="/2016/10/08/常用知识点笔记一/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1114,7 +1109,7 @@
           <hr>
 <h3 id="SPDY定义"><a href="#SPDY定义" class="headerlink" title="SPDY定义"></a><a href="http://www.geekpark.net/topics/158198">SPDY定义</a></h3><ol>
 <li>SPDY是Google开发的基于传输控制协议（TCP）的应用层协议，开发组正在推动SPDY成为正式标准（目前为草案）；</li>
-<li>SPDY协议旨在通过压缩、多路复用和优先级来缩短网页的加载时间和提高安全性。</li>
+<li>SPDY协议旨在通过压缩、多路复用和优先级来缩短网页的加载时间和强制使用SSL协议来提高安全性。</li>
 </ol>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/26/SPDY知识笔记/#more" rel="contents">
