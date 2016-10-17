@@ -268,6 +268,108 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/13/常用知识点笔记二/" itemprop="url">
+                  常用知识点笔记二
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-13T10:22:28+08:00" content="2016-10-13">
+              2016-10-13
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><h4 id="1-AsyncTask超简述原理"><a href="#1-AsyncTask超简述原理" class="headerlink" title="1. AsyncTask超简述原理"></a>1. <code>AsyncTask</code>超简述原理</h4><ol>
+<li><code>AsyncTask</code>本质是一个静态的线程池（容量128，执行数5），<code>AsyncTask</code>派生出来的子类可以实现不同的异步任务，这些任务都是提交到静态线程池中执行的；</li>
+<li>线程池中的工作线程<code>mWorker</code>执行<code>doInBackground(mParams)</code>方法执行异步任务；</li>
+<li>当任务状态（执行成功、取消执行、进度更新）后，工作线程会向UI线程发送消息，<code>AsyncTask</code>内部的<code>InternalHandler</code>响应这些消息，并调用相关的回调函数；</li>
+<li>不足处：线程池大小固定，如果添加线程数量超过固定值，则会抛出拒绝新线程的<code>RejectedExcutionException</code>。解决方式为新开一个线程，时刻关注线程池内线程数量，如果线程池线程满了，那么则休眠新线程，否则将线程添加到线程池中。</li>
+<li>3.0之前线程池是并行执行，3.0之后通过<code>SerialExcutor</code>执行串行操作。真正的操作是在<code>THREAD_POOL_EXCUTOR</code>线程。如果想要强行并行执行，可以直接使用<code>excuteOnExcutor</code>方法即可；</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/13/常用知识点笔记二/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/12/Android WebView知识笔记/" itemprop="url">
                   Android WebView知识笔记
                 </a>
@@ -1143,106 +1245,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/22/ActionBar知识笔记/" itemprop="url">
-                  ActionBar知识笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-22T21:19:53+08:00" content="2016-09-22">
-              2016-09-22
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <hr>
-<h4 id="ActionBar知识点："><a href="#ActionBar知识点：" class="headerlink" title="ActionBar知识点："></a>ActionBar知识点：</h4><ol>
-<li><p><code>setHomeButtonEnabled</code>这个小于4.0版本的默认值为true的。但是在4.0及以上的是false，该方法的作用：决定左上角的图标是否可以点击。没有向左的小图标。true：图标可以点击，false不可以点击；</p>
-</li>
-<li><p><code>actionBar.setDisplayHomeAsUpEnabled(true)</code>给左上角图标的左边加上一个返回的图标。对应ActionBar.DISPLAY_HOME_AS_UP;</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/22/ActionBar知识笔记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1288,7 +1290,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1298,7 +1300,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
