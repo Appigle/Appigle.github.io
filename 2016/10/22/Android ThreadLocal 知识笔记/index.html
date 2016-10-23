@@ -1,0 +1,637 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,多线程,Handler机制,《Android开发探索》," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="定义ThreadLocal是一个线程内部的数据存储类，通过它可以在指定的线程中存储数据，数据存储以后，只有在指定的线程中可以获取到存储的数据，对于其他线程来说则无法获取到数据。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android ThreadLocal 知识笔记">
+<meta property="og:url" content="http://yoursite.com/2016/10/22/Android ThreadLocal 知识笔记/index.html">
+<meta property="og:site_name" content="Chenley">
+<meta property="og:description" content="定义ThreadLocal是一个线程内部的数据存储类，通过它可以在指定的线程中存储数据，数据存储以后，只有在指定的线程中可以获取到存储的数据，对于其他线程来说则无法获取到数据。">
+<meta property="og:updated_time" content="2016-10-23T03:45:36.033Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android ThreadLocal 知识笔记">
+<meta name="twitter:description" content="定义ThreadLocal是一个线程内部的数据存储类，通过它可以在指定的线程中存储数据，数据存储以后，只有在指定的线程中可以获取到存储的数据，对于其他线程来说则无法获取到数据。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6332696712095729000,
+      author: 'Chenley'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/10/22/Android ThreadLocal 知识笔记/"/>
+
+  <title> Android ThreadLocal 知识笔记 | Chenley </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chenley</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android ThreadLocal 知识笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-22T13:07:11+08:00" content="2016-10-22">
+              2016-10-22
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><code>ThreadLocal</code>是一个线程内部的数据存储类，通过它可以在指定的线程中存储数据，数据存储以后，只有在指定的线程中可以获取到存储的数据，对于其他线程来说则无法获取到数据。<br><a id="more"></a></p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>一般来说，当某些数据是以线程为作用域并且不同线程具有不同的数据副本的时候，就可以考虑采用<code>ThreadLocal</code>。<br>另一个使用场景是复杂逻辑下的对象传递，比如监听器的传递。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><h4 id="简单原理概述"><a href="#简单原理概述" class="headerlink" title="简单原理概述"></a>简单原理概述</h4><p>不同线程访问同一个<code>ThreadLocal</code>的<code>get</code>方法，<code>ThreadLocal</code>内部会从各自的线程中取出一个数组，然后再从数组中根据当前<code>ThradLocal</code>的索引去查找出对应的value值。很显然，不同线程中的数组是不同的，这就是为什么通过<code>ThreadLocal</code>可以在不同的的线程中维护一套数据的副本并且彼此互不干扰。</p>
+<h3 id="内部实现"><a href="#内部实现" class="headerlink" title="内部实现"></a>内部实现</h3><p><code>ThreadLocal</code>是一个泛型类，它的定义为：<code>public class ThreadLocal&lt;T&gt;</code>，只要弄清楚<code>ThreadLocal</code>的<code>get</code>和<code>set</code>方法就可以明白它的工作原理；</p>
+<h4 id="set-T-value-方法"><a href="#set-T-value-方法" class="headerlink" title="set(T value)方法"></a><code>set(T value)</code>方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(T value)</span> </span>&#123;</div><div class="line">    Thread currentThread = Thread.currentThread();</div><div class="line">    Values values = values(currentThread);</div><div class="line">    <span class="keyword">if</span> (values == <span class="keyword">null</span>) &#123;</div><div class="line">        values = initializeValues(currentThread);</div><div class="line">    &#125;</div><div class="line">    values.put(<span class="keyword">this</span>, value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在上面<code>set</code>方法中，首先会通过values方法来获取当前线程的<code>ThreadLocal</code>数据。获取方式很简单：在<code>Thread</code>类的内部有一个成员专门用于存储线程的<code>ThreadLocal</code>的数据：<code>ThreadLocal.Values localValues</code>，因此获取当前线程的<code>ThreadLocal</code>数据就变得异常简单了。如果<code>localValues</code>的值为null，那么久需要对其进行初始化，初始化后再将<code>ThreadLocal</code>的值进行存储。在<code>localValues</code>内部有一个数组：<code>private Object[] table</code>,<code>ThreadLocal</code>的值就存在在这个<code>table</code>数组中。源码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">         * Sets entry for given ThreadLocal to given value, creating an</div><div class="line">         * entry if necessary.</div><div class="line">         */</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">put</span><span class="params">(ThreadLocal&lt;?&gt; key, Object value)</span> </span>&#123;</div><div class="line">            cleanUp();</div><div class="line"></div><div class="line">            <span class="comment">// Keep track of first tombstone. That's where we want to go back</span></div><div class="line">            <span class="comment">// and add an entry if necessary.</span></div><div class="line">            <span class="keyword">int</span> firstTombstone = -<span class="number">1</span>;</div><div class="line"></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> index = key.hash &amp; mask;; index = next(index)) &#123;</div><div class="line">                Object k = table[index];</div><div class="line"></div><div class="line">                <span class="keyword">if</span> (k == key.reference) &#123;</div><div class="line">                    <span class="comment">// Replace existing entry.</span></div><div class="line">                    table[index + <span class="number">1</span>] = value;</div><div class="line">                    <span class="keyword">return</span>;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="keyword">if</span> (k == <span class="keyword">null</span>) &#123;</div><div class="line">                    <span class="keyword">if</span> (firstTombstone == -<span class="number">1</span>) &#123;</div><div class="line">                        <span class="comment">// Fill in null slot.</span></div><div class="line">                        table[index] = key.reference;</div><div class="line">                        table[index + <span class="number">1</span>] = value;</div><div class="line">                        size++;</div><div class="line">                        <span class="keyword">return</span>;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="comment">// Go back and replace first tombstone.</span></div><div class="line">                    table[firstTombstone] = key.reference;</div><div class="line">                    table[firstTombstone + <span class="number">1</span>] = value;</div><div class="line">                    tombstones--;</div><div class="line">                    size++;</div><div class="line">                    <span class="keyword">return</span>;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="comment">// Remember first tombstone.</span></div><div class="line">                <span class="keyword">if</span> (firstTombstone == -<span class="number">1</span> &amp;&amp; k == TOMBSTONE) &#123;</div><div class="line">                    firstTombstone = index;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<p>从上面源码可以看出来：<code>ThreadLocal</code>的值在<code>table</code>数组中的存储位置总是为<code>ThradLocal</code>的<code>reference</code>字段所标识的对象的下一个位置，比如<code>ThreadLocal</code>的<code>reference</code>对象在<code>table</code>数组中的索引为<code>index</code>，那么<code>ThreadLocal</code>的值在<code>table</code>数组中的索引就是<code>index+1</code>。最终<code>ThreadLocal</code>的值将会被存储在<code>table</code>数组中：<code>table[index+1]=value</code>。</p>
+<h4 id="get-方法"><a href="#get-方法" class="headerlink" title="get()方法"></a><code>get()</code>方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// Optimized for the fast path.</span></div><div class="line">    Thread currentThread = Thread.currentThread();</div><div class="line">    Values values = values(currentThread);</div><div class="line">    <span class="keyword">if</span> (values != <span class="keyword">null</span>) &#123;</div><div class="line">        Object[] table = values.table;</div><div class="line">        <span class="keyword">int</span> index = hash &amp; values.mask;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.reference == table[index]) &#123;</div><div class="line">            <span class="keyword">return</span> (T) table[index + <span class="number">1</span>];</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        values = initializeValues(currentThread);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> (T) values.getAfterMiss(<span class="keyword">this</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>get()</code>方法的逻辑：取出当前线程的<code>localValues</code>对象，如果这个对象为null那么就返回初始值，初始值由<code>ThreadLocal</code>的<code>initialValue</code>方法来描述，默认情况下为null，可以重写该方法，返回自定义的值。如果<code>localValues</code>对象不为null，那么就取出它的<code>table</code>数组并找出<code>ThreadLocal</code>的<code>reference</code>对象在<code>table</code>数组中的位置，然后<code>table</code>数组中的下一个位置所存储的数据就是<code>ThreadLocal</code>的值。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>从<code>ThreadLocal</code>的<code>set</code>和<code>get</code>方法可以看出，它们所操作的对象都是当前线程的<code>localVaules</code>对象的<code>table</code>数组，因此在不同线程中访问同一个<code>ThreadLocal</code>的<code>set</code>和<code>get</code>方法，它们对<code>ThreadLocal</code>所做的读/写操作仅限于各自线程的内部，这就是为什么<code>ThreadLocal</code>可以在多个线程中互不干扰地存储和修改数据。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/多线程/" rel="tag">#多线程</a>
+          
+            <a href="/tags/Handler机制/" rel="tag">#Handler机制</a>
+          
+            <a href="/tags/《Android开发探索》/" rel="tag">#《Android开发探索》</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/17/Android 内存优化笔记/" rel="next" title="Android 内存优化笔记">
+                <i class="fa fa-chevron-left"></i> Android 内存优化笔记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://raw.githubusercontent.com/Appigle/very_assets/master/avatar/avatar.jpg"
+               alt="Chenley" />
+          <p class="site-author-name" itemprop="name">Chenley</p>
+          <p class="site-description motion-element" itemprop="description">Appigle's Blog！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Appigle" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github-square"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.github.com/Appigle" title="Chenley" target="_blank">Chenley</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景"><span class="nav-number">2.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">3.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简单原理概述"><span class="nav-number">3.1.</span> <span class="nav-text">简单原理概述</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内部实现"><span class="nav-number">4.</span> <span class="nav-text">内部实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#set-T-value-方法"><span class="nav-number">4.1.</span> <span class="nav-text">set(T value)方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#get-方法"><span class="nav-number">4.2.</span> <span class="nav-text">get()方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chenley</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
