@@ -268,6 +268,133 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/21/Android Fragment 真正的完全解析/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-21T14:19:13+08:00" content="2016-09-21">
+              2016-09-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <hr>
+<p>title: Android Fragment全解析系列 〇<br>tag:</p>
+<pre><code>- Android
+- Fragment
+</code></pre><hr>
+<hr>
+<h3 id="Fragment的生命周期"><a href="#Fragment的生命周期" class="headerlink" title="Fragment的生命周期"></a><code>Fragment</code>的生命周期</h3><p><img src="/uploads/fragmentlifcircle.png" alt=""></p>
+<p><code>Fragment</code>比<code>Activity</code>多了几个额外的生命周期回调方法：</p>
+<ul>
+<li><p><code>onAttach（Activity）</code>: 当<code>Fragment</code>与<code>Activity</code>发生关联时调用</p>
+</li>
+<li><p><code>onCreate()</code>: 初始创建<code>Fragment</code>对象时调用</p>
+</li>
+<li><p><code>onCreateView（LayoutInflater,ViewGroup,Bundle）</code> : 创建<code>Fragment</code>的视图</p>
+</li>
+<li><p><code>onActivityCreated（Bundle）</code> ：当<code>Activity</code>的<code>onCreate</code>方法返回时调用</p>
+</li>
+<li><p><code>onStart（）</code></p>
+</li>
+<li><p><code>onResume（）</code></p>
+</li>
+<li><p><code>onPause（）</code></p>
+</li>
+<li><p><code>onStop()</code></p>
+</li>
+<li><p><code>onDestoryView()</code> : 与<code>onCreateView</code>相对应，当该<code>Fragment</code>的视图被移除时调用</p>
+</li>
+<li><p><code>onDestory（）</code></p>
+</li>
+<li><p><code>onDetach()</code> : 与<code>onAttach</code>相对应，当该<code>Fragment</code>与<code>Activity</code>关联被取消时候调用</p>
+</li>
+<li><p>注意 ：除了<code>onCreateView</code>，其他的所有方法被重写的时候必须调用父类对于该方法的实现，即<code>super.onXxx()</code>。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/21/Android Fragment 真正的完全解析/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/21/RxJava 笔记/" itemprop="url">
                   RxJava笔记
                 </a>
@@ -588,7 +715,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">34</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -598,7 +725,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
