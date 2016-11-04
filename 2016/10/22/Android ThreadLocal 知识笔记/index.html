@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android ThreadLocal 知识笔记 | Chenley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="定义ThreadLocal是一个线程内部的数据存储类，通过它可以在指定的线程中存储数据，数据存储以后，只有在指定的线程中可以获取到存储的数据，对于其他线程来说则无法获取到数据。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android ThreadLocal 知识笔记">
+<meta property="og:url" content="http://yoursite.com/2016/10/22/Android ThreadLocal 知识笔记/index.html">
+<meta property="og:site_name" content="Chenley">
+<meta property="og:description" content="定义ThreadLocal是一个线程内部的数据存储类，通过它可以在指定的线程中存储数据，数据存储以后，只有在指定的线程中可以获取到存储的数据，对于其他线程来说则无法获取到数据。">
+<meta property="og:updated_time" content="2016-10-23T03:45:36.033Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android ThreadLocal 知识笔记">
+<meta name="twitter:description" content="定义ThreadLocal是一个线程内部的数据存储类，通过它可以在指定的线程中存储数据，数据存储以后，只有在指定的线程中可以获取到存储的数据，对于其他线程来说则无法获取到数据。">
+  
+    <link rel="alternate" href="/atom.xml" title="Chenley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Chenley</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Android ThreadLocal 知识笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/22/Android ThreadLocal 知识笔记/" class="article-date">
+  <time datetime="2016-10-22T05:07:11.711Z" itemprop="datePublished">2016-10-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android ThreadLocal 知识笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><code>ThreadLocal</code>是一个线程内部的数据存储类，通过它可以在指定的线程中存储数据，数据存储以后，只有在指定的线程中可以获取到存储的数据，对于其他线程来说则无法获取到数据。<br><a id="more"></a></p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>一般来说，当某些数据是以线程为作用域并且不同线程具有不同的数据副本的时候，就可以考虑采用<code>ThreadLocal</code>。<br>另一个使用场景是复杂逻辑下的对象传递，比如监听器的传递。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><h4 id="简单原理概述"><a href="#简单原理概述" class="headerlink" title="简单原理概述"></a>简单原理概述</h4><p>不同线程访问同一个<code>ThreadLocal</code>的<code>get</code>方法，<code>ThreadLocal</code>内部会从各自的线程中取出一个数组，然后再从数组中根据当前<code>ThradLocal</code>的索引去查找出对应的value值。很显然，不同线程中的数组是不同的，这就是为什么通过<code>ThreadLocal</code>可以在不同的的线程中维护一套数据的副本并且彼此互不干扰。</p>
+<h3 id="内部实现"><a href="#内部实现" class="headerlink" title="内部实现"></a>内部实现</h3><p><code>ThreadLocal</code>是一个泛型类，它的定义为：<code>public class ThreadLocal&lt;T&gt;</code>，只要弄清楚<code>ThreadLocal</code>的<code>get</code>和<code>set</code>方法就可以明白它的工作原理；</p>
+<h4 id="set-T-value-方法"><a href="#set-T-value-方法" class="headerlink" title="set(T value)方法"></a><code>set(T value)</code>方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(T value)</span> </span>&#123;</div><div class="line">    Thread currentThread = Thread.currentThread();</div><div class="line">    Values values = values(currentThread);</div><div class="line">    <span class="keyword">if</span> (values == <span class="keyword">null</span>) &#123;</div><div class="line">        values = initializeValues(currentThread);</div><div class="line">    &#125;</div><div class="line">    values.put(<span class="keyword">this</span>, value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在上面<code>set</code>方法中，首先会通过values方法来获取当前线程的<code>ThreadLocal</code>数据。获取方式很简单：在<code>Thread</code>类的内部有一个成员专门用于存储线程的<code>ThreadLocal</code>的数据：<code>ThreadLocal.Values localValues</code>，因此获取当前线程的<code>ThreadLocal</code>数据就变得异常简单了。如果<code>localValues</code>的值为null，那么久需要对其进行初始化，初始化后再将<code>ThreadLocal</code>的值进行存储。在<code>localValues</code>内部有一个数组：<code>private Object[] table</code>,<code>ThreadLocal</code>的值就存在在这个<code>table</code>数组中。源码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">         * Sets entry for given ThreadLocal to given value, creating an</div><div class="line">         * entry if necessary.</div><div class="line">         */</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">put</span><span class="params">(ThreadLocal&lt;?&gt; key, Object value)</span> </span>&#123;</div><div class="line">            cleanUp();</div><div class="line"></div><div class="line">            <span class="comment">// Keep track of first tombstone. That's where we want to go back</span></div><div class="line">            <span class="comment">// and add an entry if necessary.</span></div><div class="line">            <span class="keyword">int</span> firstTombstone = -<span class="number">1</span>;</div><div class="line"></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> index = key.hash &amp; mask;; index = next(index)) &#123;</div><div class="line">                Object k = table[index];</div><div class="line"></div><div class="line">                <span class="keyword">if</span> (k == key.reference) &#123;</div><div class="line">                    <span class="comment">// Replace existing entry.</span></div><div class="line">                    table[index + <span class="number">1</span>] = value;</div><div class="line">                    <span class="keyword">return</span>;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="keyword">if</span> (k == <span class="keyword">null</span>) &#123;</div><div class="line">                    <span class="keyword">if</span> (firstTombstone == -<span class="number">1</span>) &#123;</div><div class="line">                        <span class="comment">// Fill in null slot.</span></div><div class="line">                        table[index] = key.reference;</div><div class="line">                        table[index + <span class="number">1</span>] = value;</div><div class="line">                        size++;</div><div class="line">                        <span class="keyword">return</span>;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="comment">// Go back and replace first tombstone.</span></div><div class="line">                    table[firstTombstone] = key.reference;</div><div class="line">                    table[firstTombstone + <span class="number">1</span>] = value;</div><div class="line">                    tombstones--;</div><div class="line">                    size++;</div><div class="line">                    <span class="keyword">return</span>;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="comment">// Remember first tombstone.</span></div><div class="line">                <span class="keyword">if</span> (firstTombstone == -<span class="number">1</span> &amp;&amp; k == TOMBSTONE) &#123;</div><div class="line">                    firstTombstone = index;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<p>从上面源码可以看出来：<code>ThreadLocal</code>的值在<code>table</code>数组中的存储位置总是为<code>ThradLocal</code>的<code>reference</code>字段所标识的对象的下一个位置，比如<code>ThreadLocal</code>的<code>reference</code>对象在<code>table</code>数组中的索引为<code>index</code>，那么<code>ThreadLocal</code>的值在<code>table</code>数组中的索引就是<code>index+1</code>。最终<code>ThreadLocal</code>的值将会被存储在<code>table</code>数组中：<code>table[index+1]=value</code>。</p>
+<h4 id="get-方法"><a href="#get-方法" class="headerlink" title="get()方法"></a><code>get()</code>方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// Optimized for the fast path.</span></div><div class="line">    Thread currentThread = Thread.currentThread();</div><div class="line">    Values values = values(currentThread);</div><div class="line">    <span class="keyword">if</span> (values != <span class="keyword">null</span>) &#123;</div><div class="line">        Object[] table = values.table;</div><div class="line">        <span class="keyword">int</span> index = hash &amp; values.mask;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.reference == table[index]) &#123;</div><div class="line">            <span class="keyword">return</span> (T) table[index + <span class="number">1</span>];</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        values = initializeValues(currentThread);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> (T) values.getAfterMiss(<span class="keyword">this</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>get()</code>方法的逻辑：取出当前线程的<code>localValues</code>对象，如果这个对象为null那么就返回初始值，初始值由<code>ThreadLocal</code>的<code>initialValue</code>方法来描述，默认情况下为null，可以重写该方法，返回自定义的值。如果<code>localValues</code>对象不为null，那么就取出它的<code>table</code>数组并找出<code>ThreadLocal</code>的<code>reference</code>对象在<code>table</code>数组中的位置，然后<code>table</code>数组中的下一个位置所存储的数据就是<code>ThreadLocal</code>的值。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>从<code>ThreadLocal</code>的<code>set</code>和<code>get</code>方法可以看出，它们所操作的对象都是当前线程的<code>localVaules</code>对象的<code>table</code>数组，因此在不同线程中访问同一个<code>ThreadLocal</code>的<code>set</code>和<code>get</code>方法，它们对<code>ThreadLocal</code>所做的读/写操作仅限于各自线程的内部，这就是为什么<code>ThreadLocal</code>可以在多个线程中互不干扰地存储和修改数据。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/10/22/Android ThreadLocal 知识笔记/" data-id="civ339c3d000bp8qqisspm3o8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Handler机制/">Handler机制</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/《Android开发探索》/">《Android开发探索》</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/03/Android 仿JD阻尼效果加载商品信息和商品详情/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Android 仿JD阻尼效果加载商品信息和商品详情
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/17/Android 内存优化笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Android 内存优化笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ActionBar/">ActionBar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Api/">Api</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EventBus/">EventBus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fragment/">Fragment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handler机制/">Handler机制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keyboard/">Keyboard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rxjava/">Rxjava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpannableString/">SpannableString</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView/">WebView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Widget/">Widget</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yuanyuan/">Yuanyuan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aidl/">aidl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apk更新/">apk更新</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/《Android开发探索》/">《Android开发探索》</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优化/">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存/">内存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/反射/">反射</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打包/">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模式/">模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注解/">注解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/适配/">适配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/零碎知识点/">零碎知识点</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ActionBar/" style="font-size: 10px;">ActionBar</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Api/" style="font-size: 10px;">Api</a> <a href="/tags/EventBus/" style="font-size: 10px;">EventBus</a> <a href="/tags/Fragment/" style="font-size: 10px;">Fragment</a> <a href="/tags/Handler机制/" style="font-size: 10px;">Handler机制</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/Keyboard/" style="font-size: 10px;">Keyboard</a> <a href="/tags/Rxjava/" style="font-size: 10px;">Rxjava</a> <a href="/tags/SpannableString/" style="font-size: 10px;">SpannableString</a> <a href="/tags/WebView/" style="font-size: 10px;">WebView</a> <a href="/tags/Widget/" style="font-size: 10px;">Widget</a> <a href="/tags/Yuanyuan/" style="font-size: 10px;">Yuanyuan</a> <a href="/tags/aidl/" style="font-size: 10px;">aidl</a> <a href="/tags/apk更新/" style="font-size: 10px;">apk更新</a> <a href="/tags/《Android开发探索》/" style="font-size: 10px;">《Android开发探索》</a> <a href="/tags/优化/" style="font-size: 15px;">优化</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/多线程/" style="font-size: 12.5px;">多线程</a> <a href="/tags/快捷键/" style="font-size: 10px;">快捷键</a> <a href="/tags/打包/" style="font-size: 12.5px;">打包</a> <a href="/tags/模式/" style="font-size: 15px;">模式</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/适配/" style="font-size: 10px;">适配</a> <a href="/tags/零碎知识点/" style="font-size: 15px;">零碎知识点</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/11/03/Android 设置一串字符串不同位置上文字的不同样式/">Android 设置一串字符串不同位置上文字的不同样式</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/03/Android 仿JD阻尼效果加载商品信息和商品详情/">Android 仿JD阻尼效果加载商品信息和商品详情</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/22/Android ThreadLocal 知识笔记/">Android ThreadLocal 知识笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/17/Android 内存优化笔记/">Android 内存优化笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/17/Android EventBus笔记/">Android EventBus笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Chenley<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

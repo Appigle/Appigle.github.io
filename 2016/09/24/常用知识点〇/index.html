@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>常用知识点〇 | Chenley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Java基础1. 接口的意义
+规范，扩展，回调；
+
+2. Java的三大特性
+封装，多态，继承；
+
+3. 抽象类的意义
+为其子类提供一个公共的类型；
+封装子类中重复的内容;
+定义抽象方法，让子类去做自定义的方法实现；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用知识点〇">
+<meta property="og:url" content="http://yoursite.com/2016/09/24/常用知识点〇/index.html">
+<meta property="og:site_name" content="Chenley">
+<meta property="og:description" content="Java基础1. 接口的意义
+规范，扩展，回调；
+
+2. Java的三大特性
+封装，多态，继承；
+
+3. 抽象类的意义
+为其子类提供一个公共的类型；
+封装子类中重复的内容;
+定义抽象方法，让子类去做自定义的方法实现；">
+<meta property="og:updated_time" content="2016-10-15T06:26:08.625Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常用知识点〇">
+<meta name="twitter:description" content="Java基础1. 接口的意义
+规范，扩展，回调；
+
+2. Java的三大特性
+封装，多态，继承；
+
+3. 抽象类的意义
+为其子类提供一个公共的类型；
+封装子类中重复的内容;
+定义抽象方法，让子类去做自定义的方法实现；">
+  
+    <link rel="alternate" href="/atom.xml" title="Chenley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Chenley</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-常用知识点〇" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/24/常用知识点〇/" class="article-date">
+  <time datetime="2016-09-24T08:53:56.200Z" itemprop="datePublished">2016-09-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      常用知识点〇
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h3><h4 id="1-接口的意义"><a href="#1-接口的意义" class="headerlink" title="1. 接口的意义"></a>1. 接口的意义</h4><blockquote>
+<p>规范，扩展，回调；</p>
+</blockquote>
+<h4 id="2-Java的三大特性"><a href="#2-Java的三大特性" class="headerlink" title="2. Java的三大特性"></a>2. Java的三大特性</h4><blockquote>
+<p>封装，多态，继承；</p>
+</blockquote>
+<h4 id="3-抽象类的意义"><a href="#3-抽象类的意义" class="headerlink" title="3. 抽象类的意义"></a>3. 抽象类的意义</h4><ul>
+<li>为其子类提供一个公共的类型；</li>
+<li>封装子类中重复的内容;</li>
+<li>定义抽象方法，让子类去做自定义的方法实现；</li>
+</ul>
+<a id="more"></a>
+<h4 id="4-内部类的作用"><a href="#4-内部类的作用" class="headerlink" title="4. 内部类的作用"></a>4. 内部类的作用</h4><ul>
+<li>内部类可以使用限定修饰符（private、protected、public），从而实现类的隐藏功能。通常外部类是只能使用public限定符；</li>
+<li>内部类拥有外围类的所有元素访问权限，在android中，这里需要注意内部类对Activity的强引用而导致的内存泄露问题；</li>
+<li>可以实现多重继承（extends）和实现（implements）；</li>
+<li>可以避免修改接口而实现同一个类中在继承一个类和实现一个接口中出现俩种同名方法的调用问题；（经过测试发现，该问题貌似并没什么大问题。因为在接口中的方法并没有具体实现的，可以选择在继承的方法中实现想要实现的方法体，如果要使用继承父类的同名方法，只需要使用super.ff(）即可。极端情况，我就需要单独实现，那么则可以选择内部类的方式。）</li>
+</ul>
+<h4 id="5-抽象类与接口的区别"><a href="#5-抽象类与接口的区别" class="headerlink" title="5. 抽象类与接口的区别"></a>5. 抽象类与接口的区别</h4><ul>
+<li>语法层面上的区别<ol>
+<li>抽象类可以提供成员方法的实现细节，而接口中只能存在public abstract修饰的方法，而且接口中所有的方法不管是否加public abstract修饰，都是默认public abstract修饰；</li>
+<li>抽象类中的成员变量可以是各种类型的，而接口中的成员变量只能是pubilc static final类型的；</li>
+<li>接口中不能含有静态代码块以及静态方法，而抽象类可以有静态代码块和静态方法；</li>
+<li>一个类只能继承一个抽象类，而一个类却可以实现多个接口；</li>
+<li>抽象类可以有构造器，而接口不能有构造器；</li>
+<li>抽象类可以有main方法并且可以运行它，而接口没有，也不能运行main方法；</li>
+<li>抽象类可以添加非抽象新方法，而接口不能随便添加新的方法。</li>
+</ol>
+</li>
+<li>设计层面上的区别<ol>
+<li>抽象类是对一种事物的抽象，即对物抽象，而接口是对行为的抽象。抽象类是对整个类整体进行抽象，包括属性和行为，但是接口却是对类局部（行为）进行抽象。</li>
+<li>设计层面不同，抽象类作为很多子类的父类，它是一种模板式设计。而接口是一种行为规范，它是一种辐射式设计。</li>
+</ol>
+</li>
+</ul>
+<h4 id="6-Java的集合的继承关系"><a href="#6-Java的集合的继承关系" class="headerlink" title="6. Java的集合的继承关系"></a>6. Java的集合的继承关系</h4><blockquote>
+<ul>
+<li>Collection<ul>
+<li>|–List</li>
+<li>|  &gt; |–LinkedList</li>
+<li>|  &gt; |–ArrayList</li>
+<li>|  &gt; |–Vector</li>
+<li>|    &gt; &gt; &gt;   |–Stack</li>
+<li>|–Set</li>
+</ul>
+</li>
+<li>Map<ul>
+<li>|–HashTable</li>
+<li>|–HashMap</li>
+<li>|–WeakHashMap</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>HashTables与HashMap的区别：</p>
+<ul>
+<li>HashMap是HashTable的轻量级实现（非线程安全的实现），同时都是实现了Map接口。</li>
+<li>主要区别在于HashMap允许将null作为一个entry的key或者value，而HashTable不允许。</li>
+<li>HashMap把HashTable的contains方法去掉了，改成containsValue和containsKey方法。</li>
+<li>HashTable继承自Dictionary类，而HashMap是Java1.2引进的Map Interface的一个实现。</li>
+<li>最大的不同是，HashTable方法是Synchronize的，而HashMap不是，在多个线程访问HashTable时，不需要自己为它的方法实现同步，而HashMap就必须为之提供外同步（Collections.synchronizedMap）；</li>
+</ul>
+<h4 id="7-java中的-和equals和HashCode的区别"><a href="#7-java中的-和equals和HashCode的区别" class="headerlink" title="7. java中的==和equals和HashCode的区别"></a>7. java中的==和equals和HashCode的区别</h4><ul>
+<li>== ： 比较基本类型的数值或者复杂类型的内存地址</li>
+<li>equals : 比较复杂类型的内容</li>
+<li>hashCode ： hash计算后的值</li>
+</ul>
+<h4 id="8-Java基本数据类型占用内存大小"><a href="#8-Java基本数据类型占用内存大小" class="headerlink" title="8. Java基本数据类型占用内存大小"></a>8. Java基本数据类型占用内存大小</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>位数</th>
+<th>字节数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> byte</td>
+<td>8</td>
+<td>1</td>
+</tr>
+<tr>
+<td> short</td>
+<td>16</td>
+<td>2</td>
+</tr>
+<tr>
+<td> char</td>
+<td>16</td>
+<td>2</td>
+</tr>
+<tr>
+<td> int</td>
+<td>32</td>
+<td>4</td>
+</tr>
+<tr>
+<td> float</td>
+<td>32</td>
+<td>4</td>
+</tr>
+<tr>
+<td> long</td>
+<td>64</td>
+<td>8</td>
+</tr>
+<tr>
+<td> double</td>
+<td>64</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<h4 id="9-String-StringBuffer-StringBuilder区别："><a href="#9-String-StringBuffer-StringBuilder区别：" class="headerlink" title="9. String/StringBuffer/StringBuilder区别："></a>9. String/StringBuffer/StringBuilder区别：</h4><ul>
+<li>String ：字符串常量；</li>
+<li>StringBuffer ：字符串变量（线程安全）</li>
+<li>StringBuilder ： 字符串变量（非线程安全）</li>
+<li>简单说：String类型是不可变的对象，每次对String类型进行改变时候，都等同于生成了一个新的String对象。StringBuffer和StringBuilder则是对自身的操作，区别则是线程时候安全。</li>
+</ul>
+<h4 id="10-多态"><a href="#10-多态" class="headerlink" title="10. 多态"></a>10. 多态</h4><ul>
+<li>多态的实现方式：接口实现，继承父类进行方法重写，同一个类中进行方法重载。</li>
+<li>多态的好处：可替换性、可扩充性、接口性、灵活性、简化性。</li>
+</ul>
+<h4 id="11-线程中sleep和wait的区别"><a href="#11-线程中sleep和wait的区别" class="headerlink" title="11. 线程中sleep和wait的区别"></a>11. 线程中sleep和wait的区别</h4><ul>
+<li>sleep（）是线程Thread的方法：调用该方法后，不释放对象锁。设置时间到后重新启动线程，或者interrupt启动线程；</li>
+<li>wait（）是Object类的方法：调用该方法后，释放对象锁，重新启动这需要调用notify（）或者notifyAll（）方法。</li>
+</ul>
+<h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><h4 id="1-如何导入外部数据库"><a href="#1-如何导入外部数据库" class="headerlink" title="1. 如何导入外部数据库"></a>1. 如何导入外部数据库</h4><ol>
+<li><a href="http://www.cnblogs.com/xiaowenji/archive/2011/01/03/1925014.html" target="_blank" rel="external">[Android]如何导入已有的外部数据库</a></li>
+</ol>
+<h4 id="2-打开一个Activity到View显示的流程："><a href="#2-打开一个Activity到View显示的流程：" class="headerlink" title="2. 打开一个Activity到View显示的流程："></a>2. 打开一个Activity到View显示的流程：</h4><ol>
+<li>在Activity中调用attach()，创建了一个window对象；</li>
+<li>创建的window是其子类PhoneWindow的实例，在attach（）中创建PhoneWindow实例对象</li>
+<li>在Activity中调用setContentView（R.layout.XXX）,其实实际上是调用了getWindow().setContentView()方法，即调用PhoneWindow的setContentView（）方法；</li>
+<li>创建ParentView：作为ViewGroup的子类，实际是创建的DecorView extends Framelayout；</li>
+<li>将指定的R.layout.xxx进行填充到ParentView中；</li>
+<li>调用ViewGourp的removeALLview(),将原本的View移除，然后调用addView（）添加View；</li>
+</ol>
+<h4 id="3-低版本SDK实现高版本api"><a href="#3-低版本SDK实现高版本api" class="headerlink" title="3. 低版本SDK实现高版本api"></a>3. 低版本SDK实现高版本api</h4><ol>
+<li>在高版本api的方法前面加一个@TargetApi（Build.VERSION.SKDCODE）</li>
+<li>在代码上用版本判断来控制不同版本的不同执行代码；<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@TargetApi</span>(<span class="number">11</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">text</span><span class="params">()</span></span>&#123;</div><div class="line"><span class="keyword">if</span>(Build.VERSION.SDK_INT &gt;= <span class="number">11</span>)&#123;</div><div class="line">             <span class="comment">// 使用api11 新加 api的方法</span></div><div class="line">        &#125;</div><div class="line"><span class="keyword">else</span> &#123;</div><div class="line">			<span class="comment">// 低版本的处理方法</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="4-Activity的LaunchMode引用场景"><a href="#4-Activity的LaunchMode引用场景" class="headerlink" title="4. Activity的LaunchMode引用场景"></a>4. Activity的LaunchMode引用场景</h4><ul>
+<li>standard ： 普通模式创建一个Activity，也是默认模式；</li>
+<li>singleTop ： 栈顶不是该类型的Activity，创建一个新的Activity，否则直接进入栈顶的Activity，并且调用onNewIntent（）方法。</li>
+<li>singleTask :　整个回退栈中没有该类型的Activity， 则创建新的Activity，否则进入已存在的Activity中，并且调用onNewIntent（），同时会清除掉在栈中位于打开Activity的上的其他Activity实例。</li>
+<li>singeleInstance : 回退栈中，只有这一个Activity，没有其他的Activity。</li>
+<li>singleTop：模式适用于接收通知启动的内容显示页面。eg.接收到多条通知，只通过一个Activity打开通知内容；</li>
+<li>singleTask：适合做程序的入口点。eg.浏览器的主界面，不管从多少个应用启动浏览器，只会启动主界面一次，其余情况会走onNewIntent，并且会清空主界面上的其他界面。</li>
+<li>singleInstance:eg.闹钟界面等类似不需要在返回过程中进入到功能界面内部的情况。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/09/24/常用知识点〇/" data-id="civ339c54001np8qq7fzj7nig" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/零碎知识点/">零碎知识点</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/09/26/Android 多渠道打包笔记总结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Android 多渠道打包笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/23/Android XML布局文件@+id意义/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Android XML布局文件@+id意义</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ActionBar/">ActionBar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Api/">Api</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EventBus/">EventBus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fragment/">Fragment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handler机制/">Handler机制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keyboard/">Keyboard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rxjava/">Rxjava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpannableString/">SpannableString</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView/">WebView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Widget/">Widget</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yuanyuan/">Yuanyuan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aidl/">aidl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apk更新/">apk更新</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/《Android开发探索》/">《Android开发探索》</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优化/">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存/">内存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/反射/">反射</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打包/">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模式/">模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注解/">注解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/适配/">适配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/零碎知识点/">零碎知识点</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ActionBar/" style="font-size: 10px;">ActionBar</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Api/" style="font-size: 10px;">Api</a> <a href="/tags/EventBus/" style="font-size: 10px;">EventBus</a> <a href="/tags/Fragment/" style="font-size: 10px;">Fragment</a> <a href="/tags/Handler机制/" style="font-size: 10px;">Handler机制</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/Keyboard/" style="font-size: 10px;">Keyboard</a> <a href="/tags/Rxjava/" style="font-size: 10px;">Rxjava</a> <a href="/tags/SpannableString/" style="font-size: 10px;">SpannableString</a> <a href="/tags/WebView/" style="font-size: 10px;">WebView</a> <a href="/tags/Widget/" style="font-size: 10px;">Widget</a> <a href="/tags/Yuanyuan/" style="font-size: 10px;">Yuanyuan</a> <a href="/tags/aidl/" style="font-size: 10px;">aidl</a> <a href="/tags/apk更新/" style="font-size: 10px;">apk更新</a> <a href="/tags/《Android开发探索》/" style="font-size: 10px;">《Android开发探索》</a> <a href="/tags/优化/" style="font-size: 15px;">优化</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/多线程/" style="font-size: 12.5px;">多线程</a> <a href="/tags/快捷键/" style="font-size: 10px;">快捷键</a> <a href="/tags/打包/" style="font-size: 12.5px;">打包</a> <a href="/tags/模式/" style="font-size: 15px;">模式</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/适配/" style="font-size: 10px;">适配</a> <a href="/tags/零碎知识点/" style="font-size: 15px;">零碎知识点</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/11/03/Android 设置一串字符串不同位置上文字的不同样式/">Android 设置一串字符串不同位置上文字的不同样式</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/03/Android 仿JD阻尼效果加载商品信息和商品详情/">Android 仿JD阻尼效果加载商品信息和商品详情</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/22/Android ThreadLocal 知识笔记/">Android ThreadLocal 知识笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/17/Android 内存优化笔记/">Android 内存优化笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/17/Android EventBus笔记/">Android EventBus笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Chenley<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

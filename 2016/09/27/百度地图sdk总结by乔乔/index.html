@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>百度地图 -Qiao | Chenley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="所有的百度地图SDK在使用时，必须先调用SDKInitializer.initialize(Context context)方法进行初始化。
+
+MapStaus地图状态。可以设置地图的中心点、缩放级别、仰望角、旋转角。该类是final类，要用MapStaus.Builder构造
+Overlay覆盖物。该类为抽象类。其子类有Arc弧线、Circle圆、Dot圆点、GroundOverlay矩形区域">
+<meta property="og:type" content="article">
+<meta property="og:title" content="百度地图 -Qiao">
+<meta property="og:url" content="http://yoursite.com/2016/09/27/百度地图sdk总结by乔乔/index.html">
+<meta property="og:site_name" content="Chenley">
+<meta property="og:description" content="所有的百度地图SDK在使用时，必须先调用SDKInitializer.initialize(Context context)方法进行初始化。
+
+MapStaus地图状态。可以设置地图的中心点、缩放级别、仰望角、旋转角。该类是final类，要用MapStaus.Builder构造
+Overlay覆盖物。该类为抽象类。其子类有Arc弧线、Circle圆、Dot圆点、GroundOverlay矩形区域">
+<meta property="og:updated_time" content="2016-09-27T10:34:50.828Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="百度地图 -Qiao">
+<meta name="twitter:description" content="所有的百度地图SDK在使用时，必须先调用SDKInitializer.initialize(Context context)方法进行初始化。
+
+MapStaus地图状态。可以设置地图的中心点、缩放级别、仰望角、旋转角。该类是final类，要用MapStaus.Builder构造
+Overlay覆盖物。该类为抽象类。其子类有Arc弧线、Circle圆、Dot圆点、GroundOverlay矩形区域">
+  
+    <link rel="alternate" href="/atom.xml" title="Chenley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Chenley</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-百度地图sdk总结by乔乔" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/27/百度地图sdk总结by乔乔/" class="article-date">
+  <time datetime="2016-09-27T10:33:22.388Z" itemprop="datePublished">2016-09-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      百度地图 -Qiao
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>所有的百度地图SDK在使用时，必须先调用<code>SDKInitializer.initialize(Context context)</code>方法进行初始化。</p>
+<ul>
+<li><code>MapStaus</code>地图状态。可以设置地图的中心点、缩放级别、仰望角、旋转角。该类是final类，要用<code>MapStaus.Builder</code>构造</li>
+<li><code>Overlay</code>覆盖物。该类为抽象类。其子类有<code>Arc</code>弧线、<code>Circle</code>圆、<code>Dot</code>圆点、<code>GroundOverlay</code>矩形区域、<code>Marker</code>标记、<code>Polygon</code>多边形、<code>Polyline</code>折线、<code>Text</code>文本</li>
+</ul>
+<a id="more"></a>
+<h2 id="地图常用类"><a href="#地图常用类" class="headerlink" title="地图常用类"></a>地图常用类</h2><h3 id="BaiduMap"><a href="#BaiduMap" class="headerlink" title="BaiduMap"></a>BaiduMap</h3><p> 用于操作MapView的类。</p>
+<h4 id="BaiduMap常用方法"><a href="#BaiduMap常用方法" class="headerlink" title="BaiduMap常用方法"></a>BaiduMap常用方法</h4><ul>
+<li><code>animateMapStatus(MapStatusUpdate update)</code>更新地图</li>
+<li><code>addOverlay(OverlayOptions options)</code>添加覆盖物</li>
+<li><code>clear()</code>清空地图所有的 Overlay 覆盖物以及 InfoWindow</li>
+<li><code>setMyLocationEnabled(boolean enabled)</code>是否允许定位图层</li>
+<li><code>setMapStatus(MapStatusUpdate update)</code>改变地图状态</li>
+<li><code>setMyLocationData(MyLocationData data)</code>设置定位数据</li>
+<li><code>setMyLocationConfigeration(MyLocationConfiguration configeration)</code>设置定位图层配置信息<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ul>
+<li>在使用定位图层时，要先设置<code>setMyLocationEnabled(true)</code></li>
+<li>添加覆盖物，返回的是<code>Overlay</code>这个超类，形参是<code>OverlayOptions</code>的子类</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="MapView"><a href="#MapView" class="headerlink" title="MapView"></a>MapView</h3><ul>
+<li>用于显示地图视图的控件，生命周期最好与Activity一致</li>
+<li>在com.baidu.mapapi.map包下，在xml调用时要使用包名加控件名</li>
+</ul>
+<h4 id="MapView常用方法"><a href="#MapView常用方法" class="headerlink" title="MapView常用方法"></a>MapView常用方法</h4><ul>
+<li><code>getMap()</code> 获得地图控制器，返回一个BaiduMap类</li>
+<li><code>showZoomControls(boolean show)</code> 设置是否显示缩放控件</li>
+<li><code>showScaleControl(boolean show)</code> 设置是否显示比例尺控件</li>
+<li><code>setLogoPosition(LogoPosition position)</code> 用于多地图显示</li>
+<li><code>removeView(View view)</code> 从MapView中移除一个子View</li>
+<li><code>getMapLevel()</code> 获取当前地图级别对应比例尺大小</li>
+<li><code>setCustomMapStylePath(String customMapStylePath)</code> 设置自定义地图样式<h4 id="MapView的使用"><a href="#MapView的使用" class="headerlink" title="MapView的使用"></a>MapView的使用</h4></li>
+</ul>
+<ol>
+<li><p>若从XML中加载，直接用findViewById即可，需要注意的是若不进行任何的设置，默认的中心点是北京，并不是定位的当前点。下面的代码只是简单的演示了如何在加载地图时手动设置定位中心点。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">      LatLng p = <span class="keyword">new</span> LatLng(<span class="number">31.22548</span>,<span class="number">121.48326</span>);</div><div class="line">mBaiduMap = mMapView.getMap();</div><div class="line">mBaiduMap.setMyLocationEnabled(<span class="keyword">true</span>);</div><div class="line">MapStatus.Builder builder = <span class="keyword">new</span> MapStatus.Builder();</div><div class="line">builder.target(p).zoom(<span class="number">18.0f</span>);</div><div class="line">mBaiduMap.animateMapStatus(MapStatusUpdateFactory</div><div class="line">		.newMapStatus(builder.build()));</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果某个Activit只有一个MapView用于显示地图。可以直接<code>setContentView(mMapView)</code>，<code>mMapView</code>是<code>MapView</code>的实例。在调用时必须先实例化<code>MapView</code>代码演示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (intent.hasExtra(<span class="string">"x"</span>) &amp;&amp; intent.hasExtra(<span class="string">"y"</span>)) &#123;</div><div class="line">  Bundle b = intent.getExtras();</div><div class="line">  LatLng p = <span class="keyword">new</span> LatLng(b.getDouble(<span class="string">"y"</span>), b.getDouble(<span class="string">"x"</span>));</div><div class="line">    mMapView = <span class="keyword">new</span> MapView(<span class="keyword">this</span>,</div><div class="line">    <span class="keyword">new</span> BaiduMapOptions()</div><div class="line">  .mapStatus(<span class="keyword">new</span> MapStatus.Builder().target(p).zoom(<span class="number">18.0f</span>)</div><div class="line">  .build()));</div><div class="line">&#125;<span class="keyword">else</span></div><div class="line">    mMapView = <span class="keyword">new</span> MapView(<span class="keyword">this</span>, <span class="keyword">new</span> BaiduMapOptions());</div><div class="line">    setContentView(mMapView);</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>fragment</code>填充<code>MapView</code>时，需要借助<code>SupportMapFragment</code>类去实现。代码演示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">        MapStatus ms = <span class="keyword">new</span> MapStatus.Builder()</div><div class="line">        .overlook(-<span class="number">20</span>)</div><div class="line">        .zoom(<span class="number">15</span>).build();</div><div class="line">		<span class="comment">//mapView的初始化</span></div><div class="line">		BaiduMapOptions bo = <span class="keyword">new</span> BaiduMapOptio()</div><div class="line">        .mapStatus(ms)</div><div class="line">        .compassEnabled(<span class="keyword">false</span>)</div><div class="line">        .zoomControlsEnabled(<span class="keyword">false</span>);</div><div class="line">		map = SupportMapFragment.newInstance(bo);</div><div class="line">		FragmentManager manager = getSupportFragmentManager();</div><div class="line">		manager.beginTransaction()</div><div class="line">        .add(R.id.map, map, <span class="string">"map_fragment"</span>).commit();`</div><div class="line">~</div></pre></td></tr></table></figure>
+</li>
+<li><p>实时定位。百度地图给的Demo中是用其SDK中的<code>BDLocationListener</code>和<code>LocationClient</code>类实现的。并没用Android自带的定位。代码比较多，就不具体给出了。其实也可以用自带的，使用<code>MyLocationData</code>进行设置.简化代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">       LatLng p = <span class="keyword">new</span> LatLng(<span class="number">31.22548</span>,<span class="number">121.48326</span>);</div><div class="line">	mBaiduMap = mMapView.getMap();</div><div class="line">	mBaiduMap.setMyLocationEnabled(<span class="keyword">true</span>);		</div><div class="line">	MyLocationData locData = <span class="keyword">new</span> MyLocationData.Builder()</div><div class="line">	.accuracy(<span class="number">100</span>)</div><div class="line">	.direction(<span class="number">100</span>).latitude(p.latitude)</div><div class="line">	.longitude(p.longitude).build();</div><div class="line">	mBaiduMap.setMyLocationData(locData);</div><div class="line">		</div><div class="line">       <span class="comment">//初始化mapView</span></div><div class="line">	MapStatus.Builder builder = <span class="keyword">new</span> MapStatus.Builder();</div><div class="line">	builder.target(p).zoom(<span class="number">18.0f</span>);</div><div class="line">	mBaiduMap.animateMapStatus(MapStatusUpdateFactory</div><div class="line">			.newMapStatus(builder.build()));</div><div class="line">	mBaiduMap.setMyLocationConfigeration(<span class="keyword">new</span> MyLocationConfiguration(</div><div class="line">			LocationMode.NORMAL, <span class="keyword">true</span>, <span class="keyword">null</span>));</div><div class="line">代码中的经纬度是固定的，使用时采用实时接收当前点经纬度即可.获得的原始GPS坐标需进行转换。转换代码如下</div><div class="line">     </div><div class="line">       <span class="function"><span class="keyword">private</span> LatLng <span class="title">convert</span><span class="params">(LatLng sourceLatLng)</span></span>&#123;</div><div class="line">       <span class="comment">// 将google地图、soso地图、aliyun地图、mapabc地图和amap地图// 所用坐标转换成百度坐标  </span></div><div class="line">	<span class="comment">//CoordinateConverter converter  = new CoordinateConverter();  </span></div><div class="line">	<span class="comment">//converter.from(CoordType.COMMON);  </span></div><div class="line">	<span class="comment">// sourceLatLng待转换坐标  </span></div><div class="line">	<span class="comment">//converter.coord(sourceLatLng);  </span></div><div class="line">	<span class="comment">//LatLng desLatLng = converter.convert();  </span></div><div class="line">	 </div><div class="line">	<span class="comment">// 将GPS设备采集的原始GPS坐标转换成百度坐标  </span></div><div class="line">	CoordinateConverter converter  = <span class="keyword">new</span> CoordinateConverter();  </div><div class="line">	converter.from(CoordType.GPS);  </div><div class="line">	<span class="comment">// sourceLatLng待转换坐标  </span></div><div class="line">	converter.coord(sourceLatLng);  </div><div class="line">	LatLng desLatLng = converter.convert();</div><div class="line">	<span class="keyword">return</span> desLatLng; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Overlay"><a href="#Overlay" class="headerlink" title="Overlay"></a>Overlay</h3><p>添加覆盖物<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div></pre></td><td class="code"><pre><div class="line">   <span class="comment">/**</span></div><div class="line">    * 添加点、线、多边形、圆、文字</div><div class="line">   */</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addCustomElementsDemo</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="comment">// 添加普通折线绘制</span></div><div class="line">      LatLng p1 = <span class="keyword">new</span> LatLng(<span class="number">39.97923</span>, <span class="number">116.357428</span>);</div><div class="line">      LatLng p2 = <span class="keyword">new</span> LatLng(<span class="number">39.94923</span>, <span class="number">116.397428</span>);</div><div class="line">      LatLng p3 = <span class="keyword">new</span> LatLng(<span class="number">39.97923</span>, <span class="number">116.437428</span>);</div><div class="line">      List&lt;LatLng&gt; points = <span class="keyword">new</span> ArrayList&lt;LatLng&gt;();</div><div class="line">      points.add(p1);</div><div class="line">      points.add(p2);</div><div class="line">      points.add(p3);</div><div class="line">      OverlayOptions ooPolyline = <span class="keyword">new</span> PolylineOptions().width(<span class="number">10</span>)</div><div class="line">              .color(<span class="number">0xAAFF0000</span>).points(points);</div><div class="line">      mPolyline = (Polyline) mBaiduMap.addOverlay(ooPolyline);</div><div class="line">      mPolyline.setDottedLine(dottedLine.isChecked());</div><div class="line">      </div><div class="line">      <span class="comment">// 添加多颜色分段的折线绘制</span></div><div class="line">      LatLng p11 = <span class="keyword">new</span> LatLng(<span class="number">39.965</span>, <span class="number">116.444</span>);</div><div class="line">      LatLng p21 = <span class="keyword">new</span> LatLng(<span class="number">39.925</span>, <span class="number">116.494</span>);</div><div class="line">      LatLng p31 = <span class="keyword">new</span> LatLng(<span class="number">39.955</span>, <span class="number">116.534</span>);</div><div class="line">      LatLng p41 = <span class="keyword">new</span> LatLng(<span class="number">39.905</span>, <span class="number">116.594</span>);</div><div class="line">      LatLng p51 = <span class="keyword">new</span> LatLng(<span class="number">39.965</span>, <span class="number">116.644</span>);</div><div class="line">      List&lt;LatLng&gt; points1 = <span class="keyword">new</span> ArrayList&lt;LatLng&gt;();</div><div class="line">      points1.add(p11);</div><div class="line">      points1.add(p21);</div><div class="line">      points1.add(p31);</div><div class="line">      points1.add(p41);</div><div class="line">      points1.add(p51);</div><div class="line">      List&lt;Integer&gt; colorValue = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">      colorValue.add(<span class="number">0xAAFF0000</span>);</div><div class="line">      colorValue.add(<span class="number">0xAA00FF00</span>);</div><div class="line">      colorValue.add(<span class="number">0xAA0000FF</span>);</div><div class="line">      OverlayOptions ooPolyline1 = <span class="keyword">new</span> PolylineOptions().width(<span class="number">10</span>)</div><div class="line">              .color(<span class="number">0xAAFF0000</span>).points(points1).colorsValues(colorValue);</div><div class="line">      mColorfulPolyline = (Polyline) mBaiduMap.addOverlay(ooPolyline1);</div><div class="line">      </div><div class="line">      <span class="comment">// 添加多纹理分段的折线绘制</span></div><div class="line">      LatLng p111 = <span class="keyword">new</span> LatLng(<span class="number">39.865</span>, <span class="number">116.444</span>);</div><div class="line">      LatLng p211 = <span class="keyword">new</span> LatLng(<span class="number">39.825</span>, <span class="number">116.494</span>);</div><div class="line">      LatLng p311 = <span class="keyword">new</span> LatLng(<span class="number">39.855</span>, <span class="number">116.534</span>);</div><div class="line">      LatLng p411 = <span class="keyword">new</span> LatLng(<span class="number">39.805</span>, <span class="number">116.594</span>);</div><div class="line">      List&lt;LatLng&gt; points11 = <span class="keyword">new</span> ArrayList&lt;LatLng&gt;();</div><div class="line">      points11.add(p111);</div><div class="line">      points11.add(p211);</div><div class="line">      points11.add(p311);</div><div class="line">      points11.add(p411);</div><div class="line">      List&lt;BitmapDescriptor&gt; textureList = <span class="keyword">new</span> ArrayList&lt;BitmapDescriptor&gt;();</div><div class="line">      textureList.add(mRedTexture);</div><div class="line">      textureList.add(mBlueTexture);</div><div class="line">      textureList.add(mGreenTexture);</div><div class="line">      List&lt;Integer&gt; textureIndexs = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">      textureIndexs.add(<span class="number">0</span>);</div><div class="line">      textureIndexs.add(<span class="number">1</span>);</div><div class="line">      textureIndexs.add(<span class="number">2</span>);</div><div class="line">      OverlayOptions ooPolyline11 = <span class="keyword">new</span> PolylineOptions().width(<span class="number">20</span>)</div><div class="line">              .points(points11).dottedLine(<span class="keyword">true</span>).customTextureList(textureList).textureIndex(textureIndexs);</div><div class="line">      mTexturePolyline = (Polyline) mBaiduMap.addOverlay(ooPolyline11);</div><div class="line">      </div><div class="line">      <span class="comment">// 添加弧线</span></div><div class="line">      OverlayOptions ooArc = <span class="keyword">new</span> ArcOptions().color(<span class="number">0xAA00FF00</span>).width(<span class="number">4</span>)</div><div class="line">              .points(p1, p2, p3);</div><div class="line">      mBaiduMap.addOverlay(ooArc);</div><div class="line">      <span class="comment">// 添加圆</span></div><div class="line">      LatLng llCircle = <span class="keyword">new</span> LatLng(<span class="number">39.90923</span>, <span class="number">116.447428</span>);</div><div class="line">      OverlayOptions ooCircle = <span class="keyword">new</span> CircleOptions().fillColor(<span class="number">0x000000FF</span>)</div><div class="line">              .center(llCircle).stroke(<span class="keyword">new</span> Stroke(<span class="number">5</span>, <span class="number">0xAA000000</span>))</div><div class="line">              .radius(<span class="number">1400</span>);</div><div class="line">      mBaiduMap.addOverlay(ooCircle);</div><div class="line"></div><div class="line">      LatLng llDot = <span class="keyword">new</span> LatLng(<span class="number">39.98923</span>, <span class="number">116.397428</span>);</div><div class="line">      OverlayOptions ooDot = <span class="keyword">new</span> DotOptions().center(llDot).radius(<span class="number">6</span>)</div><div class="line">              .color(<span class="number">0xFF0000FF</span>);</div><div class="line">      mBaiduMap.addOverlay(ooDot);</div><div class="line">      <span class="comment">// 添加多边形</span></div><div class="line">      LatLng pt1 = <span class="keyword">new</span> LatLng(<span class="number">39.93923</span>, <span class="number">116.357428</span>);</div><div class="line">      LatLng pt2 = <span class="keyword">new</span> LatLng(<span class="number">39.91923</span>, <span class="number">116.327428</span>);</div><div class="line">      LatLng pt3 = <span class="keyword">new</span> LatLng(<span class="number">39.89923</span>, <span class="number">116.347428</span>);</div><div class="line">      LatLng pt4 = <span class="keyword">new</span> LatLng(<span class="number">39.89923</span>, <span class="number">116.367428</span>);</div><div class="line">      LatLng pt5 = <span class="keyword">new</span> LatLng(<span class="number">39.91923</span>, <span class="number">116.387428</span>);</div><div class="line">      List&lt;LatLng&gt; pts = <span class="keyword">new</span> ArrayList&lt;LatLng&gt;();</div><div class="line">      pts.add(pt1);</div><div class="line">      pts.add(pt2);</div><div class="line">      pts.add(pt3);</div><div class="line">      pts.add(pt4);</div><div class="line">      pts.add(pt5);</div><div class="line">      OverlayOptions ooPolygon = <span class="keyword">new</span> PolygonOptions().points(pts)</div><div class="line">              .stroke(<span class="keyword">new</span> Stroke(<span class="number">5</span>, <span class="number">0xAA00FF00</span>)).fillColor(<span class="number">0xAAFFFF00</span>);</div><div class="line">      mBaiduMap.addOverlay(ooPolygon);</div><div class="line">      <span class="comment">// 添加文字</span></div><div class="line">      LatLng llText = <span class="keyword">new</span> LatLng(<span class="number">39.86923</span>, <span class="number">116.397428</span>);</div><div class="line">      OverlayOptions ooText = <span class="keyword">new</span> TextOptions().bgColor(<span class="number">0xAAFFFF00</span>)</div><div class="line">              .fontSize(<span class="number">24</span>).fontColor(<span class="number">0xFFFF00FF</span>).text(<span class="string">"百度地图SDK"</span>).rotate(-<span class="number">30</span>)</div><div class="line">              .position(llText);</div><div class="line">      mBaiduMap.addOverlay(ooText);       </div><div class="line">   <span class="comment">// 添加矩形区域</span></div><div class="line">LatLng southwest = <span class="keyword">new</span> LatLng(<span class="number">39.92235</span>, <span class="number">116.380338</span>);</div><div class="line">LatLng northeast = <span class="keyword">new</span> LatLng(<span class="number">39.947246</span>, <span class="number">116.414977</span>);</div><div class="line">LatLngBounds bounds = <span class="keyword">new</span> LatLngBounds.Builder().include(northeast)</div><div class="line">		.include(southwest).build();</div><div class="line"></div><div class="line">OverlayOptions ooGround = <span class="keyword">new</span> GroundOverlayOptions()</div><div class="line">		.positionFromBounds(bounds).image(bdGround).transparency(<span class="number">0.8f</span>);</div><div class="line">mBaiduMap.addOverlay(ooGround);</div><div class="line">   <span class="comment">//添加marker</span></div><div class="line">    LatLng llC = <span class="keyword">new</span> LatLng(<span class="number">39.939723</span>, <span class="number">116.425541</span>);</div><div class="line">      MarkerOptions ooC = <span class="keyword">new</span> MarkerOptions().position(llC).icon(bdC)</div><div class="line">		.perspective(<span class="keyword">false</span>).anchor(<span class="number">0.5f</span>, <span class="number">0.5f</span>).rotate(<span class="number">30</span>).zIndex(<span class="number">7</span>);</div><div class="line">   <span class="comment">//生长动画</span></div><div class="line">ooC.animateType(MarkerAnimateType.grow);</div><div class="line">mMarkerC = (Marker) (mBaiduMap.addOverlay(ooC));</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="POI检索"><a href="#POI检索" class="headerlink" title="POI检索"></a>POI检索</h3><p>百度给的教程：</p>
+<p>第一步，创建POI检索实例</p>
+<pre><code>mPoiSearch = PoiSearch.newInstance();
+</code></pre><p>第二步，创建POI检索监听者；<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"> OnGetPoiSearchResultListener poiListener = <span class="keyword">new</span> OnGetPoiSearchResultListener()&#123;  </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onGetPoiResult</span><span class="params">(PoiResult result)</span></span>&#123;  </div><div class="line"><span class="comment">//获取POI检索结果，可以用添加多个overlay的方式，在地图上显示 </span></div><div class="line">&#125;  </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onGetPoiDetailResult</span><span class="params">(PoiDetailResult result)</span></span>&#123;  </div><div class="line"><span class="comment">//获取Place详情页检索结果  </span></div><div class="line"> &#125;  </div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>第三步，设置POI检索监听者；<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mPoiSearch.setOnGetPoiSearchResultListener(poiListener);</div></pre></td></tr></table></figure></p>
+<p>第四步，发起检索请求；<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> mPoiSearch.searchInCity((<span class="keyword">new</span> PoiCitySearchOption())  </div><div class="line">.city(“北京”)  </div><div class="line">.keyword(“美食”)  </div><div class="line">.pageNum(<span class="number">10</span>));</div></pre></td></tr></table></figure></p>
+<p>第五步，释放POI检索实例；<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mPoiSearch.destroy();</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/09/27/百度地图sdk总结by乔乔/" data-id="civ339c56001sp8qq3f6fopzt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/09/28/Android适配笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Android适配笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/26/SPDY知识笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SPDY知识笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ActionBar/">ActionBar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Api/">Api</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EventBus/">EventBus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fragment/">Fragment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handler机制/">Handler机制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keyboard/">Keyboard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rxjava/">Rxjava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpannableString/">SpannableString</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView/">WebView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Widget/">Widget</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yuanyuan/">Yuanyuan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aidl/">aidl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apk更新/">apk更新</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/《Android开发探索》/">《Android开发探索》</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优化/">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存/">内存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/反射/">反射</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打包/">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模式/">模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注解/">注解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/适配/">适配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/零碎知识点/">零碎知识点</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ActionBar/" style="font-size: 10px;">ActionBar</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Api/" style="font-size: 10px;">Api</a> <a href="/tags/EventBus/" style="font-size: 10px;">EventBus</a> <a href="/tags/Fragment/" style="font-size: 10px;">Fragment</a> <a href="/tags/Handler机制/" style="font-size: 10px;">Handler机制</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/Keyboard/" style="font-size: 10px;">Keyboard</a> <a href="/tags/Rxjava/" style="font-size: 10px;">Rxjava</a> <a href="/tags/SpannableString/" style="font-size: 10px;">SpannableString</a> <a href="/tags/WebView/" style="font-size: 10px;">WebView</a> <a href="/tags/Widget/" style="font-size: 10px;">Widget</a> <a href="/tags/Yuanyuan/" style="font-size: 10px;">Yuanyuan</a> <a href="/tags/aidl/" style="font-size: 10px;">aidl</a> <a href="/tags/apk更新/" style="font-size: 10px;">apk更新</a> <a href="/tags/《Android开发探索》/" style="font-size: 10px;">《Android开发探索》</a> <a href="/tags/优化/" style="font-size: 15px;">优化</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/多线程/" style="font-size: 12.5px;">多线程</a> <a href="/tags/快捷键/" style="font-size: 10px;">快捷键</a> <a href="/tags/打包/" style="font-size: 12.5px;">打包</a> <a href="/tags/模式/" style="font-size: 15px;">模式</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/适配/" style="font-size: 10px;">适配</a> <a href="/tags/零碎知识点/" style="font-size: 15px;">零碎知识点</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/11/03/Android 设置一串字符串不同位置上文字的不同样式/">Android 设置一串字符串不同位置上文字的不同样式</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/03/Android 仿JD阻尼效果加载商品信息和商品详情/">Android 仿JD阻尼效果加载商品信息和商品详情</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/22/Android ThreadLocal 知识笔记/">Android ThreadLocal 知识笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/17/Android 内存优化笔记/">Android 内存优化笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/17/Android EventBus笔记/">Android EventBus笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Chenley<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
