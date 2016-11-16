@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android View的位置获取笔记 | Chenley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="概述获取View的位置信息
+mLeft = getLeft(): view左上角横坐标相对于父容器左边框的距离；
+mRight = getRight(): View右下角横坐标相对于父容器左边框的距离；
+mTop = getTop()： View左上角纵坐标相对于父容器上边框的距离；
+mBottom = getBottom()：View右下角纵坐标相对于父容器上边框的距离；
+getTransla">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android View的位置获取笔记">
+<meta property="og:url" content="http://yoursite.com/2016/11/07/Android View的位置获取笔记/index.html">
+<meta property="og:site_name" content="Chenley">
+<meta property="og:description" content="概述获取View的位置信息
+mLeft = getLeft(): view左上角横坐标相对于父容器左边框的距离；
+mRight = getRight(): View右下角横坐标相对于父容器左边框的距离；
+mTop = getTop()： View左上角纵坐标相对于父容器上边框的距离；
+mBottom = getBottom()：View右下角纵坐标相对于父容器上边框的距离；
+getTransla">
+<meta property="og:updated_time" content="2016-11-16T07:30:52.980Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android View的位置获取笔记">
+<meta name="twitter:description" content="概述获取View的位置信息
+mLeft = getLeft(): view左上角横坐标相对于父容器左边框的距离；
+mRight = getRight(): View右下角横坐标相对于父容器左边框的距离；
+mTop = getTop()： View左上角纵坐标相对于父容器上边框的距离；
+mBottom = getBottom()：View右下角纵坐标相对于父容器上边框的距离；
+getTransla">
+  
+    <link rel="alternate" href="/atom.xml" title="Chenley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Chenley</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Android View的位置获取笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/07/Android View的位置获取笔记/" class="article-date">
+  <time datetime="2016-11-07T06:59:52.046Z" itemprop="datePublished">2016-11-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android View的位置获取笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="获取View的位置信息"><a href="#获取View的位置信息" class="headerlink" title="获取View的位置信息"></a>获取View的位置信息</h2><ul>
+<li><code>mLeft = getLeft()</code>: view左上角横坐标相对于父容器左边框的距离；</li>
+<li><code>mRight = getRight()</code>: View右下角横坐标相对于父容器左边框的距离；</li>
+<li><code>mTop = getTop()</code>： View左上角纵坐标相对于父容器上边框的距离；</li>
+<li><code>mBottom = getBottom()</code>：View右下角纵坐标相对于父容器上边框的距离；</li>
+<li><code>getTranslationX()</code>：View左上角横坐标相对于<code>mLeft</code>的偏移量；</li>
+<li><code>getTranslationY()</code>: View左上角纵坐标相对于<code>mTop</code>的偏移量；</li>
+<li><code>getX()=mLeft+getTranslationX()</code>:平移后（mLeft不变），View左上角横坐标相对于父容器左边框的距离；（TranslationY默认为0）；</li>
+<li><code>getY=mTop+getTranslationY()</code>：平移后（mTop不变），View左上角纵坐标相对于父容器上边框的距离；（TranslationY默认为0）；</li>
+<li><code>event.getX()</code>：获取当前点击事件相对于View本身的横坐标；</li>
+<li><code>event.getY()</code>：获取当前点击事件相当于View本身的纵坐标；</li>
+<li><code>event.getRawX()</code>：获取当前点击事件在屏幕上的横坐标；</li>
+<li><code>event.getRawY()</code>: 获取当前点击事件在屏幕上的纵坐标；<a id="more"></a>
+</li>
+</ul>
+<h2 id="获取View宽高的时机"><a href="#获取View宽高的时机" class="headerlink" title="获取View宽高的时机"></a>获取View宽高的时机</h2><p>当Activity创建时，需要获取某个View的宽高，然后进行相应的操作，但是因为View的绘制工作还未完成，所以往往在onCreate、onStart方法中得到view的宽高值为0。</p>
+<h3 id="重写onWindowFocusChanged方法"><a href="#重写onWindowFocusChanged方法" class="headerlink" title="重写onWindowFocusChanged方法"></a>重写<code>onWindowFocusChanged</code>方法</h3><p>  重写Activity中的<code>onWindowFocusChanged</code>,当Activity获取到焦点的时候View已经绘制完成，也能获取到view的准确宽高了。注意该方法可能会被调用多次，只有<code>hasFocus</code>为true的时候才能够调用获取view宽高的方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">  * 表示界面的View都绘制完成，可以获取到View的宽和高了</div><div class="line">  * 注意该方法可能会调用多次</div><div class="line">  * <span class="doctag">@param</span> hasFocus</div><div class="line">  */</div><div class="line"> <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onWindowFocusChanged</span><span class="params">(<span class="keyword">boolean</span> hasFocus)</span> </span>&#123;</div><div class="line">   <span class="keyword">super</span>.onWindowFocusChanged(hasFocus);</div><div class="line">   <span class="keyword">if</span> (hasFocus) &#123;</div><div class="line">     Toast.makeText(<span class="keyword">this</span>, <span class="string">"可以获取到View的宽和高了"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="使用ViewTreeObserver"><a href="#使用ViewTreeObserver" class="headerlink" title="使用ViewTreeObserver"></a>使用<code>ViewTreeObserver</code></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">   * 获取View的宽高</div><div class="line">   * <span class="doctag">@param</span> view</div><div class="line">   */</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getViewSize</span><span class="params">(<span class="keyword">final</span> View view)</span> </span>&#123;</div><div class="line">    ViewTreeObserver vto = view.getViewTreeObserver();</div><div class="line">    vto.addOnPreDrawListener(<span class="keyword">new</span> ViewTreeObserver.OnPreDrawListener() &#123;</div><div class="line">      <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onPreDraw</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> height = view.getMeasuredHeight();</div><div class="line">        <span class="keyword">int</span> witdh = view.getMeasuredWidth();</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>; <span class="comment">//?? Return true to proceed with the current drawing pass, or false to cancel.</span></div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h3 id="使用viewTreeObserver-addOnGlobalLayoutListener"><a href="#使用viewTreeObserver-addOnGlobalLayoutListener" class="headerlink" title="使用viewTreeObserver.addOnGlobalLayoutListener"></a>使用<code>viewTreeObserver.addOnGlobalLayoutListener</code></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">   * 获取View的宽和高</div><div class="line">   * 要求：SDK大于16 JELLY_BEAN</div><div class="line">   */</div><div class="line">  <span class="meta">@TargetApi</span>(Build.VERSION_CODES.JELLY_BEAN) <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getViewSize</span><span class="params">(<span class="keyword">final</span> View view)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt; Build.VERSION_CODES.JELLY_BEAN) &#123; <span class="comment">//SDK大于16</span></div><div class="line">      ViewTreeObserver vto = view.getViewTreeObserver();</div><div class="line">      vto.addOnGlobalLayoutListener(<span class="keyword">new</span> ViewTreeObserver.OnGlobalLayoutListener() &#123;</div><div class="line">        <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onGlobalLayout</span><span class="params">()</span> </span>&#123;</div><div class="line">          <span class="comment">/**</span></div><div class="line">           * Callback method to be invoked when the global layout state or the visibility of views</div><div class="line">           * within the view tree changes</div><div class="line">           */</div><div class="line">          view.getViewTreeObserver().removeOnGlobalLayoutListener(<span class="keyword">this</span>);</div><div class="line">          <span class="keyword">int</span> height = view.getMeasuredHeight();</div><div class="line">          <span class="keyword">int</span> witdh = view.getMeasuredWidth();</div><div class="line">        &#125;</div><div class="line">      &#125;);</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h3 id="使用View-post-new-Runable"><a href="#使用View-post-new-Runable" class="headerlink" title="使用View.post(new Runable())"></a>使用<code>View.post(new Runable())</code></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 获取View的宽和高</div><div class="line"> * <span class="doctag">@param</span> view</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getViewSize</span><span class="params">(<span class="keyword">final</span> View view)</span></span>&#123;</div><div class="line">  view.post(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">    <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="keyword">int</span> height = view.getMeasuredHeight();</div><div class="line">      <span class="keyword">int</span> width = view.getMeasuredWidth();</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/11/07/Android View的位置获取笔记/" data-id="civklztkl00082kqqphcdbyvp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/View/">View</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/16/Android String format()笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Android String.format()笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/11/03/Android 设置一串字符串不同位置上文字的不同样式/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Android 设置一串字符串不同位置上文字的不同样式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ActionBar/">ActionBar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Api/">Api</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EventBus/">EventBus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fragment/">Fragment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handler机制/">Handler机制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keyboard/">Keyboard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rxjava/">Rxjava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpannableString/">SpannableString</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/View/">View</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView/">WebView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Widget/">Widget</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yuanyuan/">Yuanyuan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aidl/">aidl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apk更新/">apk更新</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/《Android开发探索》/">《Android开发探索》</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优化/">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存/">内存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/反射/">反射</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打包/">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模式/">模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注解/">注解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/适配/">适配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/零碎知识点/">零碎知识点</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ActionBar/" style="font-size: 10px;">ActionBar</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Api/" style="font-size: 12.5px;">Api</a> <a href="/tags/EventBus/" style="font-size: 10px;">EventBus</a> <a href="/tags/Fragment/" style="font-size: 10px;">Fragment</a> <a href="/tags/Handler机制/" style="font-size: 10px;">Handler机制</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/Keyboard/" style="font-size: 10px;">Keyboard</a> <a href="/tags/Rxjava/" style="font-size: 10px;">Rxjava</a> <a href="/tags/SpannableString/" style="font-size: 10px;">SpannableString</a> <a href="/tags/View/" style="font-size: 10px;">View</a> <a href="/tags/WebView/" style="font-size: 10px;">WebView</a> <a href="/tags/Widget/" style="font-size: 10px;">Widget</a> <a href="/tags/Yuanyuan/" style="font-size: 10px;">Yuanyuan</a> <a href="/tags/aidl/" style="font-size: 10px;">aidl</a> <a href="/tags/apk更新/" style="font-size: 10px;">apk更新</a> <a href="/tags/《Android开发探索》/" style="font-size: 10px;">《Android开发探索》</a> <a href="/tags/优化/" style="font-size: 15px;">优化</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/多线程/" style="font-size: 12.5px;">多线程</a> <a href="/tags/快捷键/" style="font-size: 10px;">快捷键</a> <a href="/tags/打包/" style="font-size: 12.5px;">打包</a> <a href="/tags/模式/" style="font-size: 15px;">模式</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/适配/" style="font-size: 10px;">适配</a> <a href="/tags/零碎知识点/" style="font-size: 15px;">零碎知识点</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/11/16/Android String format()笔记/">Android String.format()笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/07/Android View的位置获取笔记/">Android View的位置获取笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/03/Android 设置一串字符串不同位置上文字的不同样式/">Android 设置一串字符串不同位置上文字的不同样式</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/03/Android 仿JD阻尼效果加载商品信息和商品详情/">Android 仿JD阻尼效果加载商品信息和商品详情</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/22/Android ThreadLocal 知识笔记/">Android ThreadLocal 知识笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Chenley<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

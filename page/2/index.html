@@ -51,9 +51,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS-каналы"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Поиск"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -63,6 +63,125 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-Java工厂方法模式笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/16/Java工厂方法模式笔记/" class="article-date">
+  <time datetime="2016-10-16T04:11:15.402Z" itemprop="datePublished">2016-10-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/16/Java工厂方法模式笔记/">Java工厂方法模式笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><strong>工厂方法模式（Factory Method Pattern）</strong>：定义一个用于创建对象的接口，让子类决定将哪一个类实例化。</p>
+<ul>
+<li>工厂方法模式又简称工厂模式（Factory Pattern），又可称作虚拟构造器模式（Virtual Constructor Pattern）或多态工厂模式（Polymorphic Factory Pattern）。</li>
+<li>工厂方法模式让一个类的实例化延迟到其子类。</li>
+<li>工厂方法模式是一种类创建型模式。</li>
+<li><p>工厂方法模式提供一个抽象工厂接口来声明抽象工厂方法，而由其子类来具体实现工厂方法，创建具体的产品对象。</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/10/16/Java工厂方法模式笔记/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/10/16/Java工厂方法模式笔记/" data-id="civklztm7001b2kqqp43ezg6z" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模式/">模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java简单工厂模式笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/15/Java简单工厂模式笔记/" class="article-date">
+  <time datetime="2016-10-15T09:11:32.991Z" itemprop="datePublished">2016-10-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/15/Java简单工厂模式笔记/">Java简单工厂模式笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><strong>简单工厂模式（Simple Factory Pattern）</strong>： 定义一个工厂类，它可以根据参数的不同返回不同类的实例，被创建的实例通常都具有共同的父类。</p>
+<ul>
+<li>因为在简单工程模式中用于创建实例的方法是静态（static）方法，因此简单工厂模式又被称为静态工厂模式（Static Factory Method）模式，它属于类创建型模式。</li>
+<li>简单的说就是：当你需要什么，只需要传入一个正确的参数，就可以获取你所需要的对象，而无须知道其创建细节。<br><img src="http://img.blog.csdn.net/20130711143612921?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTG92ZUxpb24=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""><br><strong>角色详解：</strong><blockquote>
+<ul>
+<li><strong>Factory（工厂角色）</strong>：工厂角色即工厂类，它是简单工厂模式的核心类，负责实现创建产品实例的内部逻辑；工厂类可以被外界直接调用，创建所需的产品对象；在工厂类中提供了静态的工厂方法<code>factoryMethod（）</code>,它的返回类型为抽象产品类型<code>product</code>。</li>
+</ul>
+</blockquote>
+</li>
+<li><strong>Product（抽象产品角色）</strong>：它是工厂类所创建的所有对象的父类，封装了各种产品对象的公有方法，它的引入提高系统的灵活性，使得工厂类中只需定义一个通用的工厂方法，因为所有的创建的具体产品对象都是其子类对象。</li>
+<li><strong>ConcreteProduct(具体产品角色)</strong>：它是简单工厂模式的创建目标，所有被创建的对象都充当这个角色的某个具体类的实例。每一个具体角色产品都继承了抽象产品角色，需要实现在抽象产品中声明的抽象方法。</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>简单工厂模式提供了专门的工厂类用于创建对象，将对象的创建和对象的使用分离开，它作为一种最简单的工厂模式，在软件开发中得到了较为广泛的应用。</p>
+<p><strong> 优点</strong></p>
+<ul>
+<li>工厂类包含必要的判断逻辑，可以决定在什么时候创建那一个产品类的实例，客户端可以免除直接创建产品对象的职责，而仅仅“消费”产品，简单工厂模式实现了对象创建和使用的分离。</li>
+<li>客户端无需知道所创建的具体产品类的类名，只需要知道具体产品类所对应的参数即可，对于一些复杂的类名，通过简单工厂模式可以在一定程度上减少使用者的记忆量。</li>
+<li>通过引入配置文件，可以在不修改任何客户端代码的情况下更换和增加新的具体产品类，在一定程度上提高了系统灵活性。</li>
+</ul>
+<p><strong> 缺点</strong></p>
+<ul>
+<li>由于工厂类集中了所有产品的创建逻辑，职责过重，一旦不能正常工作，整个系统都要受到影响。</li>
+<li>使用简单工厂模式势必会增加系统中类的个数（引入了新的工厂类），增加了系统的复杂度和理解难度。</li>
+<li>系统扩展困难，一旦添加新产品就不得不修改工厂逻辑，在产品类型较多时候，有可能造成工厂逻辑过于复杂，不利于系统的扩展和维护。</li>
+<li>简单工厂模式由于使用了静态工厂方法，造成工厂角色无法形成基于继承的等级结构。</li>
+</ul>
+<p><strong> 适用场景</strong></p>
+<ul>
+<li>工厂类负责创建的对象比较少，由于创建的对象较少，不会造成工厂方法中的业务逻辑太过复杂。</li>
+<li>客户端只知道传入工厂类的参数，对于如何创建对象并不关心。</li>
+</ul>
+<h3 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a><a href="http://blog.csdn.net/lovelion/article/details/9300337" target="_blank" rel="external">参考资源</a></h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/10/15/Java简单工厂模式笔记/" data-id="civklztmg001j2kqqojxlbyxt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模式/">模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-Android 减小APK体积笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -104,7 +223,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/10/15/Android 减小APK体积笔记/" data-id="civ3jpx6d000nvwqq9936x1f9" class="article-share-link">Поделиться</a>
+      <a data-url="http://yoursite.com/2016/10/15/Android 减小APK体积笔记/" data-id="civklztl7000q2kqqokxnezdt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/优化/">优化</a></li></ul>
@@ -147,7 +266,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/10/15/APK的增量更新（差分升级）笔记/" data-id="civ3jpx5r0006vwqq4mxvd3hm" class="article-share-link">Поделиться</a>
+      <a data-url="http://yoursite.com/2016/10/15/APK的增量更新（差分升级）笔记/" data-id="civklztkt000d2kqq8rul3y81" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/apk更新/">apk更新</a></li></ul>
@@ -190,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/10/15/Java建造者模式笔记/" data-id="civ3jpx77001fvwqq5hubh82e" class="article-share-link">Поделиться</a>
+      <a data-url="http://yoursite.com/2016/10/15/Java建造者模式笔记/" data-id="civklztmj001l2kqqlxwl1suj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模式/">模式</a></li></ul>
@@ -239,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/10/13/常用知识点笔记二/" data-id="civ3jpx7v001wvwqqa476mn9y" class="article-share-link">Поделиться</a>
+      <a data-url="http://yoursite.com/2016/10/13/常用知识点笔记二/" data-id="civklztmw00202kqqvm4inqzy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/零碎知识点/">零碎知识点</a></li></ul>
@@ -283,7 +402,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/10/12/Android WebView知识笔记/" data-id="civ3jpx64000dvwqq0crgg8jj" class="article-share-link">Поделиться</a>
+      <a data-url="http://yoursite.com/2016/10/12/Android WebView知识笔记/" data-id="civklztla000s2kqqujiim4bl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebView/">WebView</a></li></ul>
@@ -332,7 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/10/08/常用知识点笔记一/" data-id="civ3jpx7u001uvwqqctcl9v6s" class="article-share-link">Поделиться</a>
+      <a data-url="http://yoursite.com/2016/10/08/常用知识点笔记一/" data-id="civklztmt001v2kqq8frly7s9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/零碎知识点/">零碎知识点</a></li></ul>
@@ -375,7 +494,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/09/29/AIDL简约示例笔记/" data-id="civ3jpx5g0002vwqqnnrmz22f" class="article-share-link">Поделиться</a>
+      <a data-url="http://yoursite.com/2016/09/29/AIDL简约示例笔记/" data-id="civklztk300012kqqz7xnji19" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aidl/">aidl</a></li></ul>
@@ -421,102 +540,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/09/28/Android适配笔记/" data-id="civ3jpx6p0011vwqq52nyd19t" class="article-share-link">Поделиться</a>
+      <a data-url="http://yoursite.com/2016/09/28/Android适配笔记/" data-id="civklztlq00122kqq8p4ke788" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/优化/">优化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/适配/">适配</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-百度地图sdk总结by乔乔" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/27/百度地图sdk总结by乔乔/" class="article-date">
-  <time datetime="2016-09-27T10:33:22.388Z" itemprop="datePublished">2016-09-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/27/百度地图sdk总结by乔乔/">百度地图 -Qiao</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>所有的百度地图SDK在使用时，必须先调用<code>SDKInitializer.initialize(Context context)</code>方法进行初始化。</p>
-<ul>
-<li><code>MapStaus</code>地图状态。可以设置地图的中心点、缩放级别、仰望角、旋转角。该类是final类，要用<code>MapStaus.Builder</code>构造</li>
-<li><code>Overlay</code>覆盖物。该类为抽象类。其子类有<code>Arc</code>弧线、<code>Circle</code>圆、<code>Dot</code>圆点、<code>GroundOverlay</code>矩形区域、<code>Marker</code>标记、<code>Polygon</code>多边形、<code>Polyline</code>折线、<code>Text</code>文本</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2016/09/27/百度地图sdk总结by乔乔/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/09/27/百度地图sdk总结by乔乔/" data-id="civ3jpx8y003tvwqqyrgd8z7u" class="article-share-link">Поделиться</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-SPDY知识笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/26/SPDY知识笔记/" class="article-date">
-  <time datetime="2016-09-26T10:09:18.538Z" itemprop="datePublished">2016-09-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/26/SPDY知识笔记/">SPDY知识笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h3 id="SPDY定义"><a href="#SPDY定义" class="headerlink" title="SPDY定义"></a><a href="http://www.geekpark.net/topics/158198">SPDY定义</a></h3><ol>
-<li>SPDY是Google开发的基于传输控制协议（TCP）的应用层协议，开发组正在推动SPDY成为正式标准（目前为草案）；</li>
-<li>SPDY协议旨在通过压缩、多路复用和优先级来缩短网页的加载时间和强制使用SSL协议来提高安全性。</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2016/09/26/SPDY知识笔记/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/09/26/SPDY知识笔记/" data-id="civ3jpx79001gvwqqawuxl2pg" class="article-share-link">Поделиться</a>
-      
-      
     </footer>
   </div>
   
@@ -538,9 +566,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Метки</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ActionBar/">ActionBar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Api/">Api</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EventBus/">EventBus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fragment/">Fragment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handler机制/">Handler机制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keyboard/">Keyboard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rxjava/">Rxjava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpannableString/">SpannableString</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView/">WebView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Widget/">Widget</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yuanyuan/">Yuanyuan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aidl/">aidl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apk更新/">apk更新</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/《Android开发探索》/">《Android开发探索》</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优化/">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存/">内存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/反射/">反射</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打包/">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模式/">模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注解/">注解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/适配/">适配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/零碎知识点/">零碎知识点</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ActionBar/">ActionBar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Api/">Api</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EventBus/">EventBus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fragment/">Fragment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handler机制/">Handler机制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keyboard/">Keyboard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rxjava/">Rxjava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpannableString/">SpannableString</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/View/">View</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView/">WebView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Widget/">Widget</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yuanyuan/">Yuanyuan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aidl/">aidl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apk更新/">apk更新</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/《Android开发探索》/">《Android开发探索》</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优化/">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存/">内存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/反射/">反射</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打包/">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模式/">模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注解/">注解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/适配/">适配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/零碎知识点/">零碎知识点</a></li></ul>
     </div>
   </div>
 
@@ -548,16 +576,16 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Облако меток</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ActionBar/" style="font-size: 10px;">ActionBar</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Api/" style="font-size: 10px;">Api</a> <a href="/tags/EventBus/" style="font-size: 10px;">EventBus</a> <a href="/tags/Fragment/" style="font-size: 10px;">Fragment</a> <a href="/tags/Handler机制/" style="font-size: 10px;">Handler机制</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/Keyboard/" style="font-size: 10px;">Keyboard</a> <a href="/tags/Rxjava/" style="font-size: 10px;">Rxjava</a> <a href="/tags/SpannableString/" style="font-size: 10px;">SpannableString</a> <a href="/tags/WebView/" style="font-size: 10px;">WebView</a> <a href="/tags/Widget/" style="font-size: 10px;">Widget</a> <a href="/tags/Yuanyuan/" style="font-size: 10px;">Yuanyuan</a> <a href="/tags/aidl/" style="font-size: 10px;">aidl</a> <a href="/tags/apk更新/" style="font-size: 10px;">apk更新</a> <a href="/tags/《Android开发探索》/" style="font-size: 10px;">《Android开发探索》</a> <a href="/tags/优化/" style="font-size: 15px;">优化</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/多线程/" style="font-size: 12.5px;">多线程</a> <a href="/tags/快捷键/" style="font-size: 10px;">快捷键</a> <a href="/tags/打包/" style="font-size: 12.5px;">打包</a> <a href="/tags/模式/" style="font-size: 15px;">模式</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/适配/" style="font-size: 10px;">适配</a> <a href="/tags/零碎知识点/" style="font-size: 15px;">零碎知识点</a>
+      <a href="/tags/ActionBar/" style="font-size: 10px;">ActionBar</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Api/" style="font-size: 12.5px;">Api</a> <a href="/tags/EventBus/" style="font-size: 10px;">EventBus</a> <a href="/tags/Fragment/" style="font-size: 10px;">Fragment</a> <a href="/tags/Handler机制/" style="font-size: 10px;">Handler机制</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/Keyboard/" style="font-size: 10px;">Keyboard</a> <a href="/tags/Rxjava/" style="font-size: 10px;">Rxjava</a> <a href="/tags/SpannableString/" style="font-size: 10px;">SpannableString</a> <a href="/tags/View/" style="font-size: 10px;">View</a> <a href="/tags/WebView/" style="font-size: 10px;">WebView</a> <a href="/tags/Widget/" style="font-size: 10px;">Widget</a> <a href="/tags/Yuanyuan/" style="font-size: 10px;">Yuanyuan</a> <a href="/tags/aidl/" style="font-size: 10px;">aidl</a> <a href="/tags/apk更新/" style="font-size: 10px;">apk更新</a> <a href="/tags/《Android开发探索》/" style="font-size: 10px;">《Android开发探索》</a> <a href="/tags/优化/" style="font-size: 15px;">优化</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/多线程/" style="font-size: 12.5px;">多线程</a> <a href="/tags/快捷键/" style="font-size: 10px;">快捷键</a> <a href="/tags/打包/" style="font-size: 12.5px;">打包</a> <a href="/tags/模式/" style="font-size: 15px;">模式</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/适配/" style="font-size: 10px;">适配</a> <a href="/tags/零碎知识点/" style="font-size: 15px;">零碎知识点</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Архив</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li></ul>
     </div>
@@ -567,9 +595,17 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Недавние записи</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/11/16/Android String format()笔记/">Android String.format()笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/07/Android View的位置获取笔记/">Android View的位置获取笔记</a>
+          </li>
         
           <li>
             <a href="/2016/11/03/Android 设置一串字符串不同位置上文字的不同样式/">Android 设置一串字符串不同位置上文字的不同样式</a>
@@ -581,14 +617,6 @@
         
           <li>
             <a href="/2016/10/22/Android ThreadLocal 知识笔记/">Android ThreadLocal 知识笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2016/10/17/Android 内存优化笔记/">Android 内存优化笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2016/10/17/Android EventBus笔记/">Android EventBus笔记</a>
           </li>
         
       </ul>
@@ -604,7 +632,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2016 Chenley<br>
-      Создано с помощью <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
