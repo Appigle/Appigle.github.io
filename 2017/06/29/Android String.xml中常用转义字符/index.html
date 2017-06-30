@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -84,15 +84,16 @@
 
 
 
-<meta name="description" content="Appigle&apos;s Blog！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chenley">
-<meta property="og:url" content="http://yoursite.com/tags/EventBus/index.html">
+<meta name="description" content="Android strings.xml中常用转义字符在Android中，用户往往会把所有的字符串保存在string.xml中，目的是方便统一管理，并且利于国际化，但是在这些字符串中直接输入一些符号是不起任何效果的，比如空格，换行，大于号小于号等，这就需要使用转义字符来进行转移，这样才能在使用时正确显示字符。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android strings.xml中常用转义字符">
+<meta property="og:url" content="http://yoursite.com/2017/06/29/Android String.xml中常用转义字符/index.html">
 <meta property="og:site_name" content="Chenley">
-<meta property="og:description" content="Appigle&apos;s Blog！">
+<meta property="og:description" content="Android strings.xml中常用转义字符在Android中，用户往往会把所有的字符串保存在string.xml中，目的是方便统一管理，并且利于国际化，但是在这些字符串中直接输入一些符号是不起任何效果的，比如空格，换行，大于号小于号等，这就需要使用转义字符来进行转移，这样才能在使用时正确显示字符。">
+<meta property="og:updated_time" content="2017-06-30T02:36:47.289Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chenley">
-<meta name="twitter:description" content="Appigle&apos;s Blog！">
+<meta name="twitter:title" content="Android strings.xml中常用转义字符">
+<meta name="twitter:description" content="Android strings.xml中常用转义字符在Android中，用户往往会把所有的字符串保存在string.xml中，目的是方便统一管理，并且利于国际化，但是在这些字符串中直接输入一些符号是不起任何效果的，比如空格，换行，大于号小于号等，这就需要使用转义字符来进行转移，这样才能在使用时正确显示字符。">
 
 
 
@@ -113,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/EventBus/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/29/Android String.xml中常用转义字符/"/>
 
-  <title> 标签: EventBus | Chenley </title>
+  <title> Android strings.xml中常用转义字符 | Chenley </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,7 +137,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,46 +245,138 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        EventBus
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android strings.xml中常用转义字符
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-29T09:10:18+08:00" content="2017-06-29">
+              2017-06-29
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <hr>
+<h3 id="Android-strings-xml中常用转义字符"><a href="#Android-strings-xml中常用转义字符" class="headerlink" title="Android strings.xml中常用转义字符"></a>Android strings.xml中常用转义字符</h3><p>在Android中，用户往往会把所有的字符串保存在string.xml中，目的是方便统一管理，并且利于国际化，但是在这些字符串中直接输入一些符号是不起任何效果的，比如空格，换行，大于号小于号等，这就需要使用转义字符来进行转移，这样才能在使用时正确显示字符。</p>
+<a id="more"></a>
+<p>常用的XML转义字符记录如下：</p>
+<ul>
+<li><strong>空格</strong>： <code>&lt;string name=&quot;out_bound_submit&quot;&gt;</code>出<code>&amp;#160;&amp;#160;</code>库<code>其中的</code>&#160;`就代表空格;</li>
+<li><strong>换行</strong>： <code>&lt;string name=&quot;hello_world&quot;&gt;</code>你好！<code>\n</code>世界！<code>&lt;/string&gt;</code> 其中的<code>\n</code>就代表换行;</li>
+<li><p><strong>缩进</strong>： <code>&lt;string name=&quot;hello_world&quot;&gt;</code>你好！<code>\t</code>世界！<code>&lt;/string&gt;</code>其中的<code>\t</code>就代表按一次Tab键的几个空格</p>
+<p> <strong>应当注意，由于系统定义的基本的缩进的格数不同，有的代表4个半角字符，有的代表8个半角字符，所以可能显示时效果不同，建议如果编写界面时尽量少用.</strong></p>
+</li>
+<li><p>“  (引号)： <code>&amp;#34;</code> 或 <code>&amp;quot;</code></p>
+</li>
+<li>‘   （单引号）： <code>&amp;#39;</code> 或 <code>&amp;apos;</code></li>
+<li>&amp;  （and符号）：  <code>#38;</code>或 <code>amp;</code></li>
+<li>lt(&lt;) （小于）： <code>#60;</code>或 <code>lt;</code></li>
+<li>gt(&gt;) （大于）： <code>#62;</code>或 <code>gt;</code></li>
+</ul>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/10/17/Android EventBus笔记/" itemprop="url">
-              
-                <span itemprop="name">Android EventBus笔记</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-17T15:30:53+08:00"
-              content="2016-10-17" >
-          10-17
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/20/免费Api测试接口/" rel="next" title="免费Api测试接口">
+                <i class="fa fa-chevron-left"></i> 免费Api测试接口
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -291,6 +384,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -310,8 +407,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://raw.githubusercontent.com/Appigle/very_assets/master/avatar/avatar.jpg"
@@ -383,6 +489,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-strings-xml中常用转义字符"><span class="nav-number">1.</span> <span class="nav-text">Android strings.xml中常用转义字符</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -479,6 +596,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
