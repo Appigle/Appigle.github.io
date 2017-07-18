@@ -268,6 +268,111 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/17/Android 内存优化笔记/" itemprop="url">
+                  Android 内存优化笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-17T20:13:58+08:00" content="2016-10-17">
+              2016-10-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <hr>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><h4 id="内存简介"><a href="#内存简介" class="headerlink" title="内存简介"></a>内存简介</h4><p>RAM（Random Access Memory） 随机存取存储器：内存。<br>通常分为：</p>
+<ul>
+<li>寄存器（Registers）：速度最快的存储场所，因为寄存器位于处理器内部，我们的程序中无法控制；</li>
+<li>栈（stack）：存放基本类型的数据和对象的引用，但对象本身不存放在栈中，而是存放在堆中；</li>
+<li>堆（heap）：存放基本由new创建的对象和数组。在堆中分配的内存，由Java JVM的自动回收器（GC）来管理；</li>
+<li>静态域（static field）：静态存储区就是指在固定的位置存放应用程序运行时一直存在的数据，Java在内存中专门划分了一个静态存储区域来管理一些特殊的数据变量如静态的数据变量；</li>
+<li>常量池（constant pool）：JVM必须为每个被转载的类型维护一个常量池。常量池就是该类型所用到常量的一个有序集合，包括直接常量（String、Integer等常量）和其他类型，字段和方法的符号引用。</li>
+</ul>
+<p>外存储：SD卡等外置存储区域。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/17/Android 内存优化笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/17/Android EventBus笔记/" itemprop="url">
                   Android EventBus笔记
                 </a>
@@ -1144,108 +1249,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/13/常用知识点笔记二/" itemprop="url">
-                  常用知识点笔记二
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-13T10:22:28+08:00" content="2016-10-13">
-              2016-10-13
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><h4 id="1-AsyncTask超简述原理"><a href="#1-AsyncTask超简述原理" class="headerlink" title="1. AsyncTask超简述原理"></a>1. <code>AsyncTask</code>超简述原理</h4><ol>
-<li><code>AsyncTask</code>本质是一个静态的线程池（容量128，执行数5），<code>AsyncTask</code>派生出来的子类可以实现不同的异步任务，这些任务都是提交到静态线程池中执行的；</li>
-<li>线程池中的工作线程<code>mWorker</code>执行<code>doInBackground(mParams)</code>方法执行异步任务；</li>
-<li>当任务状态（执行成功、取消执行、进度更新）后，工作线程会向UI线程发送消息，<code>AsyncTask</code>内部的<code>InternalHandler</code>响应这些消息，并调用相关的回调函数；</li>
-<li>不足处：线程池大小固定，如果添加线程数量超过固定值，则会抛出拒绝新线程的<code>RejectedExcutionException</code>。解决方式为新开一个线程，时刻关注线程池内线程数量，如果线程池线程满了，那么则休眠新线程，否则将线程添加到线程池中。</li>
-<li>3.0之前线程池是并行执行，3.0之后通过<code>SerialExcutor</code>执行串行操作。真正的操作是在<code>THREAD_POOL_EXCUTOR</code>线程。如果想要强行并行执行，可以直接使用<code>excuteOnExcutor</code>方法即可；</li>
-</ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/13/常用知识点笔记二/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1291,7 +1294,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1301,7 +1304,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
