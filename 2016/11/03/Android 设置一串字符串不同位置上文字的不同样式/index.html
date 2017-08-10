@@ -92,13 +92,13 @@
 <meta property="og:site_name" content="Chenley">
 <meta property="og:description" content="概述效果图：
 不同位置的字符串内容显示不同的样式。">
-<meta property="og:image" content="http://yoursite.com/uploads/字符串不同样式.png">
+<meta property="og:image" content="http://ot9z4kcor.bkt.clouddn.com/static/images//uploads/字符串不同样式.png">
 <meta property="og:updated_time" content="2016-11-04T00:51:53.207Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 设置一串字符串不同位置上文字的不同样式">
 <meta name="twitter:description" content="概述效果图：
 不同位置的字符串内容显示不同的样式。">
-<meta name="twitter:image" content="http://yoursite.com/uploads/字符串不同样式.png">
+<meta name="twitter:image" content="http://ot9z4kcor.bkt.clouddn.com/static/images//uploads/字符串不同样式.png">
 
 
 
@@ -312,7 +312,7 @@
 
       
         <hr>
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>效果图：<br><img src="/uploads/字符串不同样式.png" alt=""></p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>效果图：<br><img src="http://ot9z4kcor.bkt.clouddn.com/static/images//uploads/字符串不同样式.png" alt=""></p>
 <p>不同位置的字符串内容显示不同的样式。<br><a id="more"></a></p>
 <h1 id="实现源码"><a href="#实现源码" class="headerlink" title="实现源码"></a>实现源码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 设置价格格式化</div><div class="line"> * <span class="doctag">@param</span> price         价格</div><div class="line"> * <span class="doctag">@param</span> rmbSymbolSize 人民币符号的大小</div><div class="line"> * <span class="doctag">@param</span> fenSize       分的大小</div><div class="line"> * <span class="doctag">@return</span></div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SpannableString <span class="title">setAuctionPriceStyle</span><span class="params">(String price, <span class="keyword">int</span> rmbSymbolSize, <span class="keyword">int</span> fenSize)</span> </span>&#123;</div><div class="line">    SpannableString spanText = <span class="keyword">new</span> SpannableString(<span class="string">"¥"</span> + price);</div><div class="line">    spanText.setSpan(<span class="keyword">new</span> AbsoluteSizeSpan(rmbSymbolSize, <span class="keyword">true</span>), <span class="number">0</span>, <span class="number">1</span>, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);</div><div class="line">    <span class="keyword">int</span> indexLength = spanText.toString().indexOf(<span class="string">"."</span>);</div><div class="line">    <span class="keyword">if</span> (indexLength &gt; <span class="number">0</span>) &#123;</div><div class="line">        spanText.setSpan(<span class="keyword">new</span> AbsoluteSizeSpan(fenSize, <span class="keyword">true</span>), indexLength, spanText.toString().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> spanText;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
@@ -426,7 +426,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -436,7 +436,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

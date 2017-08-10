@@ -268,6 +268,237 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/21/Android Fragment 真正的完全解析/" itemprop="url">
+                  Android Fragment全解析系列
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-21T14:19:13+08:00" content="2016-09-21">
+              2016-09-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <hr>
+<h3 id="Fragment的生命周期"><a href="#Fragment的生命周期" class="headerlink" title="Fragment的生命周期"></a><code>Fragment</code>的生命周期</h3><p><img src="http://ot9z4kcor.bkt.clouddn.com/static/images//uploads/fragmentlifcircle.png" alt=""></p>
+<p><code>Fragment</code>比<code>Activity</code>多了几个额外的生命周期回调方法：</p>
+<ul>
+<li><code>onAttach（Activity）</code>: 当<code>Fragment</code>与<code>Activity</code>发生关联时调用</li>
+</ul>
+<ul>
+<li><code>onCreate()</code>: 初始创建<code>Fragment</code>对象时调用</li>
+</ul>
+<ul>
+<li><code>onCreateView（LayoutInflater,ViewGroup,Bundle）</code> : 创建<code>Fragment</code>的视图</li>
+</ul>
+<ul>
+<li><code>onActivityCreated（Bundle）</code> ：当<code>Activity</code>的<code>onCreate</code>方法返回时调用</li>
+</ul>
+<ul>
+<li><code>onStart（）</code></li>
+</ul>
+<ul>
+<li><code>onResume（）</code></li>
+</ul>
+<ul>
+<li><code>onPause（）</code></li>
+</ul>
+<ul>
+<li><code>onStop()</code></li>
+</ul>
+<ul>
+<li><code>onDestoryView()</code> : 与<code>onCreateView</code>相对应，当该<code>Fragment</code>的视图被移除时调用</li>
+</ul>
+<ul>
+<li><code>onDestory（）</code></li>
+</ul>
+<ul>
+<li><code>onDetach()</code> : 与<code>onAttach</code>相对应，当该<code>Fragment</code>与<code>Activity</code>关联被取消时候调用</li>
+</ul>
+<ul>
+<li>注意 ：除了<code>onCreateView</code>，其他的所有方法被重写的时候必须调用父类对于该方法的实现，即<code>super.onXxx()</code>。</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/21/Android Fragment 真正的完全解析/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/21/RxJava 笔记/" itemprop="url">
+                  RxJava笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-21T09:06:38+08:00" content="2016-09-21">
+              2016-09-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <hr>
+<h4 id="RxJava定义"><a href="#RxJava定义" class="headerlink" title="RxJava定义"></a>RxJava定义</h4><p> <strong> a library for composing（组成） asynchronous and event-based programs using observable sequences for the java VM (一个在Java VM上使用可观测的序列来组成的异步的、基于事件的程序的库)；</strong><br></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/21/RxJava 笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/20/loveYuanYuan/" itemprop="url">
                   Love Yuan
                 </a>
@@ -491,7 +722,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -501,7 +732,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
