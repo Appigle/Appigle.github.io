@@ -84,25 +84,22 @@
 
 
 
-<meta name="description" content="概述  随着科技的发展，手机的屏幕分辨率越来越高，手机厂商可选择的屏幕越来越多，因此导致市面上手机屏幕的碎片化严重。作为一个移动端程序员开发者，掌握屏幕适配技术也成为了标配技能。
-探究基础概念解析 像素（PX）： 屏幕最小的显示单元； 分辨率： 屏幕水平方向上的像素x锤子方向上的像素；eg. Ip5的分辨率为：640x1135; 每英寸像素数（ppi）： pixel per inch，像素密度，">
+<meta name="description" content="概述  随着科技的发展，手机的屏幕分辨率越来越高，手机厂商可选择的屏幕越来越多，因此导致市面上手机屏幕的碎片化严重。作为一个移动端程序员开发者，掌握屏幕适配技术也成为了标配技能。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android/IOS图片资源文件对比探究">
 <meta property="og:url" content="http://yoursite.com/2017/07/18/Android与IOS图片资源文件对比探究/index.html">
 <meta property="og:site_name" content="Chenley">
-<meta property="og:description" content="概述  随着科技的发展，手机的屏幕分辨率越来越高，手机厂商可选择的屏幕越来越多，因此导致市面上手机屏幕的碎片化严重。作为一个移动端程序员开发者，掌握屏幕适配技术也成为了标配技能。
-探究基础概念解析 像素（PX）： 屏幕最小的显示单元； 分辨率： 屏幕水平方向上的像素x锤子方向上的像素；eg. Ip5的分辨率为：640x1135; 每英寸像素数（ppi）： pixel per inch，像素密度，">
+<meta property="og:description" content="概述  随着科技的发展，手机的屏幕分辨率越来越高，手机厂商可选择的屏幕越来越多，因此导致市面上手机屏幕的碎片化严重。作为一个移动端程序员开发者，掌握屏幕适配技术也成为了标配技能。">
 <meta property="og:image" content="http://ot9z4kcor.bkt.clouddn.com/static/images//Android开发图片资源对应表.jpg">
 <meta property="og:image" content="http://ot9z4kcor.bkt.clouddn.com/static/images//ISO开发中设备屏幕对照表.png">
 <meta property="og:image" content="http://ot9z4kcor.bkt.clouddn.com/static/images//AS创建项目初始文件目录图.png">
 <meta property="og:image" content="http://ot9z4kcor.bkt.clouddn.com/static/images//MEIZU PRO6 Plus.png">
 <meta property="og:image" content="http://ot9z4kcor.bkt.clouddn.com/static/images//MeizuPro6 Plus 参数.png">
 <meta property="og:image" content="http://ot9z4kcor.bkt.clouddn.com/static/images//Android图片资源文件夹与Ios倍图关系表.png">
-<meta property="og:updated_time" content="2017-09-01T06:28:59.604Z">
+<meta property="og:updated_time" content="2017-09-01T06:30:41.142Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android/IOS图片资源文件对比探究">
-<meta name="twitter:description" content="概述  随着科技的发展，手机的屏幕分辨率越来越高，手机厂商可选择的屏幕越来越多，因此导致市面上手机屏幕的碎片化严重。作为一个移动端程序员开发者，掌握屏幕适配技术也成为了标配技能。
-探究基础概念解析 像素（PX）： 屏幕最小的显示单元； 分辨率： 屏幕水平方向上的像素x锤子方向上的像素；eg. Ip5的分辨率为：640x1135; 每英寸像素数（ppi）： pixel per inch，像素密度，">
+<meta name="twitter:description" content="概述  随着科技的发展，手机的屏幕分辨率越来越高，手机厂商可选择的屏幕越来越多，因此导致市面上手机屏幕的碎片化严重。作为一个移动端程序员开发者，掌握屏幕适配技术也成为了标配技能。">
 <meta name="twitter:image" content="http://ot9z4kcor.bkt.clouddn.com/static/images//Android开发图片资源对应表.jpg">
 
 
@@ -318,6 +315,7 @@
       
         <hr>
 <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>  随着科技的发展，手机的屏幕分辨率越来越高，手机厂商可选择的屏幕越来越多，因此导致市面上手机屏幕的碎片化严重。作为一个移动端程序员开发者，掌握屏幕适配技术也成为了标配技能。</p>
+<a id="more"></a>
 <h3 id="探究"><a href="#探究" class="headerlink" title="探究"></a>探究</h3><h4 id="基础概念解析"><a href="#基础概念解析" class="headerlink" title="基础概念解析"></a>基础概念解析</h4><p><strong> 像素（PX）：</strong> 屏幕最小的显示单元；<br><strong> 分辨率：</strong> 屏幕水平方向上的像素x锤子方向上的像素；<code>eg. Ip5的分辨率为：640x1135</code>;<br><strong> 每英寸像素数（ppi）：</strong> <code>pixel per inch</code>，像素密度，单位为：<code>像素/每英寸</code>, 针对显示器时：<code>ppi=dpi</code>；<br><strong> 每英寸像素点（dpi）：</strong> <code>dot per inch</code> 像素密度，单位：<code>像素/每英寸</code>,计算方式：<code>dpi=√ ( 屏幕水平像素 ^2 + 屏幕垂直像素 ^2 ) / 屏幕英寸数</code>;<br><strong> dp:</strong> <code>Device independent pixels</code>，Android 开发中使不同的屏幕显示一致的UI元素时使用的单位：密度独立像素。计算方式：<code>dp=（dpi/（160 像素 / 英寸））px</code>;<br><strong> @1x,@2x,@3x：</strong> Ios开发中，为使在不同设备下显示一致的UI元素，将iphone手机分为3类，对应的称之为<code>一倍图,二倍图，三倍图</code>;</p>
 <h4 id="Android-Ios实际开发中开发中"><a href="#Android-Ios实际开发中开发中" class="headerlink" title="Android/Ios实际开发中开发中"></a>Android/Ios实际开发中开发中</h4><p><img src="http://ot9z4kcor.bkt.clouddn.com/static/images//Android开发图片资源对应表.jpg" alt=""><br><img src="http://ot9z4kcor.bkt.clouddn.com/static/images//ISO开发中设备屏幕对照表.png" alt=""><br>如上图所示：Android开发中一般会有五种尺寸的图片资源文件夹<code>mdpi、hdpi、xhdpi、xxhdpi、xxxhdpi</code>;(备注：Android Studio刚开始创建项目时，是没有该系列文件夹的，需要在添加图片资源时，手动创建)<br><img src="http://ot9z4kcor.bkt.clouddn.com/static/images//AS创建项目初始文件目录图.png" alt=""></p>
 <h5 id="如何计算一款手机的分辨率-dpi等"><a href="#如何计算一款手机的分辨率-dpi等" class="headerlink" title="如何计算一款手机的分辨率/dpi等"></a>如何计算一款手机的分辨率/dpi等</h5><p>例如: 魅族Pro6 Plus 手机 <img src="http://ot9z4kcor.bkt.clouddn.com/static/images//MEIZU PRO6 Plus.png" alt=""><br>手机官方参数如下：<img src="http://ot9z4kcor.bkt.clouddn.com/static/images//MeizuPro6 Plus 参数.png" alt=""><br><strong> ppi = dpi =  √ ( 1440^2 x 2560^2 ) / 5.7屏幕英寸数 ≈ 515 像素 / 每英寸</strong><br><strong>dp =（515/（160 像素 / 英寸））px ≈ 3px</strong><br>从上面的计算可以看出，Pro6 使用的图片资源应该是xxhdpi的；</p>
