@@ -17,13 +17,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"appigle.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="概述效果需求：页面分俩部分：pageUp和pageDown，俩部分均extends ScrollView拥有滑动效果。当界面分别处于上下页面时，需要判断其内部的内容是否可以滚动，并执行相应的滚动策略。如果滑动到上下界面交界处，则根据滑动的距离是否超过设定滑动距离判断是滑动进入另一页，还是继续留在本页。如果在上下界面交界处滑动距离没有超过设定的滑动距离，那么会有阻尼回弹的效果恢复到pageUp的底">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 仿JD阻尼效果加载商品信息和商品详情">
-<meta property="og:url" content="http://example.com/2016/11/03/Android%20%E4%BB%BFJD%E9%98%BB%E5%B0%BC%E6%95%88%E6%9E%9C%E5%8A%A0%E8%BD%BD%E5%95%86%E5%93%81%E4%BF%A1%E6%81%AF%E5%92%8C%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/index.html">
+<meta property="og:url" content="https://appigle.github.io/2016/11/03/Android%20%E4%BB%BFJD%E9%98%BB%E5%B0%BC%E6%95%88%E6%9E%9C%E5%8A%A0%E8%BD%BD%E5%95%86%E5%93%81%E4%BF%A1%E6%81%AF%E5%92%8C%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/index.html">
 <meta property="og:site_name" content="Welcome to Ray&#39;s Blog">
 <meta property="og:description" content="概述效果需求：页面分俩部分：pageUp和pageDown，俩部分均extends ScrollView拥有滑动效果。当界面分别处于上下页面时，需要判断其内部的内容是否可以滚动，并执行相应的滚动策略。如果滑动到上下界面交界处，则根据滑动的距离是否超过设定滑动距离判断是滑动进入另一页，还是继续留在本页。如果在上下界面交界处滑动距离没有超过设定的滑动距离，那么会有阻尼回弹的效果恢复到pageUp的底">
 <meta property="og:locale" content="en_US">
@@ -34,7 +34,7 @@
 <meta property="article:tag" content="Widget">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2016/11/03/Android%20%E4%BB%BFJD%E9%98%BB%E5%B0%BC%E6%95%88%E6%9E%9C%E5%8A%A0%E8%BD%BD%E5%95%86%E5%93%81%E4%BF%A1%E6%81%AF%E5%92%8C%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/">
+<link rel="canonical" href="https://appigle.github.io/2016/11/03/Android%20%E4%BB%BFJD%E9%98%BB%E5%B0%BC%E6%95%88%E6%9E%9C%E5%8A%A0%E8%BD%BD%E5%95%86%E5%93%81%E4%BF%A1%E6%81%AF%E5%92%8C%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/">
 
 
 <script id="page-configurations">
@@ -153,7 +153,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2016/11/03/Android%20%E4%BB%BFJD%E9%98%BB%E5%B0%BC%E6%95%88%E6%9E%9C%E5%8A%A0%E8%BD%BD%E5%95%86%E5%93%81%E4%BF%A1%E6%81%AF%E5%92%8C%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/11/03/Android%20%E4%BB%BFJD%E9%98%BB%E5%B0%BC%E6%95%88%E6%9E%9C%E5%8A%A0%E8%BD%BD%E5%95%86%E5%93%81%E4%BF%A1%E6%81%AF%E5%92%8C%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -303,12 +303,17 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>

@@ -17,20 +17,20 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"appigle.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="Ray&#39;s Blog！">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Welcome to Ray&#39;s Blog">
-<meta property="og:url" content="http://example.com/page/5/index.html">
+<meta property="og:url" content="https://appigle.github.io/page/5/index.html">
 <meta property="og:site_name" content="Welcome to Ray&#39;s Blog">
 <meta property="og:description" content="Ray&#39;s Blog！">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Lei Chen">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/page/5/">
+<link rel="canonical" href="https://appigle.github.io/page/5/">
 
 
 <script id="page-configurations">
@@ -148,7 +148,72 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2016/10/15/SPDY%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/10/15/APK%E7%9A%84%E5%A2%9E%E9%87%8F%E6%9B%B4%E6%96%B0%EF%BC%88%E5%B7%AE%E5%88%86%E5%8D%87%E7%BA%A7%EF%BC%89%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chen">
+      <meta itemprop="description" content="Ray's Blog！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Ray's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/10/15/APK%E7%9A%84%E5%A2%9E%E9%87%8F%E6%9B%B4%E6%96%B0%EF%BC%88%E5%B7%AE%E5%88%86%E5%8D%87%E7%BA%A7%EF%BC%89%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">APK的增量更新（差分升级）笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2016-10-15 09:48:42" itemprop="dateCreated datePublished" datetime="2016-10-15T09:48:42-04:00">2016-10-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>将手机上已安装apk文件与服务器端最新apk进行二进制对比，得到差分包。用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装apk合并成新的apk文件，然后安装合成后的新apk文件。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2016/10/15/APK%E7%9A%84%E5%A2%9E%E9%87%8F%E6%9B%B4%E6%96%B0%EF%BC%88%E5%B7%AE%E5%88%86%E5%8D%87%E7%BA%A7%EF%BC%89%E7%AC%94%E8%AE%B0/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/10/15/SPDY%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -217,7 +282,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2016/10/11/RxJava%20%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/10/11/RxJava%20%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -283,7 +348,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2016/10/11/loveYuanYuan/">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/10/11/loveYuanYuan/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -342,7 +407,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2016/09/27/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEsdk%E6%80%BB%E7%BB%93by%E4%B9%94%E4%B9%94/">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/09/27/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEsdk%E6%80%BB%E7%BB%93by%E4%B9%94%E4%B9%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -412,7 +477,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2016/09/20/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/09/20/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -547,12 +612,17 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>

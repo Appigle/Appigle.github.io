@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"appigle.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Learn how to build an elastic cursor animation using React and GSAP to enhance UI interactivity.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Creating an Interactive Elastic Cursor with React and GSAP">
+<meta property="og:url" content="https://appigle.github.io/2025/02/04/Creating-an-Interactive-Elastic-Cursor-with-React-and-GSAP/index.html">
+<meta property="og:site_name" content="Welcome to Ray&#39;s Blog">
+<meta property="og:description" content="Learn how to build an elastic cursor animation using React and GSAP to enhance UI interactivity.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-02-04T23:00:00.000Z">
+<meta property="article:modified_time" content="2025-02-04T23:46:11.383Z">
+<meta property="article:author" content="Lei Chen">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="GSAP">
+<meta property="article:tag" content="UI">
+<meta property="article:tag" content="Animation">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://appigle.github.io/2025/02/04/Creating-an-Interactive-Elastic-Cursor-with-React-and-GSAP/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Creating an Interactive Elastic Cursor with React and GSAP | Welcome to Ray's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to Ray's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry Stay Foolish - Steve Jobs</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2025/02/04/Creating-an-Interactive-Elastic-Cursor-with-React-and-GSAP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chen">
+      <meta itemprop="description" content="Ray's Blog！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Ray's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Creating an Interactive Elastic Cursor with React and GSAP
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2025-02-04 18:00:00 / Modified: 18:46:11" itemprop="dateCreated datePublished" datetime="2025-02-04T18:00:00-05:00">2025-02-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frontend-Development/" itemprop="url" rel="index"><span itemprop="name">Frontend Development</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">Learn how to build an elastic cursor animation using React and GSAP to enhance UI interactivity.</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Creating-an-Interactive-Elastic-Cursor-with-React-and-GSAP"><a href="#Creating-an-Interactive-Elastic-Cursor-with-React-and-GSAP" class="headerlink" title="Creating an Interactive Elastic Cursor with React and GSAP"></a>Creating an Interactive Elastic Cursor with React and GSAP</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>In modern UI design, subtle interactions can significantly improve user experience. One such effect is a <strong>custom animated cursor</strong>, which provides a more dynamic feel to mouse movements. In this blog, we’ll break down an <strong>Elastic Cursor</strong> component built with <strong>React, GSAP (GreenSock Animation Platform), and TypeScript</strong>.</p>
+<p>This component enhances cursor movement with a <strong>jelly-like animation effect</strong>, responding to user interactions smoothly. Let’s dive into how it works and the thought process behind it.</p>
+<h2 id="How-the-Elastic-Cursor-Works"><a href="#How-the-Elastic-Cursor-Works" class="headerlink" title="How the Elastic Cursor Works"></a><strong>How the Elastic Cursor Works</strong></h2><p>The <code>ElasticCursor</code> component is designed to follow the user’s mouse movements while dynamically adapting its shape and size. Key features include:</p>
+<ul>
+<li><strong>Smooth elastic movement</strong> using GSAP animations.</li>
+<li><strong>Size and rotation adjustments</strong> based on cursor velocity.</li>
+<li><strong>Hover effects</strong> that dynamically resize and reposition the cursor.</li>
+<li><strong>Mobile detection</strong> to disable the effect on small screens.</li>
+</ul>
+<h3 id="Breaking-Down-the-Code"><a href="#Breaking-Down-the-Code" class="headerlink" title="Breaking Down the Code"></a><strong>Breaking Down the Code</strong></h3><h3 id="1-Setting-Up-State-and-References"><a href="#1-Setting-Up-State-and-References" class="headerlink" title="1. Setting Up State and References"></a><strong>1. Setting Up State and References</strong></h3><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> jellyRef = useRef&lt;<span class="title class_">HTMLDivElement</span>&gt;(<span class="literal">null</span>);</span><br><span class="line"><span class="keyword">const</span> [isHovering, setIsHovering] = <span class="title function_">useState</span>(<span class="literal">false</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; x, y &#125; = <span class="title function_">useMouse</span>();</span><br><span class="line"><span class="keyword">const</span> isMobile = <span class="title function_">useMediaQuery</span>(<span class="string">&#x27;(max-width: 768px)&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>jellyRef</code>: A reference to the cursor element.</li>
+<li><code>isHovering</code>: Tracks whether the cursor is hovering over an interactive element.</li>
+<li><code>x, y</code>: Mouse coordinates obtained from a custom hook.</li>
+<li><code>isMobile</code>: A media query to disable the effect on smaller screens.</li>
+</ul>
+<hr>
+<h3 id="2-Handling-Cursor-Movement-with-GSAP"><a href="#2-Handling-Cursor-Movement-with-GSAP" class="headerlink" title="2. Handling Cursor Movement with GSAP"></a><strong>2. Handling Cursor Movement with GSAP</strong></h3><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useLayoutEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  set.<span class="property">x</span> = gsap.<span class="title function_">quickSetter</span>(jellyRef.<span class="property">current</span>, <span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;px&#x27;</span>);</span><br><span class="line">  set.<span class="property">y</span> = gsap.<span class="title function_">quickSetter</span>(jellyRef.<span class="property">current</span>, <span class="string">&#x27;y&#x27;</span>, <span class="string">&#x27;px&#x27;</span>);</span><br><span class="line">  set.<span class="property">r</span> = gsap.<span class="title function_">quickSetter</span>(jellyRef.<span class="property">current</span>, <span class="string">&#x27;rotate&#x27;</span>, <span class="string">&#x27;deg&#x27;</span>);</span><br><span class="line">  set.<span class="property">sx</span> = gsap.<span class="title function_">quickSetter</span>(jellyRef.<span class="property">current</span>, <span class="string">&#x27;scaleX&#x27;</span>);</span><br><span class="line">  set.<span class="property">sy</span> = gsap.<span class="title function_">quickSetter</span>(jellyRef.<span class="property">current</span>, <span class="string">&#x27;scaleY&#x27;</span>);</span><br><span class="line">  set.<span class="property">width</span> = gsap.<span class="title function_">quickSetter</span>(jellyRef.<span class="property">current</span>, <span class="string">&#x27;width&#x27;</span>, <span class="string">&#x27;px&#x27;</span>);</span><br><span class="line">&#125;, []);</span><br></pre></td></tr></table></figure>
+
+<p>GSAP’s <code>quickSetter</code> is used to optimize animation updates by directly modifying element properties, improving performance.</p>
+<hr>
+<h3 id="3-Animating-the-Cursor-with-Elastic-Motion"><a href="#3-Animating-the-Cursor-with-Elastic-Motion" class="headerlink" title="3. Animating the Cursor with Elastic Motion"></a><strong>3. Animating the Cursor with Elastic Motion</strong></h3><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> loop = <span class="title function_">useCallback</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!set.<span class="property">width</span> || !set.<span class="property">sx</span> || !set.<span class="property">sy</span> || !set.<span class="property">r</span>) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">const</span> rotation = <span class="title function_">getAngle</span>(vel.<span class="property">x</span>, vel.<span class="property">y</span>);</span><br><span class="line">  <span class="keyword">const</span> scale = <span class="title function_">getScale</span>(vel.<span class="property">x</span>, vel.<span class="property">y</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!isHovering &amp;&amp; !isLoading) &#123;</span><br><span class="line">    set.<span class="title function_">x</span>(pos.<span class="property">x</span>);</span><br><span class="line">    set.<span class="title function_">y</span>(pos.<span class="property">y</span>);</span><br><span class="line">    set.<span class="title function_">width</span>(<span class="number">50</span> + scale * <span class="number">300</span>);</span><br><span class="line">    set.<span class="title function_">r</span>(rotation);</span><br><span class="line">    set.<span class="title function_">sx</span>(<span class="number">1</span> + scale);</span><br><span class="line">    set.<span class="title function_">sy</span>(<span class="number">1</span> - scale * <span class="number">2</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    set.<span class="title function_">r</span>(<span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, [isHovering, isLoading]);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Calculates</strong> rotation and scale based on cursor velocity.</li>
+<li><strong>Applies transformations</strong> dynamically when not hovering.</li>
+<li><strong>Resets rotation</strong> when hovering over interactive elements.</li>
+</ul>
+<hr>
+<h3 id="4-Handling-Hover-Effects"><a href="#4-Handling-Hover-Effects" class="headerlink" title="4. Handling Hover Effects"></a><strong>4. Handling Hover Effects</strong></h3><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">setFromEvent</span> = (<span class="params"><span class="attr">e</span>: <span class="title class_">MouseEvent</span></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> el = e.<span class="property">target</span> <span class="keyword">as</span> <span class="title class_">HTMLElement</span>;</span><br><span class="line">  <span class="keyword">const</span> hoverElemRect = <span class="title function_">getRekt</span>(el);</span><br><span class="line">  <span class="keyword">if</span> (hoverElemRect) &#123;</span><br><span class="line">    <span class="keyword">const</span> rect = el.<span class="title function_">getBoundingClientRect</span>();</span><br><span class="line">    <span class="title function_">setIsHovering</span>(<span class="literal">true</span>);</span><br><span class="line">    gsap.<span class="title function_">to</span>(jellyRef.<span class="property">current</span>, &#123;</span><br><span class="line">      <span class="attr">width</span>: el.<span class="property">offsetWidth</span> + <span class="number">20</span>,</span><br><span class="line">      <span class="attr">height</span>: el.<span class="property">offsetHeight</span> + <span class="number">20</span>,</span><br><span class="line">      <span class="attr">x</span>: rect.<span class="property">left</span> + rect.<span class="property">width</span> / <span class="number">2</span>,</span><br><span class="line">      <span class="attr">y</span>: rect.<span class="property">top</span> + rect.<span class="property">height</span> / <span class="number">2</span>,</span><br><span class="line">      <span class="attr">borderRadius</span>: <span class="number">10</span>,</span><br><span class="line">      <span class="attr">duration</span>: <span class="number">1.5</span>,</span><br><span class="line">      <span class="attr">ease</span>: <span class="string">&#x27;elastic.out(1, 0.3)&#x27;</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    gsap.<span class="title function_">to</span>(jellyRef.<span class="property">current</span>, &#123;</span><br><span class="line">      <span class="attr">borderRadius</span>: <span class="number">50</span>,</span><br><span class="line">      <span class="attr">width</span>: <span class="variable constant_">CURSOR_DIAMETER</span>,</span><br><span class="line">      <span class="attr">height</span>: <span class="variable constant_">CURSOR_DIAMETER</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="title function_">setIsHovering</span>(<span class="literal">false</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Detects if the cursor is hovering over an interactive element.</li>
+<li><strong>Expands and moves</strong> the cursor over the element.</li>
+<li><strong>Restores default size</strong> when no hover is detected.</li>
+</ul>
+<hr>
+<h3 id="5-Preventing-Animations-on-Mobile"><a href="#5-Preventing-Animations-on-Mobile" class="headerlink" title="5. Preventing Animations on Mobile"></a><strong>5. Preventing Animations on Mobile</strong></h3><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (isMobile) <span class="keyword">return</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<p>If the device width is below <code>768px</code>, the cursor effect is disabled to maintain usability on touch devices.</p>
+<hr>
+<h3 id="6-Rendering-the-Cursor-UI"><a href="#6-Rendering-the-Cursor-UI" class="headerlink" title="6. Rendering the Cursor UI"></a><strong>6. Rendering the Cursor UI</strong></h3><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">ref</span>=<span class="string">&#123;jellyRef&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">className</span>=<span class="string">&quot;jelly-blob fixed rounded-lg pointer-events-none&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    &gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;w-3 h-3 rounded-full fixed pointer-events-none&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>The <strong>primary <code>div</code></strong> acts as the elastic cursor.</li>
+<li>The <strong>secondary <code>div</code></strong> creates a smooth tracking effect.</li>
+</ul>
+<hr>
+<h2 id="Final-Thoughts"><a href="#Final-Thoughts" class="headerlink" title="Final Thoughts"></a><strong>Final Thoughts</strong></h2><p>The <code>ElasticCursor</code> component creates a highly interactive experience that enhances the visual appeal of web applications. By leveraging <strong>GSAP animations, event listeners, and React hooks</strong>, this component seamlessly reacts to user input, making the UI feel <strong>modern and responsive</strong>.</p>
+<h4 id="Potential-Enhancements"><a href="#Potential-Enhancements" class="headerlink" title="Potential Enhancements:"></a><strong>Potential Enhancements:</strong></h4><p>✅ Custom colors &amp; themes 🎨<br>✅ More interactive animations ✨<br>✅ Support for click-based interactions 🖱️</p>
+<p>Try implementing this in your project and let me know what creative modifications you make! 🚀</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Appigle/Portfolio/blob/main/src/components/ui/ElasticCursor.tsx">Full code</a><br><a target="_blank" rel="noopener" href="https://lei.xiaopotato.top/">Live View</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/React/" rel="tag"># React</a>
+              <a href="/tags/GSAP/" rel="tag"># GSAP</a>
+              <a href="/tags/UI/" rel="tag"># UI</a>
+              <a href="/tags/Animation/" rel="tag"># Animation</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/09/01/Android%E4%B8%8EIOS%E5%9B%BE%E7%89%87%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E5%AF%B9%E6%AF%94%E6%8E%A2%E7%A9%B6/" rel="prev" title="Android/IOS图片资源文件对比探究">
+      <i class="fa fa-chevron-left"></i> Android/IOS图片资源文件对比探究
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Creating-an-Interactive-Elastic-Cursor-with-React-and-GSAP"><span class="nav-number">1.</span> <span class="nav-text">Creating an Interactive Elastic Cursor with React and GSAP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-the-Elastic-Cursor-Works"><span class="nav-number">1.2.</span> <span class="nav-text">How the Elastic Cursor Works</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Breaking-Down-the-Code"><span class="nav-number">1.2.1.</span> <span class="nav-text">Breaking Down the Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Setting-Up-State-and-References"><span class="nav-number">1.2.2.</span> <span class="nav-text">1. Setting Up State and References</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Handling-Cursor-Movement-with-GSAP"><span class="nav-number">1.2.3.</span> <span class="nav-text">2. Handling Cursor Movement with GSAP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Animating-the-Cursor-with-Elastic-Motion"><span class="nav-number">1.2.4.</span> <span class="nav-text">3. Animating the Cursor with Elastic Motion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Handling-Hover-Effects"><span class="nav-number">1.2.5.</span> <span class="nav-text">4. Handling Hover Effects</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Preventing-Animations-on-Mobile"><span class="nav-number">1.2.6.</span> <span class="nav-text">5. Preventing Animations on Mobile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Rendering-the-Cursor-UI"><span class="nav-number">1.2.7.</span> <span class="nav-text">6. Rendering the Cursor UI</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Final-Thoughts"><span class="nav-number">1.3.</span> <span class="nav-text">Final Thoughts</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Potential-Enhancements"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">Potential Enhancements:</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lei Chen</p>
+  <div class="site-description" itemprop="description">Ray's Blog！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lei Chen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
