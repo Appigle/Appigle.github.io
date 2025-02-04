@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="MVC&#x2F;MVP&#x2F;MVVMMVC:Model View Controller View 传递指令到Controller； Controller 起到不同层面间的组织作用，用于控制应用程序的流程。它处理事件并做出响应。“事件”包括用户的行为和数据Moldel的改变； Model 将新的数据发送到View，用户得到反馈； 所有通信都是单向进行。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用知识点笔记一">
+<meta property="og:url" content="http://example.com/2016/10/15/%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9%E7%AC%94%E8%AE%B0%E4%B8%80/index.html">
+<meta property="og:site_name" content="Welcome to Ray&#39;s Blog">
+<meta property="og:description" content="MVC&#x2F;MVP&#x2F;MVVMMVC:Model View Controller View 传递指令到Controller； Controller 起到不同层面间的组织作用，用于控制应用程序的流程。它处理事件并做出响应。“事件”包括用户的行为和数据Moldel的改变； Model 将新的数据发送到View，用户得到反馈； 所有通信都是单向进行。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://image.beekka.com/blog/2015/bg2015020105.png">
+<meta property="og:image" content="http://image.beekka.com/blog/2015/bg2015020109.png">
+<meta property="og:image" content="http://image.beekka.com/blog/2015/bg2015020110.png">
+<meta property="og:image" content="http://my.csdn.net/uploads/201204/17/1334628702_9553.png">
+<meta property="article:published_time" content="2016-10-15T15:19:40.000Z">
+<meta property="article:modified_time" content="2016-10-15T15:19:40.000Z">
+<meta property="article:author" content="Lei Chen">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="零碎知识点">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://image.beekka.com/blog/2015/bg2015020105.png">
+
+<link rel="canonical" href="http://example.com/2016/10/15/%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9%E7%AC%94%E8%AE%B0%E4%B8%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>常用知识点笔记一 | Welcome to Ray's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to Ray's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry Stay Foolish - Steve Jobs</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2016/10/15/%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9%E7%AC%94%E8%AE%B0%E4%B8%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chen">
+      <meta itemprop="description" content="Ray's Blog！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Ray's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          常用知识点笔记一
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2016-10-15 11:19:40" itemprop="dateCreated datePublished" datetime="2016-10-15T11:19:40-04:00">2016-10-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <hr>
+<h4 id="MVC-MVP-MVVM"><a href="#MVC-MVP-MVVM" class="headerlink" title="MVC&#x2F;MVP&#x2F;MVVM"></a>MVC&#x2F;MVP&#x2F;MVVM</h4><h5 id="MVC-Model-View-Controller"><a href="#MVC-Model-View-Controller" class="headerlink" title="MVC:Model View Controller"></a>MVC:Model View Controller</h5><ol>
+<li>View 传递指令到Controller；</li>
+<li>Controller 起到不同层面间的组织作用，用于控制应用程序的流程。它处理事件并做出响应。“事件”包括用户的行为和数据Moldel的改变；</li>
+<li>Model 将新的数据发送到View，用户得到反馈；</li>
+<li>所有通信都是单向进行。<br><img src="http://image.beekka.com/blog/2015/bg2015020105.png"></li>
+</ol>
+<span id="more"></span>
+
+<h5 id="MVP：Model-View-Presenter"><a href="#MVP：Model-View-Presenter" class="headerlink" title="MVP：Model View Presenter"></a>MVP：Model View Presenter</h5><ol>
+<li>各部分之间的通信，都是双向的；</li>
+<li>View与Model不发生联系，都通过Presenter传递；</li>
+<li>View非常薄，不部署任何业务逻辑，称为“被动视图”（passive view），即没有任何主动性，而Presenter非常厚，所有逻辑都部署在那里。<br><img src="http://image.beekka.com/blog/2015/bg2015020109.png"></li>
+</ol>
+<h5 id="MVVM：Model-View-ViewModel"><a href="#MVVM：Model-View-ViewModel" class="headerlink" title="MVVM：Model View ViewModel"></a>MVVM：Model View ViewModel</h5><ol>
+<li>MVP模式升级版；</li>
+<li>采用双向绑定，Model的变动，自动反映在ViewModel中，反之亦然。<br><img src="http://image.beekka.com/blog/2015/bg2015020110.png"></li>
+</ol>
+<h4 id="为什么不可以List-Object-list-new-ArrayList-String"><a href="#为什么不可以List-Object-list-new-ArrayList-String" class="headerlink" title="为什么不可以List&lt; Object &gt; list = new ArrayList&lt; String &gt;?"></a>为什么不可以<code>List&lt; Object &gt; list = new ArrayList&lt; String &gt;</code>?</h4><p>原因：<a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/14935394/why-listobject-list-new-arrayliststring-this-give-typemismatch-error">stackOverfLow</a>: 泛型不支持多态性<br>One sentence, because<br><strong>Generic types are not polymorphic</strong><br>i.e., even though java.lang.String is a subtype of java.lang.Object polymorphism doesn’t apply to generic types. It only applies to collection types. thus</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Object&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;(); <span class="comment">//this isn&#x27;t valid</span></span><br><span class="line">   List&lt;Object&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Object&gt;(); <span class="comment">//valid</span></span><br><span class="line">List &lt; ? <span class="keyword">extends</span> <span class="title class_">Object</span>&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();<span class="comment">//valid</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="HashMap和Hashtable、ConcurrentHashMap-区别？"><a href="#HashMap和Hashtable、ConcurrentHashMap-区别？" class="headerlink" title="HashMap和Hashtable、ConcurrentHashMap 区别？"></a>HashMap和Hashtable、ConcurrentHashMap 区别？</h4><ol>
+<li>Hashtable 是全线程安全，不能以null作为k，v；</li>
+<li>HashMap是非线程安全的，可以以null作为k，v；</li>
+<li>CurrentHashMap 是java5引进替代Hashtable的，细粒度的线程安全，可以同步锁定部分数据，而不阻塞其他线程对数据的修改；</li>
+</ol>
+<h4 id="请简述Handler机制"><a href="#请简述Handler机制" class="headerlink" title="请简述Handler机制"></a>请简述Handler机制</h4><ol>
+<li>主线程中，启动时会调用<code>Looper.prepare()</code>方法，会初始化一个<code>Looper</code>对象，放入<code>ThreadLocal</code>中，接着调用<code>Looper.loop()</code>方法不断循环<code>MessageQueue</code>，<code>Handler</code>的创建依赖当前线程中的<code>Looper</code>，如果当前线程中没有<code>Looper</code>则必须调用<code>Looper.prepare()</code>。<code>Handler</code>的<code>sendMessageXX（）</code>方法将<code>message</code>发送到<code>MessageQueue</code>中,即调用<code>MessageQueue.queueMessage()</code>方法插入一条<code>Message</code>，<code>Looper</code>则不断的轮询从<code>MessageQueue</code>中取出消息,即无限for循环调用<code>MessageQueue.next()</code>，该方法是一个阻塞方法，当有没有信息的时候就会被阻塞。当循环到获取消息不为空时，回调Handler的handleMessage方法。</li>
+</ol>
+<h4 id="AsyncTask使用场景有哪些？它有什么缺点？如何解决？"><a href="#AsyncTask使用场景有哪些？它有什么缺点？如何解决？" class="headerlink" title="AsyncTask使用场景有哪些？它有什么缺点？如何解决？"></a>AsyncTask使用场景有哪些？它有什么缺点？如何解决？</h4><ol>
+<li>AsyncTask使用在一些需要耗时操作的场景，耗时操作完成后更新主线程，或者在操作过程中对主线程UI进行更新（主要是progress）；</li>
+<li>缺陷：AsyncTask内部维护着一个长度为128的线程池，同时可以执行5个工作线程，还有一个缓冲队列，当线程池已有128个线程，缓冲队列已满时，如果此时向线程提交任务，将会抛出<code>RejectedExecutionException</code>异常；</li>
+<li>解决：创建一个控制线程来处理AsyncTask的调用判断，如果线程池满了则新线程睡眠否者继续请求AsyncTask；</li>
+<li>Android 3.0（API 11）之前线程之间是并行执行的。在3.0之后增加了<code>SerialExcutor</code>线程用来串行执行异步线程。真正执行任务的是<code>THREAD_POOL_EXCUTOR</code>线程。如果需要在3.0之后并行执行线程，那么只需要调用<code>ExcuteOnExcutor</code>方法即可.</li>
+</ol>
+<h4 id="简述自定义View流程"><a href="#简述自定义View流程" class="headerlink" title="简述自定义View流程"></a>简述自定义View流程</h4><p>  首先，在<code>res/values/attrs.xml</code>里面自定义需要使用的属性；<br>  然后，在自定义view的构造方法中使用<code>context.obtainStyledAttributes(attrs,R.styleable.attrName)</code>读取这些自定义属性（注意<code>recycle()</code>资源）；<br>  接着，在onMeasure方法中处理view的宽高策略。Measure的三个模式<code>EXACTLY</code>、<code>AT_MOST</code>、<code>UNSPECIFIED</code>的不同处理，然后需要使用<code>setMeasuredDimension</code>设置view的width和height；<br>  最后，在onDraw方法中使用canvas绘制我们需要的图像；<br>  如果需要处理触摸冲突事件，那么需要实现<code>onTauchEvent</code>、<code>onInterceptTouchEvent</code>方法，处理冲突事件；</p>
+<h4 id="Activity在被意外销毁的情况下，如何恢复数据？"><a href="#Activity在被意外销毁的情况下，如何恢复数据？" class="headerlink" title="Activity在被意外销毁的情况下，如何恢复数据？"></a>Activity在被意外销毁的情况下，如何恢复数据？</h4><ol>
+<li>可以在<code>onSaveInstanceState</code>中简要保存的数据保存起来，可以通过<code>Bundle</code>进行临时保存，然后在<code>onCreate</code>中的<code>Bundle</code>中取出来进行恢复。</li>
+<li>或者调用<code>onRestoreInstanceState(Bundle savedInstanceState)</code>方法；</li>
+</ol>
+<h4 id="Activity的常规生命周期？"><a href="#Activity的常规生命周期？" class="headerlink" title="Activity的常规生命周期？"></a>Activity的常规生命周期？</h4><p>onCreate–&gt;onResume–&gt;onStart–&gt;onPause–&gt;onStop–&gt;onDestory</p>
+<h4 id="Fragment的常规生命周期是怎样的？"><a href="#Fragment的常规生命周期是怎样的？" class="headerlink" title="Fragment的常规生命周期是怎样的？"></a>Fragment的常规生命周期是怎样的？</h4><p>onAttach–&gt;onCreateView–&gt;onActivityCreated–&gt;onStart–&gt;onResume–&gt;onPause–&gt;onStop–&gt;onDestoryView–&gt;onDestory–&gt;onDetach</p>
+<h4 id="Android的存储形式有哪些？"><a href="#Android的存储形式有哪些？" class="headerlink" title="Android的存储形式有哪些？"></a>Android的存储形式有哪些？</h4><ol>
+<li>数据库SQLite方式存储，支持基础的SQL语法，官方提供<code>SQLiteDataBase</code>类来操作，并且支持轻量级的事务；</li>
+<li><code>SharedPreference</code>存储简单的参数信息，本质为文件存储的XML；</li>
+<li>file存储，常用来存储大数据量的数据，需要io操作；</li>
+<li><code>ContentProvider</code>方式，可以向外部程序曝露数据；</li>
+<li>net方式，网络存储数据方式，通过网络请求方式数据交互；</li>
+</ol>
+<h4 id="如何判断应用是否被强杀？如何解决该问题？"><a href="#如何判断应用是否被强杀？如何解决该问题？" class="headerlink" title="如何判断应用是否被强杀？如何解决该问题？"></a>如何判断应用是否被强杀？如何解决该问题？</h4><p>可以在<code>Application</code>中定义一个static常量，赋值为-1，然后在欢迎界面修改值为0，如果被强杀，<code>application</code>被重新初始化，这时候在新生的<code>Activity</code>中根据常量值判断应用是否被强制杀死。在<code>Activity</code>的父类中封装应用被强杀的逻辑，然后根据是否被强杀处理不同的逻辑。</p>
+<h4 id="JSON的优点有哪些？-JSON-XML对比链接"><a href="#JSON的优点有哪些？-JSON-XML对比链接" class="headerlink" title="JSON的优点有哪些？   JSON&#x2F;XML对比链接"></a>JSON的优点有哪些？   <a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_8a30865f0101amjh.html">JSON&#x2F;XML对比链接</a></h4><p>Json格式简单，兼容性高，易于读写，并且传输的带宽小，方便解析，并且服务端容易生成；</p>
+<h4 id="Android动画类型和区别？"><a href="#Android动画类型和区别？" class="headerlink" title="Android动画类型和区别？"></a>Android动画类型和区别？</h4><ol>
+<li><p>Android3.0（SDK 11）之前，动画有补间动画(TWEEN)和帧动(Frame)画两种。补间动画支持：缩放，位移，透明度，旋转；帧动画是将图片按照一定顺序播放；</p>
+</li>
+<li><p>Android3.0（SDK 11）之后，新增了<code>ValueAnimator</code>的属性动画，通过不断的修改View的属性来产生动画效果；</p>
+</li>
+<li><p>注意：补间动画的位移不会改变组件的交互事件位置，但是属性动画是可以改变。如一个Button使用了补间动画的位移，那么它本身的点击事件响应区域仍然在原位置，但是使用属性动画改变了Button的位置之后，点击事件的响应位置也会相应的在新的button位置；</p>
+</li>
+<li><p>估值器和插值器</p>
+<blockquote>
+<ul>
+<li>插值器(Interpolator): TimeInterpolator(时间插值器)：<code>LinearInterpolator</code>(线性插值器：匀速动画)、<code>AccelerateDecelerateInterpolator</code>（加速减速插值器：俩头快，中间慢）和<code>DecelerateInterpolator</code>（减速插值器：速度越来越慢）；</li>
+<li>估值器(Evaluator)：TypeEvaluator（类型估值器）：<code>IntEvaluator</code>（针对整型属性）、<code>FloatEvaluator</code>（针对浮点型属性）、<code>ArgbEvaluator</code>（针对color属性）</li>
+</ul>
+</blockquote>
+</li>
+<li><p>采用<code>ValueAnimator</code>，监听动画过程，自己实现属性的改变：<code>ValueAnimator</code>本身不作用任何对象，就是说直接使用没有任何动画效果。它可以对一个值做动画，然后我们就可以家监听器动画过程，在动画过程中修改我们的对象的属性值，这将就间接的使我们的对象做了动画。</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 采用ValueAnimator，监听动画过程，实现对象属性的改变</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> target</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> start</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> end</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">performValueAnimator</span><span class="params">(<span class="keyword">final</span> View target, <span class="keyword">final</span> <span class="type">int</span> start, <span class="keyword">final</span> <span class="type">int</span> end)</span> &#123;</span><br><span class="line">        <span class="type">ValueAnimator</span> <span class="variable">animator</span> <span class="operator">=</span> ValueAnimator.ofFloat(<span class="number">1</span>, <span class="number">100</span>);<span class="comment">//创建动画对象</span></span><br><span class="line">        <span class="comment">//添加动画更新监听</span></span><br><span class="line">        animator.addUpdateListener(<span class="keyword">new</span> <span class="title class_">ValueAnimator</span>.AnimatorUpdateListener() &#123;</span><br><span class="line">            <span class="comment">//创建一个整型估值器</span></span><br><span class="line">            <span class="keyword">private</span> <span class="type">IntEvaluator</span> <span class="variable">intEvaluator</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">IntEvaluator</span>();</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onAnimationUpdate</span><span class="params">(ValueAnimator animation)</span> &#123;</span><br><span class="line">                <span class="comment">//获取当前动画的进度值，整型1-100之间</span></span><br><span class="line">                <span class="type">int</span> <span class="variable">currentValue</span> <span class="operator">=</span> (<span class="type">int</span>) animation.getAnimatedValue();</span><br><span class="line">                Log.d(TAG, <span class="string">&quot;onAnimationUpdate: currentValue = &quot;</span>+currentValue);</span><br><span class="line">                <span class="comment">//获取当前进度咱整个动画过程的比例，浮点型0-1之间</span></span><br><span class="line">                <span class="type">float</span> <span class="variable">fraction</span> <span class="operator">=</span> animation.getAnimatedFraction();</span><br><span class="line">                <span class="comment">//直接调用整型估值器，通过比例计算出尺寸，然后设置给View</span></span><br><span class="line">                target.getLayoutParams().width = intEvaluator.evaluate(fraction, start, end);</span><br><span class="line">                target.requestLayout();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="assets、res-raw目录的区别？"><a href="#assets、res-raw目录的区别？" class="headerlink" title="assets、res&#x2F;raw目录的区别？"></a>assets、res&#x2F;raw目录的区别？</h4><ol>
+<li>assets：用于存放需要打包到应用程序的静态文件，如数据库文件等，以便部署到设备中，这些文件不会被生成任何的资源ID，必须使用<code>AssetsManager</code>管理这些文件，该目录还支持任意深度的子目录；</li>
+<li>res：用户存放应用程序的资源，这些资源将被打包编译生成ID，通过R.id.xx来调。不支持深度子目录。</li>
+</ol>
+<ul>
+<li>res&#x2F;xml：存放通用的xml文件；</li>
+<li>res&#x2F;menu：存放xml格式的菜单描述文件；</li>
+<li>res&#x2F;values：存放字符串，尺寸值等；</li>
+<li>res&#x2F;raw：存放通用的文件，该文件夹内的文件将不会被编译成二进制文件，而是按照原样复制到设备上，但是仍然会生成对应的ID，可以通过R.id.xx方式调用。通常存放如音频，视频等文件。</li>
+</ul>
+<h4 id="OOM-主要Reason及处理方式？"><a href="#OOM-主要Reason及处理方式？" class="headerlink" title="OOM 主要Reason及处理方式？"></a>OOM 主要Reason及处理方式？</h4><ol>
+<li>对象资源没有关闭。eg.<code>Cursor</code>，<code>File</code>等；</li>
+<li><code>Bitmap</code>的占用内存过大，且未及时回收；<br>可以采用降低<code>bitmap</code>采样率（通常有<code>argb8888</code>、<code>argb565</code>、<code>argb4444</code>）方法减小<code>bitmap</code>占用内存：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BitmapFactory.<span class="type">Options</span> <span class="variable">options</span> <span class="operator">=</span> newBitmapFactory.Options();</span><br><span class="line">options.inSampleSize = <span class="number">2</span>;<span class="comment">//图片宽高都为原来的二分之一，即图片为原来的四分之一</span></span><br><span class="line"><span class="type">Bitmap</span> <span class="variable">bitmap</span> <span class="operator">=</span>BitmapFactory.decodeStream(cr.openInputStream(uri), <span class="literal">null</span>, options); preview.setImageBitmap(bitmap);</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>尽量使用<code>application</code>的<code>contenxt</code>来替代<code>activity</code>的<code>context</code>；</li>
+<li>注册的广播，监听等未及时取消；</li>
+<li>集合中的对象没有及时清理，特别是static的集合，更需要及时清理集合内对象；</li>
+<li>强引用对象，不能被GC回收，长期存在于内存当中；</li>
+</ol>
+<h4 id="Service知识小结"><a href="#Service知识小结" class="headerlink" title="Service知识小结"></a>Service知识小结</h4><ol>
+<li>启动方式<br><code>startService</code>非绑定启动<code>Service</code>。生命周期：<code>onCreate</code>(如果该<code>Serivce</code>未启动执行，反之不执行该方法)–》<code>onStartCommand</code>（2.0之前是<code>onStart</code>方法）–》running–》<code>onDestory</code><br><code>bindService</code>绑定式启动<code>Serivce</code>。生命周期：<code>onCreate</code>（如果<code>Service</code>未启动执行，反之则不执行该方法）–》<code>onBind</code>–》<code>onUnbind</code>–》<code>onDestory</code></li>
+</ol>
+<ul>
+<li>先后采用非绑定和绑定方式启动<code>Service</code>。生命周期：<code>onCreate</code>（if needed）–》<code>onStartCommand</code>–》<code>onBind/onRebind</code>–》running–》<code>onUnbind</code>–》<code>onDestory</code><br><img src="http://my.csdn.net/uploads/201204/17/1334628702_9553.png"></li>
+</ul>
+<ol start="2">
+<li><code>Service</code>与线程<code>Thread</code>是俩个概念，<code>Service</code>运行于主线程，如果要在<code>Service</code>运行耗时任务，那么仍然需要开启新线程去执行耗时任务；</li>
+<li><code>IntentService</code>与<code>Service</code>区别<blockquote>
+<ul>
+<li>会创建独立的<code>worker</code>程序来处理所有的<code>Intent</code>请求；</li>
+<li>创建独立的<code>worker</code>线程来处理<code>onHandleIntent</code>方法实现的代码，无需处理多线程问题；</li>
+<li>所有请求完成之后会自动停止，无需手动停止；</li>
+<li>为<code>Service</code>的<code>onBind</code>方法提供默认实现，返回<code>null</code>；</li>
+<li>为<code>Servcie</code>的<code>onStartCommand</code>提供默认实现，将请求的<code>Intent</code>添加到队列中；</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag"># 零碎知识点</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2016/10/15/Android%20WebView%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/" rel="prev" title="Android WebView知识笔记">
+      <i class="fa fa-chevron-left"></i> Android WebView知识笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2016/10/15/%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9%E7%AC%94%E8%AE%B0%E4%BA%8C/" rel="next" title="常用知识点笔记二">
+      常用知识点笔记二 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#MVC-MVP-MVVM"><span class="nav-number">1.</span> <span class="nav-text">MVC&#x2F;MVP&#x2F;MVVM</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#MVC-Model-View-Controller"><span class="nav-number">1.1.</span> <span class="nav-text">MVC:Model View Controller</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MVP%EF%BC%9AModel-View-Presenter"><span class="nav-number">1.2.</span> <span class="nav-text">MVP：Model View Presenter</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MVVM%EF%BC%9AModel-View-ViewModel"><span class="nav-number">1.3.</span> <span class="nav-text">MVVM：Model View ViewModel</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%8F%AF%E4%BB%A5List-Object-list-new-ArrayList-String"><span class="nav-number">2.</span> <span class="nav-text">为什么不可以List&lt; Object &gt; list &#x3D; new ArrayList&lt; String &gt;?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap%E5%92%8CHashtable%E3%80%81ConcurrentHashMap-%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">HashMap和Hashtable、ConcurrentHashMap 区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%B7%E7%AE%80%E8%BF%B0Handler%E6%9C%BA%E5%88%B6"><span class="nav-number">4.</span> <span class="nav-text">请简述Handler机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AsyncTask%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%AE%83%E6%9C%89%E4%BB%80%E4%B9%88%E7%BC%BA%E7%82%B9%EF%BC%9F%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">AsyncTask使用场景有哪些？它有什么缺点？如何解决？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E8%87%AA%E5%AE%9A%E4%B9%89View%E6%B5%81%E7%A8%8B"><span class="nav-number">6.</span> <span class="nav-text">简述自定义View流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity%E5%9C%A8%E8%A2%AB%E6%84%8F%E5%A4%96%E9%94%80%E6%AF%81%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E5%A6%82%E4%BD%95%E6%81%A2%E5%A4%8D%E6%95%B0%E6%8D%AE%EF%BC%9F"><span class="nav-number">7.</span> <span class="nav-text">Activity在被意外销毁的情况下，如何恢复数据？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity%E7%9A%84%E5%B8%B8%E8%A7%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%9F"><span class="nav-number">8.</span> <span class="nav-text">Activity的常规生命周期？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Fragment%E7%9A%84%E5%B8%B8%E8%A7%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F"><span class="nav-number">9.</span> <span class="nav-text">Fragment的常规生命周期是怎样的？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android%E7%9A%84%E5%AD%98%E5%82%A8%E5%BD%A2%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">10.</span> <span class="nav-text">Android的存储形式有哪些？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E5%BA%94%E7%94%A8%E6%98%AF%E5%90%A6%E8%A2%AB%E5%BC%BA%E6%9D%80%EF%BC%9F%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%AF%A5%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">11.</span> <span class="nav-text">如何判断应用是否被强杀？如何解决该问题？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSON%E7%9A%84%E4%BC%98%E7%82%B9%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F-JSON-XML%E5%AF%B9%E6%AF%94%E9%93%BE%E6%8E%A5"><span class="nav-number">12.</span> <span class="nav-text">JSON的优点有哪些？   JSON&#x2F;XML对比链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android%E5%8A%A8%E7%94%BB%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">13.</span> <span class="nav-text">Android动画类型和区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#assets%E3%80%81res-raw%E7%9B%AE%E5%BD%95%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">14.</span> <span class="nav-text">assets、res&#x2F;raw目录的区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OOM-%E4%B8%BB%E8%A6%81Reason%E5%8F%8A%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="nav-number">15.</span> <span class="nav-text">OOM 主要Reason及处理方式？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Service%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93"><span class="nav-number">16.</span> <span class="nav-text">Service知识小结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lei Chen</p>
+  <div class="site-description" itemprop="description">Ray's Blog！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lei Chen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

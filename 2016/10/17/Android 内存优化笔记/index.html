@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="概述内存简介RAM（Random Access Memory） 随机存取存储器：内存。通常分为：  寄存器（Registers）：速度最快的存储场所，因为寄存器位于处理器内部，我们的程序中无法控制； 栈（stack）：存放基本类型的数据和对象的引用，但对象本身不存放在栈中，而是存放在堆中； 堆（heap）：存放基本由new创建的对象和数组。在堆中分配的内存，由Java JVM的自动回收器（GC）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 内存优化笔记">
+<meta property="og:url" content="http://example.com/2016/10/17/Android%20%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Welcome to Ray&#39;s Blog">
+<meta property="og:description" content="概述内存简介RAM（Random Access Memory） 随机存取存储器：内存。通常分为：  寄存器（Registers）：速度最快的存储场所，因为寄存器位于处理器内部，我们的程序中无法控制； 栈（stack）：存放基本类型的数据和对象的引用，但对象本身不存放在栈中，而是存放在堆中； 堆（heap）：存放基本由new创建的对象和数组。在堆中分配的内存，由Java JVM的自动回收器（GC）">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2016-10-18T01:22:52.000Z">
+<meta property="article:modified_time" content="2016-10-18T01:22:52.000Z">
+<meta property="article:author" content="Lei Chen">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="优化">
+<meta property="article:tag" content="内存">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2016/10/17/Android%20%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Android 内存优化笔记 | Welcome to Ray's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to Ray's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry Stay Foolish - Steve Jobs</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2016/10/17/Android%20%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chen">
+      <meta itemprop="description" content="Ray's Blog！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Ray's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android 内存优化笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2016-10-17 21:22:52" itemprop="dateCreated datePublished" datetime="2016-10-17T21:22:52-04:00">2016-10-17</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <hr>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><h4 id="内存简介"><a href="#内存简介" class="headerlink" title="内存简介"></a>内存简介</h4><p>RAM（Random Access Memory） 随机存取存储器：内存。<br>通常分为：</p>
+<ul>
+<li>寄存器（Registers）：速度最快的存储场所，因为寄存器位于处理器内部，我们的程序中无法控制；</li>
+<li>栈（stack）：存放基本类型的数据和对象的引用，但对象本身不存放在栈中，而是存放在堆中；</li>
+<li>堆（heap）：存放基本由new创建的对象和数组。在堆中分配的内存，由Java JVM的自动回收器（GC）来管理；</li>
+<li>静态域（static field）：静态存储区就是指在固定的位置存放应用程序运行时一直存在的数据，Java在内存中专门划分了一个静态存储区域来管理一些特殊的数据变量如静态的数据变量；</li>
+<li>常量池（constant pool）：JVM必须为每个被转载的类型维护一个常量池。常量池就是该类型所用到常量的一个有序集合，包括直接常量（String、Integer等常量）和其他类型，字段和方法的符号引用。</li>
+</ul>
+<p>外存储：SD卡等外置存储区域。</p>
+<span id="more"></span>
+
+<h3 id="内存优化常用方式"><a href="#内存优化常用方式" class="headerlink" title="内存优化常用方式"></a>内存优化常用方式</h3><h4 id="优化Bitmap的加载和显示"><a href="#优化Bitmap的加载和显示" class="headerlink" title="优化Bitmap的加载和显示"></a>优化Bitmap的加载和显示</h4><h5 id="使用BitmapFactory-Options设置inSampleSize-这样做可以减少对系统资源的要求。"><a href="#使用BitmapFactory-Options设置inSampleSize-这样做可以减少对系统资源的要求。" class="headerlink" title="使用BitmapFactory.Options设置inSampleSize, 这样做可以减少对系统资源的要求。"></a><strong>使用BitmapFactory.Options设置inSampleSize, 这样做可以减少对系统资源的要求。</strong></h5><p>   属性值inSampleSize表示缩略图大小为原始图片大小的几分之一，即如果这个值为2，则取出的缩略图的宽和高都是原始图片的1&#x2F;2，图片大小就为原始大小的1&#x2F;4</p>
+<h5 id="降低图像的颜色属性"><a href="#降低图像的颜色属性" class="headerlink" title="降低图像的颜色属性"></a><strong>降低图像的颜色属性</strong></h5><p>   Android中图片有四种属性，分别是：<br>   ALPHA_8：每个像素占用1byte内存<br>   ARGB_4444：每个像素占用2byte内存<br>   RGB_565：每个像素占用2byte内存 （不包含图片的透明属性）<br>   ARGB_8888：每个像素占用4byte内存 （默认）</p>
+<p>示例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">BitmapFactory.<span class="type">Options</span> <span class="variable">bitmapFactoryOptions</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BitmapFactory</span>.Options();  </span><br><span class="line">bitmapFactoryOptions.inJustDecodeBounds = <span class="literal">true</span>;  </span><br><span class="line">bitmapFactoryOptions.inSampleSize = <span class="number">2</span>;  </span><br><span class="line"><span class="comment">// 这里一定要将其设置回false，因为之前我们将其设置成了true    </span></span><br><span class="line"><span class="comment">// 设置inJustDecodeBounds为true后，decodeFile并不分配空间，即，BitmapFactory解码出来的Bitmap为Null,但可计算出原始图片的长度和宽度    </span></span><br><span class="line"> options.inJustDecodeBounds = <span class="literal">false</span>;  </span><br><span class="line"> options.inPreferredConfig = Bitmap.Config.RGB_565;  </span><br><span class="line"> opt.inPurgeable = <span class="literal">true</span>;  </span><br><span class="line"> opt.inInputShareable = <span class="literal">true</span>;  </span><br><span class="line">  <span class="comment">//获取资源图片   </span></span><br><span class="line"> <span class="type">Bitmap</span> <span class="variable">bmp</span> <span class="operator">=</span> BitmapFactory.decodeFile(sourceBitmap, options);  </span><br></pre></td></tr></table></figure>
+
+<h5 id="及时回收不再使用的Bitmap资源"><a href="#及时回收不再使用的Bitmap资源" class="headerlink" title="及时回收不再使用的Bitmap资源"></a><strong>及时回收不再使用的Bitmap资源</strong></h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">// 先判断是否已经回收  </span></span><br><span class="line">  <span class="keyword">if</span>(bitmap != <span class="literal">null</span> &amp;&amp; !bitmap.isRecycled())&#123;  </span><br><span class="line">    <span class="comment">// 回收并且置为null  </span></span><br><span class="line">    bitmap.recycle();  </span><br><span class="line">    bitmap = <span class="literal">null</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">System.gc(); </span><br></pre></td></tr></table></figure>
+
+<h4 id="修改对象的引用类型"><a href="#修改对象的引用类型" class="headerlink" title="修改对象的引用类型"></a>修改对象的引用类型</h4><h5 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h5><ul>
+<li>强引用（StrongReference）：不会被GC回收</li>
+<li>软引用（SoftReference）：内存不足时被GC回收</li>
+<li>弱引用（WeakReference）：执行GC的时候被回收</li>
+<li>虚引用（PhantomReference）：随时可能被回收</li>
+</ul>
+<p>通常使用软应用来引用对象，例如自定义继承的Handler类，引用的Activity类等；</p>
+<h4 id="垃圾回收器（GC）"><a href="#垃圾回收器（GC）" class="headerlink" title="垃圾回收器（GC）"></a>垃圾回收器（GC）</h4><h4 id="Java-垃圾回收器"><a href="#Java-垃圾回收器" class="headerlink" title="** Java 垃圾回收器**"></a>** Java 垃圾回收器**</h4><p>在C、C++等其他一些程序设计语言中，资源或对象都必须由程序员自行声明和回收，否者其中的资源将消耗内存，造成资源的浪费甚至崩溃。但是手工回收内存是往往是一项复杂而艰巨的工作。于是，Java技术提供了一个系统级的线程，即垃圾收集器线程（Garbage Collection Thread），来跟踪每一块分配出去的内存空间，当Java JVM处于空闲循环时，垃圾收集器线程会自动检查每一块分配出去的内存空间，然后自动回收每一块可以回收的无用的内存块。</p>
+<h5 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h5><ul>
+<li><p>清除不用的对象来释放内存<br>采用一种动态存储管理技术，它自动地释放不在被程序引用的对象，按照特定的垃圾收集算法来实现资源自动回收的功能。当一个对象不在被引用的时候，内存回收它占领的空间，以便空间被后来的新对象使用。</p>
+</li>
+<li><p>消除堆内存空间的碎片<br>由于创建对象和垃圾收集器释放丢弃对象所占的内存空间，内存会出现碎片。碎片是分配给对象的内存块之间的空闲内存洞。碎片整理将占用的堆内存移动到堆的一端，JVM将整理出的内存分配给新的对象。</p>
+</li>
+</ul>
+<h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><ul>
+<li>减少编程的负担，提高效率。程序员可以专心编程，而不用花时间去管理内存。</li>
+<li>保护程序的完整性，属于Java语言安全性策略的一个重要部分</li>
+</ul>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><ul>
+<li><p>占用资源时间<br>JVM必须追踪运行程序中的所有对象，然后释放没有被引用的对象，这一个过程需要花费处理器的时间；</p>
+</li>
+<li><p>不可预知性<br>GC线程虽然作为一个低优先级的线程运行，但是系统可用内存量过低的时候，它可能会突发的执行来挽救内存资源。执行有不可预知性。</p>
+</li>
+<li><p>不确定性<br>不能保证一个无用的对象一定会被GC掉，也不能保证GC在一段JAVA语言代码中一定执行。同样也没办法预知在一组均符合GC手机标准的对象中，哪一个会被首先收集。</p>
+</li>
+<li><p>不可操作性<br>GC不可以被强制执行，但是程序员可以通过调用<code>System.gc()</code>方法来建议执行GC；</p>
+</li>
+</ul>
+<h5 id="垃圾回收算法"><a href="#垃圾回收算法" class="headerlink" title="垃圾回收算法"></a>垃圾回收算法</h5><p>** TODOS**</p>
+<ul>
+<li>引用计数</li>
+<li>标记-清除</li>
+<li>复制</li>
+<li>标记整理</li>
+<li>增量收集</li>
+<li>分代</li>
+</ul>
+<h5 id="finalize（）"><a href="#finalize（）" class="headerlink" title="finalize（）"></a><code>finalize（）</code></h5><p>继承自<code>Object</code>,在GC删除掉该对象之前调用该方法；</p>
+<h5 id="System-gc"><a href="#System-gc" class="headerlink" title="System.gc()"></a><code>System.gc()</code></h5><p>调用该方法为建议JVM执行GC动作，而不是强制执行。</p>
+<h4 id="资源的关闭"><a href="#资源的关闭" class="headerlink" title="资源的关闭"></a>资源的关闭</h4><ul>
+<li>显示的关闭游标<code>Cursor</code>;</li>
+<li>显示的反注册<code>Receiver</code>、<code>Controller</code>等;</li>
+<li>显示的关闭各种IO流;</li>
+</ul>
+<h4 id="其他一些常用方法"><a href="#其他一些常用方法" class="headerlink" title="其他一些常用方法"></a>其他一些常用方法</h4><ul>
+<li>对常量使用static final 修饰符，省略clinit的初始化类方法；</li>
+<li>尽量使用Application的Context取代Activity的Context；</li>
+<li>避免创建不必要的对象。如频繁操作字符串是，使用StringBuffer代替String；</li>
+<li>避免使用浮点数。通常经验，在Android设备中，浮点数会比整型慢俩倍；</li>
+<li>避免使用枚举。枚举比常量消耗更多的内存；</li>
+<li>不在for循环的第二个条件中使用方法调用以及尽量调用本地变量而不是成员变量。<br>如：<br>   错误示例1：   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span><span class="number">0</span>; i &lt; <span class="built_in">this</span>.mCount; i++)  &#123;&#125;</span><br></pre></td></tr></table></figure>
+   错误示例2：   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span><span class="number">0</span>; i &lt; <span class="built_in">this</span>.mCount; i++)  &#123;&#125;</span><br></pre></td></tr></table></figure>
+   优化后代码：  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="built_in">this</span>.mCount; <span class="comment">// int count = this.getCount();  </span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span><span class="number">0</span>; i &lt; count; i++)  &#123;&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a><a target="_blank" rel="noopener" href="http://blog.csdn.net/a396901990/article/details/37914465">参考资源</a></h3>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/%E4%BC%98%E5%8C%96/" rel="tag"># 优化</a>
+              <a href="/tags/%E5%86%85%E5%AD%98/" rel="tag"># 内存</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2016/10/17/CopyOnWriteArrayList%20%E7%AC%94%E8%AE%B0/" rel="prev" title="CopyOnWriteArrayList 笔记">
+      <i class="fa fa-chevron-left"></i> CopyOnWriteArrayList 笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2016/10/23/Android%20ThreadLocal%20%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/" rel="next" title="Android ThreadLocal 知识笔记">
+      Android ThreadLocal 知识笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">内存简介</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96%E5%B8%B8%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">内存优化常用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E5%8C%96Bitmap%E7%9A%84%E5%8A%A0%E8%BD%BD%E5%92%8C%E6%98%BE%E7%A4%BA"><span class="nav-number">2.1.</span> <span class="nav-text">优化Bitmap的加载和显示</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8BitmapFactory-Options%E8%AE%BE%E7%BD%AEinSampleSize-%E8%BF%99%E6%A0%B7%E5%81%9A%E5%8F%AF%E4%BB%A5%E5%87%8F%E5%B0%91%E5%AF%B9%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%BA%90%E7%9A%84%E8%A6%81%E6%B1%82%E3%80%82"><span class="nav-number">2.1.1.</span> <span class="nav-text">使用BitmapFactory.Options设置inSampleSize, 这样做可以减少对系统资源的要求。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%99%8D%E4%BD%8E%E5%9B%BE%E5%83%8F%E7%9A%84%E9%A2%9C%E8%89%B2%E5%B1%9E%E6%80%A7"><span class="nav-number">2.1.2.</span> <span class="nav-text">降低图像的颜色属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%8A%E6%97%B6%E5%9B%9E%E6%94%B6%E4%B8%8D%E5%86%8D%E4%BD%BF%E7%94%A8%E7%9A%84Bitmap%E8%B5%84%E6%BA%90"><span class="nav-number">2.1.3.</span> <span class="nav-text">及时回收不再使用的Bitmap资源</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">修改对象的引用类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.2.1.</span> <span class="nav-text">引用类型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%EF%BC%88GC%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">垃圾回收器（GC）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8"><span class="nav-number">2.4.</span> <span class="nav-text">** Java 垃圾回收器**</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-number">2.4.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">2.4.2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">2.4.3.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="nav-number">2.4.4.</span> <span class="nav-text">垃圾回收算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#finalize%EF%BC%88%EF%BC%89"><span class="nav-number">2.4.5.</span> <span class="nav-text">finalize（）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#System-gc"><span class="nav-number">2.4.6.</span> <span class="nav-text">System.gc()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B5%84%E6%BA%90%E7%9A%84%E5%85%B3%E9%97%AD"><span class="nav-number">2.5.</span> <span class="nav-text">资源的关闭</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">2.6.</span> <span class="nav-text">其他一些常用方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%BA%90"><span class="nav-number">3.</span> <span class="nav-text">参考资源</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lei Chen</p>
+  <div class="site-description" itemprop="description">Ray's Blog！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lei Chen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
