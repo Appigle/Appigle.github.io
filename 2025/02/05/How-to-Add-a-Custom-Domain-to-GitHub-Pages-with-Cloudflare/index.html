@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://appigle.github.io/2025/02/05/How-to-Add-a-Custom-Domain-to-GitHub-Pages-with-Cloudflare/cf_02.png">
 <meta property="og:image" content="https://appigle.github.io/2025/02/05/How-to-Add-a-Custom-Domain-to-GitHub-Pages-with-Cloudflare/blog_01.png">
 <meta property="article:published_time" content="2025-02-05T19:35:00.000Z">
-<meta property="article:modified_time" content="2025-02-05T20:34:22.987Z">
+<meta property="article:modified_time" content="2025-02-05T20:54:48.736Z">
 <meta property="article:author" content="Lei Chen">
 <meta property="article:tag" content="GitHub Pages">
 <meta property="article:tag" content="Cloudflare">
@@ -187,7 +187,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2025-02-05 14:35:00 / Modified: 15:34:22" itemprop="dateCreated datePublished" datetime="2025-02-05T14:35:00-05:00">2025-02-05</time>
+              <time title="Created: 2025-02-05 14:35:00 / Modified: 15:54:48" itemprop="dateCreated datePublished" datetime="2025-02-05T14:35:00-05:00">2025-02-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -211,18 +211,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="🌐-How-to-Add-a-Custom-Domain-to-GitHub-Pages-with-Cloudflare"><a href="#🌐-How-to-Add-a-Custom-Domain-to-GitHub-Pages-with-Cloudflare" class="headerlink" title="🌐 How to Add a Custom Domain to GitHub Pages with Cloudflare"></a>🌐 How to Add a Custom Domain to GitHub Pages with Cloudflare</h1><p>Want to personalize your <strong>GitHub Pages</strong> site with a custom domain? 🎨 Instead of using the default <code>yourusername.github.io</code>, you can use a <strong>custom domain (e.g., xiaopotato.top)</strong> and manage it with <strong>Cloudflare</strong> for better security, DNS management, and performance optimization.</p>
-<p>In this guide, I’ll walk you through <strong>how to connect a custom domain</strong> to <strong>GitHub Pages</strong> and configure <strong>Cloudflare DNS</strong> properly. 🛠️✨</p>
+        <h1 id="🌐-How-to-Add-a-Custom-Domain-to-GitHub-Pages-with-Cloudflare"><a href="#🌐-How-to-Add-a-Custom-Domain-to-GitHub-Pages-with-Cloudflare" class="headerlink" title="🌐 How to Add a Custom Domain to GitHub Pages with Cloudflare"></a>🌐 How to Add a Custom Domain to GitHub Pages with Cloudflare</h1><p>If you want to personalize your <strong>GitHub Pages</strong> site with a custom domain, you’re in the right place! Instead of using the default <code>yourusername.github.io</code>, you can link your own <strong>custom domain (e.g., xiaopotato.top)</strong> and manage it with <strong>Cloudflare</strong> for <strong>enhanced security, DNS management, and performance optimization</strong>.</p>
+<p>This guide walks you through <strong>setting up a custom domain for GitHub Pages</strong> and configuring <strong>Cloudflare DNS properly</strong>. Let’s get started! 🛠️✨</p>
 <hr>
-<h2 id="✅-Prerequisites"><a href="#✅-Prerequisites" class="headerlink" title="✅ Prerequisites"></a>✅ <strong>Prerequisites</strong></h2><p>Before we start, make sure you have:</p>
+<h2 id="✅-Prerequisites"><a href="#✅-Prerequisites" class="headerlink" title="✅ Prerequisites"></a>✅ <strong>Prerequisites</strong></h2><p>Before we begin, ensure you have the following:</p>
 <ol>
-<li><strong>A registered domain</strong> (e.g., <code>xiaopotato.top</code>) from a provider like Namecheap, GoDaddy, or Racknerk.</li>
-<li><strong>Cloudflare setup for your domain</strong> – This means you’ve added your domain to <strong>Cloudflare’s dashboard</strong> and are using their <strong>DNS management</strong>.</li>
-<li><strong>A GitHub Pages project</strong> that you want to link to your custom domain.</li>
+<li><strong>A registered domain</strong> – (e.g., <code>xiaopotato.top</code>) from a provider like <strong>Namecheap, GoDaddy, or Racknerk</strong>.</li>
+<li><strong>Cloudflare setup</strong> – Your domain should be <strong>added to Cloudflare’s dashboard</strong> with Cloudflare <strong>managing your DNS</strong>.</li>
+<li><strong>A GitHub Pages project</strong> – Your website should already be deployed on <strong>GitHub Pages</strong>.</li>
 </ol>
 <hr>
-<h2 id="🚀-Step-1-Add-a-Custom-Domain-to-GitHub-Pages"><a href="#🚀-Step-1-Add-a-Custom-Domain-to-GitHub-Pages" class="headerlink" title="🚀 Step 1: Add a Custom Domain to GitHub Pages"></a>🚀 <strong>Step 1: Add a Custom Domain to GitHub Pages</strong></h2><p>First, let’s tell <strong>GitHub Pages</strong> that we want to use a custom domain.</p>
-<h3 id="🔹-1-Open-Your-GitHub-Repository"><a href="#🔹-1-Open-Your-GitHub-Repository" class="headerlink" title="🔹 1. Open Your GitHub Repository"></a>🔹 <strong>1. Open Your GitHub Repository</strong></h3><p>Go to your GitHub repository where <strong>GitHub Pages</strong> is enabled.</p>
+<h2 id="🚀-Step-1-Add-a-Custom-Domain-to-GitHub-Pages"><a href="#🚀-Step-1-Add-a-Custom-Domain-to-GitHub-Pages" class="headerlink" title="🚀 Step 1: Add a Custom Domain to GitHub Pages"></a>🚀 <strong>Step 1: Add a Custom Domain to GitHub Pages</strong></h2><p>First, let’s configure <strong>GitHub Pages</strong> to recognize your custom domain.</p>
+<h3 id="🔹-1-Open-Your-GitHub-Repository"><a href="#🔹-1-Open-Your-GitHub-Repository" class="headerlink" title="🔹 1. Open Your GitHub Repository"></a>🔹 <strong>1. Open Your GitHub Repository</strong></h3><p>Navigate to your <strong>GitHub repository</strong> where <strong>GitHub Pages</strong> is enabled.</p>
 <h3 id="🔹-2-Navigate-to-the-Pages-Settings"><a href="#🔹-2-Navigate-to-the-Pages-Settings" class="headerlink" title="🔹 2. Navigate to the Pages Settings"></a>🔹 <strong>2. Navigate to the Pages Settings</strong></h3><ol>
 <li>Click on <strong>Settings</strong>.</li>
 <li>Scroll down to the <strong>GitHub Pages</strong> section.</li>
@@ -236,19 +236,30 @@
 
 <p>📝 <strong>Tip:</strong> GitHub Pages will automatically create a <code>CNAME</code> file in your repository with your custom domain name.</p>
 <hr>
-<h2 id="🌍-Step-2-Configure-Cloudflare-DNS"><a href="#🌍-Step-2-Configure-Cloudflare-DNS" class="headerlink" title="🌍 Step 2: Configure Cloudflare DNS"></a>🌍 <strong>Step 2: Configure Cloudflare DNS</strong></h2><p>Now that <strong>GitHub knows your custom domain</strong>, we need to <strong>set up DNS records</strong> on <strong>Cloudflare</strong> so that the domain actually points to GitHub.</p>
+<h2 id="🌍-Step-2-Configure-Cloudflare-DNS"><a href="#🌍-Step-2-Configure-Cloudflare-DNS" class="headerlink" title="🌍 Step 2: Configure Cloudflare DNS"></a>🌍 <strong>Step 2: Configure Cloudflare DNS</strong></h2><p>Now that <strong>GitHub knows your custom domain</strong>, we need to <strong>set up DNS records</strong> on <strong>Cloudflare</strong> to point your domain to GitHub Pages.</p>
 <h3 id="🔹-1-Add-TXT-Records-in-Cloudflare"><a href="#🔹-1-Add-TXT-Records-in-Cloudflare" class="headerlink" title="🔹 1. Add TXT Records in Cloudflare"></a>🔹 <strong>1. Add TXT Records in Cloudflare</strong></h3><ul>
-<li>In <strong>Cloudflare Dashboard</strong>, go to <strong>DNS Settings</strong>.</li>
-<li>Add the following <strong>TXT record</strong> to verify your domain with GitHub:<ul>
-<li><strong>Type:</strong> <code>TXT</code></li>
-<li><strong>Name:</strong> <code>@</code></li>
-<li><strong>Value:</strong> <code>&quot;_github-pages-verification=xxxxxx&quot;</code> (GitHub will provide this)</li>
-</ul>
+<li><p>Go to <strong>Cloudflare Dashboard</strong> → <strong>DNS Settings</strong>.</p>
+</li>
+<li><p>Add the following <strong>TXT record</strong> to verify your domain with GitHub:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TXT</td>
+<td><code>@</code></td>
+<td><code>&quot;_github-pages-verification=xxxxxx&quot;</code> (GitHub provides this)</td>
+</tr>
+</tbody></table>
 </li>
 </ul>
 <img src="/2025/02/05/How-to-Add-a-Custom-Domain-to-GitHub-Pages-with-Cloudflare/cf_01.png" class="" title="Cloudflare Step 01">
 
-<h3 id="🔹-2-Add-CNAME-Records-in-Cloudflare"><a href="#🔹-2-Add-CNAME-Records-in-Cloudflare" class="headerlink" title="🔹 2. Add CNAME Records in Cloudflare"></a>🔹 <strong>2. Add CNAME Records in Cloudflare</strong></h3><p>Next, we add a <strong>CNAME record</strong> that points your domain to GitHub Pages.</p>
+<h3 id="🔹-2-Add-CNAME-Records-in-Cloudflare"><a href="#🔹-2-Add-CNAME-Records-in-Cloudflare" class="headerlink" title="🔹 2. Add CNAME Records in Cloudflare"></a>🔹 <strong>2. Add CNAME Records in Cloudflare</strong></h3><p>Next, we add <strong>CNAME records</strong> to link your domain to GitHub Pages.</p>
 <table>
 <thead>
 <tr>
@@ -272,48 +283,53 @@
 
 <p>📌 <strong>Important Notes:</strong></p>
 <ul>
-<li>If your domain provider does <strong>not allow root-level CNAMEs</strong>, use an <strong>A record</strong> pointing to GitHub’s IPs instead.</li>
-<li>Cloudflare <strong>proxy mode</strong> (orange cloud ☁️) <strong>should be disabled</strong> (<code>DNS only</code>) to avoid SSL conflicts.</li>
+<li>If your domain provider <strong>does not allow root-level CNAMEs</strong>, use an <strong>A record</strong> pointing to <strong>GitHub’s IP addresses</strong> instead.</li>
+<li>Ensure that <strong>Cloudflare proxy mode</strong> (orange cloud ☁️) is <strong>disabled</strong> (<code>DNS only</code>) to <strong>avoid SSL conflicts</strong>.</li>
 </ul>
 <p>🔗 <strong>More details from GitHub:</strong> <a target="_blank" rel="noopener" href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site">Managing a custom domain for your GitHub Pages site</a></p>
 <hr>
-<h2 id="🔍-Step-3-Verify-Test-Your-Setup"><a href="#🔍-Step-3-Verify-Test-Your-Setup" class="headerlink" title="🔍 Step 3: Verify &amp; Test Your Setup"></a>🔍 <strong>Step 3: Verify &amp; Test Your Setup</strong></h2><p>After updating your <strong>GitHub Pages settings</strong> and <strong>Cloudflare DNS records</strong>, it’s time to test if everything works.</p>
+<h2 id="🔍-Step-3-Verify-Test-Your-Setup"><a href="#🔍-Step-3-Verify-Test-Your-Setup" class="headerlink" title="🔍 Step 3: Verify &amp; Test Your Setup"></a>🔍 <strong>Step 3: Verify &amp; Test Your Setup</strong></h2><p>After updating <strong>GitHub Pages settings</strong> and <strong>Cloudflare DNS records</strong>, it’s time to check if everything is working correctly.</p>
 <h3 id="✅-Check-Your-Website"><a href="#✅-Check-Your-Website" class="headerlink" title="✅ Check Your Website"></a>✅ <strong>Check Your Website</strong></h3><ul>
-<li>Open your <strong>browser</strong> and type your domain:<br><code>https://appigle.xiaopotato.top</code></li>
-<li>If you see your GitHub Pages website, congrats! 🎉 Your domain is now linked.</li>
+<li>Open a browser and visit your domain:<br><code>https://appigle.xiaopotato.top</code></li>
+<li>If your GitHub Pages website loads, 🎉 <strong>congrats!</strong> Your custom domain is successfully linked.</li>
 </ul>
 <img src="/2025/02/05/How-to-Add-a-Custom-Domain-to-GitHub-Pages-with-Cloudflare/blog_01.png" class="" title="Check the domain in browser">
 
-<h3 id="✅-Check-DNS-Propagation"><a href="#✅-Check-DNS-Propagation" class="headerlink" title="✅ Check DNS Propagation"></a>✅ <strong>Check DNS Propagation</strong></h3><ul>
-<li>Use <strong>DNS checker tools</strong> like:<ul>
-<li>🔗 <a target="_blank" rel="noopener" href="https://toolbox.googleapps.com/apps/dig/">Google Dig</a></li>
-<li>🔗 <a target="_blank" rel="noopener" href="https://www.whatsmydns.net/">whatsmydns.net</a></li>
+<hr>
+<h2 id="❗-Troubleshooting-Fixing-the-CNAME-Removal-Issue-in-Hexo"><a href="#❗-Troubleshooting-Fixing-the-CNAME-Removal-Issue-in-Hexo" class="headerlink" title="❗ Troubleshooting: Fixing the CNAME Removal Issue in Hexo"></a>❗ <strong>Troubleshooting: Fixing the CNAME Removal Issue in Hexo</strong></h2><h3 id="🛑-Problem-Hexo-git-plugin-Deletes-the-CNAME-File"><a href="#🛑-Problem-Hexo-git-plugin-Deletes-the-CNAME-File" class="headerlink" title="🛑 Problem: Hexo git plugin Deletes the CNAME File"></a>🛑 <strong>Problem: Hexo git plugin Deletes the CNAME File</strong></h3><p>When deploying a <strong>Hexo blog to GitHub Pages</strong>, the <code>CNAME</code> file often <strong>gets removed</strong> because Hexo plugin overwrites the <code>public/</code> directory during deployment.</p>
+<h3 id="✅-Solution-Preserve-the-CNAME-File"><a href="#✅-Solution-Preserve-the-CNAME-File" class="headerlink" title="✅ Solution: Preserve the CNAME File"></a>✅ <strong>Solution: Preserve the CNAME File</strong></h3><h4 id="Method-1-Add-CNAME-in-the-source-Directory"><a href="#Method-1-Add-CNAME-in-the-source-Directory" class="headerlink" title="Method 1: Add CNAME in the source/ Directory"></a><strong>Method 1: Add CNAME in the <code>source/</code> Directory</strong></h4><p>Hexo copies all files from <code>source/</code> to <code>public/</code> when generating the site. <strong>To ensure the CNAME file persists</strong>, place it in <code>source/</code>.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li><p><strong>Create a <code>CNAME</code> file in the <code>source/</code> directory:</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;appigle.xiaopotato.top&quot;</span> &gt; <span class="built_in">source</span>/CNAME</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Regenerate and deploy your blog:</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Verify the CNAME file in your GitHub repository:</strong></p>
+<ul>
+<li>Go to your <strong>GitHub Pages repository</strong> (<code>xiaopotato.github.io</code>).</li>
+<li>Ensure <code>CNAME</code> is present in the root directory.</li>
 </ul>
 </li>
-<li>Ensure that your <strong>CNAME points to GitHub</strong> and your <strong>TXT record is visible</strong>.</li>
-</ul>
-<h3 id="✅-Enable-HTTPS-SSL"><a href="#✅-Enable-HTTPS-SSL" class="headerlink" title="✅ Enable HTTPS (SSL)"></a>✅ <strong>Enable HTTPS (SSL)</strong></h3><ol>
-<li><strong>Go back to GitHub Pages settings.</strong></li>
-<li><strong>Check the box</strong> for <code>Enforce HTTPS</code>.</li>
-<li><strong>Wait a few minutes</strong> (GitHub issues an SSL certificate via Let’s Encrypt).</li>
-<li>Your site should now be fully secured with <strong>HTTPS</strong> 🔒.</li>
 </ol>
+<p>👉 <strong>Why does this work?</strong><br>Hexo <strong>does not delete files inside the <code>source/</code> directory</strong>, so placing <code>CNAME</code> here ensures it gets copied during every deployment.</p>
 <hr>
-<h2 id="🎯-Final-Thoughts"><a href="#🎯-Final-Thoughts" class="headerlink" title="🎯 Final Thoughts"></a>🎯 <strong>Final Thoughts</strong></h2><p>Setting up a <strong>custom domain with GitHub Pages and Cloudflare</strong> is <strong>easy and rewarding</strong>! 🚀 You now have:</p>
+<h2 id="🎯-Final-Thoughts"><a href="#🎯-Final-Thoughts" class="headerlink" title="🎯 Final Thoughts"></a>🎯 <strong>Final Thoughts</strong></h2><p>Setting up a <strong>custom domain with GitHub Pages and Cloudflare</strong> is <strong>simple yet powerful</strong>! 🚀 You now have:</p>
 <ul>
-<li>A <strong>branded domain name</strong> instead of <code>yourusername.github.io</code>.</li>
-<li><strong>Cloudflare’s security and speed</strong> benefits.</li>
+<li>A <strong>custom, professional domain</strong> instead of <code>yourusername.github.io</code>.</li>
+<li><strong>Cloudflare’s security, caching, and speed</strong> benefits.</li>
 <li><strong>A free, SSL-secured personal website</strong> with GitHub Pages.</li>
 </ul>
 <hr>
-<h2 id="💬-Got-Questions-or-Issues"><a href="#💬-Got-Questions-or-Issues" class="headerlink" title="💬 Got Questions or Issues?"></a><strong>💬 Got Questions or Issues?</strong></h2><p>If you run into any problems:</p>
+<h2 id="💬-Need-Help-Questions"><a href="#💬-Need-Help-Questions" class="headerlink" title="💬 Need Help? Questions?"></a>💬 <strong>Need Help? Questions?</strong></h2><p>If you encounter issues:</p>
 <ol>
 <li>Double-check <strong>GitHub’s CNAME settings</strong>.</li>
-<li>Ensure <strong>Cloudflare’s DNS is correctly configured</strong>.</li>
-<li>Use <strong>a DNS checker</strong> to confirm propagation.</li>
-<li>Reach out to <strong>Cloudflare or GitHub support</strong>.</li>
+<li>Ensure <strong>Cloudflare DNS is properly configured</strong>.</li>
+<li>Use a <strong>DNS checker</strong> to verify domain propagation.</li>
+<li>Consult <strong>Cloudflare or GitHub support</strong>.</li>
 </ol>
-<p>Hope this guide helps you get <strong>your personal website up and running!</strong> 🚀💡✨<br>Happy coding! 🖥️🎨</p>
+<p>Hope this guide helps you set up <strong>your personal website effortlessly!</strong> 🚀💡✨<br><strong>Happy coding!</strong> 🖥️🎨</p>
 
     </div>
 
@@ -397,7 +413,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%8C%90-How-to-Add-a-Custom-Domain-to-GitHub-Pages-with-Cloudflare"><span class="nav-number">1.</span> <span class="nav-text">🌐 How to Add a Custom Domain to GitHub Pages with Cloudflare</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85-Prerequisites"><span class="nav-number">1.1.</span> <span class="nav-text">✅ Prerequisites</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%9A%80-Step-1-Add-a-Custom-Domain-to-GitHub-Pages"><span class="nav-number">1.2.</span> <span class="nav-text">🚀 Step 1: Add a Custom Domain to GitHub Pages</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%94%B9-1-Open-Your-GitHub-Repository"><span class="nav-number">1.2.1.</span> <span class="nav-text">🔹 1. Open Your GitHub Repository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%94%B9-2-Navigate-to-the-Pages-Settings"><span class="nav-number">1.2.2.</span> <span class="nav-text">🔹 2. Navigate to the Pages Settings</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8C%8D-Step-2-Configure-Cloudflare-DNS"><span class="nav-number">1.3.</span> <span class="nav-text">🌍 Step 2: Configure Cloudflare DNS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%94%B9-1-Add-TXT-Records-in-Cloudflare"><span class="nav-number">1.3.1.</span> <span class="nav-text">🔹 1. Add TXT Records in Cloudflare</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%94%B9-2-Add-CNAME-Records-in-Cloudflare"><span class="nav-number">1.3.2.</span> <span class="nav-text">🔹 2. Add CNAME Records in Cloudflare</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%8D-Step-3-Verify-Test-Your-Setup"><span class="nav-number">1.4.</span> <span class="nav-text">🔍 Step 3: Verify &amp; Test Your Setup</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Check-Your-Website"><span class="nav-number">1.4.1.</span> <span class="nav-text">✅ Check Your Website</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Check-DNS-Propagation"><span class="nav-number">1.4.2.</span> <span class="nav-text">✅ Check DNS Propagation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Enable-HTTPS-SSL"><span class="nav-number">1.4.3.</span> <span class="nav-text">✅ Enable HTTPS (SSL)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8E%AF-Final-Thoughts"><span class="nav-number">1.5.</span> <span class="nav-text">🎯 Final Thoughts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%92%AC-Got-Questions-or-Issues"><span class="nav-number">1.6.</span> <span class="nav-text">💬 Got Questions or Issues?</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%8C%90-How-to-Add-a-Custom-Domain-to-GitHub-Pages-with-Cloudflare"><span class="nav-number">1.</span> <span class="nav-text">🌐 How to Add a Custom Domain to GitHub Pages with Cloudflare</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85-Prerequisites"><span class="nav-number">1.1.</span> <span class="nav-text">✅ Prerequisites</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%9A%80-Step-1-Add-a-Custom-Domain-to-GitHub-Pages"><span class="nav-number">1.2.</span> <span class="nav-text">🚀 Step 1: Add a Custom Domain to GitHub Pages</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%94%B9-1-Open-Your-GitHub-Repository"><span class="nav-number">1.2.1.</span> <span class="nav-text">🔹 1. Open Your GitHub Repository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%94%B9-2-Navigate-to-the-Pages-Settings"><span class="nav-number">1.2.2.</span> <span class="nav-text">🔹 2. Navigate to the Pages Settings</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8C%8D-Step-2-Configure-Cloudflare-DNS"><span class="nav-number">1.3.</span> <span class="nav-text">🌍 Step 2: Configure Cloudflare DNS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%94%B9-1-Add-TXT-Records-in-Cloudflare"><span class="nav-number">1.3.1.</span> <span class="nav-text">🔹 1. Add TXT Records in Cloudflare</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%94%B9-2-Add-CNAME-Records-in-Cloudflare"><span class="nav-number">1.3.2.</span> <span class="nav-text">🔹 2. Add CNAME Records in Cloudflare</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%8D-Step-3-Verify-Test-Your-Setup"><span class="nav-number">1.4.</span> <span class="nav-text">🔍 Step 3: Verify &amp; Test Your Setup</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Check-Your-Website"><span class="nav-number">1.4.1.</span> <span class="nav-text">✅ Check Your Website</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97-Troubleshooting-Fixing-the-CNAME-Removal-Issue-in-Hexo"><span class="nav-number">1.5.</span> <span class="nav-text">❗ Troubleshooting: Fixing the CNAME Removal Issue in Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%9B%91-Problem-Hexo-git-plugin-Deletes-the-CNAME-File"><span class="nav-number">1.5.1.</span> <span class="nav-text">🛑 Problem: Hexo git plugin Deletes the CNAME File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Solution-Preserve-the-CNAME-File"><span class="nav-number">1.5.2.</span> <span class="nav-text">✅ Solution: Preserve the CNAME File</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Method-1-Add-CNAME-in-the-source-Directory"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">Method 1: Add CNAME in the source&#x2F; Directory</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8E%AF-Final-Thoughts"><span class="nav-number">1.6.</span> <span class="nav-text">🎯 Final Thoughts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%92%AC-Need-Help-Questions"><span class="nav-number">1.7.</span> <span class="nav-text">💬 Need Help? Questions?</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
