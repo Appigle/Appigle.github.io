@@ -148,6 +148,80 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/10/15/Android%20WebView%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chen">
+      <meta itemprop="description" content="Ray's Blog！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Ray's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/10/15/Android%20WebView%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Android WebView知识笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2016-10-15 10:11:18" itemprop="dateCreated datePublished" datetime="2016-10-15T10:11:18-04:00">2016-10-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:53:09" itemprop="dateModified" datetime="2025-02-05T11:53:09-05:00">2025-02-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<h3 id="常用-API-含义"><a href="#常用-API-含义" class="headerlink" title="常用 API 含义"></a>常用 API 含义</h3><p>在 layout 布局文件中设置<code>WebView</code>节点：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">WebView</span></span></span><br><span class="line"><span class="tag">      <span class="attr">android:id</span>=<span class="string">&quot;@+id/wv_test&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2016/10/15/Android%20WebView%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/10/15/APK%E7%9A%84%E5%A2%9E%E9%87%8F%E6%9B%B4%E6%96%B0%EF%BC%88%E5%B7%AE%E5%88%86%E5%8D%87%E7%BA%A7%EF%BC%89%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -174,6 +248,13 @@
 
               <time title="Created: 2016-10-15 09:48:42" itemprop="dateCreated datePublished" datetime="2016-10-15T09:48:42-04:00">2016-10-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:53:31" itemprop="dateModified" datetime="2025-02-05T11:53:31-05:00">2025-02-05</time>
+              </span>
 
           
 
@@ -186,7 +267,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>将手机上已安装apk文件与服务器端最新apk进行二进制对比，得到差分包。用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装apk合并成新的apk文件，然后安装合成后的新apk文件。</p>
+          <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>将手机上已安装 apk 文件与服务器端最新 apk 进行二进制对比，得到差分包。用户更新应用程序时，只需要下载差分包（patch），并在本地将下载的差分包与已安装 apk 合并成新的 apk 文件，然后安装合成后的新 apk 文件。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/10/15/APK%E7%9A%84%E5%A2%9E%E9%87%8F%E6%9B%B4%E6%96%B0%EF%BC%88%E5%B7%AE%E5%88%86%E5%8D%87%E7%BA%A7%EF%BC%89%E7%AC%94%E8%AE%B0/#more" rel="contents">
@@ -239,6 +320,13 @@
 
               <time title="Created: 2016-10-15 09:38:34" itemprop="dateCreated datePublished" datetime="2016-10-15T09:38:34-04:00">2016-10-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:51:48" itemprop="dateModified" datetime="2025-02-05T11:51:48-05:00">2025-02-05</time>
+              </span>
 
           
 
@@ -252,9 +340,9 @@
 
       
           <hr>
-<h3 id="SPDY定义"><a href="#SPDY定义" class="headerlink" title="SPDY定义"></a><a target="_blank" rel="noopener" href="http://www.geekpark.net/topics/158198">SPDY定义</a></h3><ol>
-<li>SPDY是Google开发的基于传输控制协议（TCP）的应用层协议，开发组正在推动SPDY成为正式标准（目前为草案）；</li>
-<li>SPDY协议旨在通过压缩、多路复用和优先级来缩短网页的加载时间和强制使用SSL协议来提高安全性。</li>
+<h3 id="SPDY-定义"><a href="#SPDY-定义" class="headerlink" title="SPDY 定义"></a><a target="_blank" rel="noopener" href="http://www.geekpark.net/topics/158198">SPDY 定义</a></h3><ol>
+<li>SPDY 是 Google 开发的基于传输控制协议（TCP）的应用层协议，开发组正在推动 SPDY 成为正式标准（目前为草案）；</li>
+<li>SPDY 协议旨在通过压缩、多路复用和优先级来缩短网页的加载时间和强制使用 SSL 协议来提高安全性。</li>
 </ol>
           <!--noindex-->
             <div class="post-button">
@@ -308,6 +396,13 @@
 
               <time title="Created: 2016-10-11 17:06:06" itemprop="dateCreated datePublished" datetime="2016-10-11T17:06:06-04:00">2016-10-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:04:06" itemprop="dateModified" datetime="2025-02-05T11:04:06-05:00">2025-02-05</time>
+              </span>
 
           
 
@@ -321,7 +416,7 @@
 
       
           <hr>
-<h4 id="RxJava定义"><a href="#RxJava定义" class="headerlink" title="RxJava定义"></a>RxJava定义</h4><p> ** a library for composing（组成） asynchronous and event-based programs using observable sequences for the java VM (一个在Java VM上使用可观测的序列来组成的异步的、基于事件的程序的库)；**</p>
+<h4 id="RxJava-定义"><a href="#RxJava-定义" class="headerlink" title="RxJava 定义"></a>RxJava 定义</h4><p>** a library for composing（组成） asynchronous and event-based programs using observable sequences for the java VM (一个在 Java VM 上使用可观测的序列来组成的异步的、基于事件的程序的库)；**</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/10/11/RxJava%20%E7%AC%94%E8%AE%B0/#more" rel="contents">
@@ -374,6 +469,13 @@
 
               <time title="Created: 2016-10-11 14:30:36" itemprop="dateCreated datePublished" datetime="2016-10-11T14:30:36-04:00">2016-10-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:22:58" itemprop="dateModified" datetime="2025-02-05T11:22:58-05:00">2025-02-05</time>
+              </span>
 
           
 
@@ -386,7 +488,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="I-love-U-Yuanyuan！"><a href="#I-love-U-Yuanyuan！" class="headerlink" title="I love U, Yuanyuan！"></a>I love U, Yuanyuan！</h4><pre><code>		--- Chenley 20160920
+          <p><img src="/images/%E5%A5%B3%E7%A5%9E.png" alt="God"></p>
+<h4 id="I-love-U-Yuanyuan！"><a href="#I-love-U-Yuanyuan！" class="headerlink" title="I love U, Yuanyuan！"></a>I love U, Yuanyuan！</h4><pre><code>		--- Chenley 20160920
 </code></pre>
 
       
@@ -433,6 +536,13 @@
 
               <time title="Created: 2016-09-27 18:34:50" itemprop="dateCreated datePublished" datetime="2016-09-27T18:34:50-04:00">2016-09-27</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:53:57" itemprop="dateModified" datetime="2025-02-05T11:53:57-05:00">2025-02-05</time>
+              </span>
 
           
 
@@ -446,9 +556,9 @@
 
       
           <hr>
-<p>所有的百度地图SDK在使用时，必须先调用<code>SDKInitializer.initialize(Context context)</code>方法进行初始化。</p>
+<p>所有的百度地图 SDK 在使用时，必须先调用<code>SDKInitializer.initialize(Context context)</code>方法进行初始化。</p>
 <ul>
-<li><code>MapStaus</code>地图状态。可以设置地图的中心点、缩放级别、仰望角、旋转角。该类是final类，要用<code>MapStaus.Builder</code>构造</li>
+<li><code>MapStaus</code>地图状态。可以设置地图的中心点、缩放级别、仰望角、旋转角。该类是 final 类，要用<code>MapStaus.Builder</code>构造</li>
 <li><code>Overlay</code>覆盖物。该类为抽象类。其子类有<code>Arc</code>弧线、<code>Circle</code>圆、<code> Dot</code>圆点、<code>GroundOverlay</code>矩形区域、<code>Marker</code>标记、<code>Polygon</code>多边形、<code>Polyline</code>折线、<code>Text</code>文本</li>
 </ul>
           <!--noindex-->
@@ -503,6 +613,13 @@
 
               <time title="Created: 2016-09-20 18:21:24" itemprop="dateCreated datePublished" datetime="2016-09-20T18:21:24-04:00">2016-09-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:53:37" itemprop="dateModified" datetime="2025-02-05T11:53:37-05:00">2025-02-05</time>
+              </span>
 
           
 
@@ -612,17 +729,17 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">42</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>

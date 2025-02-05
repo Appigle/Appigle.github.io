@@ -20,21 +20,21 @@
     var CONFIG = {"hostname":"appigle.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="流程概述： 打包资源（&#x2F;res&#x2F;）文件，生成R.java文件； 处理aidl文件，生成相应的java文件； 编译工程源代码，生成相应class文件； 转换所有的class文件，生成classes.dex文件； 打包生成apk；">
+  <meta name="description" content="流程概述： 打包资源（&#x2F;res&#x2F;）文件，生成 R.java 文件； 处理 aidl 文件，生成相应的 java 文件； 编译工程源代码，生成相应 class 文件； 转换所有的 class 文件，生成 classes.dex 文件； 打包生成 apk；">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 打包流程笔记">
 <meta property="og:url" content="https://appigle.github.io/2016/10/15/Android%20%E6%89%93%E5%8C%85%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Welcome to Ray&#39;s Blog">
-<meta property="og:description" content="流程概述： 打包资源（&#x2F;res&#x2F;）文件，生成R.java文件； 处理aidl文件，生成相应的java文件； 编译工程源代码，生成相应class文件； 转换所有的class文件，生成classes.dex文件； 打包生成apk；">
+<meta property="og:description" content="流程概述： 打包资源（&#x2F;res&#x2F;）文件，生成 R.java 文件； 处理 aidl 文件，生成相应的 java 文件； 编译工程源代码，生成相应 class 文件； 转换所有的 class 文件，生成 classes.dex 文件； 打包生成 apk；">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://appigle.github.io/uploads/android%E6%89%93%E5%8C%85%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7.png">
+<meta property="og:image" content="https://appigle.github.io/images/android%E6%89%93%E5%8C%85%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7.png">
 <meta property="article:published_time" content="2016-10-15T18:20:52.000Z">
-<meta property="article:modified_time" content="2016-10-15T18:20:52.000Z">
+<meta property="article:modified_time" content="2025-02-05T16:04:06.183Z">
 <meta property="article:author" content="Lei Chen">
 <meta property="article:tag" content="Android">
 <meta property="article:tag" content="打包">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://appigle.github.io/uploads/android%E6%89%93%E5%8C%85%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7.png">
+<meta name="twitter:image" content="https://appigle.github.io/images/android%E6%89%93%E5%8C%85%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7.png">
 
 <link rel="canonical" href="https://appigle.github.io/2016/10/15/Android%20%E6%89%93%E5%8C%85%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/">
 
@@ -180,6 +180,13 @@
 
               <time title="Created: 2016-10-15 14:20:52" itemprop="dateCreated datePublished" datetime="2016-10-15T14:20:52-04:00">2016-10-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:04:06" itemprop="dateModified" datetime="2025-02-05T11:04:06-05:00">2025-02-05</time>
+              </span>
 
           
 
@@ -194,16 +201,16 @@
       
         <hr>
 <h4 id="流程概述："><a href="#流程概述：" class="headerlink" title="流程概述："></a><strong>流程概述：</strong></h4><ol>
-<li>打包资源（&#x2F;res&#x2F;）文件，生成R.java文件；</li>
-<li>处理aidl文件，生成相应的java文件；</li>
-<li>编译工程源代码，生成相应class文件；</li>
-<li>转换所有的class文件，生成classes.dex文件；</li>
-<li>打包生成apk；</li>
+<li>打包资源（&#x2F;res&#x2F;）文件，生成 R.java 文件；</li>
+<li>处理 aidl 文件，生成相应的 java 文件；</li>
+<li>编译工程源代码，生成相应 class 文件；</li>
+<li>转换所有的 class 文件，生成 classes.dex 文件；</li>
+<li>打包生成 apk；</li>
 </ol>
- <span id="more"></span>
+<span id="more"></span>
 <ol start="6">
-<li>对apk文件进行签名；</li>
-<li>对签名后的apk文件进行对齐处理。<br><img src="/uploads/android%E6%89%93%E5%8C%85%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7.png"></li>
+<li>对 apk 文件进行签名；</li>
+<li>对签名后的 apk 文件进行对齐处理。<br><img src="/images/android%E6%89%93%E5%8C%85%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7.png"></li>
 </ol>
 <p><em>android 打包使用工具：</em></p>
 <table>
@@ -223,32 +230,32 @@
 </tr>
 <tr>
 <td>aidl(Android Interface definition language)</td>
-<td>Android接口描述语言，将aidl转化为.java文件的工具</td>
+<td>Android 接口描述语言，将 aidl 转化为.java 文件的工具</td>
 <td>${ANDROID_SDK_HOME}&#x2F;build-tools&#x2F;ANDROID_VERSION&#x2F;aidl</td>
 <td>frameworks\base\tools\aild</td>
 </tr>
 <tr>
 <td>javac</td>
 <td>Java Compiler</td>
-<td>${JDK_HOME}&#x2F;javac或&#x2F;usr&#x2F;bin&#x2F;javac</td>
+<td>${JDK_HOME}&#x2F;javac 或&#x2F;usr&#x2F;bin&#x2F;javac</td>
 <td></td>
 </tr>
 <tr>
 <td>dex</td>
-<td>转化.class文件为Davik VM能识别的.dex文件</td>
+<td>转化.class 文件为 Davik VM 能识别的.dex 文件</td>
 <td>&amp;{ANDROID_SDK_HOME}&#x2F;build-tools&#x2F;ANDROID_VERSION&#x2F;dx</td>
 <td></td>
 </tr>
 <tr>
 <td>apkBuilder</td>
-<td>生成apk包</td>
+<td>生成 apk 包</td>
 <td>&amp;{ANDROID_SDK_HOME}&#x2F;tools&#x2F;sdk\sdkmanager\libs\sdklib\src\com\android\sdklib\build${ANDROID_SDK_HOME}&#x2F;tools&#x2F;apkbuilderApkBuilderMain.java</td>
 <td>sdk\sdkmanager\libs\sdklib\src\com\android\sdklib\build\ApkBuilderMain.java</td>
 </tr>
 <tr>
 <td>jarsigner</td>
-<td>.jar文件的签名工具</td>
-<td>${JDK_HOME}&#x2F;jarsigner或&#x2F;usr&#x2F;bin&#x2F;jarsigner</td>
+<td>.jar 文件的签名工具</td>
+<td>${JDK_HOME}&#x2F;jarsigner 或&#x2F;usr&#x2F;bin&#x2F;jarsigner</td>
 <td></td>
 </tr>
 <tr>
@@ -258,13 +265,13 @@
 <td></td>
 </tr>
 </tbody></table>
-<h4 id="打包步骤详解"><a href="#打包步骤详解" class="headerlink" title="打包步骤详解"></a><strong>打包步骤详解</strong></h4><h5 id="第一步：打包资源文件，生成R-java文件"><a href="#第一步：打包资源文件，生成R-java文件" class="headerlink" title="第一步：打包资源文件，生成R.java文件"></a>第一步：打包资源文件，生成R.java文件</h5><p>【输入】Resource文件（就是工程中res中的文件）、Assets文件（相当于另外一种资源，这种资源Android系统并不像对res中的文件那样优化它）、AndroidManifest.xml（包名就是从这里读取的，因为生成R.java文件需要包名）、Android基础类库（Android.jar文件）<br>【工具】aapt工具<br>【输出】打包好的资源（bin目录中的resources.ap_文件）、R.java文件（gen目录中），打包资源的工具aapt，大部分文本格式的XML资源文件会被编译成二进制格式的XML资源文件，除了assets和res&#x2F;raw资源被原装不动的打包进APK之外，其他的资源都会被编译或者处理。生成过程主要是条用了aapt源码目录下的Resource.cpp文件中的buildResource（）函数，该函数首先检查AndroidManifest.xml的合法性，然后对res目录下的资源子目录进行处理，处理的函数为makeFileResource()，处理的内容包括资源文件名的合法性检查，向资源表table添加条目等，处理完后调用compileResouceFile（）函数编译res与assets目录下的资源并生成resources.arsc文件，complieResourceFile（）函数位于aapt源码目录的ResourceTable.cpp文件中，该函数最后会调用parseAndAddEntry()函数生成R.java文件，文成资源编译后，接下来调用compileXmlfile()函数对res目录的子目录下的xml文件进行编译，这样处理过的xml文件就简单的被“加密”了，最后将所有的资源与编译生成的resources.arsc文件以及“加密“过的AndroidManifest.xml文件打包压缩成resources.ap_文件（使用Ant工具命令行编译则会生成与build.xml中”project name”指定的属性同名的ap_文件）。<br>关于这一步更详细的流程可阅读<a target="_blank" rel="noopener" href="http://blog.csdn.net/luoshengyang/article/details/8744683">罗升阳的blog</a></p>
-<h5 id="第二步：处理aidl文件，生成相应的java文件"><a href="#第二步：处理aidl文件，生成相应的java文件" class="headerlink" title="第二步：处理aidl文件，生成相应的java文件"></a>第二步：处理aidl文件，生成相应的java文件</h5><p>【输入】源码文件、aidl文件、framework.aidl文件<br>【工具】aidl工具<br>【输出】对应的.java文件<br>对于没有使用到aidl的android工具，这一步可以跳过。aidl工具解析接口定义文件并生成相应的java代码供程序调用。</p>
-<h5 id="第三步：编译工程源代码，生成相应的class文件"><a href="#第三步：编译工程源代码，生成相应的class文件" class="headerlink" title="第三步：编译工程源代码，生成相应的class文件"></a>第三步：编译工程源代码，生成相应的class文件</h5><p>【输入】源码文件（包R.java和Aidl生成的.java文件）、库文件（.jar文件）<br>【工具】javac工具<br>【输出】.class文件<br>这一步调用了javac编译工程src目录下所有的java源文件，生成的class文件位于工具的bin\classes目录下，上图嘉定编译工程源代码时程序是基于android sdk开发的，实际开发过程中，也有可能会使用android ndk来编译native代码。因此，如果可能的话，这一步还需要使用android NDK编译C&#x2F;C++代码，当然，编译C&#x2F;C++代码步骤也可以提前到第一步或者第二步完成。</p>
-<h5 id="第四步：转换所有的class文件，生成classes-dex文件"><a href="#第四步：转换所有的class文件，生成classes-dex文件" class="headerlink" title="第四步：转换所有的class文件，生成classes.dex文件"></a>第四步：转换所有的class文件，生成classes.dex文件</h5><p>【输入】 .class文件（包括aidl生成.class文件，R生成的.class文件，源文件生成的.class文件），库文件（.jar文件）<br>【工具】dex工具<br>【输出】.dex文件<br>android dalvik虚拟机的可执行文件为dex格式，程序运行所需要的classes.dex文件就是在这一步生成的，使用的工具为dex，dex工具的主要工作就是件java字节码转换成为dalvik字节码，压缩常量池、消除冗余信息等。</p>
-<h5 id="第五步：打包生成apk"><a href="#第五步：打包生成apk" class="headerlink" title="第五步：打包生成apk"></a>第五步：打包生成apk</h5><p>【输入】打包后的资源文件，打包后类文件（.dex文件）、libs文件（包括.so文件，当然很多工程都没有这样的文件，如果你不使用c&#x2F;c++开发的话）<br>【工具】apkbuilder工具<br>【输出】未签名的.apk文件<br>打包工具为apkbuilder,apkbuilder为一个脚本文件，实际调用的是android-sdk\tools\lib\sdklib.jar文件中的com.android.sdklib.build.ApkBuilderMain类。他的代码实际位于android系统源码的sdk\sdkmanager\libs\sdklib\src\com\android\sdklib\build\ApkBuilderMain.java文件，代码构建了一个ApkBuilder类，然后以包含resources.arsc的文件为基础生成apk文件，这个文件一般以ap_结尾，接着调用addSourceFolder()函数添加工程libs目录下的Native库（通过androidNDK编译生成的so或者bin文件），还调用sealApk()关闭apk文件。</p>
-<h5 id="第六步：对apk文件进行签名"><a href="#第六步：对apk文件进行签名" class="headerlink" title="第六步：对apk文件进行签名"></a>第六步：对apk文件进行签名</h5><p>【输入】未签名的.apk文件<br>【工具】jarsigner<br>【输出】签名的.apk文件<br>android的引用程序需要签名才能在android设备上安装，签名apk文件有俩种情况：一种是在调试程序时进行签名，使用eclipse开发android程序时，在编译调试程序时会自己使用一个debug.keystore对apk进行签名；另一种是打包发布时对程序进行签名，这种情况下需要提供一个符合android开发文件中要求的签名文件。签名的方法也分为俩种：一种是使用jak中提供的jarsigner工具签名；另一种是使用android源码中提供的signapk工具，他的代码位于android系统源码build\tools\signapk目录下。</p>
-<h5 id="第七步：对签名后的apk文件进行对齐处理"><a href="#第七步：对签名后的apk文件进行对齐处理" class="headerlink" title="第七步：对签名后的apk文件进行对齐处理"></a>第七步：对签名后的apk文件进行对齐处理</h5><p>【输入】签名后的.apk文件<br>【工具】zipalign工具<br>【输出】对齐后的.apk文件<br>这一步需要使用的工具是zipalign工具，它位于android-sdk\tools目录下，源码位于android系统源码的build\tools\zipalign目录，它的主要工作是将apk包进行对齐处理，是apk包中的所有资源文件距离文件起始偏移4byte整数倍，这样通过内存映射访问apk文件时速度会更快，验证apk文件是否对齐过的工作右zipalign.cpp文件的verify()函数完成，处理对齐的工作则由process()函数完成。</p>
+<h4 id="打包步骤详解"><a href="#打包步骤详解" class="headerlink" title="打包步骤详解"></a><strong>打包步骤详解</strong></h4><h5 id="第一步：打包资源文件，生成-R-java-文件"><a href="#第一步：打包资源文件，生成-R-java-文件" class="headerlink" title="第一步：打包资源文件，生成 R.java 文件"></a>第一步：打包资源文件，生成 R.java 文件</h5><p>【输入】Resource 文件（就是工程中 res 中的文件）、Assets 文件（相当于另外一种资源，这种资源 Android 系统并不像对 res 中的文件那样优化它）、AndroidManifest.xml（包名就是从这里读取的，因为生成 R.java 文件需要包名）、Android 基础类库（Android.jar 文件）<br>【工具】aapt 工具<br>【输出】打包好的资源（bin 目录中的 resources.ap<em>文件）、R.java 文件（gen 目录中），打包资源的工具 aapt，大部分文本格式的 XML 资源文件会被编译成二进制格式的 XML 资源文件，除了 assets 和 res&#x2F;raw 资源被原装不动的打包进 APK 之外，其他的资源都会被编译或者处理。生成过程主要是条用了 aapt 源码目录下的 Resource.cpp 文件中的 buildResource（）函数，该函数首先检查 AndroidManifest.xml 的合法性，然后对 res 目录下的资源子目录进行处理，处理的函数为 makeFileResource()，处理的内容包括资源文件名的合法性检查，向资源表 table 添加条目等，处理完后调用 compileResouceFile（）函数编译 res 与 assets 目录下的资源并生成 resources.arsc 文件，complieResourceFile（）函数位于 aapt 源码目录的 ResourceTable.cpp 文件中，该函数最后会调用 parseAndAddEntry()函数生成 R.java 文件，文成资源编译后，接下来调用 compileXmlfile()函数对 res 目录的子目录下的 xml 文件进行编译，这样处理过的 xml 文件就简单的被“加密”了，最后将所有的资源与编译生成的 resources.arsc 文件以及“加密“过的 AndroidManifest.xml 文件打包压缩成 resources.ap</em>文件（使用 Ant 工具命令行编译则会生成与 build.xml 中”project name”指定的属性同名的 ap_文件）。<br>关于这一步更详细的流程可阅读<a target="_blank" rel="noopener" href="http://blog.csdn.net/luoshengyang/article/details/8744683">罗升阳的 blog</a></p>
+<h5 id="第二步：处理-aidl-文件，生成相应的-java-文件"><a href="#第二步：处理-aidl-文件，生成相应的-java-文件" class="headerlink" title="第二步：处理 aidl 文件，生成相应的 java 文件"></a>第二步：处理 aidl 文件，生成相应的 java 文件</h5><p>【输入】源码文件、aidl 文件、framework.aidl 文件<br>【工具】aidl 工具<br>【输出】对应的.java 文件<br>对于没有使用到 aidl 的 android 工具，这一步可以跳过。aidl 工具解析接口定义文件并生成相应的 java 代码供程序调用。</p>
+<h5 id="第三步：编译工程源代码，生成相应的-class-文件"><a href="#第三步：编译工程源代码，生成相应的-class-文件" class="headerlink" title="第三步：编译工程源代码，生成相应的 class 文件"></a>第三步：编译工程源代码，生成相应的 class 文件</h5><p>【输入】源码文件（包 R.java 和 Aidl 生成的.java 文件）、库文件（.jar 文件）<br>【工具】javac 工具<br>【输出】.class 文件<br>这一步调用了 javac 编译工程 src 目录下所有的 java 源文件，生成的 class 文件位于工具的 bin\classes 目录下，上图嘉定编译工程源代码时程序是基于 android sdk 开发的，实际开发过程中，也有可能会使用 android ndk 来编译 native 代码。因此，如果可能的话，这一步还需要使用 android NDK 编译 C&#x2F;C++代码，当然，编译 C&#x2F;C++代码步骤也可以提前到第一步或者第二步完成。</p>
+<h5 id="第四步：转换所有的-class-文件，生成-classes-dex-文件"><a href="#第四步：转换所有的-class-文件，生成-classes-dex-文件" class="headerlink" title="第四步：转换所有的 class 文件，生成 classes.dex 文件"></a>第四步：转换所有的 class 文件，生成 classes.dex 文件</h5><p>【输入】 .class 文件（包括 aidl 生成.class 文件，R 生成的.class 文件，源文件生成的.class 文件），库文件（.jar 文件）<br>【工具】dex 工具<br>【输出】.dex 文件<br>android dalvik 虚拟机的可执行文件为 dex 格式，程序运行所需要的 classes.dex 文件就是在这一步生成的，使用的工具为 dex，dex 工具的主要工作就是件 java 字节码转换成为 dalvik 字节码，压缩常量池、消除冗余信息等。</p>
+<h5 id="第五步：打包生成-apk"><a href="#第五步：打包生成-apk" class="headerlink" title="第五步：打包生成 apk"></a>第五步：打包生成 apk</h5><p>【输入】打包后的资源文件，打包后类文件（.dex 文件）、libs 文件（包括.so 文件，当然很多工程都没有这样的文件，如果你不使用 c&#x2F;c++开发的话）<br>【工具】apkbuilder 工具<br>【输出】未签名的.apk 文件<br>打包工具为 apkbuilder,apkbuilder 为一个脚本文件，实际调用的是 android-sdk\tools\lib\sdklib.jar 文件中的 com.android.sdklib.build.ApkBuilderMain 类。他的代码实际位于 android 系统源码的 sdk\sdkmanager\libs\sdklib\src\com\android\sdklib\build\ApkBuilderMain.java 文件，代码构建了一个 ApkBuilder 类，然后以包含 resources.arsc 的文件为基础生成 apk 文件，这个文件一般以 ap_结尾，接着调用 addSourceFolder()函数添加工程 libs 目录下的 Native 库（通过 androidNDK 编译生成的 so 或者 bin 文件），还调用 sealApk()关闭 apk 文件。</p>
+<h5 id="第六步：对-apk-文件进行签名"><a href="#第六步：对-apk-文件进行签名" class="headerlink" title="第六步：对 apk 文件进行签名"></a>第六步：对 apk 文件进行签名</h5><p>【输入】未签名的.apk 文件<br>【工具】jarsigner<br>【输出】签名的.apk 文件<br>android 的引用程序需要签名才能在 android 设备上安装，签名 apk 文件有俩种情况：一种是在调试程序时进行签名，使用 eclipse 开发 android 程序时，在编译调试程序时会自己使用一个 debug.keystore 对 apk 进行签名；另一种是打包发布时对程序进行签名，这种情况下需要提供一个符合 android 开发文件中要求的签名文件。签名的方法也分为俩种：一种是使用 jak 中提供的 jarsigner 工具签名；另一种是使用 android 源码中提供的 signapk 工具，他的代码位于 android 系统源码 build\tools\signapk 目录下。</p>
+<h5 id="第七步：对签名后的-apk-文件进行对齐处理"><a href="#第七步：对签名后的-apk-文件进行对齐处理" class="headerlink" title="第七步：对签名后的 apk 文件进行对齐处理"></a>第七步：对签名后的 apk 文件进行对齐处理</h5><p>【输入】签名后的.apk 文件<br>【工具】zipalign 工具<br>【输出】对齐后的.apk 文件<br>这一步需要使用的工具是 zipalign 工具，它位于 android-sdk\tools 目录下，源码位于 android 系统源码的 build\tools\zipalign 目录，它的主要工作是将 apk 包进行对齐处理，是 apk 包中的所有资源文件距离文件起始偏移 4byte 整数倍，这样通过内存映射访问 apk 文件时速度会更快，验证 apk 文件是否对齐过的工作右 zipalign.cpp 文件的 verify()函数完成，处理对齐的工作则由 process()函数完成。</p>
 <h4 id="引用资源请点我查看"><a href="#引用资源请点我查看" class="headerlink" title="引用资源请点我查看"></a><a target="_blank" rel="noopener" href="http://www.androidchina.net/2133.html">引用资源请点我查看</a></h4>
     </div>
 
@@ -349,7 +356,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E6%A6%82%E8%BF%B0%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">流程概述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E6%AD%A5%E9%AA%A4%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">打包步骤详解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E6%89%93%E5%8C%85%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%EF%BC%8C%E7%94%9F%E6%88%90R-java%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">第一步：打包资源文件，生成R.java文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%A4%84%E7%90%86aidl%E6%96%87%E4%BB%B6%EF%BC%8C%E7%94%9F%E6%88%90%E7%9B%B8%E5%BA%94%E7%9A%84java%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">第二步：处理aidl文件，生成相应的java文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E7%BC%96%E8%AF%91%E5%B7%A5%E7%A8%8B%E6%BA%90%E4%BB%A3%E7%A0%81%EF%BC%8C%E7%94%9F%E6%88%90%E7%9B%B8%E5%BA%94%E7%9A%84class%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.</span> <span class="nav-text">第三步：编译工程源代码，生成相应的class文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E8%BD%AC%E6%8D%A2%E6%89%80%E6%9C%89%E7%9A%84class%E6%96%87%E4%BB%B6%EF%BC%8C%E7%94%9F%E6%88%90classes-dex%E6%96%87%E4%BB%B6"><span class="nav-number">2.4.</span> <span class="nav-text">第四步：转换所有的class文件，生成classes.dex文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9A%E6%89%93%E5%8C%85%E7%94%9F%E6%88%90apk"><span class="nav-number">2.5.</span> <span class="nav-text">第五步：打包生成apk</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E6%AD%A5%EF%BC%9A%E5%AF%B9apk%E6%96%87%E4%BB%B6%E8%BF%9B%E8%A1%8C%E7%AD%BE%E5%90%8D"><span class="nav-number">2.6.</span> <span class="nav-text">第六步：对apk文件进行签名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E6%AD%A5%EF%BC%9A%E5%AF%B9%E7%AD%BE%E5%90%8D%E5%90%8E%E7%9A%84apk%E6%96%87%E4%BB%B6%E8%BF%9B%E8%A1%8C%E5%AF%B9%E9%BD%90%E5%A4%84%E7%90%86"><span class="nav-number">2.7.</span> <span class="nav-text">第七步：对签名后的apk文件进行对齐处理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E8%B5%84%E6%BA%90%E8%AF%B7%E7%82%B9%E6%88%91%E6%9F%A5%E7%9C%8B"><span class="nav-number">3.</span> <span class="nav-text">引用资源请点我查看</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E6%A6%82%E8%BF%B0%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">流程概述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E6%AD%A5%E9%AA%A4%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">打包步骤详解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E6%89%93%E5%8C%85%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%EF%BC%8C%E7%94%9F%E6%88%90-R-java-%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">第一步：打包资源文件，生成 R.java 文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%A4%84%E7%90%86-aidl-%E6%96%87%E4%BB%B6%EF%BC%8C%E7%94%9F%E6%88%90%E7%9B%B8%E5%BA%94%E7%9A%84-java-%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">第二步：处理 aidl 文件，生成相应的 java 文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E7%BC%96%E8%AF%91%E5%B7%A5%E7%A8%8B%E6%BA%90%E4%BB%A3%E7%A0%81%EF%BC%8C%E7%94%9F%E6%88%90%E7%9B%B8%E5%BA%94%E7%9A%84-class-%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.</span> <span class="nav-text">第三步：编译工程源代码，生成相应的 class 文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E8%BD%AC%E6%8D%A2%E6%89%80%E6%9C%89%E7%9A%84-class-%E6%96%87%E4%BB%B6%EF%BC%8C%E7%94%9F%E6%88%90-classes-dex-%E6%96%87%E4%BB%B6"><span class="nav-number">2.4.</span> <span class="nav-text">第四步：转换所有的 class 文件，生成 classes.dex 文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9A%E6%89%93%E5%8C%85%E7%94%9F%E6%88%90-apk"><span class="nav-number">2.5.</span> <span class="nav-text">第五步：打包生成 apk</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E6%AD%A5%EF%BC%9A%E5%AF%B9-apk-%E6%96%87%E4%BB%B6%E8%BF%9B%E8%A1%8C%E7%AD%BE%E5%90%8D"><span class="nav-number">2.6.</span> <span class="nav-text">第六步：对 apk 文件进行签名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E6%AD%A5%EF%BC%9A%E5%AF%B9%E7%AD%BE%E5%90%8D%E5%90%8E%E7%9A%84-apk-%E6%96%87%E4%BB%B6%E8%BF%9B%E8%A1%8C%E5%AF%B9%E9%BD%90%E5%A4%84%E7%90%86"><span class="nav-number">2.7.</span> <span class="nav-text">第七步：对签名后的 apk 文件进行对齐处理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E8%B5%84%E6%BA%90%E8%AF%B7%E7%82%B9%E6%88%91%E6%9F%A5%E7%9C%8B"><span class="nav-number">3.</span> <span class="nav-text">引用资源请点我查看</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -363,17 +370,17 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">42</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>

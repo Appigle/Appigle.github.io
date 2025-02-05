@@ -20,26 +20,26 @@
     var CONFIG = {"hostname":"appigle.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="减小apk体积 使用混淆，减少代码量； 使用android lint检查未使用资源，手动删除； 清理assets文件夹； 使用drawable 的xml定义文件代替图片； 使用pngquant工具压缩png文件； 放弃小部分手机和模拟器支持的so文件； 重定制jar，获取需求功能即可； 动态加载技术（app的插件化）； 代码重构，代码复用，代码精简；">
+  <meta name="description" content="减小 apk 体积 使用混淆，减少代码量； 使用 android lint 检查未使用资源，手动删除； 清理 assets 文件夹； 使用 drawable 的 xml 定义文件代替图片； 使用 pngquant 工具压缩 png 文件； 放弃小部分手机和模拟器支持的 so 文件； 重定制 jar，获取需求功能即可； 动态加载技术（app 的插件化）； 代码重构，代码复用，代码精简；">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 减小APK体积笔记">
 <meta property="og:url" content="https://appigle.github.io/2016/10/15/Android%20%E5%87%8F%E5%B0%8FAPK%E4%BD%93%E7%A7%AF%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Welcome to Ray&#39;s Blog">
-<meta property="og:description" content="减小apk体积 使用混淆，减少代码量； 使用android lint检查未使用资源，手动删除； 清理assets文件夹； 使用drawable 的xml定义文件代替图片； 使用pngquant工具压缩png文件； 放弃小部分手机和模拟器支持的so文件； 重定制jar，获取需求功能即可； 动态加载技术（app的插件化）； 代码重构，代码复用，代码精简；">
+<meta property="og:description" content="减小 apk 体积 使用混淆，减少代码量； 使用 android lint 检查未使用资源，手动删除； 清理 assets 文件夹； 使用 drawable 的 xml 定义文件代替图片； 使用 pngquant 工具压缩 png 文件； 放弃小部分手机和模拟器支持的 so 文件； 重定制 jar，获取需求功能即可； 动态加载技术（app 的插件化）； 代码重构，代码复用，代码精简；">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://appigle.github.io/uploads/pngQuant_tool.jpg">
-<meta property="og:image" content="https://appigle.github.io/%5Cuploads%5Cpngquant_file_structrue.png">
-<meta property="og:image" content="https://appigle.github.io/%5Cuploads%5Ccmdopen.jpg">
-<meta property="og:image" content="https://appigle.github.io/uploads/cmd%E5%91%BD%E4%BB%A4.jpg">
-<meta property="og:image" content="https://appigle.github.io/uploads/prepng_.jpg">
-<meta property="og:image" content="https://appigle.github.io/uploads/endpng.jpg">
+<meta property="og:image" content="https://appigle.github.io/images/pngQuant_tool.jpg">
+<meta property="og:image" content="https://appigle.github.io/images/pngquant_file_structrue.png">
+<meta property="og:image" content="https://appigle.github.io/images/cmdopen.jpg">
+<meta property="og:image" content="https://appigle.github.io/images/cmd%E5%91%BD%E4%BB%A4.jpg">
+<meta property="og:image" content="https://appigle.github.io/images/prepng_.jpg">
+<meta property="og:image" content="https://appigle.github.io/images/endpng.jpg">
 <meta property="article:published_time" content="2016-10-15T15:56:38.000Z">
-<meta property="article:modified_time" content="2016-10-15T15:56:38.000Z">
+<meta property="article:modified_time" content="2025-02-05T16:39:53.170Z">
 <meta property="article:author" content="Lei Chen">
 <meta property="article:tag" content="Android">
 <meta property="article:tag" content="优化">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://appigle.github.io/uploads/pngQuant_tool.jpg">
+<meta name="twitter:image" content="https://appigle.github.io/images/pngQuant_tool.jpg">
 
 <link rel="canonical" href="https://appigle.github.io/2016/10/15/Android%20%E5%87%8F%E5%B0%8FAPK%E4%BD%93%E7%A7%AF%E7%AC%94%E8%AE%B0/">
 
@@ -185,6 +185,13 @@
 
               <time title="Created: 2016-10-15 11:56:38" itemprop="dateCreated datePublished" datetime="2016-10-15T11:56:38-04:00">2016-10-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:39:53" itemprop="dateModified" datetime="2025-02-05T11:39:53-05:00">2025-02-05</time>
+              </span>
 
           
 
@@ -197,21 +204,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="减小apk体积"><a href="#减小apk体积" class="headerlink" title="减小apk体积"></a>减小apk体积</h3><ul>
+        <h3 id="减小-apk-体积"><a href="#减小-apk-体积" class="headerlink" title="减小 apk 体积"></a>减小 apk 体积</h3><ul>
 <li>使用混淆，减少代码量；</li>
-<li>使用android lint检查未使用资源，手动删除；</li>
-<li>清理assets文件夹；</li>
-<li>使用drawable 的xml定义文件代替图片；</li>
-<li>使用pngquant工具压缩png文件；</li>
-<li>放弃小部分手机和模拟器支持的so文件；</li>
-<li>重定制jar，获取需求功能即可；</li>
-<li>动态加载技术（app的插件化）；</li>
+<li>使用 android lint 检查未使用资源，手动删除；</li>
+<li>清理 assets 文件夹；</li>
+<li>使用 drawable 的 xml 定义文件代替图片；</li>
+<li>使用 pngquant 工具压缩 png 文件；</li>
+<li>放弃小部分手机和模拟器支持的 so 文件；</li>
+<li>重定制 jar，获取需求功能即可；</li>
+<li>动态加载技术（app 的插件化）；</li>
 <li>代码重构，代码复用，代码精简；</li>
 </ul>
 <span id="more"></span>
 
-<h3 id="PNG图片无损压缩工具"><a href="#PNG图片无损压缩工具" class="headerlink" title="PNG图片无损压缩工具"></a><a target="_blank" rel="noopener" href="https://pngquant.org/">PNG图片无损压缩工具</a></h3><ol>
-<li>使用方式：官网下载<br> <img src="/uploads/pngQuant_tool.jpg"><br> 解压后文件结构：<br> <img src="/%5Cuploads%5Cpngquant_file_structrue.png"><br> 将要转换的png图片或者包含png图片的文件夹放在相同个文件夹里面<br> 在地址栏输入cmd+enter出现命令行窗口<br> <img src="/%5Cuploads%5Ccmdopen.jpg"><br> 在命令行中输入<code>.\pngquant 256 --force --ext .png .\drawable-xxhdpi\*.png</code><br> 其中<code>--forec</code>：表示强制覆盖原png图片，<code>--ext .png</code>:表示压缩后的文件已png为后缀<br> <img src="/uploads/cmd%E5%91%BD%E4%BB%A4.jpg"><br> 压缩前后对比<br> <strong>压缩前</strong><br> <img src="/uploads/prepng_.jpg"><br> ** 压缩后**<br> <img src="/uploads/endpng.jpg"></li>
+<h3 id="PNG-图片无损压缩工具"><a href="#PNG-图片无损压缩工具" class="headerlink" title="PNG 图片无损压缩工具"></a><a target="_blank" rel="noopener" href="https://pngquant.org/">PNG 图片无损压缩工具</a></h3><ol>
+<li>使用方式：官网下载<br><img src="/images/pngQuant_tool.jpg"><br>解压后文件结构：<br><img src="/images/pngquant_file_structrue.png"><br>将要转换的 png 图片或者包含 png 图片的文件夹放在相同个文件夹里面<br>在地址栏输入 cmd+enter 出现命令行窗口<br><img src="/images/cmdopen.jpg"><br>在命令行中输入<code>.\pngquant 256 --force --ext .png .\drawable-xxhdpi\*.png</code><br>其中<code>--forec</code>：表示强制覆盖原 png 图片，<code>--ext .png</code>:表示压缩后的文件已 png 为后缀<br><img src="/images/cmd%E5%91%BD%E4%BB%A4.jpg"><br>压缩前后对比<br><strong>压缩前</strong><br><img src="/images/prepng_.jpg"><br>** 压缩后**<br><img src="/images/endpng.jpg"></li>
 </ol>
 
     </div>
@@ -297,7 +304,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%8F%E5%B0%8Fapk%E4%BD%93%E7%A7%AF"><span class="nav-number">1.</span> <span class="nav-text">减小apk体积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PNG%E5%9B%BE%E7%89%87%E6%97%A0%E6%8D%9F%E5%8E%8B%E7%BC%A9%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">PNG图片无损压缩工具</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%8F%E5%B0%8F-apk-%E4%BD%93%E7%A7%AF"><span class="nav-number">1.</span> <span class="nav-text">减小 apk 体积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PNG-%E5%9B%BE%E7%89%87%E6%97%A0%E6%8D%9F%E5%8E%8B%E7%BC%A9%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">PNG 图片无损压缩工具</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -311,17 +318,17 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">42</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>

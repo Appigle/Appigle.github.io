@@ -148,6 +148,84 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/10/15/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8AndroidStudio%E5%BC%80%E5%8F%91%E5%8F%AF%E4%BB%A5%E8%BF%90%E8%A1%8C%E7%9A%84java%E5%B7%A5%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chen">
+      <meta itemprop="description" content="Ray's Blog！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Ray's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/10/15/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8AndroidStudio%E5%BC%80%E5%8F%91%E5%8F%AF%E4%BB%A5%E8%BF%90%E8%A1%8C%E7%9A%84java%E5%B7%A5%E7%A8%8B/" class="post-title-link" itemprop="url">如何利用AndroidStudio开发可以运行的java工程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2016-10-15 14:41:54" itemprop="dateCreated datePublished" datetime="2016-10-15T14:41:54-04:00">2016-10-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:04:05" itemprop="dateModified" datetime="2025-02-05T11:04:05-05:00">2025-02-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<ol>
+<li>新建一个 project，如果 project 已经存在那么直接创建一个 module，这里一定要注意选择 Java library，然后点击下一步；</li>
+<li>输入 module 信息，然后点击下一步；</li>
+<li>在创建的 Java 类中添加 main 方法:</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main（String[] args）&#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;如何利用AndroidStudio开发可以运行的java工程&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2016/10/15/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8AndroidStudio%E5%BC%80%E5%8F%91%E5%8F%AF%E4%BB%A5%E8%BF%90%E8%A1%8C%E7%9A%84java%E5%B7%A5%E7%A8%8B/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/10/15/ANR%20%E8%B6%85%E6%97%B6%E6%97%B6%E9%97%B4%E5%AE%9A%E4%B9%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -174,6 +252,13 @@
 
               <time title="Created: 2016-10-15 14:40:02" itemprop="dateCreated datePublished" datetime="2016-10-15T14:40:02-04:00">2016-10-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:53:28" itemprop="dateModified" datetime="2025-02-05T11:53:28-05:00">2025-02-05</time>
+              </span>
 
           
 
@@ -187,11 +272,11 @@
 
       
           <hr>
-<h3 id="ANR超时时间定义"><a href="#ANR超时时间定义" class="headerlink" title="ANR超时时间定义"></a>ANR超时时间定义</h3><p>定义位置：ActivityManagerService.java中定义</p>
+<h3 id="ANR-超时时间定义"><a href="#ANR-超时时间定义" class="headerlink" title="ANR 超时时间定义"></a>ANR 超时时间定义</h3><p>定义位置：ActivityManagerService.java 中定义</p>
 <ul>
-<li><p>Broadcast ANR时间为10s：<br>&#x2F;&#x2F; How long we allow a receiver to run before giving up on it.<br>static fianl int BROADCAST_TIMEOUT&#x3D;10*1000；</p>
+<li><p>Broadcast ANR 时间为 10s：<br>&#x2F;&#x2F; How long we allow a receiver to run before giving up on it.<br>static fianl int BROADCAST_TIMEOUT&#x3D;10*1000；</p>
 </li>
-<li><p>按键无响应ANR时间为5s；<br>&#x2F;&#x2F;how long we wait until we timeout on key dispatching.<br>static final int KEY_DISPATCHING_TIMEOUT&#x3D;5*1000；</p>
+<li><p>按键无响应 ANR 时间为 5s；<br>&#x2F;&#x2F;how long we wait until we timeout on key dispatching.<br>static final int KEY_DISPATCHING_TIMEOUT&#x3D;5*1000；</p>
 </li>
 </ul>
           <!--noindex-->
@@ -246,6 +331,13 @@
 
               <time title="Created: 2016-10-15 14:26:08" itemprop="dateCreated datePublished" datetime="2016-10-15T14:26:08-04:00">2016-10-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:38:29" itemprop="dateModified" datetime="2025-02-05T11:38:29-05:00">2025-02-05</time>
+              </span>
 
           
 
@@ -259,10 +351,10 @@
 
       
           <hr>
-<h3 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h3><h4 id="1-接口的意义"><a href="#1-接口的意义" class="headerlink" title="1. 接口的意义"></a>1. 接口的意义</h4><blockquote>
+<h3 id="Java-基础"><a href="#Java-基础" class="headerlink" title="Java 基础"></a>Java 基础</h3><h4 id="1-接口的意义"><a href="#1-接口的意义" class="headerlink" title="1. 接口的意义"></a>1. 接口的意义</h4><blockquote>
 <p>规范，扩展，回调；</p>
 </blockquote>
-<h4 id="2-Java的三大特性"><a href="#2-Java的三大特性" class="headerlink" title="2. Java的三大特性"></a>2. Java的三大特性</h4><blockquote>
+<h4 id="2-Java-的三大特性"><a href="#2-Java-的三大特性" class="headerlink" title="2. Java 的三大特性"></a>2. Java 的三大特性</h4><blockquote>
 <p>封装，多态，继承；</p>
 </blockquote>
 <h4 id="3-抽象类的意义"><a href="#3-抽象类的意义" class="headerlink" title="3. 抽象类的意义"></a>3. 抽象类的意义</h4><ul>
@@ -322,6 +414,13 @@
 
               <time title="Created: 2016-10-15 14:21:56" itemprop="dateCreated datePublished" datetime="2016-10-15T14:21:56-04:00">2016-10-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:04:06" itemprop="dateModified" datetime="2025-02-05T11:04:06-05:00">2025-02-05</time>
+              </span>
 
           
 
@@ -335,7 +434,7 @@
 
       
           <hr>
-<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>Android阵营多渠道软件分发，如：应用宝，小米商城，豌豆荚，91助手，魅族应用商城等，如此多的分发渠道，导致了在APP的统计数据时候需要针对不同的渠道做区别统计，因此多渠道打包技术就变得很有必要性了。这边采用Gradle+Umeng的方式进行多渠道打包。</p>
+<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>Android 阵营多渠道软件分发，如：应用宝，小米商城，豌豆荚，91 助手，魅族应用商城等，如此多的分发渠道，导致了在 APP 的统计数据时候需要针对不同的渠道做区别统计，因此多渠道打包技术就变得很有必要性了。这边采用 Gradle+Umeng 的方式进行多渠道打包。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/10/15/Android%20%E5%A4%9A%E6%B8%A0%E9%81%93%E6%89%93%E5%8C%85%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/#more" rel="contents">
@@ -388,6 +487,13 @@
 
               <time title="Created: 2016-10-15 14:20:52" itemprop="dateCreated datePublished" datetime="2016-10-15T14:20:52-04:00">2016-10-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:04:06" itemprop="dateModified" datetime="2025-02-05T11:04:06-05:00">2025-02-05</time>
+              </span>
 
           
 
@@ -402,11 +508,11 @@
       
           <hr>
 <h4 id="流程概述："><a href="#流程概述：" class="headerlink" title="流程概述："></a><strong>流程概述：</strong></h4><ol>
-<li>打包资源（&#x2F;res&#x2F;）文件，生成R.java文件；</li>
-<li>处理aidl文件，生成相应的java文件；</li>
-<li>编译工程源代码，生成相应class文件；</li>
-<li>转换所有的class文件，生成classes.dex文件；</li>
-<li>打包生成apk；</li>
+<li>打包资源（&#x2F;res&#x2F;）文件，生成 R.java 文件；</li>
+<li>处理 aidl 文件，生成相应的 java 文件；</li>
+<li>编译工程源代码，生成相应 class 文件；</li>
+<li>转换所有的 class 文件，生成 classes.dex 文件；</li>
+<li>打包生成 apk；</li>
 </ol>
           <!--noindex-->
             <div class="post-button">
@@ -460,6 +566,13 @@
 
               <time title="Created: 2016-10-15 11:56:38" itemprop="dateCreated datePublished" datetime="2016-10-15T11:56:38-04:00">2016-10-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:39:53" itemprop="dateModified" datetime="2025-02-05T11:39:53-05:00">2025-02-05</time>
+              </span>
 
           
 
@@ -472,15 +585,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="减小apk体积"><a href="#减小apk体积" class="headerlink" title="减小apk体积"></a>减小apk体积</h3><ul>
+          <h3 id="减小-apk-体积"><a href="#减小-apk-体积" class="headerlink" title="减小 apk 体积"></a>减小 apk 体积</h3><ul>
 <li>使用混淆，减少代码量；</li>
-<li>使用android lint检查未使用资源，手动删除；</li>
-<li>清理assets文件夹；</li>
-<li>使用drawable 的xml定义文件代替图片；</li>
-<li>使用pngquant工具压缩png文件；</li>
-<li>放弃小部分手机和模拟器支持的so文件；</li>
-<li>重定制jar，获取需求功能即可；</li>
-<li>动态加载技术（app的插件化）；</li>
+<li>使用 android lint 检查未使用资源，手动删除；</li>
+<li>清理 assets 文件夹；</li>
+<li>使用 drawable 的 xml 定义文件代替图片；</li>
+<li>使用 pngquant 工具压缩 png 文件；</li>
+<li>放弃小部分手机和模拟器支持的 so 文件；</li>
+<li>重定制 jar，获取需求功能即可；</li>
+<li>动态加载技术（app 的插件化）；</li>
 <li>代码重构，代码复用，代码精简；</li>
 </ul>
           <!--noindex-->
@@ -535,6 +648,13 @@
 
               <time title="Created: 2016-10-15 11:50:54" itemprop="dateCreated datePublished" datetime="2016-10-15T11:50:54-04:00">2016-10-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:53:26" itemprop="dateModified" datetime="2025-02-05T11:53:26-05:00">2025-02-05</time>
+              </span>
 
           
 
@@ -547,10 +667,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="查看Android系统版本使用率和设备屏幕市场分布情况："><a href="#查看Android系统版本使用率和设备屏幕市场分布情况：" class="headerlink" title="查看Android系统版本使用率和设备屏幕市场分布情况："></a><a target="_blank" rel="noopener" href="https://developer.android.com/about/dashboards/index.html">查看Android系统版本使用率和设备屏幕市场分布情况</a>：</h3><h3 id="资源文件夹命名和匹配规则"><a href="#资源文件夹命名和匹配规则" class="headerlink" title="资源文件夹命名和匹配规则"></a><a target="_blank" rel="noopener" href="http://ivan-ru.iteye.com/blog/1711414">资源文件夹命名和匹配规则</a></h3><p> ** 命名方法和要求：**</p>
+          <h3 id="查看-Android-系统版本使用率和设备屏幕市场分布情况："><a href="#查看-Android-系统版本使用率和设备屏幕市场分布情况：" class="headerlink" title="查看 Android 系统版本使用率和设备屏幕市场分布情况："></a><a target="_blank" rel="noopener" href="https://developer.android.com/about/dashboards/index.html">查看 Android 系统版本使用率和设备屏幕市场分布情况</a>：</h3><h3 id="资源文件夹命名和匹配规则"><a href="#资源文件夹命名和匹配规则" class="headerlink" title="资源文件夹命名和匹配规则"></a><a target="_blank" rel="noopener" href="http://ivan-ru.iteye.com/blog/1711414">资源文件夹命名和匹配规则</a></h3><p>** 命名方法和要求：**</p>
 <ol>
 <li>命名不分大小写（推荐全部小写）；</li>
-<li>命名形式：资源名-属性1-属性2-属性3…<br> 资源名：drawable、values、layout、anim、raw、menu、color、animtor、xml等；<br> 属性名见:<a href="(https://developer.android.com/guide/topics/resources/providing-resources.html#table2)">Android guidle 限定符表格</a>。** 这里要注意限定符必须按照表格规定的排序，否者编译无法通过**</li>
+<li>命名形式：资源名-属性 1-属性 2-属性 3…<br>资源名：drawable、values、layout、anim、raw、menu、color、animtor、xml 等；<br>属性名见:<a href="(https://developer.android.com/guide/topics/resources/providing-resources.html#table2)">Android guidle 限定符表格</a>。** 这里要注意限定符必须按照表格规定的排序，否者编译无法通过**</li>
 </ol>
           <!--noindex-->
             <div class="post-button">
@@ -604,6 +724,13 @@
 
               <time title="Created: 2016-10-15 11:28:24" itemprop="dateCreated datePublished" datetime="2016-10-15T11:28:24-04:00">2016-10-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:04:06" itemprop="dateModified" datetime="2025-02-05T11:04:06-05:00">2025-02-05</time>
+              </span>
 
           
 
@@ -616,7 +743,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="AIDL定义"><a href="#AIDL定义" class="headerlink" title="AIDL定义"></a>AIDL定义</h4><p>AIDL: Android Interface Definition Language : Android 接口定义语言。用于不同进程（Process）之间的通讯。</p>
+          <h4 id="AIDL-定义"><a href="#AIDL-定义" class="headerlink" title="AIDL 定义"></a>AIDL 定义</h4><p>AIDL: Android Interface Definition Language : Android 接口定义语言。用于不同进程（Process）之间的通讯。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/10/15/AIDL%E7%AE%80%E7%BA%A6%E7%A4%BA%E4%BE%8B%E7%AC%94%E8%AE%B0/#more" rel="contents">
@@ -669,6 +796,13 @@
 
               <time title="Created: 2016-10-15 11:19:56" itemprop="dateCreated datePublished" datetime="2016-10-15T11:19:56-04:00">2016-10-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:53:59" itemprop="dateModified" datetime="2025-02-05T11:53:59-05:00">2025-02-05</time>
+              </span>
 
           
 
@@ -682,11 +816,11 @@
 
       
           <h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><h4 id="1-AsyncTask超简述原理"><a href="#1-AsyncTask超简述原理" class="headerlink" title="1. AsyncTask超简述原理"></a>1. <code>AsyncTask</code>超简述原理</h4><ol>
-<li><code>AsyncTask</code>本质是一个静态的线程池（容量128，执行数5），<code>AsyncTask</code>派生出来的子类可以实现不同的异步任务，这些任务都是提交到静态线程池中执行的；</li>
+<li><code>AsyncTask</code>本质是一个静态的线程池（容量 128，执行数 5），<code>AsyncTask</code>派生出来的子类可以实现不同的异步任务，这些任务都是提交到静态线程池中执行的；</li>
 <li>线程池中的工作线程<code>mWorker</code>执行<code>doInBackground(mParams)</code>方法执行异步任务；</li>
-<li>当任务状态（执行成功、取消执行、进度更新）后，工作线程会向UI线程发送消息，<code>AsyncTask</code>内部的<code>InternalHandler</code>响应这些消息，并调用相关的回调函数；</li>
+<li>当任务状态（执行成功、取消执行、进度更新）后，工作线程会向 UI 线程发送消息，<code>AsyncTask</code>内部的<code>InternalHandler</code>响应这些消息，并调用相关的回调函数；</li>
 <li>不足处：线程池大小固定，如果添加线程数量超过固定值，则会抛出拒绝新线程的<code>RejectedExcutionException</code>。解决方式为新开一个线程，时刻关注线程池内线程数量，如果线程池线程满了，那么则休眠新线程，否则将线程添加到线程池中。</li>
-<li>3.0之前线程池是并行执行，3.0之后通过<code>SerialExcutor</code>执行串行操作。真正的操作是在<code>THREAD_POOL_EXCUTOR</code>线程。如果想要强行并行执行，可以直接使用<code>excuteOnExcutor</code>方法即可；</li>
+<li>3.0 之前线程池是并行执行，3.0 之后通过<code>SerialExcutor</code>执行串行操作。真正的操作是在<code>THREAD_POOL_EXCUTOR</code>线程。如果想要强行并行执行，可以直接使用<code>excuteOnExcutor</code>方法即可；</li>
 </ol>
           <!--noindex-->
             <div class="post-button">
@@ -740,6 +874,13 @@
 
               <time title="Created: 2016-10-15 11:19:40" itemprop="dateCreated datePublished" datetime="2016-10-15T11:19:40-04:00">2016-10-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:48:13" itemprop="dateModified" datetime="2025-02-05T11:48:13-05:00">2025-02-05</time>
+              </span>
 
           
 
@@ -754,81 +895,14 @@
       
           <hr>
 <h4 id="MVC-MVP-MVVM"><a href="#MVC-MVP-MVVM" class="headerlink" title="MVC&#x2F;MVP&#x2F;MVVM"></a>MVC&#x2F;MVP&#x2F;MVVM</h4><h5 id="MVC-Model-View-Controller"><a href="#MVC-Model-View-Controller" class="headerlink" title="MVC:Model View Controller"></a>MVC:Model View Controller</h5><ol>
-<li>View 传递指令到Controller；</li>
-<li>Controller 起到不同层面间的组织作用，用于控制应用程序的流程。它处理事件并做出响应。“事件”包括用户的行为和数据Moldel的改变；</li>
-<li>Model 将新的数据发送到View，用户得到反馈；</li>
-<li>所有通信都是单向进行。<br><img src="http://image.beekka.com/blog/2015/bg2015020105.png"></li>
+<li>View 传递指令到 Controller；</li>
+<li>Controller 起到不同层面间的组织作用，用于控制应用程序的流程。它处理事件并做出响应。“事件”包括用户的行为和数据 Moldel 的改变；</li>
+<li>Model 将新的数据发送到 View，用户得到反馈；</li>
+<li>所有通信都是单向进行。<br><img src="/images/Android_mvc.png" alt="MVC"></li>
 </ol>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/10/15/%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9%E7%AC%94%E8%AE%B0%E4%B8%80/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/10/15/Android%20WebView%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Lei Chen">
-      <meta itemprop="description" content="Ray's Blog！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome to Ray's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/10/15/Android%20WebView%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Android WebView知识笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2016-10-15 10:11:18" itemprop="dateCreated datePublished" datetime="2016-10-15T10:11:18-04:00">2016-10-15</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <hr>
-<h3 id="常用API含义"><a href="#常用API含义" class="headerlink" title="常用API含义"></a>常用API含义</h3><p>在layout布局文件中设置<code>WebView</code>节点：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">WebView</span></span></span><br><span class="line"><span class="tag">      <span class="attr">android:id</span>=<span class="string">&quot;@+id/wv_test&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2016/10/15/Android%20WebView%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -917,17 +991,17 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">42</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>

@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"appigle.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Java基础1. 接口的意义 规范，扩展，回调；  2. Java的三大特性 封装，多态，继承；  3. 抽象类的意义 为其子类提供一个公共的类型； 封装子类中重复的内容; 定义抽象方法，让子类去做自定义的方法实现；">
+  <meta name="description" content="Java 基础1. 接口的意义 规范，扩展，回调；  2. Java 的三大特性 封装，多态，继承；  3. 抽象类的意义 为其子类提供一个公共的类型； 封装子类中重复的内容; 定义抽象方法，让子类去做自定义的方法实现；">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常用知识点〇">
 <meta property="og:url" content="https://appigle.github.io/2016/10/15/%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9%E3%80%87/index.html">
 <meta property="og:site_name" content="Welcome to Ray&#39;s Blog">
-<meta property="og:description" content="Java基础1. 接口的意义 规范，扩展，回调；  2. Java的三大特性 封装，多态，继承；  3. 抽象类的意义 为其子类提供一个公共的类型； 封装子类中重复的内容; 定义抽象方法，让子类去做自定义的方法实现；">
+<meta property="og:description" content="Java 基础1. 接口的意义 规范，扩展，回调；  2. Java 的三大特性 封装，多态，继承；  3. 抽象类的意义 为其子类提供一个公共的类型； 封装子类中重复的内容; 定义抽象方法，让子类去做自定义的方法实现；">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2016-10-15T18:26:08.000Z">
-<meta property="article:modified_time" content="2016-10-15T18:26:08.000Z">
+<meta property="article:modified_time" content="2025-02-05T16:38:29.430Z">
 <meta property="article:author" content="Lei Chen">
 <meta property="article:tag" content="Android">
 <meta property="article:tag" content="零碎知识点">
@@ -178,6 +178,13 @@
 
               <time title="Created: 2016-10-15 14:26:08" itemprop="dateCreated datePublished" datetime="2016-10-15T14:26:08-04:00">2016-10-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:38:29" itemprop="dateModified" datetime="2025-02-05T11:38:29-05:00">2025-02-05</time>
+              </span>
 
           
 
@@ -191,10 +198,10 @@
 
       
         <hr>
-<h3 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h3><h4 id="1-接口的意义"><a href="#1-接口的意义" class="headerlink" title="1. 接口的意义"></a>1. 接口的意义</h4><blockquote>
+<h3 id="Java-基础"><a href="#Java-基础" class="headerlink" title="Java 基础"></a>Java 基础</h3><h4 id="1-接口的意义"><a href="#1-接口的意义" class="headerlink" title="1. 接口的意义"></a>1. 接口的意义</h4><blockquote>
 <p>规范，扩展，回调；</p>
 </blockquote>
-<h4 id="2-Java的三大特性"><a href="#2-Java的三大特性" class="headerlink" title="2. Java的三大特性"></a>2. Java的三大特性</h4><blockquote>
+<h4 id="2-Java-的三大特性"><a href="#2-Java-的三大特性" class="headerlink" title="2. Java 的三大特性"></a>2. Java 的三大特性</h4><blockquote>
 <p>封装，多态，继承；</p>
 </blockquote>
 <h4 id="3-抽象类的意义"><a href="#3-抽象类的意义" class="headerlink" title="3. 抽象类的意义"></a>3. 抽象类的意义</h4><ul>
@@ -205,21 +212,21 @@
 <span id="more"></span>
 
 <h4 id="4-内部类的作用"><a href="#4-内部类的作用" class="headerlink" title="4. 内部类的作用"></a>4. 内部类的作用</h4><ul>
-<li>内部类可以使用限定修饰符（private、protected、public），从而实现类的隐藏功能。通常外部类是只能使用public限定符；</li>
-<li>内部类拥有外围类的所有元素访问权限，在android中，这里需要注意内部类对Activity的强引用而导致的内存泄露问题；</li>
+<li>内部类可以使用限定修饰符（private、protected、public），从而实现类的隐藏功能。通常外部类是只能使用 public 限定符；</li>
+<li>内部类拥有外围类的所有元素访问权限，在 android 中，这里需要注意内部类对 Activity 的强引用而导致的内存泄露问题；</li>
 <li>可以实现多重继承（extends）和实现（implements）；</li>
-<li>可以避免修改接口而实现同一个类中在继承一个类和实现一个接口中出现俩种同名方法的调用问题；（经过测试发现，该问题貌似并没什么大问题。因为在接口中的方法并没有具体实现的，可以选择在继承的方法中实现想要实现的方法体，如果要使用继承父类的同名方法，只需要使用super.ff(）即可。极端情况，我就需要单独实现，那么则可以选择内部类的方式。）</li>
+<li>可以避免修改接口而实现同一个类中在继承一个类和实现一个接口中出现俩种同名方法的调用问题；（经过测试发现，该问题貌似并没什么大问题。因为在接口中的方法并没有具体实现的，可以选择在继承的方法中实现想要实现的方法体，如果要使用继承父类的同名方法，只需要使用 super.ff(）即可。极端情况，我就需要单独实现，那么则可以选择内部类的方式。）</li>
 </ul>
 <h4 id="5-抽象类与接口的区别"><a href="#5-抽象类与接口的区别" class="headerlink" title="5. 抽象类与接口的区别"></a>5. 抽象类与接口的区别</h4><ul>
 <li>语法层面上的区别</li>
 </ul>
 <ol>
-<li>抽象类可以提供成员方法的实现细节，而接口中只能存在public abstract修饰的方法，而且接口中所有的方法不管是否加public abstract修饰，都是默认public abstract修饰；</li>
-<li>抽象类中的成员变量可以是各种类型的，而接口中的成员变量只能是pubilc static final类型的；</li>
+<li>抽象类可以提供成员方法的实现细节，而接口中只能存在 public abstract 修饰的方法，而且接口中所有的方法不管是否加 public abstract 修饰，都是默认 public abstract 修饰；</li>
+<li>抽象类中的成员变量可以是各种类型的，而接口中的成员变量只能是 pubilc static final 类型的；</li>
 <li>接口中不能含有静态代码块以及静态方法，而抽象类可以有静态代码块和静态方法；</li>
 <li>一个类只能继承一个抽象类，而一个类却可以实现多个接口；</li>
 <li>抽象类可以有构造器，而接口不能有构造器；</li>
-<li>抽象类可以有main方法并且可以运行它，而接口没有，也不能运行main方法；</li>
+<li>抽象类可以有 main 方法并且可以运行它，而接口没有，也不能运行 main 方法；</li>
 <li>抽象类可以添加非抽象新方法，而接口不能随便添加新的方法。</li>
 </ol>
 <ul>
@@ -229,14 +236,14 @@
 <li>抽象类是对一种事物的抽象，即对物抽象，而接口是对行为的抽象。抽象类是对整个类整体进行抽象，包括属性和行为，但是接口却是对类局部（行为）进行抽象。</li>
 <li>设计层面不同，抽象类作为很多子类的父类，它是一种模板式设计。而接口是一种行为规范，它是一种辐射式设计。</li>
 </ol>
-<h4 id="6-Java的集合的继承关系"><a href="#6-Java的集合的继承关系" class="headerlink" title="6. Java的集合的继承关系"></a>6. Java的集合的继承关系</h4><blockquote>
+<h4 id="6-Java-的集合的继承关系"><a href="#6-Java-的集合的继承关系" class="headerlink" title="6. Java 的集合的继承关系"></a>6. Java 的集合的继承关系</h4><blockquote>
 <ul>
 <li>Collection</li>
 <li>|–List</li>
-<li>|  &gt; |–LinkedList</li>
-<li>|  &gt; |–ArrayList</li>
-<li>|  &gt; |–Vector</li>
-<li>|    &gt; &gt; &gt;   |–Stack</li>
+<li>| &gt; |–LinkedList</li>
+<li>| &gt; |–ArrayList</li>
+<li>| &gt; |–Vector</li>
+<li>| &gt; &gt; &gt; |–Stack</li>
 <li>|–Set</li>
 <li>Map</li>
 <li>|–HashTable</li>
@@ -244,20 +251,20 @@
 <li>|–WeakHashMap</li>
 </ul>
 </blockquote>
-<p>HashTables与HashMap的区别：</p>
+<p>HashTables 与 HashMap 的区别：</p>
 <ul>
-<li>HashMap是HashTable的轻量级实现（非线程安全的实现），同时都是实现了Map接口。</li>
-<li>主要区别在于HashMap允许将null作为一个entry的key或者value，而HashTable不允许。</li>
-<li>HashMap把HashTable的contains方法去掉了，改成containsValue和containsKey方法。</li>
-<li>HashTable继承自Dictionary类，而HashMap是Java1.2引进的Map Interface的一个实现。</li>
-<li>最大的不同是，HashTable方法是Synchronize的，而HashMap不是，在多个线程访问HashTable时，不需要自己为它的方法实现同步，而HashMap就必须为之提供外同步（Collections.synchronizedMap）；</li>
+<li>HashMap 是 HashTable 的轻量级实现（非线程安全的实现），同时都是实现了 Map 接口。</li>
+<li>主要区别在于 HashMap 允许将 null 作为一个 entry 的 key 或者 value，而 HashTable 不允许。</li>
+<li>HashMap 把 HashTable 的 contains 方法去掉了，改成 containsValue 和 containsKey 方法。</li>
+<li>HashTable 继承自 Dictionary 类，而 HashMap 是 Java1.2 引进的 Map Interface 的一个实现。</li>
+<li>最大的不同是，HashTable 方法是 Synchronize 的，而 HashMap 不是，在多个线程访问 HashTable 时，不需要自己为它的方法实现同步，而 HashMap 就必须为之提供外同步（Collections.synchronizedMap）；</li>
 </ul>
-<h4 id="7-java中的-和equals和HashCode的区别"><a href="#7-java中的-和equals和HashCode的区别" class="headerlink" title="7. java中的&#x3D;&#x3D;和equals和HashCode的区别"></a>7. java中的&#x3D;&#x3D;和equals和HashCode的区别</h4><ul>
+<h4 id="7-java-中的-和-equals-和-HashCode-的区别"><a href="#7-java-中的-和-equals-和-HashCode-的区别" class="headerlink" title="7. java 中的&#x3D;&#x3D;和 equals 和 HashCode 的区别"></a>7. java 中的&#x3D;&#x3D;和 equals 和 HashCode 的区别</h4><ul>
 <li>&#x3D;&#x3D; ： 比较基本类型的数值或者复杂类型的内存地址</li>
 <li>equals : 比较复杂类型的内容</li>
-<li>hashCode ： hash计算后的值</li>
+<li>hashCode ： hash 计算后的值</li>
 </ul>
-<h4 id="8-Java基本数据类型占用内存大小"><a href="#8-Java基本数据类型占用内存大小" class="headerlink" title="8. Java基本数据类型占用内存大小"></a>8. Java基本数据类型占用内存大小</h4><table>
+<h4 id="8-Java-基本数据类型占用内存大小"><a href="#8-Java-基本数据类型占用内存大小" class="headerlink" title="8. Java 基本数据类型占用内存大小"></a>8. Java 基本数据类型占用内存大小</h4><table>
 <thead>
 <tr>
 <th>类型</th>
@@ -301,44 +308,44 @@
 <td>8</td>
 </tr>
 </tbody></table>
-<h4 id="9-String-StringBuffer-StringBuilder区别："><a href="#9-String-StringBuffer-StringBuilder区别：" class="headerlink" title="9. String&#x2F;StringBuffer&#x2F;StringBuilder区别："></a>9. String&#x2F;StringBuffer&#x2F;StringBuilder区别：</h4><ul>
+<h4 id="9-String-StringBuffer-StringBuilder-区别："><a href="#9-String-StringBuffer-StringBuilder-区别：" class="headerlink" title="9. String&#x2F;StringBuffer&#x2F;StringBuilder 区别："></a>9. String&#x2F;StringBuffer&#x2F;StringBuilder 区别：</h4><ul>
 <li>String ：字符串常量；</li>
 <li>StringBuffer ：字符串变量（线程安全）</li>
 <li>StringBuilder ： 字符串变量（非线程安全）</li>
-<li>简单说：String类型是不可变的对象，每次对String类型进行改变时候，都等同于生成了一个新的String对象。StringBuffer和StringBuilder则是对自身的操作，区别则是线程时候安全。</li>
+<li>简单说：String 类型是不可变的对象，每次对 String 类型进行改变时候，都等同于生成了一个新的 String 对象。StringBuffer 和 StringBuilder 则是对自身的操作，区别则是线程时候安全。</li>
 </ul>
 <h4 id="10-多态"><a href="#10-多态" class="headerlink" title="10. 多态"></a>10. 多态</h4><ul>
 <li>多态的实现方式：接口实现，继承父类进行方法重写，同一个类中进行方法重载。</li>
 <li>多态的好处：可替换性、可扩充性、接口性、灵活性、简化性。</li>
 </ul>
-<h4 id="11-线程中sleep和wait的区别"><a href="#11-线程中sleep和wait的区别" class="headerlink" title="11. 线程中sleep和wait的区别"></a>11. 线程中sleep和wait的区别</h4><ul>
-<li>sleep（）是线程Thread的方法：调用该方法后，不释放对象锁。设置时间到后重新启动线程，或者interrupt启动线程；</li>
-<li>wait（）是Object类的方法：调用该方法后，释放对象锁，重新启动这需要调用notify（）或者notifyAll（）方法。</li>
+<h4 id="11-线程中-sleep-和-wait-的区别"><a href="#11-线程中-sleep-和-wait-的区别" class="headerlink" title="11. 线程中 sleep 和 wait 的区别"></a>11. 线程中 sleep 和 wait 的区别</h4><ul>
+<li>sleep（）是线程 Thread 的方法：调用该方法后，不释放对象锁。设置时间到后重新启动线程，或者 interrupt 启动线程；</li>
+<li>wait（）是 Object 类的方法：调用该方法后，释放对象锁，重新启动这需要调用 notify（）或者 notifyAll（）方法。</li>
 </ul>
 <h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><h4 id="1-如何导入外部数据库"><a href="#1-如何导入外部数据库" class="headerlink" title="1. 如何导入外部数据库"></a>1. 如何导入外部数据库</h4><ol>
 <li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/xiaowenji/archive/2011/01/03/1925014.html">[Android]如何导入已有的外部数据库</a></li>
 </ol>
-<h4 id="2-打开一个Activity到View显示的流程："><a href="#2-打开一个Activity到View显示的流程：" class="headerlink" title="2. 打开一个Activity到View显示的流程："></a>2. 打开一个Activity到View显示的流程：</h4><ol>
-<li>在Activity中调用attach()，创建了一个window对象；</li>
-<li>创建的window是其子类PhoneWindow的实例，在attach（）中创建PhoneWindow实例对象</li>
-<li>在Activity中调用setContentView（R.layout.XXX）,其实实际上是调用了getWindow().setContentView()方法，即调用PhoneWindow的setContentView（）方法；</li>
-<li>创建ParentView：作为ViewGroup的子类，实际是创建的DecorView extends Framelayout；</li>
-<li>将指定的R.layout.xxx进行填充到ParentView中；</li>
-<li>调用ViewGourp的removeALLview(),将原本的View移除，然后调用addView（）添加View；</li>
+<h4 id="2-打开一个-Activity-到-View-显示的流程："><a href="#2-打开一个-Activity-到-View-显示的流程：" class="headerlink" title="2. 打开一个 Activity 到 View 显示的流程："></a>2. 打开一个 Activity 到 View 显示的流程：</h4><ol>
+<li>在 Activity 中调用 attach()，创建了一个 window 对象；</li>
+<li>创建的 window 是其子类 PhoneWindow 的实例，在 attach（）中创建 PhoneWindow 实例对象</li>
+<li>在 Activity 中调用 setContentView（R.layout.XXX）,其实实际上是调用了 getWindow().setContentView()方法，即调用 PhoneWindow 的 setContentView（）方法；</li>
+<li>创建 ParentView：作为 ViewGroup 的子类，实际是创建的 DecorView extends Framelayout；</li>
+<li>将指定的 R.layout.xxx 进行填充到 ParentView 中；</li>
+<li>调用 ViewGourp 的 removeALLview(),将原本的 View 移除，然后调用 addView（）添加 View；</li>
 </ol>
-<h4 id="3-低版本SDK实现高版本api"><a href="#3-低版本SDK实现高版本api" class="headerlink" title="3. 低版本SDK实现高版本api"></a>3. 低版本SDK实现高版本api</h4><ol>
-<li>在高版本api的方法前面加一个@TargetApi（Build.VERSION.SKDCODE）</li>
+<h4 id="3-低版本-SDK-实现高版本-api"><a href="#3-低版本-SDK-实现高版本-api" class="headerlink" title="3. 低版本 SDK 实现高版本 api"></a>3. 低版本 SDK 实现高版本 api</h4><ol>
+<li>在高版本 api 的方法前面加一个@TargetApi（Build.VERSION.SKDCODE）</li>
 <li>在代码上用版本判断来控制不同版本的不同执行代码；</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@TargetApi(11)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">text</span><span class="params">()</span>&#123;</span><br><span class="line"><span class="keyword">if</span>(Build.VERSION.SDK_INT &gt;= <span class="number">11</span>)&#123;</span><br><span class="line">             <span class="comment">// 使用api11 新加 api的方法</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// 低版本的处理方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="4-Activity的LaunchMode引用场景"><a href="#4-Activity的LaunchMode引用场景" class="headerlink" title="4. Activity的LaunchMode引用场景"></a>4. Activity的LaunchMode引用场景</h4><ul>
-<li>standard ： 普通模式创建一个Activity，也是默认模式；</li>
-<li>singleTop ： 栈顶不是该类型的Activity，创建一个新的Activity，否则直接进入栈顶的Activity，并且调用onNewIntent（）方法。</li>
-<li>singleTask :　整个回退栈中没有该类型的Activity， 则创建新的Activity，否则进入已存在的Activity中，并且调用onNewIntent（），同时会清除掉在栈中位于打开Activity的上的其他Activity实例。</li>
-<li>singeleInstance : 回退栈中，只有这一个Activity，没有其他的Activity。</li>
-<li>singleTop：模式适用于接收通知启动的内容显示页面。eg.接收到多条通知，只通过一个Activity打开通知内容；</li>
-<li>singleTask：适合做程序的入口点。eg.浏览器的主界面，不管从多少个应用启动浏览器，只会启动主界面一次，其余情况会走onNewIntent，并且会清空主界面上的其他界面。</li>
+<h4 id="4-Activity-的-LaunchMode-引用场景"><a href="#4-Activity-的-LaunchMode-引用场景" class="headerlink" title="4. Activity 的 LaunchMode 引用场景"></a>4. Activity 的 LaunchMode 引用场景</h4><ul>
+<li>standard ： 普通模式创建一个 Activity，也是默认模式；</li>
+<li>singleTop ： 栈顶不是该类型的 Activity，创建一个新的 Activity，否则直接进入栈顶的 Activity，并且调用 onNewIntent（）方法。</li>
+<li>singleTask :　整个回退栈中没有该类型的 Activity， 则创建新的 Activity，否则进入已存在的 Activity 中，并且调用 onNewIntent（），同时会清除掉在栈中位于打开 Activity 的上的其他 Activity 实例。</li>
+<li>singeleInstance : 回退栈中，只有这一个 Activity，没有其他的 Activity。</li>
+<li>singleTop：模式适用于接收通知启动的内容显示页面。eg.接收到多条通知，只通过一个 Activity 打开通知内容；</li>
+<li>singleTask：适合做程序的入口点。eg.浏览器的主界面，不管从多少个应用启动浏览器，只会启动主界面一次，其余情况会走 onNewIntent，并且会清空主界面上的其他界面。</li>
 <li>singleInstance:eg.闹钟界面等类似不需要在返回过程中进入到功能界面内部的情况。</li>
 </ul>
 
@@ -425,7 +432,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">Java基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%84%8F%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">1. 接口的意义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Java%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="nav-number">1.2.</span> <span class="nav-text">2. Java的三大特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E6%84%8F%E4%B9%89"><span class="nav-number">1.3.</span> <span class="nav-text">3. 抽象类的意义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%86%85%E9%83%A8%E7%B1%BB%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">1.4.</span> <span class="nav-text">4. 内部类的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.5.</span> <span class="nav-text">5. 抽象类与接口的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Java%E7%9A%84%E9%9B%86%E5%90%88%E7%9A%84%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB"><span class="nav-number">1.6.</span> <span class="nav-text">6. Java的集合的继承关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-java%E4%B8%AD%E7%9A%84-%E5%92%8Cequals%E5%92%8CHashCode%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.7.</span> <span class="nav-text">7. java中的&#x3D;&#x3D;和equals和HashCode的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-Java%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8D%A0%E7%94%A8%E5%86%85%E5%AD%98%E5%A4%A7%E5%B0%8F"><span class="nav-number">1.8.</span> <span class="nav-text">8. Java基本数据类型占用内存大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-String-StringBuffer-StringBuilder%E5%8C%BA%E5%88%AB%EF%BC%9A"><span class="nav-number">1.9.</span> <span class="nav-text">9. String&#x2F;StringBuffer&#x2F;StringBuilder区别：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-%E5%A4%9A%E6%80%81"><span class="nav-number">1.10.</span> <span class="nav-text">10. 多态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-%E7%BA%BF%E7%A8%8B%E4%B8%ADsleep%E5%92%8Cwait%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.11.</span> <span class="nav-text">11. 线程中sleep和wait的区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android"><span class="nav-number">2.</span> <span class="nav-text">Android</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%A6%82%E4%BD%95%E5%AF%BC%E5%85%A5%E5%A4%96%E9%83%A8%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">2.1.</span> <span class="nav-text">1. 如何导入外部数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%89%93%E5%BC%80%E4%B8%80%E4%B8%AAActivity%E5%88%B0View%E6%98%BE%E7%A4%BA%E7%9A%84%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="nav-number">2.2.</span> <span class="nav-text">2. 打开一个Activity到View显示的流程：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BD%8E%E7%89%88%E6%9C%ACSDK%E5%AE%9E%E7%8E%B0%E9%AB%98%E7%89%88%E6%9C%ACapi"><span class="nav-number">2.3.</span> <span class="nav-text">3. 低版本SDK实现高版本api</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Activity%E7%9A%84LaunchMode%E5%BC%95%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">2.4.</span> <span class="nav-text">4. Activity的LaunchMode引用场景</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">Java 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%84%8F%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">1. 接口的意义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Java-%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="nav-number">1.2.</span> <span class="nav-text">2. Java 的三大特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E6%84%8F%E4%B9%89"><span class="nav-number">1.3.</span> <span class="nav-text">3. 抽象类的意义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%86%85%E9%83%A8%E7%B1%BB%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">1.4.</span> <span class="nav-text">4. 内部类的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.5.</span> <span class="nav-text">5. 抽象类与接口的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Java-%E7%9A%84%E9%9B%86%E5%90%88%E7%9A%84%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB"><span class="nav-number">1.6.</span> <span class="nav-text">6. Java 的集合的继承关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-java-%E4%B8%AD%E7%9A%84-%E5%92%8C-equals-%E5%92%8C-HashCode-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.7.</span> <span class="nav-text">7. java 中的&#x3D;&#x3D;和 equals 和 HashCode 的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-Java-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8D%A0%E7%94%A8%E5%86%85%E5%AD%98%E5%A4%A7%E5%B0%8F"><span class="nav-number">1.8.</span> <span class="nav-text">8. Java 基本数据类型占用内存大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-String-StringBuffer-StringBuilder-%E5%8C%BA%E5%88%AB%EF%BC%9A"><span class="nav-number">1.9.</span> <span class="nav-text">9. String&#x2F;StringBuffer&#x2F;StringBuilder 区别：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-%E5%A4%9A%E6%80%81"><span class="nav-number">1.10.</span> <span class="nav-text">10. 多态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-%E7%BA%BF%E7%A8%8B%E4%B8%AD-sleep-%E5%92%8C-wait-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.11.</span> <span class="nav-text">11. 线程中 sleep 和 wait 的区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android"><span class="nav-number">2.</span> <span class="nav-text">Android</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%A6%82%E4%BD%95%E5%AF%BC%E5%85%A5%E5%A4%96%E9%83%A8%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">2.1.</span> <span class="nav-text">1. 如何导入外部数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%89%93%E5%BC%80%E4%B8%80%E4%B8%AA-Activity-%E5%88%B0-View-%E6%98%BE%E7%A4%BA%E7%9A%84%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="nav-number">2.2.</span> <span class="nav-text">2. 打开一个 Activity 到 View 显示的流程：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BD%8E%E7%89%88%E6%9C%AC-SDK-%E5%AE%9E%E7%8E%B0%E9%AB%98%E7%89%88%E6%9C%AC-api"><span class="nav-number">2.3.</span> <span class="nav-text">3. 低版本 SDK 实现高版本 api</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Activity-%E7%9A%84-LaunchMode-%E5%BC%95%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">2.4.</span> <span class="nav-text">4. Activity 的 LaunchMode 引用场景</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -439,17 +446,17 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">42</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>

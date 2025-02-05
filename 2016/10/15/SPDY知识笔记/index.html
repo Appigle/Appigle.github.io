@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"appigle.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="SPDY定义 SPDY是Google开发的基于传输控制协议（TCP）的应用层协议，开发组正在推动SPDY成为正式标准（目前为草案）； SPDY协议旨在通过压缩、多路复用和优先级来缩短网页的加载时间和强制使用SSL协议来提高安全性。">
+  <meta name="description" content="SPDY 定义 SPDY 是 Google 开发的基于传输控制协议（TCP）的应用层协议，开发组正在推动 SPDY 成为正式标准（目前为草案）； SPDY 协议旨在通过压缩、多路复用和优先级来缩短网页的加载时间和强制使用 SSL 协议来提高安全性。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SPDY知识笔记">
 <meta property="og:url" content="https://appigle.github.io/2016/10/15/SPDY%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Welcome to Ray&#39;s Blog">
-<meta property="og:description" content="SPDY定义 SPDY是Google开发的基于传输控制协议（TCP）的应用层协议，开发组正在推动SPDY成为正式标准（目前为草案）； SPDY协议旨在通过压缩、多路复用和优先级来缩短网页的加载时间和强制使用SSL协议来提高安全性。">
+<meta property="og:description" content="SPDY 定义 SPDY 是 Google 开发的基于传输控制协议（TCP）的应用层协议，开发组正在推动 SPDY 成为正式标准（目前为草案）； SPDY 协议旨在通过压缩、多路复用和优先级来缩短网页的加载时间和强制使用 SSL 协议来提高安全性。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1156719-afc57efbe98be4f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://www.ha97.com/wp-content/uploads/image/2010/09/162603uh3.gif">
+<meta property="og:image" content="https://appigle.github.io/images/osi_cn.png">
+<meta property="og:image" content="https://appigle.github.io/images/tcp_ip_5_layers_model.png">
 <meta property="article:published_time" content="2016-10-15T13:38:34.000Z">
-<meta property="article:modified_time" content="2016-10-15T13:38:34.000Z">
+<meta property="article:modified_time" content="2025-02-05T16:51:48.147Z">
 <meta property="article:author" content="Lei Chen">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1156719-afc57efbe98be4f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://appigle.github.io/images/osi_cn.png">
 
 <link rel="canonical" href="https://appigle.github.io/2016/10/15/SPDY%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/">
 
@@ -179,6 +179,13 @@
 
               <time title="Created: 2016-10-15 09:38:34" itemprop="dateCreated datePublished" datetime="2016-10-15T09:38:34-04:00">2016-10-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:51:48" itemprop="dateModified" datetime="2025-02-05T11:51:48-05:00">2025-02-05</time>
+              </span>
 
           
 
@@ -192,14 +199,14 @@
 
       
         <hr>
-<h3 id="SPDY定义"><a href="#SPDY定义" class="headerlink" title="SPDY定义"></a><a target="_blank" rel="noopener" href="http://www.geekpark.net/topics/158198">SPDY定义</a></h3><ol>
-<li>SPDY是Google开发的基于传输控制协议（TCP）的应用层协议，开发组正在推动SPDY成为正式标准（目前为草案）；</li>
-<li>SPDY协议旨在通过压缩、多路复用和优先级来缩短网页的加载时间和强制使用SSL协议来提高安全性。</li>
+<h3 id="SPDY-定义"><a href="#SPDY-定义" class="headerlink" title="SPDY 定义"></a><a target="_blank" rel="noopener" href="http://www.geekpark.net/topics/158198">SPDY 定义</a></h3><ol>
+<li>SPDY 是 Google 开发的基于传输控制协议（TCP）的应用层协议，开发组正在推动 SPDY 成为正式标准（目前为草案）；</li>
+<li>SPDY 协议旨在通过压缩、多路复用和优先级来缩短网页的加载时间和强制使用 SSL 协议来提高安全性。</li>
 </ol>
 <span id="more"></span>
 
 <h3 id="网络协议模型"><a href="#网络协议模型" class="headerlink" title="网络协议模型"></a><a target="_blank" rel="noopener" href="http://www.jianshu.com/p/4b9d43c0571a#">网络协议模型</a></h3><ol>
-<li>OSI模型（OPEN SYSTEM  INTERCONNECTION MODEL）是由国际标准化组织（ISO）提出来的模型：<br><img src="http://upload-images.jianshu.io/upload_images/1156719-afc57efbe98be4f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></li>
+<li>OSI 模型（OPEN SYSTEM INTERCONNECTION MODEL）是由国际标准化组织（ISO）提出来的模型：<br><img src="/images/osi_cn.png"></li>
 </ol>
 <ul>
 <li>物理层：负责最后将信息编码成电流脉冲或者其他信号用于网上传输；</li>
@@ -208,10 +215,10 @@
 <li>传输层：向高层提供可靠的端到端的网络数据流服务（TCP&#x2F;IP）；</li>
 <li>会话层：建立、管理和中止表示层与实体之间的通信会话；</li>
 <li>表示层：供多种功能用于应用层数据编码和转化，以确保一个系统应用层发送的信息可以被另一个系统应用层识别；</li>
-<li>应用层：OSI的应用层协议包括文件的传输、访问及管理协议、文件虚拟终端协议和公用管理系统信息等。eg.：HTTP（超文本传输协议）&#x2F;HTTPS（HTTP+SSL）,FTP(文件传输协议),POP3（邮局协议），SMTP（简单邮件传输协议）,TELNET（远程终端协议）等</li>
+<li>应用层：OSI 的应用层协议包括文件的传输、访问及管理协议、文件虚拟终端协议和公用管理系统信息等。eg.：HTTP（超文本传输协议）&#x2F;HTTPS（HTTP+SSL）,FTP(文件传输协议),POP3（邮局协议），SMTP（简单邮件传输协议）,TELNET（远程终端协议）等</li>
 </ul>
 <ol start="2">
-<li>TCP&#x2F;IP五层协议<br><img src="http://www.ha97.com/wp-content/uploads/image/2010/09/162603uh3.gif"></li>
+<li>TCP&#x2F;IP 五层协议<br><img src="/images/tcp_ip_5_layers_model.png" alt="TCP&#x2F;IP"></li>
 </ol>
 <ul>
 <li>物理层</li>
@@ -220,16 +227,16 @@
 <li>传输层；</li>
 <li>应用层；</li>
 </ul>
-<h3 id="HTTP协议的不足之处"><a href="#HTTP协议的不足之处" class="headerlink" title="HTTP协议的不足之处"></a>HTTP协议的不足之处</h3><ol>
-<li>单路连接，请求低效。单个TCP连接只对应一个HTTP请求，如果多个请求，必须通过多次http请求；</li>
+<h3 id="HTTP-协议的不足之处"><a href="#HTTP-协议的不足之处" class="headerlink" title="HTTP 协议的不足之处"></a>HTTP 协议的不足之处</h3><ol>
+<li>单路连接，请求低效。单个 TCP 连接只对应一个 HTTP 请求，如果多个请求，必须通过多次 http 请求；</li>
 <li>HTTP 只允许由客户端主动发起请求，在预加载方面有限制；</li>
-<li>HTTP header信息冗余。反复请求HTTP会造成不必要的信息重复发送；</li>
+<li>HTTP header 信息冗余。反复请求 HTTP 会造成不必要的信息重复发送；</li>
 </ol>
-<h3 id="SPDY的有点"><a href="#SPDY的有点" class="headerlink" title="SPDY的有点"></a>SPDY的有点</h3><ol>
-<li>多路复用，请求优化。SPDY规定一个SPDY连接内可以有无限个并行请求，即允许多个并发HTTP请求共用一个TCP会话。此外，SPDY的多路复用可以设置优先级，设置不同资源的请求优先级，达到数据加载的更好效果。</li>
+<h3 id="SPDY-的有点"><a href="#SPDY-的有点" class="headerlink" title="SPDY 的有点"></a>SPDY 的有点</h3><ol>
+<li>多路复用，请求优化。SPDY 规定一个 SPDY 连接内可以有无限个并行请求，即允许多个并发 HTTP 请求共用一个 TCP 会话。此外，SPDY 的多路复用可以设置优先级，设置不同资源的请求优先级，达到数据加载的更好效果。</li>
 <li>支持服务器推送技术。服务器可以主动向客户端发起通信向客户端推送数据，满足数据的预加载。</li>
-<li>SPDY压缩了HTTP请求头header，使用gzip方式压缩信息，并舍掉一些不必要的信息，节省时间、流量和带宽；</li>
-<li>安全性更好。强制使用SSL传输协议。</li>
+<li>SPDY 压缩了 HTTP 请求头 header，使用 gzip 方式压缩信息，并舍掉一些不必要的信息，节省时间、流量和带宽；</li>
+<li>安全性更好。强制使用 SSL 传输协议。</li>
 </ol>
 
     </div>
@@ -311,7 +318,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#SPDY%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">SPDY定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">网络协议模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%B8%8D%E8%B6%B3%E4%B9%8B%E5%A4%84"><span class="nav-number">3.</span> <span class="nav-text">HTTP协议的不足之处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SPDY%E7%9A%84%E6%9C%89%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">SPDY的有点</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#SPDY-%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">SPDY 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">网络协议模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%B8%8D%E8%B6%B3%E4%B9%8B%E5%A4%84"><span class="nav-number">3.</span> <span class="nav-text">HTTP 协议的不足之处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SPDY-%E7%9A%84%E6%9C%89%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">SPDY 的有点</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -325,17 +332,17 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">42</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>

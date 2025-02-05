@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"appigle.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="概述[转]Android EditText限制输入框小数位数[参考链接](android EditText限制输入框小数位数) 方法 先看看XML布局  123456&lt;EditText            android:id&#x3D;&quot;@+id&#x2F;et&quot;            android:layout_width&#x3D;&quot;match_parent&quot;">
+  <meta name="description" content="概述[转]Android EditText 限制输入框小数位数[参考链接](android EditText 限制输入框小数位数) 方法 先看看 XML 布局  123456789101112131415161718192021222324252627282930313233343536373839404142&lt;EditText            android:id&#x3D;&quot;@+">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android EditText限制输入框小数位数">
 <meta property="og:url" content="https://appigle.github.io/2017/07/05/Android%20EditText%E9%99%90%E5%88%B6%E8%BE%93%E5%85%A5%E6%A1%86%E5%B0%8F%E6%95%B0%E4%BD%8D%E6%95%B0/index.html">
 <meta property="og:site_name" content="Welcome to Ray&#39;s Blog">
-<meta property="og:description" content="概述[转]Android EditText限制输入框小数位数[参考链接](android EditText限制输入框小数位数) 方法 先看看XML布局  123456&lt;EditText            android:id&#x3D;&quot;@+id&#x2F;et&quot;            android:layout_width&#x3D;&quot;match_parent&quot;">
+<meta property="og:description" content="概述[转]Android EditText 限制输入框小数位数[参考链接](android EditText 限制输入框小数位数) 方法 先看看 XML 布局  123456789101112131415161718192021222324252627282930313233343536373839404142&lt;EditText            android:id&#x3D;&quot;@+">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2017-07-05T14:44:30.000Z">
-<meta property="article:modified_time" content="2017-07-05T14:44:30.000Z">
+<meta property="article:modified_time" content="2025-02-05T16:52:47.983Z">
 <meta property="article:author" content="Lei Chen">
 <meta property="article:tag" content="Android">
 <meta property="article:tag" content="转">
@@ -178,6 +178,13 @@
 
               <time title="Created: 2017-07-05 10:44:30" itemprop="dateCreated datePublished" datetime="2017-07-05T10:44:30-04:00">2017-07-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:52:47" itemprop="dateModified" datetime="2025-02-05T11:52:47-05:00">2025-02-05</time>
+              </span>
 
           
 
@@ -191,27 +198,11 @@
 
       
         <hr>
-<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>[转]Android EditText限制输入框小数位数<br>[参考链接](android EditText限制输入框小数位数)</p>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>[转]Android EditText 限制输入框小数位数<br>[参考链接](android EditText 限制输入框小数位数)</p>
 <h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ol>
-<li>先看看XML布局</li>
+<li>先看看 XML 布局</li>
 </ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">&quot;@+id/et&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:inputType</span>=<span class="string">&quot;numberDecimal&quot;</span></span></span><br><span class="line"><span class="tag">          /&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>注意设置可输入小数：<code>android:inputType=&quot;numberDecimal&quot;</code></strong>；</p>
-<span id="more"></span>
-
-<ol start="2">
-<li>过滤文本方法</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输入框小数的位数 </span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">DECIMAL_DIGITS</span> <span class="operator">=</span> <span class="number">2</span>;  </span><br><span class="line"><span class="keyword">private</span> <span class="type">InputFilter</span> <span class="variable">lengthFilter</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InputFilter</span>() &#123;  </span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">    <span class="keyword">public</span> CharSequence <span class="title function_">filter</span><span class="params">(CharSequence source, <span class="type">int</span> start, <span class="type">int</span> end,  </span></span><br><span class="line"><span class="params">            Spanned dest, <span class="type">int</span> dstart, <span class="type">int</span> dend)</span> &#123;  </span><br><span class="line">            <span class="comment">//输入小数，自动补0</span></span><br><span class="line">        <span class="keyword">if</span> (dest.length() == <span class="number">0</span> &amp;&amp; source.equals(<span class="string">&quot;.&quot;</span>)) &#123;  </span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;0.&quot;</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="type">String</span> <span class="variable">dValue</span> <span class="operator">=</span> dest.toString();  </span><br><span class="line">        String[] splitArray = dValue.split(<span class="string">&quot;\\.&quot;</span>);  </span><br><span class="line">        <span class="keyword">if</span> (splitArray.length &gt; <span class="number">1</span>) &#123;  </span><br><span class="line">            <span class="type">String</span> <span class="variable">dotValue</span> <span class="operator">=</span> splitArray[<span class="number">1</span>];  </span><br><span class="line">            <span class="keyword">if</span> (dotValue.length() == DECIMAL_DIGITS) &#123;  </span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>给EditText设置gu过滤器</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mEt.setFilters(<span class="keyword">new</span> <span class="title class_">InputFilter</span>[] &#123; lengthfilter &#125;); </span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>Enjoy！</li>
-</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">&quot;@+id/et&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:inputType</span>=<span class="string">&quot;numberDecimal&quot;</span></span></span><br><span class="line"><span class="tag">          /&gt;</span></span><br><span class="line">            ```</span><br><span class="line">**注意设置可输入小数：`android:inputType=&quot;numberDecimal&quot;`**；</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--more--&gt;</span></span><br><span class="line"></span><br><span class="line">2. 过滤文本方法</span><br><span class="line">~~~java</span><br><span class="line">// 输入框小数的位数</span><br><span class="line">private static final int DECIMAL_DIGITS = 2;</span><br><span class="line">private InputFilter lengthFilter = new InputFilter() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public CharSequence filter(CharSequence source, int start, int end,</span><br><span class="line">            Spanned dest, int dstart, int dend) &#123;</span><br><span class="line">            //输入小数，自动补0</span><br><span class="line">        if (dest.length() == 0 &amp;&amp; source.equals(&quot;.&quot;)) &#123;</span><br><span class="line">            return &quot;0.&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        String dValue = dest.toString();</span><br><span class="line">        String[] splitArray = dValue.split(&quot;\\.&quot;);</span><br><span class="line">        if (splitArray.length &gt; 1) &#123;</span><br><span class="line">            String dotValue = splitArray[1];</span><br><span class="line">            if (dotValue.length() == DECIMAL_DIGITS) &#123;</span><br><span class="line">                return &quot;&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">~~~</span><br><span class="line"></span><br><span class="line">3. 给EditText设置gu过滤器</span><br><span class="line">~~~java</span><br><span class="line">mEt.setFilters(new InputFilter[] &#123; lengthfilter &#125;);</span><br><span class="line">~~~</span><br><span class="line"></span><br><span class="line">4. Enjoy！</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -310,17 +301,17 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">42</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
