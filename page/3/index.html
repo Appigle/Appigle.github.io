@@ -148,6 +148,87 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/10/17/Android%20%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chen">
+      <meta itemprop="description" content="Ray's Blog！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Ray's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/10/17/Android%20%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Android 内存优化笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2016-10-17 21:22:52" itemprop="dateCreated datePublished" datetime="2016-10-17T21:22:52-04:00">2016-10-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:53:13" itemprop="dateModified" datetime="2025-02-05T11:53:13-05:00">2025-02-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><h4 id="内存简介"><a href="#内存简介" class="headerlink" title="内存简介"></a>内存简介</h4><p>RAM（Random Access Memory） 随机存取存储器：内存。<br>通常分为：</p>
+<ul>
+<li>寄存器（Registers）：速度最快的存储场所，因为寄存器位于处理器内部，我们的程序中无法控制；</li>
+<li>栈（stack）：存放基本类型的数据和对象的引用，但对象本身不存放在栈中，而是存放在堆中；</li>
+<li>堆（heap）：存放基本由 new 创建的对象和数组。在堆中分配的内存，由 Java JVM 的自动回收器（GC）来管理；</li>
+<li>静态域（static field）：静态存储区就是指在固定的位置存放应用程序运行时一直存在的数据，Java 在内存中专门划分了一个静态存储区域来管理一些特殊的数据变量如静态的数据变量；</li>
+<li>常量池（constant pool）：JVM 必须为每个被转载的类型维护一个常量池。常量池就是该类型所用到常量的一个有序集合，包括直接常量（String、Integer 等常量）和其他类型，字段和方法的符号引用。</li>
+</ul>
+<p>外存储：SD 卡等外置存储区域。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2016/10/17/Android%20%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/10/17/CopyOnWriteArrayList%20%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -888,79 +969,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/10/15/Android%20%E8%99%9A%E6%8B%9F%E9%94%AE%E7%9B%98%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Lei Chen">
-      <meta itemprop="description" content="Ray's Blog！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome to Ray's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/10/15/Android%20%E8%99%9A%E6%8B%9F%E9%94%AE%E7%9B%98%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">Android虚拟键盘知识总结</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2016-10-15 15:10:42" itemprop="dateCreated datePublished" datetime="2016-10-15T15:10:42-04:00">2016-10-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-02-05 11:04:06" itemprop="dateModified" datetime="2025-02-05T11:04:06-05:00">2025-02-05</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <hr>
-<h3 id="Android：windowSoftInputMode-属性使用详解："><a href="#Android：windowSoftInputMode-属性使用详解：" class="headerlink" title="Android：windowSoftInputMode 属性使用详解："></a>Android：<a target="_blank" rel="noopener" href="http://blog.csdn.net/gaomatrix/article/details/7057032">windowSoftInputMode 属性使用详解</a>：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity</span><br><span class="line">	android:windowSoftInputMode=[&quot;stateUnspecified&quot;</span><br><span class="line">	|&quot;stateUnchanged&quot;</span><br><span class="line">	|&quot;stateHidden&quot;</span><br><span class="line">	|&quot;stateAlwaysHidden&quot;</span><br><span class="line">	|&quot;stateVsible&quot;</span><br><span class="line">	|&quot;stateAlwaysVisibe&quot;</span><br><span class="line">	|&quot;adjustUnspecified&quot;</span><br><span class="line">	|&quot;adjustResize&quot;</span><br><span class="line">	|&quot;adjustPan&quot;</span><br><span class="line">	]</span><br><span class="line">	.../&gt;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2016/10/15/Android%20%E8%99%9A%E6%8B%9F%E9%94%AE%E7%9B%98%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1030,17 +1038,17 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-count">50</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
