@@ -173,7 +173,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2025-02-16 00:00:00 / Modified: 10:14:29" itemprop="dateCreated datePublished" datetime="2025-02-16T00:00:00-05:00">2025-02-16</time>
+              <time title="Created: 2025-02-16 00:00:00 / Modified: 10:22:55" itemprop="dateCreated datePublished" datetime="2025-02-16T00:00:00-05:00">2025-02-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -200,82 +200,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <hr>
-<h2 id="AI-Generated-Code-with-Real-Time-Preview-Three-Approaches-👇"><a href="#AI-Generated-Code-with-Real-Time-Preview-Three-Approaches-👇" class="headerlink" title="AI-Generated Code with Real-Time Preview: Three Approaches 👇"></a>AI-Generated Code with Real-Time Preview: Three Approaches 👇</h2><h3 id="1-HTML-srcdoc-iframe"><a href="#1-HTML-srcdoc-iframe" class="headerlink" title="1. HTML + srcdoc + iframe"></a>1. HTML + <code>srcdoc</code> + <code>iframe</code></h3><h4 id="Implementation-Steps"><a href="#Implementation-Steps" class="headerlink" title="Implementation Steps:"></a>Implementation Steps:</h4><ol>
-<li>AI generates a standalone HTML file that can be directly opened in a browser (bundling HTML, CSS, and JavaScript in a single file).</li>
-<li>The HTML source code is passed to an <code>iframe</code> using the <code>srcdoc</code> attribute for real-time preview.</li>
-<li>Dependencies are specified using an <code>importmap</code> to reference CDN-hosted packages.</li>
-</ol>
-<img src="/2025/02/16/AI-Generated-Code-with-Real-Time-Preview-Three-Approaches/src_iframe.png" class="" title="SRC_IFRAME">
-
-<h4 id="Pros"><a href="#Pros" class="headerlink" title="Pros:"></a>Pros:</h4><ul>
-<li>Simple implementation.</li>
-<li>High preview efficiency.</li>
-<li>Ideal for quick one-file previews.</li>
-</ul>
-<h3 id="2-React-Vue-Blob-iframe"><a href="#2-React-Vue-Blob-iframe" class="headerlink" title="2. React&#x2F;Vue + Blob + iframe"></a>2. React&#x2F;Vue + Blob + <code>iframe</code></h3><h4 id="Implementation-Steps-1"><a href="#Implementation-Steps-1" class="headerlink" title="Implementation Steps:"></a>Implementation Steps:</h4><ol>
-<li>AI generates a React or Vue component (Single File Component) without local <code>import</code> dependencies.</li>
-<li>The component is transpiled using <code>Babel.transform</code> (for React) or compiled with <code>VueCompiler</code> (for Vue).</li>
-<li>The transformed&#x2F;compiled component is wrapped in a minimal HTML file.</li>
-<li>A Blob URL is created for the HTML file and assigned to <code>iframe.src</code> for preview:</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([html], &#123; <span class="attr">type</span>: <span class="string">&#x27;text/html&#x27;</span> &#125;);</span><br><span class="line">iframe.<span class="property">src</span> = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blob);</span><br></pre></td></tr></table></figure>
-
-<img src="/2025/02/16/AI-Generated-Code-with-Real-Time-Preview-Three-Approaches/blob_iframe.png" class="" title="BLOB_IFRAME">
-
-<h4 id="Pros-1"><a href="#Pros-1" class="headerlink" title="Pros:"></a>Pros:</h4><ul>
-<li>More suitable for React&#x2F;Vue Single File Component (SFC) previews.</li>
-<li>Enables component-based development.</li>
-</ul>
-<h3 id="3-WebContainer-Based-Preview"><a href="#3-WebContainer-Based-Preview" class="headerlink" title="3. WebContainer-Based Preview"></a>3. WebContainer-Based Preview</h3><h4 id="Implementation-Steps-2"><a href="#Implementation-Steps-2" class="headerlink" title="Implementation Steps:"></a>Implementation Steps:</h4><ol>
-<li>AI generates multiple component files, allowing them to <code>import</code> each other.</li>
-<li>A minimal Vite project skeleton is constructed, bundling the AI-generated components.</li>
-<li>The WebContainer environment is initialized and mounts the file tree.</li>
-<li>WebContainer executes terminal commands to install project dependencies.</li>
-<li>WebContainer starts a preview server and provides a preview URL.</li>
-<li>The generated preview URL is assigned to an external <code>iframe.src</code> for rendering.</li>
-</ol>
-<img src="/2025/02/16/AI-Generated-Code-with-Real-Time-Preview-Three-Approaches/webcontainer.png" class="" title="WebContainer">
-
-<p><a target="_blank" rel="noopener" href="https://webcontainers.io/tutorial/1-build-your-first-webcontainer-app">Create your first Webcontainer app</a></p>
-<h4 id="Pros-2"><a href="#Pros-2" class="headerlink" title="Pros:"></a>Pros:</h4><ul>
-<li>Supports multiple component previews.</li>
-<li>Greater flexibility for complex projects.</li>
-<li>Enables real-time project execution.</li>
-</ul>
-<h4 id="Cons"><a href="#Cons" class="headerlink" title="Cons:"></a>Cons:</h4><ul>
-<li>Dependent on WebContainer.</li>
-<li>Slower preview due to file mounting and dependency installation.</li>
-</ul>
-<h2 id="🔍-Summary"><a href="#🔍-Summary" class="headerlink" title="🔍 Summary"></a>🔍 Summary</h2><table>
-<thead>
-<tr>
-<th>Approach</th>
-<th>Best Use Case</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>HTML + <code>srcdoc</code> + <code>iframe</code></strong></td>
-<td>Fastest preview for simple, standalone pages (e.g., using Pagen to generate a landing page in one command).</td>
-</tr>
-<tr>
-<td><strong>React&#x2F;Vue + Blob + <code>iframe</code></strong></td>
-<td>Suitable for frontend component development, such as using CopyWeb to generate a single React component and preview it online.</td>
-</tr>
-<tr>
-<td><strong>WebContainer-Based Preview</strong></td>
-<td>Ideal for generating complete projects (e.g., using <code>bolt/v0</code> to create a Next.js project with one command, enabling online preview and exporting a ZIP for local modifications).</td>
-</tr>
-</tbody></table>
-<p>Each approach serves a different purpose, balancing speed, complexity, and flexibility. Choose the one that fits your needs best! 🚀</p>
-<h2 id="Some-famous-online-code-editors"><a href="#Some-famous-online-code-editors" class="headerlink" title="Some famous online code editors"></a>Some famous online code editors</h2><img src="/2025/02/16/AI-Generated-Code-with-Real-Time-Preview-Three-Approaches/online-code-editor.png" class="" title="6 Online Code Editors">
-<p><a target="_blank" rel="noopener" href="https://refine.dev/blog/6-best-online-code-editors-comparison/#pros-of-using-codesandbox">Link</a></p>
-<img src="/2025/02/16/AI-Generated-Code-with-Real-Time-Preview-Three-Approaches/online_code-editor-comparasion.png" class="" title="Online Code Editor Comparison">
-
-<p><a target="_blank" rel="noopener" href="https://stackblitz.com/edit/stackblitz-webcontainer-api-starter-fczz6l77?file=README.md">stackblitz</a></p>
-<p><a target="_blank" rel="noopener" href="https://codepen.io/">codepen.io</a></p>
-<p><a target="_blank" rel="noopener" href="https://jsfiddle.net/">jsfiddle.net</a></p>
-
+          <p>AI-powered code generation is transforming the way developers prototype and preview their work in real-time. This article explores three distinct approaches to AI-generated code preview：
+(1) embedding directly in an HTML file with `srcdoc` in an `iframe`;
+(2) using React/Vue with Blob-based previews;
+(3) leveraging WebContainer for multi-component projects. Each method offers varying levels of complexity, speed, and flexibility, catering to different development needs. We compare their implementations, advantages, and best-use cases to help developers select the most suitable approach for their workflow;</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/02/16/AI-Generated-Code-with-Real-Time-Preview-Three-Approaches/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
