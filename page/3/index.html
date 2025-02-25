@@ -148,6 +148,79 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/11/03/Android%20%E4%BB%BFJD%E9%98%BB%E5%B0%BC%E6%95%88%E6%9E%9C%E5%8A%A0%E8%BD%BD%E5%95%86%E5%93%81%E4%BF%A1%E6%81%AF%E5%92%8C%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chen">
+      <meta itemprop="description" content="Ray's Blog！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Ray's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/11/03/Android%20%E4%BB%BFJD%E9%98%BB%E5%B0%BC%E6%95%88%E6%9E%9C%E5%8A%A0%E8%BD%BD%E5%95%86%E5%93%81%E4%BF%A1%E6%81%AF%E5%92%8C%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/" class="post-title-link" itemprop="url">Android 仿JD阻尼效果加载商品信息和商品详情</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2016-11-03 14:18:32" itemprop="dateCreated datePublished" datetime="2016-11-03T14:18:32-04:00">2016-11-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:53:15" itemprop="dateModified" datetime="2025-02-05T11:53:15-05:00">2025-02-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>效果需求：页面分俩部分：pageUp 和 pageDown，俩部分均 extends ScrollView 拥有滑动效果。当界面分别处于上下页面时，需要判断其内部的内容是否可以滚动，并执行相应的滚动策略。如果滑动到上下界面交界处，则根据滑动的距离是否超过设定滑动距离判断是滑动进入另一页，还是继续留在本页。如果在上下界面交界处滑动距离没有超过设定的滑动距离，那么会有阻尼回弹的效果恢复到 pageUp 的底部或者 pageDown 的顶部。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2016/11/03/Android%20%E4%BB%BFJD%E9%98%BB%E5%B0%BC%E6%95%88%E6%9E%9C%E5%8A%A0%E8%BD%BD%E5%95%86%E5%93%81%E4%BF%A1%E6%81%AF%E5%92%8C%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/10/30/ActionBar%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -650,7 +723,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <hr>
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
 <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><strong>工厂方法模式（Factory Method Pattern）</strong>：定义一个用于创建对象的接口，让子类决定将哪一个类实例化。</p>
 <ul>
 <li>工厂方法模式又简称工厂模式（Factory Pattern），又可称作虚拟构造器模式（Virtual Constructor Pattern）或多态工厂模式（Polymorphic Factory Pattern）。</li>
@@ -750,7 +823,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <hr>
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
 <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><strong>简单工厂模式（Simple Factory Pattern）</strong>： 定义一个工厂类，它可以根据参数的不同返回不同类的实例，被创建的实例通常都具有共同的父类。</p>
 <ul>
 <li>因为在简单工程模式中用于创建实例的方法是静态（static）方法，因此简单工厂模式又被称为静态工厂模式（Static Factory Method）模式，它属于类创建型模式。</li>
@@ -872,72 +945,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/10/16/Java%20%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Lei Chen">
-      <meta itemprop="description" content="Ray's Blog！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome to Ray's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/10/16/Java%20%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Java 反射机制笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2016-10-16 14:41:52" itemprop="dateCreated datePublished" datetime="2016-10-16T14:41:52-04:00">2016-10-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-02-05 11:53:46" itemprop="dateModified" datetime="2025-02-05T11:53:46-05:00">2025-02-05</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <hr>
-<h3 id="Deprecated"><a href="#Deprecated" class="headerlink" title="Deprecated"></a>Deprecated</h3><p>This section is deprecated and no longer maintained. Please refer to the latest documentation for updated information.</p>
-<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1007,7 +1014,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1017,7 +1024,7 @@
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">57</span>
+        <span class="site-state-item-count">61</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
