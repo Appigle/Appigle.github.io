@@ -148,6 +148,106 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2017/06/29/Android%20Fragment%20%E7%9C%9F%E6%AD%A3%E7%9A%84%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chen">
+      <meta itemprop="description" content="Ray's Blog！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Ray's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/06/29/Android%20Fragment%20%E7%9C%9F%E6%AD%A3%E7%9A%84%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%90/" class="post-title-link" itemprop="url">Android Fragment全解析系列</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-06-29 15:35:06" itemprop="dateCreated datePublished" datetime="2017-06-29T15:35:06-04:00">2017-06-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:04:06" itemprop="dateModified" datetime="2025-02-05T11:04:06-05:00">2025-02-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<h3 id="Fragment的生命周期"><a href="#Fragment的生命周期" class="headerlink" title="Fragment的生命周期"></a><code>Fragment</code>的生命周期</h3><p><img src="/images/fragmentlifcircle.png"></p>
+<p><code>Fragment</code>比<code>Activity</code>多了几个额外的生命周期回调方法：</p>
+<ul>
+<li><p><code>onAttach（Activity）</code>: 当<code>Fragment</code>与<code>Activity</code>发生关联时调用</p>
+</li>
+<li><p><code>onCreate()</code>: 初始创建<code>Fragment</code>对象时调用</p>
+</li>
+<li><p><code>onCreateView（LayoutInflater,ViewGroup,Bundle）</code> : 创建<code>Fragment</code>的视图</p>
+</li>
+<li><p><code>onActivityCreated（Bundle）</code> ：当<code>Activity</code>的<code>onCreate</code>方法返回时调用</p>
+</li>
+<li><p><code>onStart（）</code></p>
+</li>
+<li><p><code>onResume（）</code></p>
+</li>
+<li><p><code>onPause（）</code></p>
+</li>
+<li><p><code>onStop()</code></p>
+</li>
+<li><p><code>onDestoryView()</code> : 与<code>onCreateView</code>相对应，当该<code>Fragment</code>的视图被移除时调用</p>
+</li>
+<li><p><code>onDestory（）</code></p>
+</li>
+<li><p><code>onDetach()</code> : 与<code>onAttach</code>相对应，当该<code>Fragment</code>与<code>Activity</code>关联被取消时候调用</p>
+</li>
+<li><p>注意 ：除了<code>onCreateView</code>，其他的所有方法被重写的时候必须调用父类对于该方法的实现，即<code>super.onXxx()</code>。</p>
+</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/06/29/Android%20Fragment%20%E7%9C%9F%E6%AD%A3%E7%9A%84%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%90/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/11/23/%E5%85%8D%E8%B4%B9Api%E6%B5%8B%E8%AF%95%E6%8E%A5%E5%8F%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -830,85 +930,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/10/17/Android%20EventBus%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Lei Chen">
-      <meta itemprop="description" content="Ray's Blog！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome to Ray's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/10/17/Android%20EventBus%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Android EventBus笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2016-10-17 16:21:14" itemprop="dateCreated datePublished" datetime="2016-10-17T16:21:14-04:00">2016-10-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-02-05 11:30:25" itemprop="dateModified" datetime="2025-02-05T11:30:25-05:00">2025-02-05</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <hr>
-<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>定义：一个发布&#x2F;订阅的事件总线框架。<br>包含：</p>
-<ul>
-<li>发布者<code>poster</code></li>
-<li>订阅者<code>subscriber</code></li>
-<li>事件<code>event</code></li>
-<li>总线<code>thread</code></li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2016/10/17/Android%20EventBus%E7%AC%94%E8%AE%B0/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -978,7 +999,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-count">58</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -988,7 +1009,7 @@
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">76</span>
+        <span class="site-state-item-count">81</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
