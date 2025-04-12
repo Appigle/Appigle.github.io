@@ -148,6 +148,105 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/10/15/Android%20Fragment%E5%85%A8%E8%A7%A3%E6%9E%90%E7%B3%BB%E5%88%97%E4%B8%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chen">
+      <meta itemprop="description" content="Ray's Blog！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Ray's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/10/15/Android%20Fragment%E5%85%A8%E8%A7%A3%E6%9E%90%E7%B3%BB%E5%88%97%E4%B8%80/" class="post-title-link" itemprop="url">Android Fragment全解析系列一</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2016-10-15 14:55:42" itemprop="dateCreated datePublished" datetime="2016-10-15T14:55:42-04:00">2016-10-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:52:50" itemprop="dateModified" datetime="2025-02-05T11:52:50-05:00">2025-02-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a><em>目录</em></h2><ol>
+<li><code>getActivity()</code>空指针；</li>
+<li><code>Fragment</code>重叠异常—正确使用<code>Hide()/show()</code>的姿势；</li>
+</ol>
+<hr>
+<h2 id="Pre"><a href="#Pre" class="headerlink" title="Pre"></a>Pre</h2><ul>
+<li>Android App 有一种特殊情况，就是在 App 运行在后台的时候，系统资源紧张的时候导致把 App 的资源全部回收（杀死 App 进程），这个时候把 App 再从后台返回前台时，app 会重启。这种情况简称“内存重启”。</li>
+</ul>
+<h2 id="getActivity-空指针"><a href="#getActivity-空指针" class="headerlink" title="getActivity()空指针"></a>getActivity()空指针</h2><p>多数原因：你在调用了<code>getActivity()</code>时，当前的 Fragment 已经<code>onDetach()</code>了宿主 Activity.比如：你在 pop 了 Fragment 之后，该 Fragment 的异步任务仍然在执行，并且在执行完成后调用了<code>getActivity()</code>方法，这样就会报 NULLPOINTEXCEPTION；<br><strong>解决方法：</strong>（对于 Fragment 已经<code>onDetach()</code>这种情况，我们应该避免在这之后再去调用宿主 Activity 对象，比如取消这些异步任务，当我们的团队可能会有粗心大意的时候，所以下面给出的方法会保证安全）</p>
+<ul>
+<li>在 Fragment 基类里设置一个 Activity mActivity 的全局变量，在<code>onAttach(Activity act)</code>里赋值，使用 mActivity 代替<code>getActivity()</code>,保证 Fragment 即使在 onDetach 后，仍持有 Activity 的引用（有 MermoryLeak 风险。）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> Activity mActivity;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onAttach</span><span class="params">(Activity activity)</span>&#123;</span><br><span class="line">	<span class="built_in">super</span>.onAttach(activity)</span><br><span class="line">    <span class="built_in">this</span>.mActivity = activity;</span><br><span class="line">&#125;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	*  如果你用了support 23的库，上面的方法会提示过时，有强迫症的小伙伴，可以用下面的方法代替</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onAttach</span><span class="params">(Context context)</span>&#123;</span><br><span class="line">	<span class="built_in">super</span>.onAttach(context);</span><br><span class="line">    <span class="built_in">this</span>.mActivity = (Activity)context;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Fragment-重叠异常—–正确的才使用hide-show-姿势"><a href="#Fragment-重叠异常—–正确的才使用hide-show-姿势" class="headerlink" title="Fragment 重叠异常—–正确的才使用hide()/show()姿势"></a>Fragment 重叠异常—–正确的才使用<code>hide()/show()</code>姿势</h2><p>如果你<code>add()</code>了几个 Fragment，使用<code>show()/hide()</code>等方法控制显示，比如微信、QQ 的底部 tab 等情景，如果你什么都不做的话，在“内存重启”后回到前台，app 的这几个 Fragment 界面会重叠。</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a><strong>原因</strong></h3><p>FragmentManager 帮我们管理 Fragment，当发生“内存重启”，他会从栈底向栈顶的顺序一次性恢复 Fragment；但是因为没有保存 Fragment 的 mHidden 属性，默认为 false，即 show 状态，所以所有的 Fragment 都是以 show 的形式恢复，即发生了界面重叠现象。（如果是<code>replace（）</code>，恢复形式和 Activity 一致，只有当你的 pop 之后上一个 Fragment 才开始重新恢复，所以使用<code>replace（）</code>不会造成重叠现象。）</p>
+<h3 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案 1"></a><strong>解决方案 1</strong></h3><ul>
+<li>findFragmentByTag：即在<code>add（）</code>或者<code>replace（）</code>时绑定一个 tag，一般我们是用 fargment 的类名作为 tag，然后在发生“内存重启”时，通过<code>findFragmentByTag</code>找到对应的 Fragment，并<code>hide（）</code>需要隐藏的 Fragment。<br>下面是标准的恢复写法：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle SavedInstanceState)</span>&#123;</span><br><span class="line">	<span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">   setContentView(R.layout.activity);</span><br><span class="line">   TargetFragment targetFragment;</span><br><span class="line">   HideFragment hideFragment;</span><br><span class="line">   <span class="keyword">if</span>(savedInstanceState!=<span class="literal">null</span>)&#123;</span><br><span class="line">   <span class="comment">//内存重启时调用</span></span><br><span class="line">   targetFragment = getSupportFragmentManager().findFragmentByTag(TargetFragment.class.getName());</span><br><span class="line">   hideFragment = getSupportFragmentManager().findFragmentByTag(hideFragment.CLASS.GETnAME());</span><br><span class="line">   <span class="comment">//解决重叠问题</span></span><br><span class="line">   getFragmentManager().beginTransaction()</span><br><span class="line">   	.show(targetFragment)</span><br><span class="line">       .hide(hideFragment)</span><br><span class="line">       .commit();</span><br><span class="line">   &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">   <span class="comment">//正常时</span></span><br><span class="line">   targetFragment = TargentFragment.newInstance();</span><br><span class="line">   hideFragment = HideFragment.newInstance();</span><br><span class="line">   getFragmentManager().beginTransaction()</span><br><span class="line">   	.add(R.id.container,targetFragment,targetFragment.getClass().getName())</span><br><span class="line">       .add(R.id.container,hideFragment,hideFragment.getClass().getName())</span><br><span class="line">       .hide(hideFragment)</span><br><span class="line">       .commit();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果你想要恢复到用户离开时那个 Fragment 的界面，你还需要在<code>onSaveInstanceState（Bundle outState）</code>里保存离开时的按个可见的 tag 或者下标，在<code>onCreate（）</code>“内存重启”代码块中，去除 tag&#x2F;下标，进行恢复。</p>
+<h3 id="解决方法-2"><a href="#解决方法-2" class="headerlink" title="解决方法 2:"></a><strong>解决方法 2:</strong></h3><ul>
+<li>使用<code>getSupportFragment（）.getFragments()</code>恢复:使用<code>getFragment()</code>可以获取到当前<code>FragmentManager</code>管理的栈内所有 Fragment。<br>写法如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span>&#123;</span><br><span class="line">	<span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity);</span><br><span class="line">    TargetFragment targetFRAGMENT;</span><br><span class="line">    HideFragment hideFragment;</span><br><span class="line">    <span class="keyword">if</span>(savedInstanceState !=<span class="literal">null</span>)&#123;<span class="comment">//&quot;内存重启&quot;时调用&#125;</span></span><br><span class="line">    List&lt;Fragment&gt; fragmentList = getSupportFragmentManager().getFragments();</span><br><span class="line">    <span class="keyword">for</span>(Fragment fragment : fragmentList)&#123;</span><br><span class="line">    	<span class="keyword">if</span>(fragment <span class="keyword">instanceof</span> TargetFragment)&#123;</span><br><span class="line">        	targetFragment = (TargetFragment)fragment;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(fragment instancof HideFragment)&#123;</span><br><span class="line">        	hideFragment = (HideFragment)fragment;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="comment">//解决重叠问题</span></span><br><span class="line">    getFragmentManager().beginTransaction()</span><br><span class="line">    	.show(targetFragment)</span><br><span class="line">        .hide(hideFragment)</span><br><span class="line">        .commit();</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    	targetFragment = TargetFragment.newInstance();</span><br><span class="line">        hideFragment = HideFragment.newInstance();</span><br><span class="line">        <span class="comment">//这里add（）时，可以不传tag</span></span><br><span class="line">        getFragmentManager().beginTransaction()</span><br><span class="line">        	.add(R.id.container)</span><br><span class="line">            .add(R.id.container,hideFragment)</span><br><span class="line">            .hide(hideFragment)</span><br><span class="line">            .commit();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在下一篇中介绍在不同场景下如果选择，何时用 findFragmentByTag()，何时用 getFragments()恢复。</p>
+<h3 id="解决方法-3："><a href="#解决方法-3：" class="headerlink" title="解决方法 3："></a><strong>解决方法 3：</strong></h3><p>发生 Fragment 重叠的根本原因在于<code>FragmentState</code>没有保存 Fragment 的显示状态，即<code>mHidden</code>，导致页面重启后，该值为默认的 false，即 show 状态，所以导致了 Fragment 的重叠。因此自己去维护一个<code>mSupportHidden</code>值即可解决问题：<br>Fragment 基类代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BaseFragment</span> <span class="keyword">extends</span> <span class="title class_">Fragment</span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">STATE_SAVE_IS_HIDDEN</span> <span class="operator">=</span> “STATE_SAVE_IS_HIDDEN”；</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(<span class="meta">@Nullable</span> Bundle savedInstanceState)</span>&#123;</span><br><span class="line">    	<span class="type">boolean</span> <span class="variable">isSUpportHidden</span> <span class="operator">=</span> savedInstanceState.getBoolean(STATE_SAVE_IS_HIDDEN);</span><br><span class="line">        <span class="type">FragmentTransaction</span> <span class="variable">ft</span> <span class="operator">=</span> getFragmentManager().beginTransaction();</span><br><span class="line">        <span class="keyword">if</span>(isSupportHidden)&#123;</span><br><span class="line">        	ft.hide(<span class="built_in">this</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        	ft.show&#123;<span class="built_in">this</span>&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        ft.commit();</span><br><span class="line">    &#125;</span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onSavedInstanceState</span><span class="params">(Bundle outState)</span>&#123;</span><br><span class="line">    	...</span><br><span class="line">        outState.putBoolean(STATE_SAVE_IS_HIDDEN,isHidden());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解决思路：由 Activity&#x2F;父 Fragment 来管理子 Fragment 的 Hidden 状态转变为 由 Fragment 自己来管理自己的 Hidden 状态！</p>
+<h3 id="补充："><a href="#补充：" class="headerlink" title="补充："></a><strong>补充：</strong></h3><p>加载根 Fragment 时需要判断<code>saveInstanceState</code>是否为<code>null</code>，避免重复加载相同的 Fragment：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> ... &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(<span class="meta">@Nullable</span> Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        ...</span><br><span class="line">        <span class="comment">// 这里一定要在save为null时才加载Fragment，Fragment中onCreateView等生命周里加载根子Fragment同理</span></span><br><span class="line">        <span class="comment">// 因为在页面重启时，Fragment会被保存恢复，而此时再加载Fragment会重复加载，导致重叠</span></span><br><span class="line">        <span class="keyword">if</span>(saveInstanceState == <span class="literal">null</span>)&#123;</span><br><span class="line">              <span class="comment">// 这里加载根Fragment</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/10/15/Android%20XML%E5%B8%83%E5%B1%80%E6%96%87%E4%BB%B6@+id%E6%84%8F%E4%B9%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -839,84 +938,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/10/15/%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9%E7%AC%94%E8%AE%B0%E4%BA%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Lei Chen">
-      <meta itemprop="description" content="Ray's Blog！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome to Ray's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/10/15/%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9%E7%AC%94%E8%AE%B0%E4%BA%8C/" class="post-title-link" itemprop="url">常用知识点笔记二</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2016-10-15 11:19:56" itemprop="dateCreated datePublished" datetime="2016-10-15T11:19:56-04:00">2016-10-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-02-05 11:53:59" itemprop="dateModified" datetime="2025-02-05T11:53:59-05:00">2025-02-05</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><h4 id="1-AsyncTask超简述原理"><a href="#1-AsyncTask超简述原理" class="headerlink" title="1. AsyncTask超简述原理"></a>1. <code>AsyncTask</code>超简述原理</h4><ol>
-<li><code>AsyncTask</code>本质是一个静态的线程池（容量 128，执行数 5），<code>AsyncTask</code>派生出来的子类可以实现不同的异步任务，这些任务都是提交到静态线程池中执行的；</li>
-<li>线程池中的工作线程<code>mWorker</code>执行<code>doInBackground(mParams)</code>方法执行异步任务；</li>
-<li>当任务状态（执行成功、取消执行、进度更新）后，工作线程会向 UI 线程发送消息，<code>AsyncTask</code>内部的<code>InternalHandler</code>响应这些消息，并调用相关的回调函数；</li>
-<li>不足处：线程池大小固定，如果添加线程数量超过固定值，则会抛出拒绝新线程的<code>RejectedExcutionException</code>。解决方式为新开一个线程，时刻关注线程池内线程数量，如果线程池线程满了，那么则休眠新线程，否则将线程添加到线程池中。</li>
-<li>3.0 之前线程池是并行执行，3.0 之后通过<code>SerialExcutor</code>执行串行操作。真正的操作是在<code>THREAD_POOL_EXCUTOR</code>线程。如果想要强行并行执行，可以直接使用<code>excuteOnExcutor</code>方法即可；</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2016/10/15/%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9%E7%AC%94%E8%AE%B0%E4%BA%8C/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -986,17 +1007,17 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-count">85</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>

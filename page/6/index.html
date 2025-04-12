@@ -148,6 +148,84 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/10/15/%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9%E7%AC%94%E8%AE%B0%E4%BA%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chen">
+      <meta itemprop="description" content="Ray's Blog！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Ray's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/10/15/%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9%E7%AC%94%E8%AE%B0%E4%BA%8C/" class="post-title-link" itemprop="url">常用知识点笔记二</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2016-10-15 11:19:56" itemprop="dateCreated datePublished" datetime="2016-10-15T11:19:56-04:00">2016-10-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-05 11:53:59" itemprop="dateModified" datetime="2025-02-05T11:53:59-05:00">2025-02-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><h4 id="1-AsyncTask超简述原理"><a href="#1-AsyncTask超简述原理" class="headerlink" title="1. AsyncTask超简述原理"></a>1. <code>AsyncTask</code>超简述原理</h4><ol>
+<li><code>AsyncTask</code>本质是一个静态的线程池（容量 128，执行数 5），<code>AsyncTask</code>派生出来的子类可以实现不同的异步任务，这些任务都是提交到静态线程池中执行的；</li>
+<li>线程池中的工作线程<code>mWorker</code>执行<code>doInBackground(mParams)</code>方法执行异步任务；</li>
+<li>当任务状态（执行成功、取消执行、进度更新）后，工作线程会向 UI 线程发送消息，<code>AsyncTask</code>内部的<code>InternalHandler</code>响应这些消息，并调用相关的回调函数；</li>
+<li>不足处：线程池大小固定，如果添加线程数量超过固定值，则会抛出拒绝新线程的<code>RejectedExcutionException</code>。解决方式为新开一个线程，时刻关注线程池内线程数量，如果线程池线程满了，那么则休眠新线程，否则将线程添加到线程池中。</li>
+<li>3.0 之前线程池是并行执行，3.0 之后通过<code>SerialExcutor</code>执行串行操作。真正的操作是在<code>THREAD_POOL_EXCUTOR</code>线程。如果想要强行并行执行，可以直接使用<code>excuteOnExcutor</code>方法即可；</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2016/10/15/%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9%E7%AC%94%E8%AE%B0%E4%BA%8C/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2016/10/15/%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9%E7%AC%94%E8%AE%B0%E4%B8%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -807,17 +885,17 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-count">85</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
