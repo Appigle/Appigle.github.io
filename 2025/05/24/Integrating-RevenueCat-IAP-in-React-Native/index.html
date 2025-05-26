@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"appigle.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="A complete guide on integrating and managing in-app purchases and subscriptions using RevenueCat in a React Native application. Includes real usage code, listener handling, and a real-world bug fix ex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Integrating RevenueCat IAP in React Native + Expo Application (Simple IOS Demo)">
+<meta property="og:url" content="https://appigle.github.io/2025/05/24/Integrating-RevenueCat-IAP-in-React-Native/index.html">
+<meta property="og:site_name" content="Welcome to Ray&#39;s Blog">
+<meta property="og:description" content="A complete guide on integrating and managing in-app purchases and subscriptions using RevenueCat in a React Native application. Includes real usage code, listener handling, and a real-world bug fix ex">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-05-24T14:00:00.000Z">
+<meta property="article:modified_time" content="2025-05-26T00:43:18.773Z">
+<meta property="article:author" content="Lei Chen">
+<meta property="article:tag" content="iap">
+<meta property="article:tag" content="react-native">
+<meta property="article:tag" content="revenuecat">
+<meta property="article:tag" content="subscription">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://appigle.github.io/2025/05/24/Integrating-RevenueCat-IAP-in-React-Native/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Integrating RevenueCat IAP in React Native + Expo Application (Simple IOS Demo) | Welcome to Ray's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to Ray's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry Stay Foolish - Steve Jobs</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2025/05/24/Integrating-RevenueCat-IAP-in-React-Native/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chen">
+      <meta itemprop="description" content="Ray's Blog！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Ray's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Integrating RevenueCat IAP in React Native + Expo Application (Simple IOS Demo)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-05-24 10:00:00" itemprop="dateCreated datePublished" datetime="2025-05-24T10:00:00-04:00">2025-05-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-05-25 20:43:18" itemprop="dateModified" datetime="2025-05-25T20:43:18-04:00">2025-05-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React-Native/" itemprop="url" rel="index"><span itemprop="name">React Native</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React-Native/RevenueCat/" itemprop="url" rel="index"><span itemprop="name">RevenueCat</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">A complete guide on integrating and managing in-app purchases and subscriptions using RevenueCat in a React Native application. Includes real usage code, listener handling, and a real-world bug fix example.</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="React-Native-In-App-Purchases-with-RevenueCat"><a href="#React-Native-In-App-Purchases-with-RevenueCat" class="headerlink" title="React Native In-App Purchases with RevenueCat"></a>React Native In-App Purchases with RevenueCat</h1><p>This guide outlines how to integrate and manage in-app subscriptions in a React Native application using RevenueCat’s <code>react-native-purchases</code> SDK, with real-world code, usage, and debugging insights.</p>
+<h2 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents"></a>Table of Contents</h2><ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#sdk-configuration">SDK Configuration</a></li>
+<li><a href="#fetching-offerings">Fetching Offerings</a></li>
+<li><a href="#making-purchases">Making Purchases</a></li>
+<li><a href="#restoring-purchases">Restoring Purchases</a></li>
+<li><a href="#checking-subscription-status">Checking Subscription Status</a></li>
+<li><a href="#listening-for-subscription-updates">Listening for Subscription Updates</a></li>
+<li><a href="#real-trouble-example-subscription-flag-always-true">Real Trouble Example: Subscription Flag Always True</a></li>
+<li><a href="#best-practices">Best Practices</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --save react-native-purchases</span><br><span class="line">npx pod-install <span class="comment"># (for iOS)</span></span><br></pre></td></tr></table></figure>
+
+<p>Enable In-App Purchase capability in Xcode and add billing permission in AndroidManifest.xml:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;com.android.vending.BILLING&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="SDK-Configuration"><a href="#SDK-Configuration" class="headerlink" title="SDK Configuration"></a>SDK Configuration</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Purchases</span> <span class="keyword">from</span> <span class="string">&#x27;react-native-purchases&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Purchases</span>.<span class="title function_">configure</span>(&#123;</span><br><span class="line">  <span class="attr">apiKey</span>: <span class="string">&#x27;your_revenuecat_api_key&#x27;</span>,</span><br><span class="line">  <span class="attr">appUserID</span>: <span class="literal">null</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Fetching-Offerings"><a href="#Fetching-Offerings" class="headerlink" title="Fetching Offerings"></a>Fetching Offerings</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fetchIapList</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> offerings = <span class="keyword">await</span> <span class="title class_">Purchases</span>.<span class="title function_">getOfferings</span>();</span><br><span class="line">  <span class="keyword">const</span> currentOffering = offerings.<span class="property">current</span>;</span><br><span class="line">  <span class="keyword">return</span> currentOffering?.<span class="property">availablePackages</span> || [];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Making-Purchases"><a href="#Making-Purchases" class="headerlink" title="Making Purchases"></a>Making Purchases</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">startAppleIap</span> = <span class="keyword">async</span> (<span class="params">selectedPackage</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; customerInfo &#125; = <span class="keyword">await</span> <span class="title class_">Purchases</span>.<span class="title function_">purchasePackage</span>(selectedPackage);</span><br><span class="line">  <span class="keyword">const</span> isActive = <span class="title function_">isEntitlementActive</span>(customerInfo);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (isActive) &#123;</span><br><span class="line">    <span class="title class_">Alert</span>.<span class="title function_">alert</span>(<span class="string">&#x27;Purchase Success&#x27;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="title class_">Alert</span>.<span class="title function_">alert</span>(<span class="string">&#x27;Purchase Failed&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">isEntitlementActive</span> = (<span class="params">customerInfo</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> !!customerInfo.<span class="property">entitlements</span>.<span class="property">active</span>[<span class="string">&#x27;your_entitlement_identifier&#x27;</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Restoring-Purchases"><a href="#Restoring-Purchases" class="headerlink" title="Restoring Purchases"></a>Restoring Purchases</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">onRestore</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> customerInfo = <span class="keyword">await</span> <span class="title class_">Purchases</span>.<span class="title function_">restorePurchases</span>();</span><br><span class="line">  <span class="keyword">const</span> isActive = <span class="title function_">isEntitlementActive</span>(customerInfo);</span><br><span class="line">  <span class="title class_">Alert</span>.<span class="title function_">alert</span>(isActive ? <span class="string">&#x27;Restore Success&#x27;</span> : <span class="string">&#x27;Restore Failed&#x27;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Checking-Subscription-Status"><a href="#Checking-Subscription-Status" class="headerlink" title="Checking Subscription Status"></a>Checking Subscription Status</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">checkSubscription</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> customerInfo = <span class="keyword">await</span> <span class="title class_">Purchases</span>.<span class="title function_">getCustomerInfo</span>();</span><br><span class="line">  <span class="keyword">return</span> !!customerInfo.<span class="property">entitlements</span>.<span class="property">active</span>[<span class="string">&#x27;your_entitlement_identifier&#x27;</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Listening-for-Subscription-Updates"><a href="#Listening-for-Subscription-Updates" class="headerlink" title="Listening for Subscription Updates"></a>Listening for Subscription Updates</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">listener</span> = (<span class="params">info</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> isSubscribed =</span><br><span class="line">      !!info.<span class="property">entitlements</span>.<span class="property">active</span>[<span class="string">&#x27;your_entitlement_identifier&#x27;</span>];</span><br><span class="line">    <span class="title function_">setIsSubscribed</span>(isSubscribed);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="title class_">Purchases</span>.<span class="title function_">addCustomerInfoUpdateListener</span>(listener);</span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="title class_">Purchases</span>.<span class="title function_">removeCustomerInfoUpdateListener</span>(listener);</span><br><span class="line">&#125;, []);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Real-Trouble-Example-Subscription-Flag-Always-True"><a href="#Real-Trouble-Example-Subscription-Flag-Always-True" class="headerlink" title="Real Trouble Example: Subscription Flag Always True"></a>Real Trouble Example: Subscription Flag Always True</h2><h3 id="Symptom"><a href="#Symptom" class="headerlink" title="Symptom"></a>Symptom</h3><p>After calling <code>restorePurchases()</code>, <code>customerInfo.entitlements.active[&#39;your_entitlement_identifier&#39;]</code> always returns a non-undefined value — even when the user didn’t subscribe.</p>
+<h3 id="Faulty-Check"><a href="#Faulty-Check" class="headerlink" title="Faulty Check"></a>Faulty Check</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isActive = config.<span class="property">entitlements</span>.<span class="title function_">reduce</span>(</span><br><span class="line">  <span class="function">(<span class="params">acc, key</span>) =&gt;</span></span><br><span class="line">    acc || <span class="keyword">typeof</span> customerInfo.<span class="property">entitlements</span>.<span class="property">active</span>[key] !== <span class="string">&#x27;undefined&#x27;</span>,</span><br><span class="line">  <span class="literal">false</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Cause"><a href="#Cause" class="headerlink" title="Cause"></a>Cause</h3><p>In real-world scenarios (especially on iOS), when a user cancels a subscription, they still retain access to the content until the end of the current billing period. This means RevenueCat will still report the entitlement as active until the subscription period officially ends. As a result, during a restore operation, the <code>isSubscribed</code> flag may appear <code>true</code> even though the user has already canceled the subscription. This is expected behavior in accordance with App Store billing policies.</p>
+<h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isActive = config.<span class="property">entitlements</span>.<span class="title function_">some</span>(</span><br><span class="line">  <span class="function">(<span class="params">key</span>) =&gt;</span> !!customerInfo.<span class="property">entitlements</span>.<span class="property">active</span>[key]</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>Also log clearly to debug:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Active entitlements:&#x27;</span>, customerInfo.<span class="property">entitlements</span>.<span class="property">active</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Best-Practices"><a href="#Best-Practices" class="headerlink" title="Best Practices"></a>Best Practices</h2><ul>
+<li>Use <code>!!value</code> truthy checks, not <code>typeof !== &#39;undefined&#39;</code></li>
+<li>Always refresh with <code>getCustomerInfo()</code> after a restore</li>
+<li>Use listeners to stay updated on real-time changes</li>
+<li>Clean up listeners in <code>useEffect</code></li>
+<li>Use real devices for all IAP tests</li>
+</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.revenuecat.com/docs/getting-started/installation/reactnative">RevenueCat React Native SDK</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.revenuecat.com/docs/test-and-launch/debugging">RevenueCat Debugging Guide</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.revenuecat.com/docs/test-and-launch/sandbox">RevenueCat Sandbox Testing</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/iap/" rel="tag"># iap</a>
+              <a href="/tags/react-native/" rel="tag"># react-native</a>
+              <a href="/tags/revenuecat/" rel="tag"># revenuecat</a>
+              <a href="/tags/subscription/" rel="tag"># subscription</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/04/22/Expo-React-Native-Build-Guide-Xcode-16-3-macOS-15-iOS-18/" rel="prev" title="Expo + React Native Build Guide (Xcode 16.3 + macOS 15 + iOS 18)">
+      <i class="fa fa-chevron-left"></i> Expo + React Native Build Guide (Xcode 16.3 + macOS 15 + iOS 18)
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#React-Native-In-App-Purchases-with-RevenueCat"><span class="nav-number">1.</span> <span class="nav-text">React Native In-App Purchases with RevenueCat</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Table-of-Contents"><span class="nav-number">1.1.</span> <span class="nav-text">Table of Contents</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Installation"><span class="nav-number">1.2.</span> <span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDK-Configuration"><span class="nav-number">1.3.</span> <span class="nav-text">SDK Configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fetching-Offerings"><span class="nav-number">1.4.</span> <span class="nav-text">Fetching Offerings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Making-Purchases"><span class="nav-number">1.5.</span> <span class="nav-text">Making Purchases</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Restoring-Purchases"><span class="nav-number">1.6.</span> <span class="nav-text">Restoring Purchases</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Checking-Subscription-Status"><span class="nav-number">1.7.</span> <span class="nav-text">Checking Subscription Status</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Listening-for-Subscription-Updates"><span class="nav-number">1.8.</span> <span class="nav-text">Listening for Subscription Updates</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Real-Trouble-Example-Subscription-Flag-Always-True"><span class="nav-number">1.9.</span> <span class="nav-text">Real Trouble Example: Subscription Flag Always True</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Symptom"><span class="nav-number">1.9.1.</span> <span class="nav-text">Symptom</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Faulty-Check"><span class="nav-number">1.9.2.</span> <span class="nav-text">Faulty Check</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cause"><span class="nav-number">1.9.3.</span> <span class="nav-text">Cause</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fix"><span class="nav-number">1.9.4.</span> <span class="nav-text">Fix</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Best-Practices"><span class="nav-number">1.10.</span> <span class="nav-text">Best Practices</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">1.11.</span> <span class="nav-text">References</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lei Chen</p>
+  <div class="site-description" itemprop="description">Ray's Blog！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">92</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lei Chen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
