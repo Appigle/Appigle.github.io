@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"appigle.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="A complete guide to solving Expo and React Native build issues on Xcode 16.3, macOS 15 (Sequoia), and iOS SDK 18. Includes fixes for dev-menu, Mapbox, Reanimated, and Safe Area Context.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Expo + React Native Build Guide (Xcode 16.3 + macOS 15 + iOS 18)">
+<meta property="og:url" content="https://appigle.github.io/2025/04/22/Expo-React-Native-Build-Guide-Xcode-16-3-macOS-15-iOS-18/index.html">
+<meta property="og:site_name" content="Welcome to Ray&#39;s Blog">
+<meta property="og:description" content="A complete guide to solving Expo and React Native build issues on Xcode 16.3, macOS 15 (Sequoia), and iOS SDK 18. Includes fixes for dev-menu, Mapbox, Reanimated, and Safe Area Context.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-04-22T12:00:00.000Z">
+<meta property="article:modified_time" content="2025-05-26T00:47:14.529Z">
+<meta property="article:author" content="Lei Chen">
+<meta property="article:tag" content="Expo">
+<meta property="article:tag" content="React Native">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="Xcode">
+<meta property="article:tag" content="Build Errors">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://appigle.github.io/2025/04/22/Expo-React-Native-Build-Guide-Xcode-16-3-macOS-15-iOS-18/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Expo + React Native Build Guide (Xcode 16.3 + macOS 15 + iOS 18) | Welcome to Ray's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to Ray's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry Stay Foolish - Steve Jobs</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2025/04/22/Expo-React-Native-Build-Guide-Xcode-16-3-macOS-15-iOS-18/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chen">
+      <meta itemprop="description" content="Ray's Blog！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Ray's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Expo + React Native Build Guide (Xcode 16.3 + macOS 15 + iOS 18)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-04-22 12:00:00" itemprop="dateCreated datePublished" datetime="2025-04-22T12:00:00+00:00">2025-04-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-05-26 00:47:14" itemprop="dateModified" datetime="2025-05-26T00:47:14+00:00">2025-05-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Development/" itemprop="url" rel="index"><span itemprop="name">Development</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Development/React-Native/" itemprop="url" rel="index"><span itemprop="name">React Native</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">A complete guide to solving Expo and React Native build issues on Xcode 16.3, macOS 15 (Sequoia), and iOS SDK 18. Includes fixes for dev-menu, Mapbox, Reanimated, and Safe Area Context.</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Expo-React-Native-Build-Guide-Xcode-16-3-·-macOS-15-·-iOS-18"><a href="#Expo-React-Native-Build-Guide-Xcode-16-3-·-macOS-15-·-iOS-18" class="headerlink" title="Expo + React Native Build Guide (Xcode 16.3 · macOS 15 · iOS 18)"></a>Expo + React Native Build Guide (Xcode 16.3 · macOS 15 · iOS 18)</h2><p>This guide documents common compatibility issues and solutions when building an Expo + React Native project using:</p>
+<ul>
+<li>Xcode 16.3</li>
+<li>macOS 15 (Sequoia)</li>
+<li>iOS SDK 18.4</li>
+<li>Expo SDK 50+</li>
+<li>React Native 0.76+</li>
+</ul>
+<hr>
+<h3 id="1-System-Compatibility"><a href="#1-System-Compatibility" class="headerlink" title="1. System Compatibility"></a>1. System Compatibility</h3><p>Ensure you’re running:</p>
+<ul>
+<li>macOS 15.x (Sequoia)</li>
+<li>Xcode 16.3 or newer</li>
+<li>iOS SDK 18.4</li>
+</ul>
+<p><strong>Note:</strong> If Xcode is stuck at <em>“Waiting for device…”</em>, this is often caused by a version mismatch between macOS, iOS SDK, and the iPhone OS.</p>
+<hr>
+<h3 id="2-Required-Dependencies"><a href="#2-Required-Dependencies" class="headerlink" title="2. Required Dependencies"></a>2. Required Dependencies</h3><p>To avoid build errors, align your project dependencies with compatible versions:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;@rnmapbox/maps&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^10.1.38&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;expo&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^52.0.46&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;react-native&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.76.9&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;expo-dev-menu&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^6.0.25&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-Deprecated-Packages"><a href="#3-Deprecated-Packages" class="headerlink" title="3. Deprecated Packages"></a>3. Deprecated Packages</h3><p>Remove the following dependency from your project:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- &quot;ffmpeg-kit-react-native&quot;: &quot;^6.0.2&quot;</span><br></pre></td></tr></table></figure>
+
+<p>This package is officially retired and no longer provides iOS binaries as of April 2025.</p>
+<p><strong>Next Step:</strong> Replace with a new video conversion solution.</p>
+<hr>
+<h3 id="4-Mapbox-Compatibility"><a href="#4-Mapbox-Compatibility" class="headerlink" title="4. Mapbox Compatibility"></a>4. Mapbox Compatibility</h3><p>Mapbox SDK versions below <code>11.6.0</code> may cause Swift type errors when building on Xcode 16+. Set the Mapbox iOS SDK version explicitly in <code>app.json</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&quot;expo&quot;: &#123;</span><br><span class="line">  &quot;plugins&quot;: [</span><br><span class="line">    [</span><br><span class="line">      &quot;@rnmapbox/maps&quot;,</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;RNMapboxMapsVersion&quot;: &quot;11.6.0&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Related issue: <a target="_blank" rel="noopener" href="https://github.com/rnmapbox/maps/issues/3625">Mapbox GitHub Issue #3625</a></p>
+<hr>
+<h3 id="5-Connect-iPhone-to-Mac"><a href="#5-Connect-iPhone-to-Mac" class="headerlink" title="5. Connect iPhone to Mac"></a>5. Connect iPhone to Mac</h3><ol>
+<li>Use a USB-C cable.</li>
+<li>Open Xcode and navigate to <strong>Devices and Simulators</strong>.</li>
+<li>If your iPhone requires a specific iOS SDK version, download and install it.</li>
+<li>Unlock the device and tap <strong>Trust This Computer</strong> when prompted.</li>
+</ol>
+<hr>
+<h3 id="6-Signing-and-Capabilities-in-Xcode"><a href="#6-Signing-and-Capabilities-in-Xcode" class="headerlink" title="6. Signing and Capabilities in Xcode"></a>6. Signing and Capabilities in Xcode</h3><p>To run the app on a physical device, enable signing:</p>
+<ol>
+<li>Open the workspace in Xcode:<br><code>ios/Wander.xcworkspace</code></li>
+<li>Select the <strong>project</strong> and then the <strong>target</strong> (<code>Wander</code>).</li>
+<li>Go to the <strong>Signing &amp; Capabilities</strong> tab.</li>
+<li>Enable <strong>Automatically manage signing</strong>.</li>
+<li>Add your Apple Developer account.</li>
+<li>Ensure a provisioning profile is selected.</li>
+</ol>
+<p><strong>Common Error:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">No profiles for &#x27;one.wander[your app identifer]&#x27; were found</span><br></pre></td></tr></table></figure>
+
+<p>This occurs when signing is disabled or the profile is missing.</p>
+<hr>
+<h3 id="7-List-Available-Devices"><a href="#7-List-Available-Devices" class="headerlink" title="7. List Available Devices"></a>7. List Available Devices</h3><p><strong>Simulators only:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcrun simctl list devices</span><br></pre></td></tr></table></figure>
+
+<p><strong>All connected devices (physical + simulators):</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcrun xctrace list devices</span><br></pre></td></tr></table></figure>
+
+<p>Example output:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">== Devices ==</span><br><span class="line">Ray16Pro (18.3.2) (00000000-001A60A914FB001D)</span><br><span class="line"></span><br><span class="line">== Simulators ==</span><br><span class="line">iPhone 16 Pro (18.4) (F6A9A538-CCE4-4275-B2AA-B700F87A2B33)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="8-Run-App-on-Physical-Device"><a href="#8-Run-App-on-Physical-Device" class="headerlink" title="8. Run App on Physical Device"></a>8. Run App on Physical Device</h3><p>Use the UDID from the device list:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx expo run:ios --device 00000000-001A60A914FB001D</span><br></pre></td></tr></table></figure>
+
+<p>Make sure the iPhone is unlocked and trusted, and signing is properly set.</p>
+<hr>
+<h3 id="9-Additional-Build-Errors-and-Fixes"><a href="#9-Additional-Build-Errors-and-Fixes" class="headerlink" title="9. Additional Build Errors and Fixes"></a>9. Additional Build Errors and Fixes</h3><h4 id="react-native-safe-area-context"><a href="#react-native-safe-area-context" class="headerlink" title="react-native-safe-area-context"></a>react-native-safe-area-context</h4><p><strong>Error:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">no member named &#x27;unit&#x27; in &#x27;facebook::yoga::StyleLength&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Fix:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expo install react-native-safe-area-context</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="react-native-reanimated"><a href="#react-native-reanimated" class="headerlink" title="react-native-reanimated"></a>react-native-reanimated</h4><p><strong>Error:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mutation.parentShadowView.tag // no longer exists in ShadowViewMutation</span><br></pre></td></tr></table></figure>
+
+<p><strong>Fix:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-native-reanimated@latest</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="expo-dev-menu-Swift-usage-issue"><a href="#expo-dev-menu-Swift-usage-issue" class="headerlink" title="expo-dev-menu Swift usage issue"></a>expo-dev-menu Swift usage issue</h4><p><strong>Error:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">self.rootViewFactory.bridge = bridge</span><br><span class="line">// &#x27;rootViewFactory&#x27; must be called as a method</span><br></pre></td></tr></table></figure>
+
+<p><strong>Fix:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expo install expo-dev-menu</span><br></pre></td></tr></table></figure>
+
+<p>Or manually update the code to use <code>rootViewFactory()</code> instead of <code>rootViewFactory</code>.</p>
+<hr>
+<h3 id="10-Final-Checklist"><a href="#10-Final-Checklist" class="headerlink" title="10. Final Checklist"></a>10. Final Checklist</h3><ul>
+<li>Run <code>npx expo install --fix</code></li>
+<li>Clean pods: <code>rm -rf ios/Pods &amp;&amp; pod install --repo-update</code></li>
+<li>Upgrade native modules (<code>reanimated</code>, <code>safe-area-context</code>, <code>screens</code>)</li>
+<li>Remove deprecated packages (<code>ffmpeg-kit-react-native</code>)</li>
+<li>Set Mapbox iOS SDK version to <code>11.6.0</code></li>
+<li>Enable code signing in Xcode</li>
+<li>Run app using <code>expo run:ios --device &lt;UDID&gt;</code></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Expo/" rel="tag"># Expo</a>
+              <a href="/tags/React-Native/" rel="tag"># React Native</a>
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+              <a href="/tags/Xcode/" rel="tag"># Xcode</a>
+              <a href="/tags/Build-Errors/" rel="tag"># Build Errors</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/04/12/New-Lottie-Animation-Page/" rel="prev" title="I Created a New Lottie Animation Page – Please Enjoy It!">
+      <i class="fa fa-chevron-left"></i> I Created a New Lottie Animation Page – Please Enjoy It!
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/05/24/Integrating-RevenueCat-IAP-in-React-Native/" rel="next" title="Integrating RevenueCat IAP in React Native + Expo Application (Simple IOS Demo)">
+      Integrating RevenueCat IAP in React Native + Expo Application (Simple IOS Demo) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Expo-React-Native-Build-Guide-Xcode-16-3-%C2%B7-macOS-15-%C2%B7-iOS-18"><span class="nav-number">1.</span> <span class="nav-text">Expo + React Native Build Guide (Xcode 16.3 · macOS 15 · iOS 18)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-System-Compatibility"><span class="nav-number">1.1.</span> <span class="nav-text">1. System Compatibility</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Required-Dependencies"><span class="nav-number">1.2.</span> <span class="nav-text">2. Required Dependencies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Deprecated-Packages"><span class="nav-number">1.3.</span> <span class="nav-text">3. Deprecated Packages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Mapbox-Compatibility"><span class="nav-number">1.4.</span> <span class="nav-text">4. Mapbox Compatibility</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Connect-iPhone-to-Mac"><span class="nav-number">1.5.</span> <span class="nav-text">5. Connect iPhone to Mac</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Signing-and-Capabilities-in-Xcode"><span class="nav-number">1.6.</span> <span class="nav-text">6. Signing and Capabilities in Xcode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-List-Available-Devices"><span class="nav-number">1.7.</span> <span class="nav-text">7. List Available Devices</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-Run-App-on-Physical-Device"><span class="nav-number">1.8.</span> <span class="nav-text">8. Run App on Physical Device</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-Additional-Build-Errors-and-Fixes"><span class="nav-number">1.9.</span> <span class="nav-text">9. Additional Build Errors and Fixes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#react-native-safe-area-context"><span class="nav-number">1.9.1.</span> <span class="nav-text">react-native-safe-area-context</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#react-native-reanimated"><span class="nav-number">1.9.2.</span> <span class="nav-text">react-native-reanimated</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#expo-dev-menu-Swift-usage-issue"><span class="nav-number">1.9.3.</span> <span class="nav-text">expo-dev-menu Swift usage issue</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-Final-Checklist"><span class="nav-number">1.10.</span> <span class="nav-text">10. Final Checklist</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lei Chen</p>
+  <div class="site-description" itemprop="description">Ray's Blog！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">92</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lei Chen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

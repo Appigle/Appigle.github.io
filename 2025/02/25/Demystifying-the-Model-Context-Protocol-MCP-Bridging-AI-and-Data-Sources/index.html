@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"appigle.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Explore the Model Context Protocol (MCP), an open standard revolutionizing how AI systems securely connect with diverse data sources. Learn its architecture, practical applications, and step-by-step g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Demystifying the Model Context Protocol (MCP): Bridging AI and Data Sources">
+<meta property="og:url" content="https://appigle.github.io/2025/02/25/Demystifying-the-Model-Context-Protocol-MCP-Bridging-AI-and-Data-Sources/index.html">
+<meta property="og:site_name" content="Welcome to Ray&#39;s Blog">
+<meta property="og:description" content="Explore the Model Context Protocol (MCP), an open standard revolutionizing how AI systems securely connect with diverse data sources. Learn its architecture, practical applications, and step-by-step g">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://appigle.github.io/2025/02/25/Demystifying-the-Model-Context-Protocol-MCP-Bridging-AI-and-Data-Sources/mcp_architecture.png">
+<meta property="article:published_time" content="2025-02-25T00:00:00.000Z">
+<meta property="article:modified_time" content="2025-05-26T00:47:14.529Z">
+<meta property="article:author" content="Lei Chen">
+<meta property="article:tag" content="AI Integration">
+<meta property="article:tag" content="Model Context Protocol">
+<meta property="article:tag" content="Anthropic">
+<meta property="article:tag" content="Data Connectivity">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://appigle.github.io/2025/02/25/Demystifying-the-Model-Context-Protocol-MCP-Bridging-AI-and-Data-Sources/mcp_architecture.png">
+
+<link rel="canonical" href="https://appigle.github.io/2025/02/25/Demystifying-the-Model-Context-Protocol-MCP-Bridging-AI-and-Data-Sources/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Demystifying the Model Context Protocol (MCP): Bridging AI and Data Sources | Welcome to Ray's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to Ray's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry Stay Foolish - Steve Jobs</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2025/02/25/Demystifying-the-Model-Context-Protocol-MCP-Bridging-AI-and-Data-Sources/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chen">
+      <meta itemprop="description" content="Ray's Blog！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Ray's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Demystifying the Model Context Protocol (MCP): Bridging AI and Data Sources
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-02-25 00:00:00" itemprop="dateCreated datePublished" datetime="2025-02-25T00:00:00+00:00">2025-02-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-05-26 00:47:14" itemprop="dateModified" datetime="2025-05-26T00:47:14+00:00">2025-05-26</time>
+              </span>
+
+          
+            <div class="post-description">Explore the Model Context Protocol (MCP), an open standard revolutionizing how AI systems securely connect with diverse data sources. Learn its architecture, practical applications, and step-by-step guidance for developers.</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <img src="/2025/02/25/Demystifying-the-Model-Context-Protocol-MCP-Bridging-AI-and-Data-Sources/mcp_architecture.png" class="" title="Model Context Protocol Architecture">
+
+<p><a target="_blank" rel="noopener" href="https://portkey.ai/blog/model-context-protocol-for-llm-appls/">Model Context Protocol Architecture</a></p>
+<p>In the rapidly evolving landscape of artificial intelligence (AI), ensuring seamless communication between AI models and diverse data sources is paramount. <strong>The Model Context Protocol (MCP)</strong>, introduced by <a target="_blank" rel="noopener" href="https://www.anthropic.com/news/model-context-protocol?utm_source=chatgpt.com">Anthropic</a> in November 2024, addresses this need by providing an open standard for secure, two-way connections between AI-powered tools and external data repositories. 🤖</p>
+<h2 id="What-is-the-Model-Context-Protocol-MCP"><a href="#What-is-the-Model-Context-Protocol-MCP" class="headerlink" title="What is the Model Context Protocol (MCP)?"></a>What is the Model Context Protocol (MCP)?</h2><p>MCP is an open protocol that standardizes how applications provide context to Large Language Models (LLMs). Think of MCP like a <strong>universal adapter for AI applications</strong>; it offers a consistent method to connect AI systems with various data sources and tools, replacing fragmented integrations with a cohesive standard. Learn more on the <a target="_blank" rel="noopener" href="https://modelcontextprotocol.io/introduction?utm_source=chatgpt.com">official MCP site</a>. 🔌</p>
+<h2 id="Why-MCP-Matters"><a href="#Why-MCP-Matters" class="headerlink" title="Why MCP Matters"></a>Why MCP Matters</h2><p>Before MCP, integrating AI models with external data required custom solutions for each application, leading to inefficiencies and security concerns. MCP streamlines this process by offering a standardized protocol, enabling AI assistants to access and utilize relevant data more effectively. Early adopters such as Replit, Codeium, and Sourcegraph have implemented MCP to enhance their platforms’ AI capabilities (<a target="_blank" rel="noopener" href="https://www.theverge.com/2024/11/25/24305774/anthropic-model-context-protocol-data-sources?utm_source=chatgpt.com">The Verge</a>). 💡</p>
+<h2 id="How-MCP-Works"><a href="#How-MCP-Works" class="headerlink" title="How MCP Works"></a>How MCP Works</h2><p>MCP operates on a client-server architecture:</p>
+<ul>
+<li><strong>MCP Clients</strong>: These are AI applications that initiate connections to MCP servers to retrieve or send data.</li>
+<li><strong>MCP Servers</strong>: These provide context, tools, and prompts to MCP clients, accessing local data sources or connecting to remote services as needed.</li>
+</ul>
+<p>Communication between clients and servers is facilitated through standardized message types—requests, responses, errors, and notifications—ensuring consistent interactions. Developers can utilize Software Development Kits (SDKs) in various programming languages, such as Python and JavaScript, to implement MCP in their applications (<a target="_blank" rel="noopener" href="https://github.com/modelcontextprotocol?utm_source=chatgpt.com">GitHub</a>). ⚙️</p>
+<h2 id="Real-World-Applications-of-MCP"><a href="#Real-World-Applications-of-MCP" class="headerlink" title="Real-World Applications of MCP"></a>Real-World Applications of MCP</h2><p>Several organizations have adopted MCP to enhance their AI-driven platforms:</p>
+<ul>
+<li><strong>Block</strong>: The financial services company has integrated MCP to build agentic systems, aiming to reduce mechanical tasks and allow employees to focus on creative endeavors (<a target="_blank" rel="noopener" href="https://www.anthropic.com/news/model-context-protocol?utm_source=chatgpt.com">Anthropic</a>).</li>
+<li><strong>Apollo</strong>: Leveraging MCP, Apollo connects AI assistants with their internal systems to facilitate seamless data access and improved AI functionalities (<a target="_blank" rel="noopener" href="https://www.anthropic.com/news/model-context-protocol?utm_source=chatgpt.com">Anthropic</a>).</li>
+<li><strong>Linkup</strong>: By integrating their API into the MCP ecosystem, Linkup enables users to browse the web directly via MCP, providing real-time web browsing capabilities within AI interactions (<a target="_blank" rel="noopener" href="https://www.linkup.so/blog/model-context-protocol-here-is-the-leap-to-the-agentic-world?utm_source=chatgpt.com">Linkup</a>).</li>
+</ul>
+<p>These implementations demonstrate MCP’s versatility across various industries—from financial services to web integration—highlighting its potential to revolutionize AI applications by providing standardized, secure, and efficient data connectivity. 🌐</p>
+<h2 id="MCP-Integration-in-Different-IDEs"><a href="#MCP-Integration-in-Different-IDEs" class="headerlink" title="MCP Integration in Different IDEs"></a>MCP Integration in Different IDEs</h2><p>The adoption of MCP varies across Integrated Development Environments (IDEs), each leveraging the protocol to enhance AI-assisted development:</p>
+<h3 id="Visual-Studio-Code-VS-Code"><a href="#Visual-Studio-Code-VS-Code" class="headerlink" title="Visual Studio Code (VS Code)"></a>Visual Studio Code (VS Code)</h3><p>While Visual Studio Code (VS Code) is a widely used code editor, there is no official documentation indicating native support for MCP. However, developers can integrate MCP into VS Code through custom extensions, enabling AI models to access and utilize external data sources within the editor. 💻</p>
+<h3 id="Eclipse-Theia-IDE"><a href="#Eclipse-Theia-IDE" class="headerlink" title="Eclipse Theia IDE"></a>Eclipse Theia IDE</h3><p>Eclipse Theia IDE has embraced MCP to enhance its AI capabilities. This integration allows Theia-based tools to access a wide range of context sources and functions—such as web searches and database interactions—through standardized MCP servers. Theia’s architecture, which mirrors many UX concepts found in VS Code, offers greater flexibility for customization (<a target="_blank" rel="noopener" href="https://eclipsesource.com/blogs/2024/12/19/theia-ide-and-theia-ai-support-mcp/?utm_source=chatgpt.com">EclipseSource</a>). 🛠️</p>
+<h3 id="Using-MCP-in-Visual-Studio-Code-A-Step-by-Step-Demo"><a href="#Using-MCP-in-Visual-Studio-Code-A-Step-by-Step-Demo" class="headerlink" title="Using MCP in Visual Studio Code: A Step-by-Step Demo"></a>Using MCP in Visual Studio Code: A Step-by-Step Demo</h3><h4 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h4><ul>
+<li><strong>Visual Studio Code</strong>: Install the latest version from <a target="_blank" rel="noopener" href="https://code.visualstudio.com/">VS Code</a>.</li>
+<li><strong>Node.js</strong>: Download and install from <a target="_blank" rel="noopener" href="https://nodejs.org/">Node.js official website</a>.</li>
+<li><strong>Git</strong>: Ensure Git is installed from <a target="_blank" rel="noopener" href="https://git-scm.com/">Git SCM</a>.</li>
+</ul>
+<h4 id="Step-1-Clone-the-MCP-Example-Servers-Repository"><a href="#Step-1-Clone-the-MCP-Example-Servers-Repository" class="headerlink" title="Step 1: Clone the MCP Example Servers Repository"></a>Step 1: Clone the MCP Example Servers Repository</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/modelcontextprotocol/servers.git</span><br><span class="line"><span class="built_in">cd</span> servers</span><br></pre></td></tr></table></figure>
+
+<h4 id="Step-2-Install-Dependencies-and-Build-the-Servers"><a href="#Step-2-Install-Dependencies-and-Build-the-Servers" class="headerlink" title="Step 2: Install Dependencies and Build the Servers"></a>Step 2: Install Dependencies and Build the Servers</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+
+<h4 id="Step-3-Configure-VS-Code-to-Use-MCP-Servers"><a href="#Step-3-Configure-VS-Code-to-Use-MCP-Servers" class="headerlink" title="Step 3: Configure VS Code to Use MCP Servers"></a>Step 3: Configure VS Code to Use MCP Servers</h4><p>Modify the <code>settings.json</code> file:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;openctx.providers&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;https://openctx.org/npm/@openctx/provider-modelcontextprotocol?everything&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;nodeCommand&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;mcp.provider.uri&quot;</span><span class="punctuation">:</span> <span class="string">&quot;file:///path/to/servers/build/everything/index.js&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Step-4-Restart-VS-Code"><a href="#Step-4-Restart-VS-Code" class="headerlink" title="Step 4: Restart VS Code"></a>Step 4: Restart VS Code</h4><h4 id="Step-5-Using-MCP-in-VS-Code"><a href="#Step-5-Using-MCP-in-VS-Code" class="headerlink" title="Step 5: Using MCP in VS Code"></a>Step 5: Using MCP in VS Code</h4><ul>
+<li>Open <strong>Command Palette</strong> (<code>Ctrl+Shift+P</code> or <code>Cmd+Shift+P</code>), type <code>@</code>, and view available MCP resources.</li>
+<li>Type <code>/</code> within the editor to bring up a list of available MCP tools.</li>
+</ul>
+<p>For more details, visit the <a target="_blank" rel="noopener" href="https://modelcontextprotocol.io/introduction?utm_source=chatgpt.com">official documentation</a>. 🔍</p>
+<h2 id="Getting-Started-with-MCP"><a href="#Getting-Started-with-MCP" class="headerlink" title="Getting Started with MCP"></a>Getting Started with MCP</h2><p>For developers interested in implementing MCP, the following resources are invaluable:</p>
+<p>Official Documentation: Provides comprehensive guidelines on MCP’s architecture and implementation (Model Context Protocol).<br>GitHub Repository: Hosts the MCP specification and SDKs, along with an open-source repository of MCP servers (GitHub).<br>Tutorial Videos: Offer step-by-step instructions and practical demonstrations:</p>
+<iframe src="https://www.youtube.com/embed/sahuZMMXNpI" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
+
+<iframe src="https://www.youtube.com/embed/KiNyvT02HJM" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
+
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>The Model Context Protocol represents a significant advancement in connecting AI systems with diverse data sources through a standardized approach. Its adoption by key industry players indicates a strong potential to become an established standard, streamlining AI integrations and enhancing AI-powered tools across various sectors. 🚀</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><p>Anthropic. (2024, November 25). <em>Introducing the Model Context Protocol</em>. Retrieved from <a target="_blank" rel="noopener" href="https://www.anthropic.com/news/model-context-protocol">https://www.anthropic.com/news/model-context-protocol</a></p>
+</li>
+<li><p>Model Context Protocol GitHub Repository. Retrieved from <a target="_blank" rel="noopener" href="https://github.com/modelcontextprotocol">https://github.com/modelcontextprotocol</a></p>
+</li>
+<li><p>The Verge. (2024, November 25). <em>Anthropic launches tool to connect AI systems directly to datasets</em>. Retrieved from <a target="_blank" rel="noopener" href="https://www.theverge.com/2024/11/25/24305774/anthropic-model-context-protocol-data-sources">https://www.theverge.com/2024/11/25/24305774/anthropic-model-context-protocol-data-sources</a></p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AI-Integration/" rel="tag"># AI Integration</a>
+              <a href="/tags/Model-Context-Protocol/" rel="tag"># Model Context Protocol</a>
+              <a href="/tags/Anthropic/" rel="tag"># Anthropic</a>
+              <a href="/tags/Data-Connectivity/" rel="tag"># Data Connectivity</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/02/20/Unlocking-the-Secrets-of-chmod-777-Deep-Dive-into-Linux-File-Permissions-%F0%9F%94%8D/" rel="prev" title="Understanding chmod 777： Risks and Best Practices">
+      <i class="fa fa-chevron-left"></i> Understanding chmod 777： Risks and Best Practices
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/02/26/How-to-Create-a-GitHub-Profile-README-Using-profile-readme-generator/" rel="next" title="How to Create a GitHub Profile README Using profile-readme-generator">
+      How to Create a GitHub Profile README Using profile-readme-generator <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-the-Model-Context-Protocol-MCP"><span class="nav-number">1.</span> <span class="nav-text">What is the Model Context Protocol (MCP)?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-MCP-Matters"><span class="nav-number">2.</span> <span class="nav-text">Why MCP Matters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-MCP-Works"><span class="nav-number">3.</span> <span class="nav-text">How MCP Works</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Real-World-Applications-of-MCP"><span class="nav-number">4.</span> <span class="nav-text">Real-World Applications of MCP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MCP-Integration-in-Different-IDEs"><span class="nav-number">5.</span> <span class="nav-text">MCP Integration in Different IDEs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Visual-Studio-Code-VS-Code"><span class="nav-number">5.1.</span> <span class="nav-text">Visual Studio Code (VS Code)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Eclipse-Theia-IDE"><span class="nav-number">5.2.</span> <span class="nav-text">Eclipse Theia IDE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-MCP-in-Visual-Studio-Code-A-Step-by-Step-Demo"><span class="nav-number">5.3.</span> <span class="nav-text">Using MCP in Visual Studio Code: A Step-by-Step Demo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Prerequisites"><span class="nav-number">5.3.1.</span> <span class="nav-text">Prerequisites</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-1-Clone-the-MCP-Example-Servers-Repository"><span class="nav-number">5.3.2.</span> <span class="nav-text">Step 1: Clone the MCP Example Servers Repository</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-2-Install-Dependencies-and-Build-the-Servers"><span class="nav-number">5.3.3.</span> <span class="nav-text">Step 2: Install Dependencies and Build the Servers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-3-Configure-VS-Code-to-Use-MCP-Servers"><span class="nav-number">5.3.4.</span> <span class="nav-text">Step 3: Configure VS Code to Use MCP Servers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-4-Restart-VS-Code"><span class="nav-number">5.3.5.</span> <span class="nav-text">Step 4: Restart VS Code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-5-Using-MCP-in-VS-Code"><span class="nav-number">5.3.6.</span> <span class="nav-text">Step 5: Using MCP in VS Code</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Getting-Started-with-MCP"><span class="nav-number">6.</span> <span class="nav-text">Getting Started with MCP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">7.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">8.</span> <span class="nav-text">References</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lei Chen</p>
+  <div class="site-description" itemprop="description">Ray's Blog！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">92</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lei Chen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

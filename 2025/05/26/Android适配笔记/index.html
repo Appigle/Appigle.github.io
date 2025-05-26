@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"appigle.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="查看 Android 系统版本使用率和设备屏幕市场分布情况：资源文件夹命名和匹配规则** 命名方法和要求：**  命名不分大小写（推荐全部小写）； 命名形式：资源名-属性 1-属性 2-属性 3…资源名：drawable、values、layout、anim、raw、menu、color、animtor、xml 等；属性名见:Android guidle 限定符表格。** 这里要注意限定符必须按照">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android适配笔记">
+<meta property="og:url" content="https://appigle.github.io/2025/05/26/Android%E9%80%82%E9%85%8D%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Welcome to Ray&#39;s Blog">
+<meta property="og:description" content="查看 Android 系统版本使用率和设备屏幕市场分布情况：资源文件夹命名和匹配规则** 命名方法和要求：**  命名不分大小写（推荐全部小写）； 命名形式：资源名-属性 1-属性 2-属性 3…资源名：drawable、values、layout、anim、raw、menu、color、animtor、xml 等；属性名见:Android guidle 限定符表格。** 这里要注意限定符必须按照">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-05-26T00:47:14.528Z">
+<meta property="article:modified_time" content="2025-05-26T00:47:14.528Z">
+<meta property="article:author" content="Lei Chen">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="优化">
+<meta property="article:tag" content="适配">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://appigle.github.io/2025/05/26/Android%E9%80%82%E9%85%8D%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Android适配笔记 | Welcome to Ray's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to Ray's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry Stay Foolish - Steve Jobs</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2025/05/26/Android%E9%80%82%E9%85%8D%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chen">
+      <meta itemprop="description" content="Ray's Blog！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Ray's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android适配笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-05-26 00:47:14" itemprop="dateCreated datePublished" datetime="2025-05-26T00:47:14+00:00">2025-05-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="查看-Android-系统版本使用率和设备屏幕市场分布情况："><a href="#查看-Android-系统版本使用率和设备屏幕市场分布情况：" class="headerlink" title="查看 Android 系统版本使用率和设备屏幕市场分布情况："></a><a target="_blank" rel="noopener" href="https://developer.android.com/about/dashboards/index.html">查看 Android 系统版本使用率和设备屏幕市场分布情况</a>：</h3><h3 id="资源文件夹命名和匹配规则"><a href="#资源文件夹命名和匹配规则" class="headerlink" title="资源文件夹命名和匹配规则"></a><a target="_blank" rel="noopener" href="http://ivan-ru.iteye.com/blog/1711414">资源文件夹命名和匹配规则</a></h3><p>** 命名方法和要求：**</p>
+<ol>
+<li>命名不分大小写（推荐全部小写）；</li>
+<li>命名形式：资源名-属性 1-属性 2-属性 3…<br>资源名：drawable、values、layout、anim、raw、menu、color、animtor、xml 等；<br>属性名见:<a href="(https://developer.android.com/guide/topics/resources/providing-resources.html#table2)">Android guidle 限定符表格</a>。** 这里要注意限定符必须按照表格规定的排序，否者编译无法通过**</li>
+</ol>
+<span id="more"></span>
+<ol start="3">
+<li>举个栗子：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">values-mcc310-en-sw320dp-s720dp</span><br><span class="line">-h720dp-large-long-port-car-ldpi</span><br><span class="line">-notouch-keysexposed-nokeys</span><br><span class="line">-navexposed-nonav-v7</span><br></pre></td></tr></table></figure>
+
+<p>其中：mcc310:（sim 卡运营商）、en（语言）、sw320dp（屏幕最小宽度)、w720dp（屏幕最佳宽度）、h720dp（屏幕最佳高度）、large（屏幕尺寸）、long（屏幕长短边模式）、port（横屏竖屏显示模式）、car（dock 模式）、night（白天夜间模式）、ldpi（屏幕最佳 dpi）、notouch（触摸屏类型）、keysexposed（键盘类型）、nokey（硬按键类型）、navexposed（方向键时候可用）、nonav（方向键类型）、v7（版本类型）</p>
+<h3 id="屏幕适配总结方法"><a href="#屏幕适配总结方法" class="headerlink" title="屏幕适配总结方法"></a>屏幕适配总结方法</h3><ol>
+<li><p>使用<code>wrap_content</code>、<code>match_parent</code>、<code>weight</code>属性；<br>** 关于<code>android:layout-weight</code>属性计算公式：实际所占宽度&#x3D;原来设置宽度+剩余空间所占百分比的宽度**</p>
+</li>
+<li><p>使用相对布局<code>RelativeLayout</code>,禁用<code>AbsolutalyLayout</code>布局；</p>
+</li>
+<li><p>使用限定符，如上上 2 大点所示；<br>** 使用限定符时，必须对 View 的存在性做检测，否者会报<code>RuntimeException</code>**<br>** 如果存在多个相同布局，则可以使用布局别名的方式加载布局文件**</p>
+</li>
+<li><p>使用.9.png 图片：满足各个方向的拉伸和内容区域的不变；</p>
+</li>
+<li><p>使用百分比布局方式。以一个基准屏幕尺寸为准，计算不同屏幕尺寸的 px 值，然后设置 values-屏幕大小的限定符，并且在布局文件中使用对应的基准尺寸即可，系统会自动找寻最佳的匹配 px 值；</p>
+</li>
+<li><p>使用备用图片：mdpi（160dpi）、hdpi（240dpi）、xhdpi（320dpi）、xxhpi（640dpi）<br>** dpi 计算方式：屏幕的长宽各自的平方和开根号，然后除以屏幕尺寸（inch）**</p>
+</li>
+<li><p>单双面板的情况下，一种判断方式：</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">View</span> <span class="variable">articleView</span> <span class="operator">=</span> findViewById(R.id.article);</span><br><span class="line">     mIsDualPane</span><br><span class="line">     		= articleView != <span class="literal">null</span></span><br><span class="line">             &amp;&amp; articleView.getVisibility() == View.VISIBLE;</span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>使用 google 官方的百分比布局 lib：Android-percent-support：<code>PercentRelativeLayout/PercentFrameLayout</code>，支持的属性有：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">layout_widthPercent、layout_heightPercent、</span><br><span class="line"> layout_marginPercent、layout_marginLeftPercent、</span><br><span class="line">  layout_marginTopPercent、layout_marginRightPercent、</span><br><span class="line">   layout_marginBottomPercent、layout_marginStartPercent、</span><br><span class="line">   layout_marginEndPercent</span><br></pre></td></tr></table></figure>
+
+<ol start="9">
+<li>使用<code>Android AutoLayout</code>库，定义一个基准的屏幕 size，然后直接在布局中使用 px 作为尺寸单位，该库会自动根据当前设备的屏幕尺寸和基准设置屏幕尺寸计算合适的适配尺寸值；<blockquote>
+<p>Android Studio 依赖方式：</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    compile <span class="string">&#x27;com.zhy:autolayout:1.4.3&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="10">
+<li>xml 布局中使用 dp 作为主讲的长宽尺寸单位，使用 sp 作为字体的大小单位；</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/%E4%BC%98%E5%8C%96/" rel="tag"># 优化</a>
+              <a href="/tags/%E9%80%82%E9%85%8D/" rel="tag"># 适配</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/05/26/CopyOnWriteArrayList%20%E7%AC%94%E8%AE%B0/" rel="prev" title="CopyOnWriteArrayList 笔记">
+      <i class="fa fa-chevron-left"></i> CopyOnWriteArrayList 笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/05/26/Android%E6%B8%85%E9%99%A4%E7%BC%93%E5%AD%98%E5%B7%A5%E5%85%B7%E7%B1%BB/" rel="next" title="Android清除缓存工具类">
+      Android清除缓存工具类 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B-Android-%E7%B3%BB%E7%BB%9F%E7%89%88%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%8E%87%E5%92%8C%E8%AE%BE%E5%A4%87%E5%B1%8F%E5%B9%95%E5%B8%82%E5%9C%BA%E5%88%86%E5%B8%83%E6%83%85%E5%86%B5%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">查看 Android 系统版本使用率和设备屏幕市场分布情况：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E5%A4%B9%E5%91%BD%E5%90%8D%E5%92%8C%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99"><span class="nav-number">2.</span> <span class="nav-text">资源文件夹命名和匹配规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E6%80%BB%E7%BB%93%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">屏幕适配总结方法</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lei Chen</p>
+  <div class="site-description" itemprop="description">Ray's Blog！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">92</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lei Chen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

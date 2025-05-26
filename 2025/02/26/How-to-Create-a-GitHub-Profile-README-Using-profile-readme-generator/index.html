@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"appigle.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Learn how to use the profile-readme-generator to create an eye-catching GitHub Profile README in just a few steps. We&#39;ll walk you through setting up your basic information, adding badges, and customiz">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Create a GitHub Profile README Using profile-readme-generator">
+<meta property="og:url" content="https://appigle.github.io/2025/02/26/How-to-Create-a-GitHub-Profile-README-Using-profile-readme-generator/index.html">
+<meta property="og:site_name" content="Welcome to Ray&#39;s Blog">
+<meta property="og:description" content="Learn how to use the profile-readme-generator to create an eye-catching GitHub Profile README in just a few steps. We&#39;ll walk you through setting up your basic information, adding badges, and customiz">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://appigle.github.io/2025/02/26/How-to-Create-a-GitHub-Profile-README-Using-profile-readme-generator/profile_readme_generator_index.png">
+<meta property="og:image" content="https://appigle.github.io/2025/02/26/How-to-Create-a-GitHub-Profile-README-Using-profile-readme-generator/appigle_githug_profile.png">
+<meta property="og:image" content="https://appigle.github.io/2025/02/26/How-to-Create-a-GitHub-Profile-README-Using-profile-readme-generator/github_contribution_grid_snake.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Appigle/Appigle/refs/heads/output/github-contribution-grid-snake.svg">
+<meta property="article:published_time" content="2025-02-26T10:00:00.000Z">
+<meta property="article:modified_time" content="2025-05-26T00:47:14.538Z">
+<meta property="article:author" content="Lei Chen">
+<meta property="article:tag" content="Tools">
+<meta property="article:tag" content="GitHub">
+<meta property="article:tag" content="README">
+<meta property="article:tag" content="Profile">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://appigle.github.io/2025/02/26/How-to-Create-a-GitHub-Profile-README-Using-profile-readme-generator/profile_readme_generator_index.png">
+
+<link rel="canonical" href="https://appigle.github.io/2025/02/26/How-to-Create-a-GitHub-Profile-README-Using-profile-readme-generator/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>How to Create a GitHub Profile README Using profile-readme-generator | Welcome to Ray's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to Ray's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry Stay Foolish - Steve Jobs</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2025/02/26/How-to-Create-a-GitHub-Profile-README-Using-profile-readme-generator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chen">
+      <meta itemprop="description" content="Ray's Blog！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Ray's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          How to Create a GitHub Profile README Using profile-readme-generator
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-02-26 10:00:00" itemprop="dateCreated datePublished" datetime="2025-02-26T10:00:00+00:00">2025-02-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-05-26 00:47:14" itemprop="dateModified" datetime="2025-05-26T00:47:14+00:00">2025-05-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tutorial/" itemprop="url" rel="index"><span itemprop="name">Tutorial</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">Learn how to use the profile-readme-generator to create an eye-catching GitHub Profile README in just a few steps. We'll walk you through setting up your basic information, adding badges, and customizing your sections.</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>A GitHub Profile README is a great way to let people know who you are and what you do—right on your GitHub profile page. In this post, we’ll use <a target="_blank" rel="noopener" href="https://github.com/maurodesouza/profile-readme-generator">profile-readme-generator</a> and <a target="_blank" rel="noopener" href="https://profile-readme-generator.com/">profile-readme-generator.com</a> to build a neat, customized profile README for your GitHub account.</p>
+<img src="/2025/02/26/How-to-Create-a-GitHub-Profile-README-Using-profile-readme-generator/profile_readme_generator_index.png" class="" title="profile_readme_generator_index">
+
+<hr>
+<h2 id="What-is-profile-readme-generator"><a href="#What-is-profile-readme-generator" class="headerlink" title="What is profile-readme-generator?"></a>What is profile-readme-generator?</h2><p>The <strong>profile-readme-generator</strong> is an open-source project that helps you quickly generate a polished GitHub Profile README. Its key features include:</p>
+<ul>
+<li><strong>Easy setup</strong>: Fill out a form with your details—no manual editing of Markdown required.</li>
+<li><strong>Beautiful badges</strong>: Add various badges to showcase your skills, tools, social links, and more.</li>
+<li><strong>Customization</strong>: Choose from different sections (about, skills, stats, etc.) to personalize your README.</li>
+</ul>
+<p><strong>Links</strong>:</p>
+<ul>
+<li>GitHub Repo: <a target="_blank" rel="noopener" href="https://github.com/maurodesouza/profile-readme-generator">https://github.com/maurodesouza/profile-readme-generator</a></li>
+<li>Live Website: <a target="_blank" rel="noopener" href="https://profile-readme-generator.com/">https://profile-readme-generator.com/</a></li>
+</ul>
+<hr>
+<h2 id="Why-Use-a-GitHub-Profile-README"><a href="#Why-Use-a-GitHub-Profile-README" class="headerlink" title="Why Use a GitHub Profile README?"></a>Why Use a GitHub Profile README?</h2><ol>
+<li><strong>Personal Branding</strong>: Let visitors see your most important info right away.</li>
+<li><strong>Highlight Skills &amp; Projects</strong>: Show off your language skills, frameworks, tools, and pinned projects.</li>
+<li><strong>Networking</strong>: Include your social profiles so others can easily connect with you.</li>
+</ol>
+<hr>
+<h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h2><ol>
+<li>A GitHub account with at least one public repository.</li>
+<li>A special repository named exactly after your username. For example, if your username is <code>octocat</code>, you must create a repo named <code>octocat</code>.</li>
+<li>Internet access to visit <a target="_blank" rel="noopener" href="https://profile-readme-generator.com/">profile-readme-generator.com</a>.</li>
+</ol>
+<hr>
+<h2 id="Step-by-Step-Tutorial"><a href="#Step-by-Step-Tutorial" class="headerlink" title="Step-by-Step Tutorial"></a>Step-by-Step Tutorial</h2><h3 id="1-Open-profile-readme-generator"><a href="#1-Open-profile-readme-generator" class="headerlink" title="1. Open profile-readme-generator"></a>1. Open profile-readme-generator</h3><p>Go to <a target="_blank" rel="noopener" href="https://profile-readme-generator.com/">profile-readme-generator.com</a> in your web browser. You will see a form where you can enter details about yourself.</p>
+<h3 id="2-Fill-in-Basic-Information"><a href="#2-Fill-in-Basic-Information" class="headerlink" title="2. Fill in Basic Information"></a>2. Fill in Basic Information</h3><p>In the <strong>Basic Information</strong> section:</p>
+<ul>
+<li><strong>Username</strong>: Your GitHub username (make sure it matches exactly).</li>
+<li><strong>Name</strong>: How you want your name displayed.</li>
+<li><strong>Bio</strong>: A short tagline or introduction about yourself (e.g., “Full-Stack Developer,” “Data Scientist,” etc.).</li>
+</ul>
+<h3 id="3-Add-Social-Links"><a href="#3-Add-Social-Links" class="headerlink" title="3. Add Social Links"></a>3. Add Social Links</h3><p>Add any social media or personal website links you want to display. Common examples include:</p>
+<ul>
+<li>LinkedIn</li>
+<li>Twitter</li>
+<li>Personal Portfolio</li>
+<li>Dev.to</li>
+<li>Medium</li>
+</ul>
+<h3 id="4-Select-Your-Skills"><a href="#4-Select-Your-Skills" class="headerlink" title="4. Select Your Skills"></a>4. Select Your Skills</h3><p>Under <strong>Skills</strong>, choose the programming languages, frameworks, and tools you’re proficient with. This will generate visually appealing badges or icons in your final README.</p>
+<h3 id="5-Choose-Additional-Sections"><a href="#5-Choose-Additional-Sections" class="headerlink" title="5. Choose Additional Sections"></a>5. Choose Additional Sections</h3><p>Depending on your preference, you can toggle or reorder these sections:</p>
+<ul>
+<li><strong>About Me</strong></li>
+<li><strong>Tech Stack</strong></li>
+<li><strong>Stats &amp; Analytics</strong> (like GitHub stats or top languages)</li>
+<li><strong>Achievements</strong> (GitHub trophies, etc.)</li>
+<li><strong>Support</strong> (e.g., Buy Me a Coffee link)</li>
+</ul>
+<h3 id="6-Generate-Your-README"><a href="#6-Generate-Your-README" class="headerlink" title="6. Generate Your README"></a>6. Generate Your README</h3><p>Once satisfied, click <strong>Generate README</strong> (or a similar button) to preview your code.</p>
+<h3 id="7-Copy-the-Generated-Markdown"><a href="#7-Copy-the-Generated-Markdown" class="headerlink" title="7. Copy the Generated Markdown"></a>7. Copy the Generated Markdown</h3><p>The tool provides you with a block of Markdown text. Copy it to your clipboard.</p>
+<h3 id="8-Update-Your-GitHub-Profile-Repository"><a href="#8-Update-Your-GitHub-Profile-Repository" class="headerlink" title="8. Update Your GitHub Profile Repository"></a>8. Update Your GitHub Profile Repository</h3><ol>
+<li>Navigate to <code>https://github.com/&lt;YourUsername&gt;/&lt;YourUsername&gt;</code>.</li>
+<li>If the repository doesn’t exist, create a new one with the <strong>exact</strong> name of your GitHub username.</li>
+<li>In that repo, create or edit the <code>README.md</code> file.</li>
+<li>Paste the generated Markdown code, commit, and push your changes.</li>
+</ol>
+<h3 id="9-Verify-Your-Profile"><a href="#9-Verify-Your-Profile" class="headerlink" title="9. Verify Your Profile"></a>9. Verify Your Profile</h3><p>Head to your profile at <code>https://github.com/&lt;YourUsername&gt;</code>. You should see your new README displayed prominently at the top of your profile!</p>
+<hr>
+<h2 id="Example-Integrating-with-Appigle"><a href="#Example-Integrating-with-Appigle" class="headerlink" title="Example: Integrating with Appigle"></a>Example: Integrating with Appigle</h2><p>I used <strong>profile-readme-generator</strong> for my repository, <a target="_blank" rel="noopener" href="https://github.com/Appigle">Appigle</a>.</p>
+<img src="/2025/02/26/How-to-Create-a-GitHub-Profile-README-Using-profile-readme-generator/appigle_githug_profile.png" class="" title="appigle_githug_profile">
+
+<p>Here’s how:</p>
+<ol>
+<li><strong>Basic Info</strong>: Entered my username and name.</li>
+<li><strong>Social Links</strong>: Added LinkedIn, Twitter, and a personal website.</li>
+<li><strong>Skills</strong>: Chose JavaScript, Node.js, and other relevant technologies.</li>
+<li><strong>Enable Stats</strong>: Activated GitHub stats and a trophy section.</li>
+<li><strong>Generated &amp; Copied Markdown</strong>: Pasted it into the <code>README.md</code> in my <code>[Appigle]/[Appigle]</code> repo.</li>
+</ol>
+<p>Now my GitHub profile shows a customized README with all my chosen details.</p>
+<hr>
+<h2 id="Tips-Customization"><a href="#Tips-Customization" class="headerlink" title="Tips &amp; Customization"></a>Tips &amp; Customization</h2><ul>
+<li><strong>Add a Banner or Avatar</strong>: Place an image at the top to add some personality.</li>
+<li><strong>Include Animated GIFs</strong>: Spice up your README with relevant or fun GIFs.</li>
+<li><strong>Emojis &amp; Icons</strong>: Use emojis to break up text and make it more engaging.</li>
+<li><strong>Rearrange Sections</strong>: Put your most important info (About, Skills, Projects) at the top.</li>
+</ul>
+<hr>
+<h2 id="How-to-create-an-animation-of-a-GitHub-contributions-grid-using-SVG-wit-github-actions"><a href="#How-to-create-an-animation-of-a-GitHub-contributions-grid-using-SVG-wit-github-actions" class="headerlink" title="How to create an animation of a GitHub contributions grid using SVG wit github actions?"></a>How to create an animation of a GitHub contributions grid using SVG wit github actions?</h2><p><a target="_blank" rel="noopener" href="https://github.com/Platane/Platane/blob/master/.github/workflows/main.yml#L26-L33">Generate-snake-game Instruction</a><br><a target="_blank" rel="noopener" href="https://docs.github.com/en/actions/writing-workflows/quickstart">Quick Start of github actions</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">https://github.com/marketplace/actions/generate-snake-game-from-github-contribution-grid</span></span><br><span class="line">name: github-contribution-grid-snake</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Controls when the workflow will run</span></span><br><span class="line">on:</span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">run automatically every 24 hours</span></span><br><span class="line">  schedule:</span><br><span class="line">    - cron: &quot;0 */24 * * *&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">Triggers the workflow on push or pull request events but only <span class="keyword">for</span> the <span class="string">&quot;main&quot;</span> branch</span></span><br><span class="line">  push:</span><br><span class="line">    branches: [ &quot;main&quot; ]</span><br><span class="line">  pull_request:</span><br><span class="line">    branches: [ &quot;main&quot; ]</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">allows to manually run the job at any <span class="keyword">time</span></span></span><br><span class="line">  workflow_dispatch:</span><br><span class="line"></span><br><span class="line">jobs:</span><br><span class="line">  generate:</span><br><span class="line">    permissions:</span><br><span class="line">      contents: write</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    timeout-minutes: 5</span><br><span class="line"></span><br><span class="line">    steps:</span><br><span class="line">      # generates a snake game from a github user (&lt;github_user_name&gt;) contributions graph, output a svg animation at &lt;svg_out_path&gt;</span><br><span class="line">      - name: generate github-contribution-grid-snake.svg</span><br><span class="line">        uses: Platane/snk/svg-only@v3</span><br><span class="line">        with:</span><br><span class="line">          github_user_name: $&#123;&#123; github.repository_owner &#125;&#125;</span><br><span class="line">          outputs: |</span><br><span class="line">            dist/github-contribution-grid-snake.svg</span><br><span class="line">            dist/github-contribution-grid-snake-dark.svg?palette=github-dark</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      # push the content of &lt;build_dir&gt; to a branch</span><br><span class="line">      # the content will be available at https://raw.githubusercontent.com/&lt;github_user&gt;/&lt;repository&gt;/&lt;target_branch&gt;/&lt;file&gt; , or as github page</span><br><span class="line">      - name: push github-contribution-grid-snake.svg to the output branch</span><br><span class="line">        uses: crazy-max/ghaction-github-pages@v3.1.0</span><br><span class="line">        with:</span><br><span class="line">          target_branch: output</span><br><span class="line">          build_dir: dist</span><br><span class="line">        env:</span><br><span class="line">          GITHUB_TOKEN: $&#123;&#123; secrets.GITHUB_TOKEN &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The location of the svg file: <code>target_branch: output</code></p>
+<img src="/2025/02/26/How-to-Create-a-GitHub-Profile-README-Using-profile-readme-generator/github_contribution_grid_snake.png" class="" title="github_contribution_grid_snake">
+
+<p>Demo ↓ 👇🏻<br><img src="https://raw.githubusercontent.com/Appigle/Appigle/refs/heads/output/github-contribution-grid-snake.svg" alt="github_contribution_grid_snake"></p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Using <a target="_blank" rel="noopener" href="https://github.com/maurodesouza/profile-readme-generator">profile-readme-generator</a> is a quick way to make a professional, visually appealing GitHub Profile README. By adding your personal information, skills, and project details, you can showcase everything you bring to the table—right where people first look!</p>
+<p><strong>Quick Links</strong>:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://profile-readme-generator.com/">Profile Readme Generator Website</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/maurodesouza/profile-readme-generator">Profile Readme Generator GitHub Repo</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Appigle">Appigle Example Profile</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/marketplace/actions/generate-snake-game-from-github-contribution-grid">How to create github contributions grid snake svg</a></li>
+</ul>
+<p>If you found this guide helpful, consider sharing it with others or starring the <strong>profile-readme-generator</strong> repo to support the project!</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Tools/" rel="tag"># Tools</a>
+              <a href="/tags/GitHub/" rel="tag"># GitHub</a>
+              <a href="/tags/README/" rel="tag"># README</a>
+              <a href="/tags/Profile/" rel="tag"># Profile</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/02/25/Demystifying-the-Model-Context-Protocol-MCP-Bridging-AI-and-Data-Sources/" rel="prev" title="Demystifying the Model Context Protocol (MCP): Bridging AI and Data Sources">
+      <i class="fa fa-chevron-left"></i> Demystifying the Model Context Protocol (MCP): Bridging AI and Data Sources
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/03/05/IELTS-Writing-Task-2-A-Step-by-Step-Guide-for-Band-7/" rel="next" title="IELTS Writing Task 2: Comprehensive Step-by-Step Guide for Band 7">
+      IELTS Writing Task 2: Comprehensive Step-by-Step Guide for Band 7 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-profile-readme-generator"><span class="nav-number">2.</span> <span class="nav-text">What is profile-readme-generator?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-Use-a-GitHub-Profile-README"><span class="nav-number">3.</span> <span class="nav-text">Why Use a GitHub Profile README?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prerequisites"><span class="nav-number">4.</span> <span class="nav-text">Prerequisites</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-by-Step-Tutorial"><span class="nav-number">5.</span> <span class="nav-text">Step-by-Step Tutorial</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Open-profile-readme-generator"><span class="nav-number">5.1.</span> <span class="nav-text">1. Open profile-readme-generator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Fill-in-Basic-Information"><span class="nav-number">5.2.</span> <span class="nav-text">2. Fill in Basic Information</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Add-Social-Links"><span class="nav-number">5.3.</span> <span class="nav-text">3. Add Social Links</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Select-Your-Skills"><span class="nav-number">5.4.</span> <span class="nav-text">4. Select Your Skills</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Choose-Additional-Sections"><span class="nav-number">5.5.</span> <span class="nav-text">5. Choose Additional Sections</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Generate-Your-README"><span class="nav-number">5.6.</span> <span class="nav-text">6. Generate Your README</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Copy-the-Generated-Markdown"><span class="nav-number">5.7.</span> <span class="nav-text">7. Copy the Generated Markdown</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-Update-Your-GitHub-Profile-Repository"><span class="nav-number">5.8.</span> <span class="nav-text">8. Update Your GitHub Profile Repository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-Verify-Your-Profile"><span class="nav-number">5.9.</span> <span class="nav-text">9. Verify Your Profile</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example-Integrating-with-Appigle"><span class="nav-number">6.</span> <span class="nav-text">Example: Integrating with Appigle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips-Customization"><span class="nav-number">7.</span> <span class="nav-text">Tips &amp; Customization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-create-an-animation-of-a-GitHub-contributions-grid-using-SVG-wit-github-actions"><span class="nav-number">8.</span> <span class="nav-text">How to create an animation of a GitHub contributions grid using SVG wit github actions?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">9.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lei Chen</p>
+  <div class="site-description" itemprop="description">Ray's Blog！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">92</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lei Chen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

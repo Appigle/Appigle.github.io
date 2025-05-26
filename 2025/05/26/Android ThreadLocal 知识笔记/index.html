@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"appigle.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="定义ThreadLocal是一个线程内部的数据存储类，通过它可以在指定的线程中存储数据，数据存储以后，只有在指定的线程中可以获取到存储的数据，对于其他线程来说则无法获取到数据。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android ThreadLocal 知识笔记">
+<meta property="og:url" content="https://appigle.github.io/2025/05/26/Android%20ThreadLocal%20%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Welcome to Ray&#39;s Blog">
+<meta property="og:description" content="定义ThreadLocal是一个线程内部的数据存储类，通过它可以在指定的线程中存储数据，数据存储以后，只有在指定的线程中可以获取到存储的数据，对于其他线程来说则无法获取到数据。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-05-26T00:47:14.527Z">
+<meta property="article:modified_time" content="2025-05-26T00:47:14.527Z">
+<meta property="article:author" content="Lei Chen">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="多线程">
+<meta property="article:tag" content="Handler机制">
+<meta property="article:tag" content="《Android开发探索》">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://appigle.github.io/2025/05/26/Android%20ThreadLocal%20%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Android ThreadLocal 知识笔记 | Welcome to Ray's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to Ray's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry Stay Foolish - Steve Jobs</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2025/05/26/Android%20ThreadLocal%20%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chen">
+      <meta itemprop="description" content="Ray's Blog！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Ray's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android ThreadLocal 知识笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-05-26 00:47:14" itemprop="dateCreated datePublished" datetime="2025-05-26T00:47:14+00:00">2025-05-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <hr>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><code>ThreadLocal</code>是一个线程内部的数据存储类，通过它可以在指定的线程中存储数据，数据存储以后，只有在指定的线程中可以获取到存储的数据，对于其他线程来说则无法获取到数据。</p>
+<span id="more"></span>
+
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>一般来说，当某些数据是以线程为作用域并且不同线程具有不同的数据副本的时候，就可以考虑采用<code>ThreadLocal</code>。<br>另一个使用场景是复杂逻辑下的对象传递，比如监听器的传递。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><h4 id="简单原理概述"><a href="#简单原理概述" class="headerlink" title="简单原理概述"></a>简单原理概述</h4><p>不同线程访问同一个<code>ThreadLocal</code>的<code>get</code>方法，<code>ThreadLocal</code>内部会从各自的线程中取出一个数组，然后再从数组中根据当前<code>ThradLocal</code>的索引去查找出对应的 value 值。很显然，不同线程中的数组是不同的，这就是为什么通过<code>ThreadLocal</code>可以在不同的的线程中维护一套数据的副本并且彼此互不干扰。</p>
+<h3 id="内部实现"><a href="#内部实现" class="headerlink" title="内部实现"></a>内部实现</h3><p><code>ThreadLocal</code>是一个泛型类，它的定义为：<code>public class ThreadLocal&lt;T&gt;</code>，只要弄清楚<code>ThreadLocal</code>的<code>get</code>和<code>set</code>方法就可以明白它的工作原理；</p>
+<h4 id="set-T-value-方法"><a href="#set-T-value-方法" class="headerlink" title="set(T value)方法"></a><code>set(T value)</code>方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">set</span><span class="params">(T value)</span> &#123;</span><br><span class="line">    <span class="type">Thread</span> <span class="variable">currentThread</span> <span class="operator">=</span> Thread.currentThread();</span><br><span class="line">    <span class="type">Values</span> <span class="variable">values</span> <span class="operator">=</span> values(currentThread);</span><br><span class="line">    <span class="keyword">if</span> (values == <span class="literal">null</span>) &#123;</span><br><span class="line">        values = initializeValues(currentThread);</span><br><span class="line">    &#125;</span><br><span class="line">    values.put(<span class="built_in">this</span>, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面<code>set</code>方法中，首先会通过 values 方法来获取当前线程的<code>ThreadLocal</code>数据。获取方式很简单：在<code>Thread</code>类的内部有一个成员专门用于存储线程的<code>ThreadLocal</code>的数据：<code>ThreadLocal.Values localValues</code>，因此获取当前线程的<code>ThreadLocal</code>数据就变得异常简单了。如果<code>localValues</code>的值为 null，那么久需要对其进行初始化，初始化后再将<code>ThreadLocal</code>的值进行存储。在<code>localValues</code>内部有一个数组：<code>private Object[] table</code>,<code>ThreadLocal</code>的值就存在在这个<code>table</code>数组中。源码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">         * Sets entry for given ThreadLocal to given value, creating an</span></span><br><span class="line"><span class="comment">         * entry if necessary.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">void</span> <span class="title function_">put</span><span class="params">(ThreadLocal&lt;?&gt; key, Object value)</span> &#123;</span><br><span class="line">            cleanUp();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Keep track of first tombstone. That&#x27;s where we want to go back</span></span><br><span class="line">            <span class="comment">// and add an entry if necessary.</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">firstTombstone</span> <span class="operator">=</span> -<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> key.hash &amp; mask;; index = next(index)) &#123;</span><br><span class="line">                <span class="type">Object</span> <span class="variable">k</span> <span class="operator">=</span> table[index];</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (k == key.reference) &#123;</span><br><span class="line">                    <span class="comment">// Replace existing entry.</span></span><br><span class="line">                    table[index + <span class="number">1</span>] = value;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (k == <span class="literal">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (firstTombstone == -<span class="number">1</span>) &#123;</span><br><span class="line">                        <span class="comment">// Fill in null slot.</span></span><br><span class="line">                        table[index] = key.reference;</span><br><span class="line">                        table[index + <span class="number">1</span>] = value;</span><br><span class="line">                        size++;</span><br><span class="line">                        <span class="keyword">return</span>;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// Go back and replace first tombstone.</span></span><br><span class="line">                    table[firstTombstone] = key.reference;</span><br><span class="line">                    table[firstTombstone + <span class="number">1</span>] = value;</span><br><span class="line">                    tombstones--;</span><br><span class="line">                    size++;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// Remember first tombstone.</span></span><br><span class="line">                <span class="keyword">if</span> (firstTombstone == -<span class="number">1</span> &amp;&amp; k == TOMBSTONE) &#123;</span><br><span class="line">                    firstTombstone = index;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>从上面源码可以看出来：<code>ThreadLocal</code>的值在<code>table</code>数组中的存储位置总是为<code>ThradLocal</code>的<code>reference</code>字段所标识的对象的下一个位置，比如<code>ThreadLocal</code>的<code>reference</code>对象在<code>table</code>数组中的索引为<code>index</code>，那么<code>ThreadLocal</code>的值在<code>table</code>数组中的索引就是<code>index+1</code>。最终<code>ThreadLocal</code>的值将会被存储在<code>table</code>数组中：<code>table[index+1]=value</code>。</p>
+<h4 id="get-方法"><a href="#get-方法" class="headerlink" title="get()方法"></a><code>get()</code>方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> T <span class="title function_">get</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// Optimized for the fast path.</span></span><br><span class="line">    <span class="type">Thread</span> <span class="variable">currentThread</span> <span class="operator">=</span> Thread.currentThread();</span><br><span class="line">    <span class="type">Values</span> <span class="variable">values</span> <span class="operator">=</span> values(currentThread);</span><br><span class="line">    <span class="keyword">if</span> (values != <span class="literal">null</span>) &#123;</span><br><span class="line">        Object[] table = values.table;</span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> hash &amp; values.mask;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.reference == table[index]) &#123;</span><br><span class="line">            <span class="keyword">return</span> (T) table[index + <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        values = initializeValues(currentThread);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (T) values.getAfterMiss(<span class="built_in">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>get()</code>方法的逻辑：取出当前线程的<code>localValues</code>对象，如果这个对象为 null 那么就返回初始值，初始值由<code>ThreadLocal</code>的<code>initialValue</code>方法来描述，默认情况下为 null，可以重写该方法，返回自定义的值。如果<code>localValues</code>对象不为 null，那么就取出它的<code>table</code>数组并找出<code>ThreadLocal</code>的<code>reference</code>对象在<code>table</code>数组中的位置，然后<code>table</code>数组中的下一个位置所存储的数据就是<code>ThreadLocal</code>的值。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>从<code>ThreadLocal</code>的<code>set</code>和<code>get</code>方法可以看出，它们所操作的对象都是当前线程的<code>localVaules</code>对象的<code>table</code>数组，因此在不同线程中访问同一个<code>ThreadLocal</code>的<code>set</code>和<code>get</code>方法，它们对<code>ThreadLocal</code>所做的读&#x2F;写操作仅限于各自线程的内部，这就是为什么<code>ThreadLocal</code>可以在多个线程中互不干扰地存储和修改数据。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag"># 多线程</a>
+              <a href="/tags/Handler%E6%9C%BA%E5%88%B6/" rel="tag"># Handler机制</a>
+              <a href="/tags/%E3%80%8AAndroid%E5%BC%80%E5%8F%91%E6%8E%A2%E7%B4%A2%E3%80%8B/" rel="tag"># 《Android开发探索》</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/05/26/Android%20View%E7%9A%84%E4%BD%8D%E7%BD%AE%E8%8E%B7%E5%8F%96%E7%AC%94%E8%AE%B0/" rel="prev" title="Android View的位置获取笔记">
+      <i class="fa fa-chevron-left"></i> Android View的位置获取笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/05/26/Android%20String.xml%E4%B8%AD%E5%B8%B8%E7%94%A8%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" rel="next" title="Android strings.xml中常用转义字符">
+      Android strings.xml中常用转义字符 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">2.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E5%8E%9F%E7%90%86%E6%A6%82%E8%BF%B0"><span class="nav-number">3.1.</span> <span class="nav-text">简单原理概述</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E9%83%A8%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.</span> <span class="nav-text">内部实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#set-T-value-%E6%96%B9%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">set(T value)方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#get-%E6%96%B9%E6%B3%95"><span class="nav-number">4.2.</span> <span class="nav-text">get()方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lei Chen</p>
+  <div class="site-description" itemprop="description">Ray's Blog！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">92</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lei Chen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
