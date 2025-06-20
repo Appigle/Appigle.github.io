@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"appigle.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="The blog post introduces NoSQL databases, highlighting their flexibility and scalability compared to traditional SQL databases. It explains the main types of NoSQL databases, such as key-value stores,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Introduction to NoSQL Databases:A Practical Guide with MongoDB">
+<meta property="og:url" content="https://appigle.github.io/2025/06/20/Introduction-to-NoSQL-Databases-A-Practical-Guide-with-MongoDB/index.html">
+<meta property="og:site_name" content="Welcome to Ray&#39;s Blog">
+<meta property="og:description" content="The blog post introduces NoSQL databases, highlighting their flexibility and scalability compared to traditional SQL databases. It explains the main types of NoSQL databases, such as key-value stores,">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-06-20T21:40:00.000Z">
+<meta property="article:modified_time" content="2025-06-20T21:40:00.000Z">
+<meta property="article:author" content="Lei Chen">
+<meta property="article:tag" content="NoSQL">
+<meta property="article:tag" content="MongoDB">
+<meta property="article:tag" content="Tutorial">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://appigle.github.io/2025/06/20/Introduction-to-NoSQL-Databases-A-Practical-Guide-with-MongoDB/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Introduction to NoSQL Databases:A Practical Guide with MongoDB | Welcome to Ray's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to Ray's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry Stay Foolish - Steve Jobs</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://appigle.github.io/2025/06/20/Introduction-to-NoSQL-Databases-A-Practical-Guide-with-MongoDB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chen">
+      <meta itemprop="description" content="Ray's Blog！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Ray's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Introduction to NoSQL Databases:A Practical Guide with MongoDB
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-06-20 17:40:00" itemprop="dateCreated datePublished" datetime="2025-06-20T17:40:00-04:00">2025-06-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Database/" itemprop="url" rel="index"><span itemprop="name">Database</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Database/NoSQL/" itemprop="url" rel="index"><span itemprop="name">NoSQL</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">The blog post introduces NoSQL databases, highlighting their flexibility and scalability compared to traditional SQL databases. It explains the main types of NoSQL databases, such as key-value stores, column-oriented databases, graph databases, and document-oriented databases. The post focuses on MongoDB, a document-oriented NoSQL database, and provides a practical guide for designing a blogging platform. It covers MongoDB setup, data modeling, and CRUD operations, demonstrating how to manage blog posts and comments effectively.</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>As the volume of data produced in the digital era grows rapidly, databases are essential for storing, managing, and analyzing information. Databases are generally divided into two main types: SQL and NoSQL. SQL databases use structured tables with fixed schemas, while NoSQL databases allow for flexible schemas, making them suitable for semi-structured and unstructured data. This flexibility is particularly valuable for managing today’s large and diverse datasets.</p>
+<hr>
+<h2 id="What-is-NoSQL"><a href="#What-is-NoSQL" class="headerlink" title="What is NoSQL?"></a>What is NoSQL?</h2><p>NoSQL stands for “Not Only SQL” and was developed to address the limitations of traditional relational databases. Relational databases have a rigid, tabular structure and use SQL for data manipulation. In contrast, NoSQL databases are schema-less, allowing for greater flexibility and scalability. They are well-suited for handling large volumes of data with varying structures. However, NoSQL databases may offer weaker consistency and less support for complex queries, but they are widely adopted for their advantages and often complement SQL databases.</p>
+<hr>
+<h2 id="Types-of-NoSQL-Databases"><a href="#Types-of-NoSQL-Databases" class="headerlink" title="Types of NoSQL Databases"></a>Types of NoSQL Databases</h2><p>NoSQL databases use a variety of data models to address different use cases:</p>
+<ul>
+<li><strong>Key-Value Stores</strong>: Store data as key-value pairs (e.g., Redis, Amazon DynamoDB).</li>
+<li><strong>Column-Oriented Databases</strong>: Organize data by columns for efficient retrieval (e.g., Apache Cassandra, HBase, Google Bigtable).</li>
+<li><strong>Graph Databases</strong>: Store data as nodes and edges, ideal for representing relationships (e.g., Neo4j, Amazon Neptune).</li>
+<li><strong>Document-Oriented Databases</strong>: Store data as JSON-like documents, allowing for nested and variable structures (e.g., MongoDB, CouchDB).</li>
+</ul>
+<hr>
+<h2 id="Designing-a-Blog-Platform-with-MongoDB"><a href="#Designing-a-Blog-Platform-with-MongoDB" class="headerlink" title="Designing a Blog Platform with MongoDB"></a>Designing a Blog Platform with MongoDB</h2><p>Let’s walk through designing a simple blogging platform using MongoDB, a popular document-oriented NoSQL database.</p>
+<h3 id="1-Setting-Up-MongoDB"><a href="#1-Setting-Up-MongoDB" class="headerlink" title="1. Setting Up MongoDB"></a>1. Setting Up MongoDB</h3><p>Download and install MongoDB from the official website. After installation, start the MongoDB service:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Linux</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl start mongod</span><br><span class="line"></span><br><span class="line"><span class="comment"># macOS</span></span><br><span class="line">brew services start mongodb-community@7.0</span><br></pre></td></tr></table></figure>
+
+<p>Start the MongoDB shell with:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongosh</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="2-Defining-the-Data-Model"><a href="#2-Defining-the-Data-Model" class="headerlink" title="2. Defining the Data Model"></a>2. Defining the Data Model</h3><p>Create a database called <code>blog</code> and two collections: <code>posts</code> for blog entries and <code>comments</code> for user feedback. Each post will have a title, content, author, and creation date. Each comment will reference a post and include content, author, and timestamp.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Switch to or create the &#x27;blog&#x27; database</span></span><br><span class="line">use blog</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create collections</span></span><br><span class="line">db.<span class="title function_">createCollection</span>(<span class="string">&quot;posts&quot;</span>)</span><br><span class="line">db.<span class="title function_">createCollection</span>(<span class="string">&quot;comments&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="3-CRUD-Operations-in-MongoDB"><a href="#3-CRUD-Operations-in-MongoDB" class="headerlink" title="3. CRUD Operations in MongoDB"></a>3. CRUD Operations in MongoDB</h3><p>MongoDB supports four primary operations:</p>
+<ul>
+<li><strong>Create</strong>: Add new documents with <code>insertOne()</code> or <code>insertMany()</code>.</li>
+<li><strong>Read</strong>: Retrieve documents using <code>find()</code>.</li>
+<li><strong>Update</strong>: Modify documents with <code>updateOne()</code> or <code>updateMany()</code>.</li>
+<li><strong>Delete</strong>: Remove documents with <code>deleteOne()</code> or <code>deleteMany()</code>.</li>
+</ul>
+<h4 id="Creating-Blog-Posts"><a href="#Creating-Blog-Posts" class="headerlink" title="Creating Blog Posts"></a>Creating Blog Posts</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Insert a single post</span></span><br><span class="line">db.<span class="property">posts</span>.<span class="title function_">insertOne</span>(&#123;</span><br><span class="line">  <span class="attr">title</span>: <span class="string">&#x27;Introduction to NoSQL with MongoDB&#x27;</span>,</span><br><span class="line">  <span class="attr">content</span>: <span class="string">&#x27;MongoDB is a NoSQL database that stores data in JSON format&#x27;</span>,</span><br><span class="line">  <span class="attr">author</span>: <span class="string">&#x27;Arunn Thevapalan&#x27;</span>,</span><br><span class="line">  <span class="attr">createdAt</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(),</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Insert multiple posts</span></span><br><span class="line"><span class="keyword">var</span> postsData = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">title</span>: <span class="string">&#x27;Getting Started with MongoDB&#x27;</span>,</span><br><span class="line">    <span class="attr">content</span>: <span class="string">&#x27;Learn the basics of MongoDB&#x27;</span>,</span><br><span class="line">    <span class="attr">author</span>: <span class="string">&#x27;Arunn Thevapalan&#x27;</span>,</span><br><span class="line">    <span class="attr">createdAt</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(),</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">title</span>: <span class="string">&#x27;Advanced MongoDB Techniques&#x27;</span>,</span><br><span class="line">    <span class="attr">content</span>: <span class="string">&#x27;Explore advanced features of MongoDB&#x27;</span>,</span><br><span class="line">    <span class="attr">author</span>: <span class="string">&#x27;Jim Murphy&#x27;</span>,</span><br><span class="line">    <span class="attr">createdAt</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(),</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br><span class="line">db.<span class="property">posts</span>.<span class="title function_">insertMany</span>(postsData);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Reading-Blog-Posts"><a href="#Reading-Blog-Posts" class="headerlink" title="Reading Blog Posts"></a>Reading Blog Posts</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Retrieve all posts</span></span><br><span class="line">db.<span class="property">posts</span>.<span class="title function_">find</span>();</span><br></pre></td></tr></table></figure>
+
+<h4 id="Adding-Comments"><a href="#Adding-Comments" class="headerlink" title="Adding Comments"></a>Adding Comments</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Use an existing post&#x27;s ObjectId</span></span><br><span class="line"><span class="keyword">var</span> postId = <span class="title class_">ObjectId</span>(<span class="string">&#x27;664bfc27f74ef93812b2179e&#x27;</span>);</span><br><span class="line">db.<span class="property">comments</span>.<span class="title function_">insertOne</span>(&#123;</span><br><span class="line">  <span class="attr">postId</span>: postId,</span><br><span class="line">  <span class="attr">content</span>: <span class="string">&#x27;Informative article!&#x27;</span>,</span><br><span class="line">  <span class="attr">author</span>: <span class="string">&#x27;Anne Smith&#x27;</span>,</span><br><span class="line">  <span class="attr">createdAt</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(),</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Querying-Comments-for-a-Post"><a href="#Querying-Comments-for-a-Post" class="headerlink" title="Querying Comments for a Post"></a>Querying Comments for a Post</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">comments</span>.<span class="title function_">find</span>(&#123; <span class="attr">postId</span>: postId &#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Updating-a-Blog-Post"><a href="#Updating-a-Blog-Post" class="headerlink" title="Updating a Blog Post"></a>Updating a Blog Post</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">posts</span>.<span class="title function_">updateOne</span>(</span><br><span class="line">  &#123; <span class="attr">_id</span>: postId &#125;,</span><br><span class="line">  &#123; <span class="attr">$set</span>: &#123; <span class="attr">title</span>: <span class="string">&#x27;Absolute Beginner Guide to NoSQL with MongoDB&#x27;</span> &#125; &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Deleting-a-Blog-Post"><a href="#Deleting-a-Blog-Post" class="headerlink" title="Deleting a Blog Post"></a>Deleting a Blog Post</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">posts</span>.<span class="title function_">deleteOne</span>(&#123; <span class="attr">_id</span>: postId &#125;);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This guide introduced the fundamentals of NoSQL databases, explained their differences from relational databases, and explored their main types. Using MongoDB, we demonstrated how to model and manage data for a simple blogging platform, covering setup, data modeling, and CRUD operations. For more complex use cases, refer to MongoDB’s official documentation and advanced tutorials.</p>
+<hr>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>DataCamp. (n.d.). <em>A comprehensive NoSQL tutorial using MongoDB</em>. <a target="_blank" rel="noopener" href="https://www.datacamp.com/tutorial/nosql-tutorial">https://www.datacamp.com/tutorial/nosql-tutorial</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/NoSQL/" rel="tag"># NoSQL</a>
+              <a href="/tags/MongoDB/" rel="tag"># MongoDB</a>
+              <a href="/tags/Tutorial/" rel="tag"># Tutorial</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/05/24/Integrating-RevenueCat-IAP-in-React-Native/" rel="prev" title="Integrating RevenueCat IAP in React Native + Expo Application (Simple IOS Demo)">
+      <i class="fa fa-chevron-left"></i> Integrating RevenueCat IAP in React Native + Expo Application (Simple IOS Demo)
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-NoSQL"><span class="nav-number">1.</span> <span class="nav-text">What is NoSQL?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Types-of-NoSQL-Databases"><span class="nav-number">2.</span> <span class="nav-text">Types of NoSQL Databases</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Designing-a-Blog-Platform-with-MongoDB"><span class="nav-number">3.</span> <span class="nav-text">Designing a Blog Platform with MongoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Setting-Up-MongoDB"><span class="nav-number">3.1.</span> <span class="nav-text">1. Setting Up MongoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Defining-the-Data-Model"><span class="nav-number">3.2.</span> <span class="nav-text">2. Defining the Data Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-CRUD-Operations-in-MongoDB"><span class="nav-number">3.3.</span> <span class="nav-text">3. CRUD Operations in MongoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Creating-Blog-Posts"><span class="nav-number">3.3.1.</span> <span class="nav-text">Creating Blog Posts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reading-Blog-Posts"><span class="nav-number">3.3.2.</span> <span class="nav-text">Reading Blog Posts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Adding-Comments"><span class="nav-number">3.3.3.</span> <span class="nav-text">Adding Comments</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Querying-Comments-for-a-Post"><span class="nav-number">3.3.4.</span> <span class="nav-text">Querying Comments for a Post</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Updating-a-Blog-Post"><span class="nav-number">3.3.5.</span> <span class="nav-text">Updating a Blog Post</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deleting-a-Blog-Post"><span class="nav-number">3.3.6.</span> <span class="nav-text">Deleting a Blog Post</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lei Chen</p>
+  <div class="site-description" itemprop="description">Ray's Blog！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">95</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lei Chen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
